@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imberion — From Noise to Signal</title>
+  <meta name="description" content="Imberion converts fragmented commercial data into concrete business decisions. Intelligence layer for manufacturers and distributors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0F1E2D;
+      --navy-mid: #1C2B38;
+      --navy-light: #2A3F52;
+      --cream: #F5F2ED;
+      --cream-dark: #EAE6DF;
+      --text-muted: #6B7C8A;
+      --accent: #3A7D5A;
+      --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(245,242,237,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15,30,45,0.08);
+      transition: all 0.3s;
+    }
+
+    nav img { height: 40px; width: auto; }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--navy-mid);
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--navy-light) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 60px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(58,125,90,0.06) 100%);
+      pointer-events: none;
+    }
+
+    /* Animated noise lines in hero */
+    .hero-lines {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 780px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--navy);
+      padding: 16px 36px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      color: rgba(255,255,255,0.6);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--white); }
+
+    /* Signal metaphor visual */
+    .hero-visual {
+      position: absolute;
+      right: 60px;
+      bottom: 80px;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards 1s;
+    }
+
+    .signal-diagram {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .signal-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-right: 20px;
+    }
+
+    .signal-line {
+      height: 2px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 1px;
+      animation: signalPulse 3s ease-in-out infinite;
+    }
+
+    .signal-line:nth-child(1) { width: 80px; animation-delay: 0s; }
+    .signal-line:nth-child(2) { width: 55px; animation-delay: 0.3s; }
+    .signal-line:nth-child(3) { width: 95px; animation-delay: 0.6s; }
+    .signal-line:nth-child(4) { width: 40px; animation-delay: 0.9s; }
+    .signal-line:nth-child(5) { width: 70px; animation-delay: 1.2s; }
+
+    .signal-node {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(58,125,90,0.4);
+      animation: nodePulse 2s ease-in-out infinite;
+    }
+
+    .signal-out {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), rgba(58,125,90,0.3));
+      margin-left: 20px;
+      border-radius: 1px;
+      transform: rotate(-15deg);
+      transform-origin: left center;
+    }
+
+    @keyframes signalPulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(58,125,90,0.4); }
+      50% { box-shadow: 0 0 30px rgba(58,125,90,0.7); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ── PROBLEM STRIP ── */
+    .problem-strip {
+      background: var(--cream-dark);
+      padding: 60px;
+      border-top: 1px solid rgba(15,30,45,0.08);
+    }
+
+    .problem-strip p {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 300;
+      color: var(--navy);
+      max-width: 800px;
+      line-height: 1.5;
+    }
+
+    .problem-strip p strong {
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .section-intro {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 64px;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 52px 44px;
+      position: relative;
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      background: var(--navy);
+    }
+
+    .service-card:hover .service-num,
+    .service-card:hover .service-title,
+    .service-card:hover .service-desc,
+    .service-card:hover .service-item {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .service-card:hover .service-title {
+      color: var(--white);
+    }
+
+    .service-card:hover .service-tag {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+    }
+
+    .service-num {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .service-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.2;
+      transition: color 0.3s;
+    }
+
+    .service-subtitle {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      transition: color 0.3s;
+    }
+
+    .service-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-item {
+      font-size: 13px;
+      color: var(--navy-mid);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+      transition: color 0.3s;
+    }
+
+    .service-item::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    /* ── CASES ── */
+    .cases { background: var(--cream); }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .case-card {
+      background: var(--white);
+      padding: 48px 44px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--cream-dark);
+      transition: background 0.3s;
+    }
+
+    .case-card:hover::before {
+      background: var(--accent);
+    }
+
+    .case-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--cream);
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .case-title {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .case-problem {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .case-resolution {
+      font-size: 14px;
+      color: var(--navy-mid);
+      font-weight: 400;
+      padding-top: 20px;
+      border-top: 1px solid var(--cream-dark);
+    }
+
+    .case-resolution strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── FOR WHO ── */
+    .for-who { background: var(--navy); }
+
+    .for-who .section-label { color: rgba(58,125,90,0.8); }
+    .for-who .section-title { color: var(--white); }
+    .for-who .section-intro { color: rgba(255,255,255,0.5); }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .audience-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 48px 40px;
+      transition: all 0.3s;
+    }
+
+    .audience-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(58,125,90,0.3);
+    }
+
+    .audience-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 28px;
+      opacity: 0.6;
+    }
+
+    .audience-title {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .audience-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+      font-weight: 500;
+    }
+
+    .audience-problem {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .audience-examples {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── MODELS ── */
+    .models { background: var(--cream-dark); }
+
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-top: 64px;
+    }
+
+    .model-card {
+      background: var(--white);
+      padding: 56px 52px;
+      position: relative;
+    }
+
+    .model-number {
+      font-family: var(--serif);
+      font-size: 72px;
+      font-weight: 300;
+      color: rgba(15,30,45,0.06);
+      position: absolute;
+      top: 32px;
+      right: 40px;
+      line-height: 1;
+    }
+
+    .model-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--accent);
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+
+    .model-title {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .model-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .model-objective {
+      font-size: 14px;
+      color: var(--navy-mid);
+      padding-top: 24px;
+      border-top: 1px solid var(--cream-dark);
+      font-weight: 400;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--navy);
+      padding: 120px 60px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .cta-section p {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-primary-dark {
+      background: var(--white);
+      color: var(--navy);
+      padding: 18px 44px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary-dark:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost-light {
+      color: rgba(255,255,255,0.5);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost-light:hover { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer img { height: 36px; width: auto; opacity: 0.7; }
+
+    .footer-right {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      nav ul { display: none; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-visual { display: none; }
+      section { padding: 72px 24px; }
+      .problem-strip { padding: 48px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .models-grid { grid-template-columns: 1fr; gap: 2px; }
+      .cta-section { padding: 80px 24px; }
+      footer { padding: 40px 24px; flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="https://www.imberion.com/logo.png" alt="Imberion">
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#who">Who we work with</a></li>
+    <li><a href="https://calendly.com/rodrigo-imberion/30min" class="nav-cta">Book a meeting</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-lines" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+    <line x1="0" y1="200" x2="1400" y2="200" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="400" x2="1400" y2="400" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1400" y2="600" stroke="white" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="800" stroke="white" stroke-width="1"/>
+    <line x1="700" y1="0" x2="700" y2="800" stroke="white" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="1200" y2="800" stroke="white" stroke-width="1"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Applied growth intelligence</p>
+    <h1>
+      From fragmented data<br>
+      to decisions that<br>
+      <em>move the business</em>
+    </h1>
+    <p class="hero-sub">
+      Imberion builds the intelligence layer between your commercial data and the decisions that drive revenue, margin, and growth.
+    </p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn-primary">Book a meeting</a>
+      <a href="#services" class="btn-ghost">See how it works →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="signal-diagram">
+      <div class="signal-lines">
+        <div class="signal-line"></div>
+        <div class="signal-line"></div>
+        <div class="signal-line"></div>
+        <div class="signal-line"></div>
+        <div class="signal-line"></div>
+      </div>
+      <div class="signal-node"></div>
+      <div class="signal-out"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<div class="problem-strip">
+  <p>
+    Most companies don't have a data problem.<br>
+    They have a <strong>signal problem</strong> — fragmented, unreliable information that never reaches the decision that matters.
+  </p>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <span class="section-label">What we do</span>
+  <h2 class="section-title">Three layers.<br>One intelligence system.</h2>
+  <p class="section-intro">Imberion works across three interconnected layers — from raw data to executable decisions.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <h3 class="service-title">Data Infrastructure</h3>
+      <p class="service-subtitle">Data capture & consolidation</p>
+      <p class="service-desc">We build a coherent view of your business from fragmented or incomplete sources — and generate data where none exists today.</p>
+      <ul class="service-items">
+        <li class="service-item">ERP and transactional data integration</li>
+        <li class="service-item">Distributor data capture</li>
+        <li class="service-item">Field sales and visit data</li>
+        <li class="service-item">POS implementation in traditional channel</li>
+        <li class="service-item">External sources and market proxies</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <h3 class="service-title">Intelligence Layer</h3>
+      <p class="service-subtitle">Modeling & understanding</p>
+      <p class="service-desc">On top of that foundation, we transform data into clear signals about your business — what's really happening, not just what's reported.</p>
+      <ul class="service-items">
+        <li class="service-item">Pricing and elasticity analysis</li>
+        <li class="service-item">Commercial structure and segmentation</li>
+        <li class="service-item">Portfolio and product mix optimization</li>
+        <li class="service-item">Margin leakage detection</li>
+        <li class="service-item">Growth opportunity identification</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <h3 class="service-title">Decision & Execution</h3>
+      <p class="service-subtitle">Advisory & implementation</p>
+      <p class="service-desc">We bring intelligence down to concrete, actionable decisions — and support implementation to close the loop between insight and result.</p>
+      <ul class="service-items">
+        <li class="service-item">Specific recommendations by client, product, or channel</li>
+        <li class="service-item">Scenario simulation</li>
+        <li class="service-item">Opportunity prioritization</li>
+        <li class="service-item">Implementation support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <span class="section-label">Where we create value</span>
+  <h2 class="section-title">Real problems.<br>Concrete results.</h2>
+  <p class="section-intro">These are the patterns we see repeatedly across industrial and commercial businesses.</p>
+
+  <div class="cases-grid">
+    <div class="case-card">
+      <span class="case-tag">Pricing</span>
+      <h3 class="case-title">Discounts nobody can explain</h3>
+      <p class="case-problem">Years of accumulated discount structures with no clear logic. The result: margin erosion with zero visibility into where the money is going.</p>
+      <p class="case-resolution"><strong>Imberion identifies</strong> where margin is being lost and quantifies the recovery opportunity.</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-tag">Pricing</span>
+      <h3 class="case-title">Same product, different value</h3>
+      <p class="case-problem">The same SKU sold to different clients or channels at the same base price — losing margin in some, losing volume in others.</p>
+      <p class="case-resolution"><strong>Imberion adjusts</strong> pricing based on actual client behavior and channel dynamics.</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-tag">Distribution</span>
+      <h3 class="case-title">Blind distribution</h3>
+      <p class="case-problem">The manufacturer depends on what the distributor reports — with no direct visibility into what's actually happening in the market.</p>
+      <p class="case-resolution"><strong>Imberion reconstructs</strong> the commercial reality from the ground up.</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-tag">Portfolio</span>
+      <h3 class="case-title">Too many SKUs, too little clarity</h3>
+      <p class="case-problem">An inflated portfolio with no clear view of which products actually generate value — driving operational complexity and wasted commercial effort.</p>
+      <p class="case-resolution"><strong>Imberion identifies</strong> what to sustain, push, or eliminate.</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-tag">Commercial</span>
+      <h3 class="case-title">Negotiating blind</h3>
+      <p class="case-problem">Commercial teams negotiate without clarity on the economic impact of their decisions — leading to inconsistency and value destruction.</p>
+      <p class="case-resolution"><strong>Imberion provides</strong> decision support for every negotiation.</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-tag">Data</span>
+      <h3 class="case-title">No reliable business view</h3>
+      <p class="case-problem">The company can't get a trustworthy picture of performance by client, product, and channel — so decisions are made on incomplete information.</p>
+      <p class="case-resolution"><strong>Imberion builds</strong> a single, reliable source of commercial truth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="for-who" id="who">
+  <span class="section-label">Who we work with</span>
+  <h2 class="section-title">Built for the companies<br>that move markets.</h2>
+  <p class="section-intro">Imberion works with manufacturers, distributors, and the channels connecting them.</p>
+
+  <div class="audience-grid">
+    <div class="audience-card">
+      <svg class="audience-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="4" y="20" width="32" height="16" rx="1" stroke="white" stroke-width="1.5"/>
+        <rect x="12" y="12" width="16" height="24" rx="1" stroke="white" stroke-width="1.5"/>
+        <rect x="18" y="4" width="4" height="32" rx="1" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <h3 class="audience-title">Manufacturers</h3>
+      <span class="audience-tag">Primary focus</span>
+      <p class="audience-problem">B2B industrial companies selling through distributors or indirect channels — with limited visibility into what actually happens downstream.</p>
+      <p class="audience-examples">Construction materials · Chemicals · Industrial inputs</p>
+    </div>
+
+    <div class="audience-card">
+      <svg class="audience-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="14" stroke="white" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="6" stroke="white" stroke-width="1.5"/>
+        <line x1="20" y1="6" x2="20" y2="14" stroke="white" stroke-width="1.5"/>
+        <line x1="20" y1="26" x2="20" y2="34" stroke="white" stroke-width="1.5"/>
+        <line x1="6" y1="20" x2="14" y2="20" stroke="white" stroke-width="1.5"/>
+        <line x1="26" y1="20" x2="34" y2="20" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <h3 class="audience-title">Distributors</h3>
+      <span class="audience-tag">Strategic opportunity</span>
+      <p class="audience-problem">Large distributors with rich operational data that's never been turned into strategic advantage — or monetized.</p>
+      <p class="audience-examples">Regional distributors · Wholesalers · Multi-category operators</p>
+    </div>
+
+    <div class="audience-card">
+      <svg class="audience-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="6" y="14" width="28" height="20" rx="1" stroke="white" stroke-width="1.5"/>
+        <path d="M14 14V10a6 6 0 0112 0v4" stroke="white" stroke-width="1.5"/>
+        <circle cx="20" cy="24" r="3" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <h3 class="audience-title">Traditional channel</h3>
+      <span class="audience-tag">Expansion phase</span>
+      <p class="audience-problem">Small points of sale that are a complete black box for the entire supply chain — no structured data, no visibility, no intelligence.</p>
+      <p class="audience-examples">Independent retailers · Specialty stores · Local distributors</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY MODELS -->
+<section class="models" id="models">
+  <span class="section-label">How we engage</span>
+  <h2 class="section-title">Two entry points.<br>One direction.</h2>
+  <p class="section-intro">Depending on where you are, we start from data or from intelligence. Both paths lead to the same outcome.</p>
+
+  <div class="models-grid">
+    <div class="model-card">
+      <span class="model-number">1</span>
+      <span class="model-tag">Data-first</span>
+      <h3 class="model-title">For distributors<br>and channel</h3>
+      <p class="model-desc">We start by structuring and capturing data — including POS systems and integrations where they don't exist. We build the information infrastructure from scratch.</p>
+      <p class="model-objective">Objective: create a data infrastructure that generates intelligence — and eventually, a monetizable asset.</p>
+    </div>
+
+    <div class="model-card">
+      <span class="model-number">2</span>
+      <span class="model-tag">Insight-first</span>
+      <h3 class="model-title">For manufacturers<br>with existing data</h3>
+      <p class="model-desc">We use your existing data to generate intelligence and decisions immediately. No long implementation cycles — we find value in what you already have.</p>
+      <p class="model-objective">Objective: capture fast value in pricing, portfolio, and commercial structure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEYWORDS / CAPABILITIES -->
+<section style="background: var(--white); padding: 80px 60px;">
+  <span class="section-label">Our domain</span>
+  <h2 class="section-title">Where we play.</h2>
+  <p class="section-intro">Imberion operates across the core levers of commercial strategy — from architecture to execution.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px;">
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">RTM · Route to Market</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">RGM · Revenue Growth Management</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Pricing</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Portfolio Strategy</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Pack & Price Architecture</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Trade Terms</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Promotions</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Commercial Intelligence</span>
+    <span style="font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--cream); padding: 12px 24px; border-radius: 2px; border: 1px solid rgba(15,30,45,0.1);">Margin Optimization</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to turn your<br>data into decisions?</h2>
+  <p>A 30-minute conversation is enough to identify where Imberion can create value for your business.</p>
+  <div class="cta-actions">
+    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn-primary-dark">Book a meeting</a>
+    <a href="mailto:hello@imberion.com" class="btn-ghost-light">or write to us →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://www.imberion.com/logo.png" alt="Imberion" style="filter: brightness(10);">
+  <div class="footer-right">
+    © 2025 Imberion · hello@imberion.com
+  </div>
+</footer>
+
+</body>
+</html>
