@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Imberion — How It Works</title>
+  <title id="page-title">Imberion — How It Works</title>
   <meta name="description" content="A connected system with three distinct capabilities: Information Infrastructure, Intelligence Layer, and Execution & Value Capture."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -55,7 +55,7 @@
     .page-hero .lead{margin-top:24px;max-width:560px;font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.6);line-height:1.75}
 
     /* HERO FLOW */
-    .hero-flow{display:flex;align-items:center;gap:0;margin-top:56px;border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;max-width:680px}
+    .hero-flow{display:flex;align-items:stretch;gap:0;margin-top:56px;border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;max-width:680px}
     .hero-flow-item{display:flex;align-items:center;gap:16px;padding:20px 28px;flex:1;background:rgba(255,255,255,.04);transition:background .2s;text-decoration:none}
     .hero-flow-item:hover{background:rgba(255,255,255,.08)}
     .hero-flow-item+.hero-flow-item{border-left:1px solid rgba(255,255,255,.1)}
@@ -77,7 +77,7 @@
     .arm-letter-bg{font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;line-height:1;color:var(--navy-12);letter-spacing:.05em;margin-top:-12px;user-select:none}
 
     /* ARM CONNECTOR */
-    .arm-connector{background:var(--white);border-top:1px solid var(--navy-06);border-bottom:1px solid var(--navy-06);padding:20px 36px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .arm-connector{background:var(--white);border-top:1px solid var(--navy-06);border-bottom:1px solid var(--navy-06);padding:20px 36px}
     .arm-connector-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;gap:16px}
     .ac-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-40)}
     .ac-line{flex:1;height:1px;background:var(--navy-12)}
@@ -85,28 +85,44 @@
 
     /* ═══════ SECTION A ═══════ */
     .section-a{background:var(--paper-alt)}
-    .sources-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:0}
+    .sources-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
     .source-col{background:var(--white);padding:40px 40px}
     .source-col-tint{background:var(--paper-alt);padding:40px 40px}
     .source-col-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-40);margin-bottom:20px}
     .source-list{display:flex;flex-direction:column;gap:10px}
     .source-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--paper-alt);border-radius:var(--r)}
-    .source-col .source-item{background:var(--paper-alt)}
     .source-col-tint .source-item{background:var(--white)}
     .source-icon{width:30px;height:30px;border-radius:50%;background:var(--navy-06);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
     .source-body h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
     .source-body p{font-size:12px;color:var(--navy-80);line-height:1.5}
-    .submods-strip{margin-top:2px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
-    .submod{background:var(--white);padding:28px 24px;border-top:3px solid var(--navy-12);transition:border-color .2s}
-    .submod:hover{border-top-color:var(--slate)}
-    .submod-code{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--navy-12);line-height:1;margin-bottom:10px}
-    .submod h4{font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:6px}
-    .submod p{font-size:12px;color:var(--navy-80);line-height:1.55}
-    .submod-footer{margin-top:2px;background:var(--paper-alt);padding:16px 24px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--navy-40);text-transform:uppercase}
+
+    /* PROCESS FLOW (A submods) */
+    .process-flow{margin-top:2px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+    .process-step{background:var(--white);padding:28px 24px;border-top:3px solid var(--navy-12);position:relative;transition:border-color .2s}
+    .process-step:hover{border-top-color:var(--slate)}
+    .process-step+.process-step{border-left:2px solid var(--paper-alt)}
+    /* arrow between steps */
+    .process-step:not(:last-child)::after{
+      content:'›';
+      position:absolute;
+      right:-12px;
+      top:26px;
+      font-size:18px;
+      color:var(--navy-40);
+      font-family:'DM Sans',sans-serif;
+      font-weight:300;
+      line-height:1;
+      z-index:2;
+      pointer-events:none
+    }
+    .step-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--navy-40);line-height:1;margin-bottom:10px;opacity:.6}
+    .process-step h4{font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:6px}
+    .process-step p{font-size:12px;color:var(--navy-80);line-height:1.55}
+    .process-footer{margin-top:0;background:var(--paper-alt);padding:14px 24px;border-top:1px solid var(--navy-06);font-size:11.5px;font-weight:600;letter-spacing:.06em;color:var(--navy-40);text-transform:uppercase}
 
     /* ═══════ SECTION B ═══════ */
     .section-b{background:var(--white)}
-    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:0}
+    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
     .cap-item{padding:28px 28px;background:var(--paper-alt);border-top:3px solid transparent;transition:border-color .2s}
     .cap-item:hover{border-top-color:var(--navy)}
     .cap-icon{font-size:16px;margin-bottom:14px;color:var(--navy-40)}
@@ -114,14 +130,14 @@
     .cap-item p{font-size:12.5px;color:var(--navy-80);line-height:1.6}
 
     /* Screenshot zone */
-    .screenshot-zone{margin-top:2px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+    .screenshot-zone{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
     .screenshot-frame{background:var(--paper-alt);border-radius:var(--r);overflow:hidden}
     .screenshot-frame img{display:block;width:100%;height:auto}
     .screenshot-frame figcaption{padding:12px 16px;font-size:11.5px;color:var(--navy-40);letter-spacing:.03em}
-    /* SCREENSHOT PLACEHOLDER: drop additional images inside .screenshot-placeholder */
     .screenshot-placeholder{background:var(--paper-alt);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;gap:12px;border:1.5px dashed var(--navy-12);border-radius:var(--r)}
     .screenshot-placeholder .ph-icon{font-size:24px;color:var(--navy-12)}
-    .screenshot-placeholder p{font-size:12px;color:var(--navy-40);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+    .screenshot-placeholder .ph-label{font-size:12px;color:var(--navy-40);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+    .screenshot-placeholder .ph-note{font-size:11px;color:var(--navy-12);font-weight:400;letter-spacing:0;text-transform:none}
 
     /* ═══════ SECTION C ═══════ */
     .section-c{background:var(--navy)}
@@ -131,12 +147,12 @@
     .section-c .arm-letter-bg{color:rgba(255,255,255,.06)}
     .c-gap-note{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2vw,1.5rem);color:rgba(255,255,255,.5);font-style:italic;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);max-width:640px}
     .c-items{display:flex;flex-direction:column;gap:2px}
-    .c-item{background:rgba(255,255,255,.05);padding:32px 36px;display:grid;grid-template-columns:56px 1fr 2.2fr;gap:32px;align-items:start;border-left:4px solid rgba(255,255,255,.1);transition:border-color .2s}
-    .c-item:hover{border-left-color:var(--signal-lt)}
-    .c-item.featured{background:rgba(255,255,255,.08);border-left-color:rgba(27,67,50,.7)}
+    /* C items: 2-col grid, no number column */
+    .c-item{background:rgba(255,255,255,.05);padding:32px 36px;display:grid;grid-template-columns:1fr 2.4fr;gap:40px;align-items:start;border-left:4px solid rgba(255,255,255,.08);transition:border-color .2s}
+    .c-item:hover{border-left-color:rgba(255,255,255,.3)}
+    .c-item.featured{background:rgba(255,255,255,.08);border-left-color:rgba(27,67,50,.6)}
     .c-item.featured:hover{border-left-color:var(--signal-lt)}
-    .c-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:rgba(255,255,255,.15);line-height:1}
-    .c-head .eyebrow{margin-bottom:6px}
+    .c-head .eyebrow{margin-bottom:6px;color:rgba(255,255,255,.35)}
     .c-head h3{font-size:1.15rem;color:#fff;line-height:1.2}
     .c-body p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7}
     .c-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);margin-top:10px}
@@ -147,12 +163,14 @@
     .closing-loop .eyebrow{color:rgba(255,255,255,.45)}
     .closing-loop h2{color:#fff;max-width:520px}
     .closing-loop .lead{color:rgba(255,255,255,.7);margin-top:16px}
-    .loop-flow{display:flex;align-items:center;gap:0;margin:48px 0;max-width:680px}
-    .loop-node{flex:1;background:rgba(255,255,255,.08);padding:20px 24px;text-align:center}
+    /* Equal-width, equal-height loop nodes */
+    .loop-flow{display:flex;align-items:stretch;margin:48px 0;max-width:720px}
+    .loop-node{flex:1 1 0;background:rgba(255,255,255,.08);padding:24px 20px;text-align:center;display:flex;flex-direction:column;justify-content:flex-start;gap:0}
     .loop-node+.loop-node{border-left:1px solid rgba(255,255,255,.08)}
-    .loop-node-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,.25);margin-bottom:8px}
-    .loop-node h4{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:4px}
-    .loop-node p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+    .loop-node-sym{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,.28);margin-bottom:10px;line-height:1}
+    .loop-node h4{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:6px}
+    .loop-node p{font-size:12px;color:rgba(255,255,255,.48);line-height:1.5}
+    .loop-node.loop-learning{background:rgba(255,255,255,.14)}
     .loop-cta{margin-top:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
     .btn-light{display:inline-flex;align-items:center;padding:14px 30px;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;border:none;background:var(--white);color:var(--signal);transition:background .2s}
     .btn-light:hover{background:var(--paper)}
@@ -172,12 +190,12 @@
       .section-arm-header{grid-template-columns:1fr;gap:16px}
       .arm-letter-bg{font-size:5rem;margin-top:0}
       .sources-grid{grid-template-columns:1fr}
-      .submods-strip{grid-template-columns:1fr 1fr}
+      .process-flow{grid-template-columns:1fr 1fr}
+      .process-step:not(:last-child)::after{display:none}
       .cap-grid{grid-template-columns:1fr 1fr}
       .screenshot-zone{grid-template-columns:1fr}
-      .c-item{grid-template-columns:1fr;gap:12px}
-      .c-num{font-size:2rem}
-      .loop-flow{flex-direction:column;max-width:320px}
+      .c-item{grid-template-columns:1fr;gap:14px}
+      .loop-flow{flex-direction:column;max-width:360px}
       .loop-node+.loop-node{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
     }
     @media(max-width:600px){
@@ -187,7 +205,7 @@
       .page-hero{padding:120px 20px 60px}
       .deep-section{padding:64px 0}
       .cap-grid{grid-template-columns:1fr}
-      .submods-strip{grid-template-columns:1fr}
+      .process-flow{grid-template-columns:1fr}
     }
 
   </style>
@@ -201,8 +219,8 @@
       <a href="index.html"><img src="logo.png" alt="Imberion"/></a>
     </div>
     <div class="nav-links">
-      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion
+      <a href="index.html" id="nav-back" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg><span id="nav-back-text">← Imberion</span>
       </a>
     </div>
     <div class="nav-right">
@@ -211,7 +229,7 @@
         <button class="lang-btn" data-lang="es">ES</button>
         <button class="lang-btn" data-lang="pt">PT</button>
       </div>
-      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary">Book a Call</a>
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta">Book a Call</a>
     </div>
   </div>
 </nav>
@@ -220,25 +238,25 @@
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-content">
-    <a href="index.html#how-it-works" class="back">
+    <a href="index.html#how-it-works" class="back" id="hero-back">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
-      Back to Imberion
+      <span id="hero-back-text">Back to Imberion</span>
     </a>
-    <div class="eyebrow">How it works</div>
-    <h1>A connected system.<br>Three distinct capabilities.</h1>
-    <p class="lead">Built to work as a full loop — or deployed where the need is greatest.</p>
+    <div class="eyebrow" id="hero-eyebrow">How it works</div>
+    <h1 id="hero-h1">A connected system.<br>Three distinct capabilities.</h1>
+    <p class="lead" id="hero-lead">Built to work as a full loop — or deployed where the need is greatest.</p>
     <div class="hero-flow">
       <a href="#arm-a" class="hero-flow-item">
         <span class="hf-letter">A</span>
-        <span class="hf-label"><strong>Information Infrastructure</strong>We build the visibility</span>
+        <span class="hf-label"><strong id="hf-a-title">Information Infrastructure</strong><span id="hf-a-sub">We build the visibility</span></span>
       </a>
       <a href="#arm-b" class="hero-flow-item">
         <span class="hf-letter">B</span>
-        <span class="hf-label"><strong>Intelligence Layer</strong>We convert it into decisions</span>
+        <span class="hf-label"><strong id="hf-b-title">Intelligence Layer</strong><span id="hf-b-sub">We convert it into decisions</span></span>
       </a>
       <a href="#arm-c" class="hero-flow-item">
         <span class="hf-letter">C</span>
-        <span class="hf-label"><strong>Execution & Value Capture</strong>We stay until value is captured</span>
+        <span class="hf-label"><strong id="hf-c-title">Execution &amp; Value Capture</strong><span id="hf-c-sub">We stay until value is captured</span></span>
       </a>
     </div>
   </div>
@@ -247,9 +265,9 @@
 <!-- SECTION NAV -->
 <div class="section-nav" id="section-nav">
   <div class="section-nav-inner">
-    <a href="#arm-a"><span class="section-nav-letter">A</span> Information Infrastructure</a>
-    <a href="#arm-b"><span class="section-nav-letter">B</span> Intelligence Layer</a>
-    <a href="#arm-c"><span class="section-nav-letter">C</span> Execution &amp; Value Capture</a>
+    <a href="#arm-a"><span class="section-nav-letter">A</span> <span id="snav-a">Information Infrastructure</span></a>
+    <a href="#arm-b"><span class="section-nav-letter">B</span> <span id="snav-b">Intelligence Layer</span></a>
+    <a href="#arm-c"><span class="section-nav-letter">C</span> <span id="snav-c">Execution &amp; Value Capture</span></a>
   </div>
 </div>
 
@@ -261,152 +279,79 @@
     <div class="section-arm-header">
       <div class="arm-letter-bg">A</div>
       <div>
-        <div class="eyebrow">Information Infrastructure</div>
-        <h2>We build the visibility<br>you don't have yet.</h2>
-        <p class="lead" style="margin-top:18px;">Most organizations cannot see their market clearly — not because the data doesn't exist, but because it has never been consolidated into a single reliable base. Arm A resolves that before anything else can be attempted.</p>
+        <div class="eyebrow" id="a-eyebrow">Information Infrastructure</div>
+        <h2 id="a-h2">We build the visibility<br>you don't have yet.</h2>
+        <p class="lead" id="a-lead" style="margin-top:18px;">Most organizations cannot see their market clearly — not because the data doesn't exist, but because it has never been consolidated into a single reliable base. Arm A resolves that before anything else can be attempted.</p>
       </div>
     </div>
   </div>
 
-  <!-- Sources grid (full bleed inside section) -->
   <div style="max-width:var(--max);margin:0 auto;padding:0 36px">
     <div class="sources-grid">
       <div class="source-col">
-        <div class="source-col-label">Structured Sources</div>
-        <div class="source-list">
-          <div class="source-item">
-            <div class="source-icon">⊞</div>
-            <div class="source-body">
-              <h4>Internal transactional data</h4>
-              <p>ERP, sales systems, and billing records — the data the client already owns but rarely consolidates.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◉</div>
-            <div class="source-body">
-              <h4>Traditional channel POS</h4>
-              <p>Point-of-sale capture from fragmented traditional trade where traceability is typically low.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◈</div>
-            <div class="source-body">
-              <h4>Modern channel POS</h4>
-              <p>Transactional data from structured retail chains and modern trade formats.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">⊡</div>
-            <div class="source-body">
-              <h4>Distributor integrations</h4>
-              <p>Structured connections to receive and map sales, coverage, pricing, and promotional data.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">≡</div>
-            <div class="source-body">
-              <h4>Syndicated market data</h4>
-              <p>Third-party aggregated sources for benchmarking and market-level reads.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◰</div>
-            <div class="source-body">
-              <h4>Product &amp; price catalogs</h4>
-              <p>SKU master data, price lists, promotional calendars, and inventory records.</p>
-            </div>
-          </div>
+        <div class="source-col-label" id="a-struct-label">Structured Sources</div>
+        <div class="source-list" id="a-struct-list">
+          <div class="source-item"><div class="source-icon">⊞</div><div class="source-body"><h4 id="a-s1-title">Internal transactional data</h4><p id="a-s1-body">ERP, sales systems, and billing records — the data the client already owns but rarely consolidates.</p></div></div>
+          <div class="source-item"><div class="source-icon">◉</div><div class="source-body"><h4 id="a-s2-title">Traditional channel POS</h4><p id="a-s2-body">Point-of-sale capture from fragmented traditional trade where traceability is typically low.</p></div></div>
+          <div class="source-item"><div class="source-icon">◈</div><div class="source-body"><h4 id="a-s3-title">Modern channel POS</h4><p id="a-s3-body">Transactional data from structured retail chains and modern trade formats.</p></div></div>
+          <div class="source-item"><div class="source-icon">⊡</div><div class="source-body"><h4 id="a-s4-title">Distributor integrations</h4><p id="a-s4-body">Structured connections to receive and map sales, coverage, pricing, and promotional data.</p></div></div>
+          <div class="source-item"><div class="source-icon">≡</div><div class="source-body"><h4 id="a-s5-title">Syndicated market data</h4><p id="a-s5-body">Third-party aggregated sources for benchmarking and market-level reads.</p></div></div>
+          <div class="source-item"><div class="source-icon">◰</div><div class="source-body"><h4 id="a-s6-title">Product &amp; price catalogs</h4><p id="a-s6-body">SKU master data, price lists, promotional calendars, and inventory records.</p></div></div>
         </div>
       </div>
       <div class="source-col-tint">
-        <div class="source-col-label">Unstructured &amp; Missing Sources</div>
-        <div class="source-list">
-          <div class="source-item">
-            <div class="source-icon">◌</div>
-            <div class="source-body">
-              <h4>Field surveys</h4>
-              <p>In-field capture for prices, inventory, promotions, visibility, competitive presence, and compliance.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◯</div>
-            <div class="source-body">
-              <h4>Sales force reports</h4>
-              <p>Route-level intelligence from commercial teams operating at the point of sale.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◧</div>
-            <div class="source-body">
-              <h4>Shelf &amp; in-store intelligence</h4>
-              <p>Assortment compliance, share of shelf, pricing execution, and promotional display tracking.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◈</div>
-            <div class="source-body">
-              <h4>Competitive price monitoring</h4>
-              <p>Observed competitor pricing at point of sale by channel, region, and format.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◉</div>
-            <div class="source-body">
-              <h4>Market studies &amp; benchmarking</h4>
-              <p>External research and category benchmarks that provide context beyond internal data.</p>
-            </div>
-          </div>
-          <div class="source-item">
-            <div class="source-icon">◌</div>
-            <div class="source-body">
-              <h4>Consumer &amp; shopper research</h4>
-              <p>Demand-side intelligence to complement supply-side and transactional data.</p>
-            </div>
-          </div>
+        <div class="source-col-label" id="a-unstruct-label">Unstructured &amp; Missing Sources</div>
+        <div class="source-list" id="a-unstruct-list">
+          <div class="source-item"><div class="source-icon">◌</div><div class="source-body"><h4 id="a-u1-title">Field surveys</h4><p id="a-u1-body">In-field capture for prices, inventory, promotions, visibility, competitive presence, and compliance.</p></div></div>
+          <div class="source-item"><div class="source-icon">◯</div><div class="source-body"><h4 id="a-u2-title">Sales force reports</h4><p id="a-u2-body">Route-level intelligence from commercial teams operating at the point of sale.</p></div></div>
+          <div class="source-item"><div class="source-icon">◧</div><div class="source-body"><h4 id="a-u3-title">Shelf &amp; in-store intelligence</h4><p id="a-u3-body">Assortment compliance, share of shelf, pricing execution, and promotional display tracking.</p></div></div>
+          <div class="source-item"><div class="source-icon">◈</div><div class="source-body"><h4 id="a-u4-title">Competitive price monitoring</h4><p id="a-u4-body">Observed competitor pricing at point of sale by channel, region, and format.</p></div></div>
+          <div class="source-item"><div class="source-icon">◉</div><div class="source-body"><h4 id="a-u5-title">Market studies &amp; benchmarking</h4><p id="a-u5-body">External research and category benchmarks that provide context beyond internal data.</p></div></div>
+          <div class="source-item"><div class="source-icon">◌</div><div class="source-body"><h4 id="a-u6-title">Consumer &amp; shopper research</h4><p id="a-u6-body">Demand-side intelligence to complement supply-side and transactional data.</p></div></div>
         </div>
       </div>
     </div>
 
-    <!-- Five submods -->
-    <div class="submods-strip">
-      <div class="submod">
-        <div class="submod-code">A1</div>
-        <h4>Data Capture</h4>
-        <p>Direct capture from POS systems, surveys, apps, and integrations. The entry point for all commercial information.</p>
+    <!-- Process flow: numbered 1–5 with visual arrows -->
+    <div class="process-flow">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4 id="a-p1-title">Data Capture</h4>
+        <p id="a-p1-body">Direct capture from POS systems, surveys, apps, and integrations. The entry point for all commercial information.</p>
       </div>
-      <div class="submod">
-        <div class="submod-code">A2</div>
-        <h4>Data Ingestion</h4>
-        <p>Technical loading of multiple sources into a common architecture — regardless of format, cadence, or origin.</p>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4 id="a-p2-title">Data Ingestion</h4>
+        <p id="a-p2-body">Technical loading of multiple sources into a common architecture — regardless of format, cadence, or origin.</p>
       </div>
-      <div class="submod">
-        <div class="submod-code">A3</div>
-        <h4>Data Cleansing</h4>
-        <p>Correction, validation, deduplication, imputation of missing values, and resolution of inconsistencies.</p>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4 id="a-p3-title">Data Cleansing</h4>
+        <p id="a-p3-body">Correction, validation, deduplication, and resolution of inconsistencies. A reliable base starts here.</p>
       </div>
-      <div class="submod">
-        <div class="submod-code">A4</div>
-        <h4>Harmonization</h4>
-        <p>Standardization of SKUs, customers, channels, and geographies so data becomes comparable across sources.</p>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4 id="a-p4-title">Harmonization</h4>
+        <p id="a-p4-body">Standardization of SKUs, customers, channels, and geographies so data becomes comparable across sources.</p>
       </div>
-      <div class="submod">
-        <div class="submod-code">A5</div>
-        <h4>Data Asset Creation</h4>
-        <p>Generation of structured, usable datasets for analytics, benchmarking, and eventual monetization.</p>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h4 id="a-p5-title">Data Asset Creation</h4>
+        <p id="a-p5-body">Generation of structured, usable datasets for analytics, benchmarking, and eventual monetization.</p>
       </div>
     </div>
-    <div class="submod-footer">Five submodules. One integrated base.</div>
+    <div class="process-footer" id="a-process-footer">Five steps. One integrated base.</div>
   </div>
 </section>
 
 <!-- A → B CONNECTOR -->
 <div class="arm-connector">
   <div class="arm-connector-inner">
-    <span class="ac-label">A — Information Infrastructure</span>
+    <span class="ac-label" id="conn-ab-left">A — Information Infrastructure</span>
     <div class="ac-line"></div>
     <span class="ac-arrow">→</span>
     <div class="ac-line"></div>
-    <span class="ac-label">B — Intelligence Layer</span>
+    <span class="ac-label" id="conn-ab-right">B — Intelligence Layer</span>
   </div>
 </div>
 
@@ -418,96 +363,51 @@
     <div class="section-arm-header">
       <div class="arm-letter-bg" style="color:rgba(27,42,59,.08)">B</div>
       <div>
-        <div class="eyebrow">Intelligence Layer</div>
-        <h2>We convert visibility<br>into commercial decisions.</h2>
-        <p class="lead" style="margin-top:18px;">Eight analytical capabilities that transform structured commercial data into prioritized actions — not reports. Trade-offs made explicit. Decisions, not recommendations.</p>
+        <div class="eyebrow" id="b-eyebrow">Intelligence Layer</div>
+        <h2 id="b-h2">We convert visibility<br>into commercial decisions.</h2>
+        <p class="lead" id="b-lead" style="margin-top:18px;">Eight analytical capabilities that transform structured commercial data into prioritized actions — not reports. Trade-offs made explicit. Decisions, not recommendations.</p>
       </div>
     </div>
 
-    <!-- 8 capabilities — 4 × 2 grid -->
-    <div class="cap-grid">
-
-      <div class="cap-item">
-        <div class="cap-icon">◈</div>
-        <h4>Pricing &amp; Pack Architecture</h4>
-        <p>Design prices and pack structures with economic rigor, demand sensitivity, and behavioral validation across channels and formats.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">◯</div>
-        <h4>Demand Moments &amp; Occasions</h4>
-        <p>Map when and where consumers engage — and configure the offer, price, and pack accordingly by occasion and channel.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">≈</div>
-        <h4>Predictive Elasticities</h4>
-        <p>Simulate how volume and margin respond to price moves before committing. Test scenarios across SKUs, segments, and markets.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">◉</div>
-        <h4>Promotion Intelligence</h4>
-        <p>Distinguish promotions that create genuine value from those that displace volume, destroy margin, or cannibalize adjacent SKUs.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">⊟</div>
-        <h4>Trade Terms Optimization</h4>
-        <p>Trace margin erosion from list price to pocket — and redirect trade spend where it generates measurable commercial return.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">⊞</div>
-        <h4>Portfolio &amp; Assortment</h4>
-        <p>Design the right offer for each format, channel, and occasion. Identify where current coverage leaves demand uncaptured.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">◌</div>
-        <h4>Competitive Intelligence</h4>
-        <p>Track competitor pricing, pack architecture, and promotions in real time at the point of sale — by channel, region, and format.</p>
-      </div>
-
-      <div class="cap-item">
-        <div class="cap-icon">≡</div>
-        <h4>Channel &amp; RTM Strategy</h4>
-        <p>Prioritize routes to market by value potential, coverage capacity, and commercial coherence. Align deployment to where the system can win.</p>
-      </div>
-
+    <div class="cap-grid" id="b-cap-grid">
+      <div class="cap-item"><div class="cap-icon">◈</div><h4 id="b-c1-title">Pricing &amp; Pack Architecture</h4><p id="b-c1-body">Design prices and pack structures with economic rigor, demand sensitivity, and behavioral validation across channels and formats.</p></div>
+      <div class="cap-item"><div class="cap-icon">◯</div><h4 id="b-c2-title">Demand Moments &amp; Occasions</h4><p id="b-c2-body">Map when and where consumers engage — and configure the offer, price, and pack accordingly by occasion and channel.</p></div>
+      <div class="cap-item"><div class="cap-icon">≈</div><h4 id="b-c3-title">Predictive Elasticities</h4><p id="b-c3-body">Simulate how volume and margin respond to price moves before committing. Test scenarios across SKUs, segments, and markets.</p></div>
+      <div class="cap-item"><div class="cap-icon">◉</div><h4 id="b-c4-title">Promotion Intelligence</h4><p id="b-c4-body">Distinguish promotions that create genuine value from those that displace volume, destroy margin, or cannibalize adjacent SKUs.</p></div>
+      <div class="cap-item"><div class="cap-icon">⊟</div><h4 id="b-c5-title">Trade Terms Optimization</h4><p id="b-c5-body">Trace margin erosion from list price to pocket — and redirect trade spend where it generates measurable commercial return.</p></div>
+      <div class="cap-item"><div class="cap-icon">⊞</div><h4 id="b-c6-title">Portfolio &amp; Assortment</h4><p id="b-c6-body">Design the right offer for each format, channel, and occasion. Identify where current coverage leaves demand uncaptured.</p></div>
+      <div class="cap-item"><div class="cap-icon">◌</div><h4 id="b-c7-title">Competitive Intelligence</h4><p id="b-c7-body">Track competitor pricing, pack architecture, and promotions in real time at the point of sale — by channel, region, and format.</p></div>
+      <div class="cap-item"><div class="cap-icon">≡</div><h4 id="b-c8-title">Channel &amp; RTM Strategy</h4><p id="b-c8-body">Prioritize routes to market by value potential, coverage capacity, and commercial coherence. Align deployment to where the system can win.</p></div>
     </div>
 
-    <!-- Screenshot zone -->
     <!-- ════════════════════════════════════════════════════
          SCREENSHOT ZONE
-         - Left frame: existing arm-b-simulator.png (pricing simulator)
-         - Right frame: PLACEHOLDER — drop additional product screenshot here
-         Replace .screenshot-placeholder div with <figure class="screenshot-frame"><img src="assets/YOUR-IMAGE.png" ...><figcaption>...</figcaption></figure>
+         Left: existing arm-b-simulator.png
+         Right: PLACEHOLDER — replace with <figure class="screenshot-frame"> when asset is ready
          ════════════════════════════════════════════════════ -->
-    <div class="screenshot-zone" style="margin-top:40px">
+    <div class="screenshot-zone">
       <figure class="screenshot-frame">
         <img src="assets/arm-b-simulator.png" alt="Pricing simulator — scenario modeling interface" loading="lazy"/>
-        <figcaption>Pricing &amp; scenario modeling interface</figcaption>
+        <figcaption id="b-screenshot-caption">Pricing &amp; scenario modeling interface</figcaption>
       </figure>
       <div class="screenshot-placeholder">
-        <!-- PLACEHOLDER: Insert additional product screenshot here -->
+        <!-- PLACEHOLDER: Replace this div with <figure class="screenshot-frame"><img src="assets/YOUR-IMAGE.png"...></figure> -->
         <div class="ph-icon">⊞</div>
-        <p>Product screenshot</p>
-        <p style="font-size:11px;color:var(--navy-12);font-weight:400;letter-spacing:0;text-transform:none;">Replace this block with a <code>&lt;figure class="screenshot-frame"&gt;</code></p>
+        <p class="ph-label" id="b-ph-label">Product screenshot</p>
+        <p class="ph-note">Replace with <code>&lt;figure class="screenshot-frame"&gt;</code></p>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- B → C CONNECTOR -->
 <div class="arm-connector">
   <div class="arm-connector-inner">
-    <span class="ac-label">B — Intelligence Layer</span>
+    <span class="ac-label" id="conn-bc-left">B — Intelligence Layer</span>
     <div class="ac-line"></div>
     <span class="ac-arrow">→</span>
     <div class="ac-line"></div>
-    <span class="ac-label">C — Execution &amp; Value Capture</span>
+    <span class="ac-label" id="conn-bc-right">C — Execution &amp; Value Capture</span>
   </div>
 </div>
 
@@ -519,92 +419,85 @@
     <div class="section-arm-header">
       <div class="arm-letter-bg">C</div>
       <div>
-        <div class="eyebrow">Execution &amp; Value Capture</div>
-        <h2>We stay until<br>the value is captured.</h2>
-        <p class="lead" style="margin-top:18px;">Most systems stop at the recommendation. Arm C is where the work becomes real — intelligence translated into field action, measured against baseline, and fed back into the system.</p>
+        <div class="eyebrow" id="c-eyebrow">Execution &amp; Value Capture</div>
+        <h2 id="c-h2">We stay until<br>the value is captured.</h2>
+        <p class="lead" id="c-lead" style="margin-top:18px;">Most systems stop at the recommendation. Arm C is where the work becomes real — intelligence translated into field action, measured against baseline, and fed back into the system.</p>
       </div>
     </div>
 
-    <p class="c-gap-note">The distance between a good analysis and a measurable commercial result is where most systems — and most consulting engagements — fail. We do not hand off a deck and disengage.</p>
+    <p class="c-gap-note" id="c-gap-note">The distance between a good analysis and a measurable commercial result is where most systems — and most consulting engagements — fail. We do not hand off a deck and disengage.</p>
 
     <div class="c-items">
 
-      <!-- Order Entry — featured -->
+      <!-- Order Entry — featured, no numbering -->
       <div class="c-item featured">
-        <div class="c-num">C0</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Order Entry</div>
-          <h3>Omnichannel</h3>
+          <div class="eyebrow" id="c-i0-eyebrow">Order Entry</div>
+          <h3 id="c-i0-h3">Omnichannel</h3>
         </div>
         <div class="c-body">
-          <p>Orders captured across all commercial channels — including <strong style="color:rgba(255,255,255,.85)">phone</strong>, WhatsApp, client systems, and digital platforms — and integrated into a single commercial flow. One system. One record. Unified execution regardless of channel origin.</p>
-          <span class="c-tag c-featured-tag">Strategically critical</span>
+          <p id="c-i0-body">Orders captured across all commercial channels — including <strong style="color:rgba(255,255,255,.85)">phone</strong>, WhatsApp, client systems, and digital platforms — and integrated into a single commercial flow. One system. One record. Unified execution regardless of channel origin.</p>
+          <span class="c-tag c-featured-tag" id="c-i0-tag">Strategically critical</span>
         </div>
       </div>
 
       <div class="c-item">
-        <div class="c-num">C1</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Decision Translation</div>
-          <h3>Analysis into prioritized actions</h3>
+          <div class="eyebrow" id="c-i1-eyebrow">Decision Translation</div>
+          <h3 id="c-i1-h3">Analysis into prioritized actions</h3>
         </div>
         <div class="c-body">
-          <p>B output converted into a specific, sequenced action list — what gets done first, what gets done second, what does not get done at all — with responsible owners and timelines.</p>
+          <p id="c-i1-body">B output converted into a specific, sequenced action list — what gets done first, what gets done second, what does not get done at all — with responsible owners and timelines.</p>
         </div>
       </div>
 
       <div class="c-item">
-        <div class="c-num">C2</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Action Plans</div>
-          <h3>Decisions into concrete plans</h3>
+          <div class="eyebrow" id="c-i2-eyebrow">Action Plans</div>
+          <h3 id="c-i2-h3">Decisions into concrete plans</h3>
         </div>
         <div class="c-body">
-          <p>Decisions structured into field-ready plans by commercial, trade, key account, and territory — with the specificity required for execution, not just communication.</p>
+          <p id="c-i2-body">Decisions structured into field-ready plans by commercial, trade, key account, and territory — with the specificity required for execution, not just communication.</p>
         </div>
       </div>
 
       <div class="c-item">
-        <div class="c-num">C3</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Field Enablement</div>
-          <h3>Working alongside execution teams</h3>
+          <div class="eyebrow" id="c-i3-eyebrow">Field Enablement</div>
+          <h3 id="c-i3-h3">Working alongside execution teams</h3>
         </div>
         <div class="c-body">
-          <p>We do not hand off the plan. We work alongside the teams responsible for execution until the logic operates on its own — training, real-time support, and adaptation when field signals reveal gaps.</p>
+          <p id="c-i3-body">We do not hand off the plan. We work alongside the teams responsible for execution until the logic operates on its own — training, real-time support, and adaptation when field signals reveal gaps.</p>
         </div>
       </div>
 
       <div class="c-item">
-        <div class="c-num">C4</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">KPI Tracking</div>
-          <h3>Measuring what actually happened</h3>
+          <div class="eyebrow" id="c-i4-eyebrow">KPI Tracking</div>
+          <h3 id="c-i4-h3">Measuring what actually happened</h3>
         </div>
         <div class="c-body">
-          <p>Performance dashboards and cycle-by-cycle variance analysis built in from the start. Results measured against pre-defined baseline — not against internal perception of progress.</p>
+          <p id="c-i4-body">Performance dashboards and cycle-by-cycle variance analysis built in from the start. Results measured against a pre-defined baseline — not against internal perception of progress.</p>
         </div>
       </div>
 
       <div class="c-item">
-        <div class="c-num">C5</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Governance</div>
-          <h3>Execution discipline across cycles</h3>
+          <div class="eyebrow" id="c-i5-eyebrow">Governance</div>
+          <h3 id="c-i5-h3">Execution discipline across cycles</h3>
         </div>
         <div class="c-body">
-          <p>Structured review cadence, escalation paths, and accountability frameworks to maintain commercial discipline beyond the initial deployment — institutionalizing the logic, not just the output.</p>
+          <p id="c-i5-body">Structured review cadence, escalation paths, and accountability frameworks to maintain commercial discipline beyond the initial deployment — institutionalizing the logic, not just the output.</p>
         </div>
       </div>
 
       <div class="c-item">
-        <div class="c-num">C6</div>
         <div class="c-head">
-          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Learning Loop</div>
-          <h3>Feeding results back into the system</h3>
+          <div class="eyebrow" id="c-i6-eyebrow">Learning Loop</div>
+          <h3 id="c-i6-h3">Feeding results back into the system</h3>
         </div>
         <div class="c-body">
-          <p>What Arm C learns in execution is not lost. Structured and returned to the analytical models, the data infrastructure, and the priority framework — so every cycle is more informed than the last.</p>
+          <p id="c-i6-body">What Arm C learns in execution is not lost. Structured and returned to the analytical models, the data infrastructure, and the priority framework — so every cycle is more informed than the last.</p>
         </div>
       </div>
 
@@ -617,34 +510,34 @@
      ═══════════════════════════════════════════ -->
 <section class="closing-loop">
   <div class="container">
-    <div class="eyebrow">The loop closes</div>
-    <h2>Execution feeds the system.<br>The system improves.</h2>
-    <p class="lead">Every cycle returns structured learning to Arm A and Arm B — making the data richer, the models sharper, and the decisions more precise. The system compounds.</p>
+    <div class="eyebrow" id="loop-eyebrow">The loop closes</div>
+    <h2 id="loop-h2">Execution feeds the system.<br>The system improves.</h2>
+    <p class="lead" id="loop-lead">Every cycle returns structured learning to Arm A and Arm B — making the data richer, the models sharper, and the decisions more precise. The system compounds.</p>
     <div class="loop-flow">
       <div class="loop-node">
-        <div class="loop-node-num">A</div>
-        <h4>Information</h4>
-        <p>Market data structured and consolidated</p>
+        <div class="loop-node-sym">A</div>
+        <h4 id="ln-a-title">Information</h4>
+        <p id="ln-a-body">Market data structured and consolidated</p>
       </div>
       <div class="loop-node">
-        <div class="loop-node-num">B</div>
-        <h4>Intelligence</h4>
-        <p>Data converted into decisions</p>
+        <div class="loop-node-sym">B</div>
+        <h4 id="ln-b-title">Intelligence</h4>
+        <p id="ln-b-body">Data converted into decisions</p>
       </div>
       <div class="loop-node">
-        <div class="loop-node-num">C</div>
-        <h4>Execution</h4>
-        <p>Decisions captured in the field</p>
+        <div class="loop-node-sym">C</div>
+        <h4 id="ln-c-title">Execution</h4>
+        <p id="ln-c-body">Decisions captured in the field</p>
       </div>
-      <div class="loop-node" style="background:rgba(255,255,255,.14)">
-        <div class="loop-node-num" style="color:rgba(255,255,255,.5)">↺</div>
-        <h4>Learning</h4>
-        <p>Results feed back into A &amp; B</p>
+      <div class="loop-node loop-learning">
+        <div class="loop-node-sym" style="color:rgba(255,255,255,.45)">↺</div>
+        <h4 id="ln-l-title">Learning</h4>
+        <p id="ln-l-body">Results feed back into A &amp; B</p>
       </div>
     </div>
     <div class="loop-cta">
-      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn-light">Book a Call</a>
-      <a href="index.html" class="back-link">← Back to Imberion</a>
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn-light" id="loop-cta-btn">Book a Call</a>
+      <a href="index.html" class="back-link" id="loop-back-link">← Back to Imberion</a>
     </div>
   </div>
 </section>
@@ -654,42 +547,392 @@
   <div class="footer-inner">
     <div>
       <img src="logo.png" alt="Imberion" style="height:28px;width:auto;opacity:.6;margin-bottom:16px;filter:brightness(0) invert(1)"/>
-      <div style="font-size:13px;color:rgba(255,255,255,.3);">© 2025 Imberion. All rights reserved.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.3);" id="footer-copy">© 2025 Imberion. All rights reserved.</div>
     </div>
-    <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links">
-      <a href="index.html">Home</a>
-      <a href="how-we-operate.html">How We Operate</a>
-      <a href="distribuidores.html">Distributors</a>
-      <a href="https://calendly.com/rodrigo-imberion/30min">Book a Call</a>
-    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links"></div>
   </div>
 </footer>
 
 <script>
-  /* Section nav active state on scroll */
-  (function(){
-    const anchors = ['arm-a','arm-b','arm-c'];
-    const navLinks = document.querySelectorAll('.section-nav a');
-    const sectionNav = document.getElementById('section-nav');
+/* ─────────────────────────────────────────────────────────
+   TRANSLATIONS
+   ───────────────────────────────────────────────────────── */
+const T = {
+  en: {
+    page_title: 'Imberion — How It Works',
+    nav_cta: 'Book a Call',
+    hero_back: '← Imberion',
+    hero_eyebrow: 'How it works',
+    hero_h1: 'A connected system.<br>Three distinct capabilities.',
+    hero_lead: 'Built to work as a full loop — or deployed where the need is greatest.',
+    hf_a_title: 'Information Infrastructure',
+    hf_a_sub: 'We build the visibility',
+    hf_b_title: 'Intelligence Layer',
+    hf_b_sub: 'We convert it into decisions',
+    hf_c_title: 'Execution &amp; Value Capture',
+    hf_c_sub: 'We stay until value is captured',
+    snav_a: 'Information Infrastructure',
+    snav_b: 'Intelligence Layer',
+    snav_c: 'Execution &amp; Value Capture',
+    // Section A
+    a_eyebrow: 'Information Infrastructure',
+    a_h2: "We build the visibility<br>you don't have yet.",
+    a_lead: "Most organizations cannot see their market clearly — not because the data doesn't exist, but because it has never been consolidated into a single reliable base. Arm A resolves that before anything else can be attempted.",
+    a_struct_label: 'Structured Sources',
+    a_unstruct_label: 'Unstructured &amp; Missing Sources',
+    a_s1_title: 'Internal transactional data', a_s1_body: 'ERP, sales systems, and billing records — the data the client already owns but rarely consolidates.',
+    a_s2_title: 'Traditional channel POS',     a_s2_body: 'Point-of-sale capture from fragmented traditional trade where traceability is typically low.',
+    a_s3_title: 'Modern channel POS',          a_s3_body: 'Transactional data from structured retail chains and modern trade formats.',
+    a_s4_title: 'Distributor integrations',    a_s4_body: 'Structured connections to receive and map sales, coverage, pricing, and promotional data.',
+    a_s5_title: 'Syndicated market data',      a_s5_body: 'Third-party aggregated sources for benchmarking and market-level reads.',
+    a_s6_title: 'Product &amp; price catalogs',a_s6_body: 'SKU master data, price lists, promotional calendars, and inventory records.',
+    a_u1_title: 'Field surveys',               a_u1_body: 'In-field capture for prices, inventory, promotions, visibility, competitive presence, and compliance.',
+    a_u2_title: 'Sales force reports',         a_u2_body: 'Route-level intelligence from commercial teams operating at the point of sale.',
+    a_u3_title: 'Shelf &amp; in-store intelligence', a_u3_body: 'Assortment compliance, share of shelf, pricing execution, and promotional display tracking.',
+    a_u4_title: 'Competitive price monitoring',a_u4_body: 'Observed competitor pricing at point of sale by channel, region, and format.',
+    a_u5_title: 'Market studies &amp; benchmarking', a_u5_body: 'External research and category benchmarks that provide context beyond internal data.',
+    a_u6_title: 'Consumer &amp; shopper research',  a_u6_body: 'Demand-side intelligence to complement supply-side and transactional data.',
+    a_p1_title: 'Data Capture',       a_p1_body: 'Direct capture from POS systems, surveys, apps, and integrations. The entry point for all commercial information.',
+    a_p2_title: 'Data Ingestion',     a_p2_body: 'Technical loading of multiple sources into a common architecture — regardless of format, cadence, or origin.',
+    a_p3_title: 'Data Cleansing',     a_p3_body: 'Correction, validation, deduplication, and resolution of inconsistencies. A reliable base starts here.',
+    a_p4_title: 'Harmonization',      a_p4_body: 'Standardization of SKUs, customers, channels, and geographies so data becomes comparable across sources.',
+    a_p5_title: 'Data Asset Creation',a_p5_body: 'Generation of structured, usable datasets for analytics, benchmarking, and eventual monetization.',
+    a_process_footer: 'Five steps. One integrated base.',
+    // Connectors
+    conn_ab_left: 'A — Information Infrastructure', conn_ab_right: 'B — Intelligence Layer',
+    conn_bc_left: 'B — Intelligence Layer',          conn_bc_right: 'C — Execution &amp; Value Capture',
+    // Section B
+    b_eyebrow: 'Intelligence Layer',
+    b_h2: 'We convert visibility<br>into commercial decisions.',
+    b_lead: 'Eight analytical capabilities that transform structured commercial data into prioritized actions — not reports. Trade-offs made explicit. Decisions, not recommendations.',
+    b_c1_title: 'Pricing &amp; Pack Architecture',   b_c1_body: 'Design prices and pack structures with economic rigor, demand sensitivity, and behavioral validation across channels and formats.',
+    b_c2_title: 'Demand Moments &amp; Occasions',    b_c2_body: 'Map when and where consumers engage — and configure the offer, price, and pack accordingly by occasion and channel.',
+    b_c3_title: 'Predictive Elasticities',           b_c3_body: 'Simulate how volume and margin respond to price moves before committing. Test scenarios across SKUs, segments, and markets.',
+    b_c4_title: 'Promotion Intelligence',            b_c4_body: 'Distinguish promotions that create genuine value from those that displace volume, destroy margin, or cannibalize adjacent SKUs.',
+    b_c5_title: 'Trade Terms Optimization',          b_c5_body: 'Trace margin erosion from list price to pocket — and redirect trade spend where it generates measurable commercial return.',
+    b_c6_title: 'Portfolio &amp; Assortment',        b_c6_body: 'Design the right offer for each format, channel, and occasion. Identify where current coverage leaves demand uncaptured.',
+    b_c7_title: 'Competitive Intelligence',          b_c7_body: 'Track competitor pricing, pack architecture, and promotions in real time at the point of sale — by channel, region, and format.',
+    b_c8_title: 'Channel &amp; RTM Strategy',        b_c8_body: 'Prioritize routes to market by value potential, coverage capacity, and commercial coherence. Align deployment to where the system can win.',
+    b_screenshot_caption: 'Pricing &amp; scenario modeling interface',
+    b_ph_label: 'Product screenshot',
+    // Section C
+    c_eyebrow: 'Execution &amp; Value Capture',
+    c_h2: 'We stay until<br>the value is captured.',
+    c_lead: 'Most systems stop at the recommendation. Arm C is where the work becomes real — intelligence translated into field action, measured against baseline, and fed back into the system.',
+    c_gap_note: 'The distance between a good analysis and a measurable commercial result is where most systems — and most consulting engagements — fail. We do not hand off a deck and disengage.',
+    c_i0_eyebrow: 'Order Entry',         c_i0_h3: 'Omnichannel',
+    c_i0_body: 'Orders captured across all commercial channels — including <strong style="color:rgba(255,255,255,.85)">phone</strong>, WhatsApp, client systems, and digital platforms — and integrated into a single commercial flow. One system. One record. Unified execution regardless of channel origin.',
+    c_i0_tag: 'Strategically critical',
+    c_i1_eyebrow: 'Decision Translation',c_i1_h3: 'Analysis into prioritized actions',
+    c_i1_body: 'B output converted into a specific, sequenced action list — what gets done first, what gets done second, what does not get done at all — with responsible owners and timelines.',
+    c_i2_eyebrow: 'Action Plans',        c_i2_h3: 'Decisions into concrete plans',
+    c_i2_body: 'Decisions structured into field-ready plans by commercial, trade, key account, and territory — with the specificity required for execution, not just communication.',
+    c_i3_eyebrow: 'Field Enablement',   c_i3_h3: 'Working alongside execution teams',
+    c_i3_body: 'We do not hand off the plan. We work alongside the teams responsible for execution until the logic operates on its own — training, real-time support, and adaptation when field signals reveal gaps.',
+    c_i4_eyebrow: 'KPI Tracking',       c_i4_h3: 'Measuring what actually happened',
+    c_i4_body: 'Performance dashboards and cycle-by-cycle variance analysis built in from the start. Results measured against a pre-defined baseline — not against internal perception of progress.',
+    c_i5_eyebrow: 'Governance',         c_i5_h3: 'Execution discipline across cycles',
+    c_i5_body: 'Structured review cadence, escalation paths, and accountability frameworks to maintain commercial discipline beyond the initial deployment — institutionalizing the logic, not just the output.',
+    c_i6_eyebrow: 'Learning Loop',      c_i6_h3: 'Feeding results back into the system',
+    c_i6_body: 'What Arm C learns in execution is not lost. Structured and returned to the analytical models, the data infrastructure, and the priority framework — so every cycle is more informed than the last.',
+    // Closing loop
+    loop_eyebrow: 'The loop closes',
+    loop_h2: 'Execution feeds the system.<br>The system improves.',
+    loop_lead: 'Every cycle returns structured learning to Arm A and Arm B — making the data richer, the models sharper, and the decisions more precise. The system compounds.',
+    ln_a_title: 'Information', ln_a_body: 'Market data structured and consolidated',
+    ln_b_title: 'Intelligence', ln_b_body: 'Data converted into decisions',
+    ln_c_title: 'Execution',   ln_c_body: 'Decisions captured in the field',
+    ln_l_title: 'Learning',    ln_l_body: 'Results feed back into A &amp; B',
+    loop_cta_btn: 'Book a Call',
+    loop_back_link: '← Back to Imberion',
+    // Footer
+    footer_copy: '© 2025 Imberion. All rights reserved.',
+    footer_links: [['Home','index.html'],['How We Operate','how-we-operate.html'],['Distributors','distribuidores.html'],['Book a Call','https://calendly.com/rodrigo-imberion/30min']]
+  },
 
-    function updateActive(){
-      let current = '';
-      anchors.forEach(id => {
-        const el = document.getElementById(id);
-        if(el && window.scrollY >= el.offsetTop - 140) current = id;
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
-    }
-    window.addEventListener('scroll', updateActive, {passive:true});
-    updateActive();
-  })();
+  es: {
+    page_title: 'Imberion — Cómo Funciona',
+    nav_cta: 'Agendar llamada',
+    hero_back: '← Imberion',
+    hero_eyebrow: 'Cómo funciona',
+    hero_h1: 'Un sistema conectado.<br>Tres capacidades distintas.',
+    hero_lead: 'Diseñado para operar como un loop completo — o desplegado donde la necesidad es mayor.',
+    hf_a_title: 'Infraestructura de Información',
+    hf_a_sub: 'Construimos la visibilidad',
+    hf_b_title: 'Capa de Inteligencia',
+    hf_b_sub: 'La convertimos en decisiones',
+    hf_c_title: 'Ejecución y Captura de Valor',
+    hf_c_sub: 'Nos quedamos hasta capturar el valor',
+    snav_a: 'Infraestructura de Información',
+    snav_b: 'Capa de Inteligencia',
+    snav_c: 'Ejecución y Captura de Valor',
+    // Section A
+    a_eyebrow: 'Infraestructura de Información',
+    a_h2: 'Construimos la visibilidad<br>que aún no tienes.',
+    a_lead: 'La mayoría de las organizaciones no puede ver su mercado con claridad — no porque la data no exista, sino porque nunca se consolidó en una base confiable. El Brazo A resuelve eso antes de que cualquier otra cosa sea posible.',
+    a_struct_label: 'Fuentes Estructuradas',
+    a_unstruct_label: 'Fuentes No Estructuradas y Faltantes',
+    a_s1_title: 'Data transaccional interna',    a_s1_body: 'ERP, sistemas de ventas y facturación — la data que el cliente ya tiene pero raramente consolida.',
+    a_s2_title: 'POS canal tradicional',          a_s2_body: 'Captura en punto de venta del canal tradicional fragmentado, donde la trazabilidad suele ser baja.',
+    a_s3_title: 'POS canal moderno',              a_s3_body: 'Data transaccional de cadenas de retail y formatos de comercio moderno.',
+    a_s4_title: 'Integraciones con distribuidores', a_s4_body: 'Conexiones estructuradas para recibir y mapear ventas, cobertura, precios y data promocional.',
+    a_s5_title: 'Data sindicada de mercado',      a_s5_body: 'Fuentes agregadas de terceros para benchmarking y lecturas a nivel de mercado.',
+    a_s6_title: 'Catálogos de producto y precio', a_s6_body: 'Master de SKUs, listas de precio, calendarios promocionales y registros de inventario.',
+    a_u1_title: 'Encuestas de campo',             a_u1_body: 'Captura en campo de precios, inventario, promociones, visibilidad, presencia competitiva y cumplimiento.',
+    a_u2_title: 'Reportes de fuerza de ventas',   a_u2_body: 'Inteligencia a nivel de ruta de equipos comerciales que operan en el punto de venta.',
+    a_u3_title: 'Inteligencia en anaquel y tienda', a_u3_body: 'Cumplimiento de surtido, share de anaquel, ejecución de precios y visibilidad de exhibiciones promocionales.',
+    a_u4_title: 'Monitoreo de precios competitivos', a_u4_body: 'Precios observados de la competencia en punto de venta, por canal, región y formato.',
+    a_u5_title: 'Estudios de mercado y benchmarking', a_u5_body: 'Investigación externa y benchmarks de categoría que dan contexto más allá de la data interna.',
+    a_u6_title: 'Research de consumidor y shopper', a_u6_body: 'Inteligencia del lado de la demanda para complementar la data transaccional y de oferta.',
+    a_p1_title: 'Captura',           a_p1_body: 'Captura directa desde sistemas POS, encuestas, apps e integraciones. El punto de entrada de toda la información comercial.',
+    a_p2_title: 'Ingesta',           a_p2_body: 'Carga técnica de múltiples fuentes en una arquitectura común — sin importar formato, cadencia u origen.',
+    a_p3_title: 'Limpieza',          a_p3_body: 'Corrección, validación, deduplicación y resolución de inconsistencias. La base confiable empieza aquí.',
+    a_p4_title: 'Homologación',      a_p4_body: 'Estandarización de SKUs, clientes, canales y geografías para que la data sea comparable entre fuentes.',
+    a_p5_title: 'Activos de datos',  a_p5_body: 'Generación de datasets estructurados y utilizables para analytics, benchmarking y eventual monetización.',
+    a_process_footer: 'Cinco pasos. Una base integrada.',
+    conn_ab_left: 'A — Infraestructura de Información', conn_ab_right: 'B — Capa de Inteligencia',
+    conn_bc_left: 'B — Capa de Inteligencia',           conn_bc_right: 'C — Ejecución y Captura de Valor',
+    // Section B
+    b_eyebrow: 'Capa de Inteligencia',
+    b_h2: 'Convertimos visibilidad<br>en decisiones comerciales.',
+    b_lead: 'Ocho capacidades analíticas que transforman data comercial estructurada en acciones priorizadas — no reportes. Los trade-offs, explícitos. Decisiones, no recomendaciones.',
+    b_c1_title: 'Arquitectura de Precios y Packs',    b_c1_body: 'Diseñamos precios y estructuras de pack con rigor económico, sensibilidad a la demanda y validación conductual por canal y formato.',
+    b_c2_title: 'Momentos y Ocasiones de Demanda',   b_c2_body: 'Mapeamos cuándo y dónde se activa el consumidor — y configuramos la oferta, precio y pack por ocasión y canal.',
+    b_c3_title: 'Elasticidades Predictivas',          b_c3_body: 'Simulamos cómo responden volumen y margen ante cambios de precio antes de comprometerse. Escenarios por SKU, segmento y mercado.',
+    b_c4_title: 'Inteligencia de Promociones',        b_c4_body: 'Distinguimos las promociones que crean valor genuino de las que desplazan volumen, destruyen margen o canibalizan SKUs adyacentes.',
+    b_c5_title: 'Optimización de Trade Terms',        b_c5_body: 'Trazamos la erosión de margen desde precio de lista hasta precio de bolsillo — y redirigimos el trade spend donde genera retorno medible.',
+    b_c6_title: 'Portafolio y Surtido',               b_c6_body: 'Diseñamos la oferta correcta para cada formato, canal y ocasión. Identificamos dónde la cobertura actual deja demanda sin capturar.',
+    b_c7_title: 'Inteligencia Competitiva',           b_c7_body: 'Seguimiento de precios, arquitectura de pack y promociones de la competencia en tiempo real, por canal, región y formato.',
+    b_c8_title: 'Estrategia de Canal y RTM',          b_c8_body: 'Priorizamos rutas al mercado por potencial de valor, capacidad de cobertura y coherencia comercial. Desplegamos donde el sistema puede ganar.',
+    b_screenshot_caption: 'Interfaz de modelado de precios y escenarios',
+    b_ph_label: 'Captura de pantalla del producto',
+    // Section C
+    c_eyebrow: 'Ejecución y Captura de Valor',
+    c_h2: 'Nos quedamos hasta<br>que el valor sea capturado.',
+    c_lead: 'La mayoría de los sistemas se detiene en la recomendación. El Brazo C es donde el trabajo se vuelve real — inteligencia traducida en acción de campo, medida contra el baseline y retroalimentada al sistema.',
+    c_gap_note: 'La distancia entre un buen análisis y un resultado comercial medible es donde fallan la mayoría de los sistemas — y de los proyectos de consultoría. No entregamos el deck y nos desconectamos.',
+    c_i0_eyebrow: 'Order Entry',          c_i0_h3: 'Omnicanal',
+    c_i0_body: 'Pedidos capturados en todos los canales comerciales — incluyendo <strong style="color:rgba(255,255,255,.85)">teléfono</strong>, WhatsApp, sistemas del cliente y plataformas digitales — e integrados en un único flujo comercial. Un sistema. Un registro. Ejecución unificada sin importar el origen del canal.',
+    c_i0_tag: 'Estratégicamente crítico',
+    c_i1_eyebrow: 'Traducción de Decisiones', c_i1_h3: 'Del análisis a acciones priorizadas',
+    c_i1_body: 'El output del Brazo B se convierte en una lista de acciones específica y secuenciada — qué se hace primero, qué se hace después, qué no se hace — con responsables y plazos definidos.',
+    c_i2_eyebrow: 'Planes de Acción',         c_i2_h3: 'Decisiones en planes concretos',
+    c_i2_body: 'Las decisiones se estructuran en planes listos para campo por equipo comercial, trade, cuentas clave y territorio — con la especificidad que requiere la ejecución, no solo la comunicación.',
+    c_i3_eyebrow: 'Habilitación de Campo',    c_i3_h3: 'Trabajando junto a los equipos de ejecución',
+    c_i3_body: 'No entregamos el plan y nos vamos. Trabajamos junto a los equipos responsables de la ejecución hasta que la lógica opera sola — entrenamiento, soporte en tiempo real y adaptación cuando el campo revela brechas.',
+    c_i4_eyebrow: 'Seguimiento de KPIs',      c_i4_h3: 'Midiendo lo que realmente ocurrió',
+    c_i4_body: 'Dashboards de desempeño y análisis de varianza ciclo a ciclo, integrados desde el inicio. Los resultados se miden contra un baseline predefinido — no contra la percepción interna del avance.',
+    c_i5_eyebrow: 'Gobierno Comercial',       c_i5_h3: 'Disciplina de ejecución entre ciclos',
+    c_i5_body: 'Cadencia de revisión estructurada, rutas de escalación y marcos de responsabilidad para mantener la disciplina comercial más allá del despliegue inicial — institucionalizando la lógica, no solo los resultados.',
+    c_i6_eyebrow: 'Loop de Aprendizaje',      c_i6_h3: 'Retroalimentando los resultados al sistema',
+    c_i6_body: 'Lo que el Brazo C aprende en la ejecución no se pierde. Se estructura y retorna a los modelos analíticos, la infraestructura de datos y el marco de prioridades — para que cada ciclo sea más informado que el anterior.',
+    loop_eyebrow: 'El loop se cierra',
+    loop_h2: 'La ejecución alimenta el sistema.<br>El sistema mejora.',
+    loop_lead: 'Cada ciclo retorna aprendizaje estructurado al Brazo A y al Brazo B — la data es más rica, los modelos más precisos y las decisiones más informadas. El sistema se acumula.',
+    ln_a_title: 'Información', ln_a_body: 'Data de mercado estructurada y consolidada',
+    ln_b_title: 'Inteligencia', ln_b_body: 'Data convertida en decisiones',
+    ln_c_title: 'Ejecución',   ln_c_body: 'Decisiones capturadas en el campo',
+    ln_l_title: 'Aprendizaje', ln_l_body: 'Los resultados retroalimentan A y B',
+    loop_cta_btn: 'Agendar llamada',
+    loop_back_link: '← Volver a Imberion',
+    footer_copy: '© 2025 Imberion. Todos los derechos reservados.',
+    footer_links: [['Inicio','index.html'],['Cómo Operamos','how-we-operate.html'],['Distribuidores','distribuidores.html'],['Agendar llamada','https://calendly.com/rodrigo-imberion/30min']]
+  },
 
-  /* Lang toggle (visual only — same pattern as arm pages) */
-  document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+  pt: {
+    page_title: 'Imberion — Como Funciona',
+    nav_cta: 'Agendar chamada',
+    hero_back: '← Imberion',
+    hero_eyebrow: 'Como funciona',
+    hero_h1: 'Um sistema conectado.<br>Três capacidades distintas.',
+    hero_lead: 'Projetado para operar como um loop completo — ou implantado onde a necessidade é maior.',
+    hf_a_title: 'Infraestrutura de Informação',
+    hf_a_sub: 'Construímos a visibilidade',
+    hf_b_title: 'Camada de Inteligência',
+    hf_b_sub: 'Convertemos em decisões',
+    hf_c_title: 'Execução e Captura de Valor',
+    hf_c_sub: 'Ficamos até o valor ser capturado',
+    snav_a: 'Infraestrutura de Informação',
+    snav_b: 'Camada de Inteligência',
+    snav_c: 'Execução e Captura de Valor',
+    // Section A
+    a_eyebrow: 'Infraestrutura de Informação',
+    a_h2: 'Construímos a visibilidade<br>que você ainda não tem.',
+    a_lead: 'A maioria das organizações não consegue enxergar seu mercado com clareza — não porque os dados não existam, mas porque nunca foram consolidados em uma base confiável. O Braço A resolve isso antes que qualquer outra coisa seja possível.',
+    a_struct_label: 'Fontes Estruturadas',
+    a_unstruct_label: 'Fontes Não Estruturadas e Ausentes',
+    a_s1_title: 'Dados transacionais internos',    a_s1_body: 'ERP, sistemas de vendas e faturamento — os dados que o cliente já possui mas raramente consolida.',
+    a_s2_title: 'POS canal tradicional',           a_s2_body: 'Captura no ponto de venda do canal tradicional fragmentado, onde a rastreabilidade costuma ser baixa.',
+    a_s3_title: 'POS canal moderno',               a_s3_body: 'Dados transacionais de redes de varejo e formatos de comércio moderno.',
+    a_s4_title: 'Integrações com distribuidores',  a_s4_body: 'Conexões estruturadas para receber e mapear vendas, cobertura, preços e dados promocionais.',
+    a_s5_title: 'Dados sindicados de mercado',     a_s5_body: 'Fontes agregadas de terceiros para benchmarking e leituras em nível de mercado.',
+    a_s6_title: 'Catálogos de produto e preço',    a_s6_body: 'Master de SKUs, tabelas de preço, calendários promocionais e registros de estoque.',
+    a_u1_title: 'Pesquisas de campo',              a_u1_body: 'Captura em campo de preços, estoque, promoções, visibilidade, presença competitiva e conformidade.',
+    a_u2_title: 'Relatórios de força de vendas',   a_u2_body: 'Inteligência em nível de rota de equipes comerciais que operam no ponto de venda.',
+    a_u3_title: 'Inteligência em gôndola e loja',  a_u3_body: 'Conformidade de sortimento, share de gôndola, execução de preços e visibilidade de materiais promocionais.',
+    a_u4_title: 'Monitoramento de preços competitivos', a_u4_body: 'Preços observados da concorrência no ponto de venda, por canal, região e formato.',
+    a_u5_title: 'Estudos de mercado e benchmarking',   a_u5_body: 'Pesquisas externas e benchmarks de categoria que fornecem contexto além dos dados internos.',
+    a_u6_title: 'Pesquisa de consumidor e shopper',    a_u6_body: 'Inteligência do lado da demanda para complementar dados transacionais e de oferta.',
+    a_p1_title: 'Captura',            a_p1_body: 'Captura direta de sistemas POS, pesquisas, apps e integrações. O ponto de entrada de toda informação comercial.',
+    a_p2_title: 'Ingestão',           a_p2_body: 'Carga técnica de múltiplas fontes em uma arquitetura comum — independentemente de formato, cadência ou origem.',
+    a_p3_title: 'Limpeza',            a_p3_body: 'Correção, validação, deduplicação e resolução de inconsistências. A base confiável começa aqui.',
+    a_p4_title: 'Harmonização',       a_p4_body: 'Padronização de SKUs, clientes, canais e geografias para que os dados sejam comparáveis entre fontes.',
+    a_p5_title: 'Ativos de dados',    a_p5_body: 'Geração de datasets estruturados e utilizáveis para analytics, benchmarking e eventual monetização.',
+    a_process_footer: 'Cinco etapas. Uma base integrada.',
+    conn_ab_left: 'A — Infraestrutura de Informação', conn_ab_right: 'B — Camada de Inteligência',
+    conn_bc_left: 'B — Camada de Inteligência',        conn_bc_right: 'C — Execução e Captura de Valor',
+    // Section B
+    b_eyebrow: 'Camada de Inteligência',
+    b_h2: 'Convertemos visibilidade<br>em decisões comerciais.',
+    b_lead: 'Oito capacidades analíticas que transformam dados comerciais estruturados em ações priorizadas — não relatórios. Trade-offs tornados explícitos. Decisões, não recomendações.',
+    b_c1_title: 'Arquitetura de Preços e Packs',      b_c1_body: 'Desenhamos preços e estruturas de pack com rigor econômico, sensibilidade à demanda e validação comportamental por canal e formato.',
+    b_c2_title: 'Momentos e Ocasiões de Demanda',     b_c2_body: 'Mapeamos quando e onde o consumidor se engaja — e configuramos a oferta, preço e pack por ocasião e canal.',
+    b_c3_title: 'Elasticidades Preditivas',            b_c3_body: 'Simulamos como volume e margem respondem a movimentos de preço antes de comprometer. Cenários por SKU, segmento e mercado.',
+    b_c4_title: 'Inteligência de Promoções',           b_c4_body: 'Distinguimos promoções que criam valor genuíno daquelas que deslocam volume, destroem margem ou canibalizam SKUs adjacentes.',
+    b_c5_title: 'Otimização de Trade Terms',           b_c5_body: 'Rastreamos a erosão de margem do preço de tabela ao preço de bolso — e redirecionamos o trade spend onde gera retorno mensurável.',
+    b_c6_title: 'Portfólio e Sortimento',              b_c6_body: 'Desenhamos a oferta certa para cada formato, canal e ocasião. Identificamos onde a cobertura atual deixa demanda sem capturar.',
+    b_c7_title: 'Inteligência Competitiva',            b_c7_body: 'Acompanhamento de preços, arquitetura de pack e promoções da concorrência em tempo real, por canal, região e formato.',
+    b_c8_title: 'Estratégia de Canal e RTM',           b_c8_body: 'Priorizamos rotas ao mercado por potencial de valor, capacidade de cobertura e coerência comercial. Implantamos onde o sistema pode ganhar.',
+    b_screenshot_caption: 'Interface de modelagem de preços e cenários',
+    b_ph_label: 'Captura de tela do produto',
+    // Section C
+    c_eyebrow: 'Execução e Captura de Valor',
+    c_h2: 'Ficamos até<br>o valor ser capturado.',
+    c_lead: 'A maioria dos sistemas para na recomendação. O Braço C é onde o trabalho se torna real — inteligência traduzida em ação de campo, medida contra o baseline e retroalimentada ao sistema.',
+    c_gap_note: 'A distância entre uma boa análise e um resultado comercial mensurável é onde a maioria dos sistemas — e dos projetos de consultoria — falha. Não entregamos o deck e nos desconectamos.',
+    c_i0_eyebrow: 'Order Entry',           c_i0_h3: 'Omnicanal',
+    c_i0_body: 'Pedidos capturados em todos os canais comerciais — incluindo <strong style="color:rgba(255,255,255,.85)">telefone</strong>, WhatsApp, sistemas do cliente e plataformas digitais — e integrados em um único fluxo comercial. Um sistema. Um registro. Execução unificada independentemente da origem do canal.',
+    c_i0_tag: 'Estrategicamente crítico',
+    c_i1_eyebrow: 'Tradução de Decisões',  c_i1_h3: 'Da análise a ações priorizadas',
+    c_i1_body: 'O output do Braço B é convertido em uma lista de ações específica e sequenciada — o que se faz primeiro, o que se faz depois, o que não se faz — com responsáveis e prazos definidos.',
+    c_i2_eyebrow: 'Planos de Ação',        c_i2_h3: 'Decisões em planos concretos',
+    c_i2_body: 'As decisões são estruturadas em planos prontos para campo por equipe comercial, trade, contas-chave e território — com a especificidade que a execução exige, não apenas a comunicação.',
+    c_i3_eyebrow: 'Habilitação de Campo',  c_i3_h3: 'Trabalhando junto às equipes de execução',
+    c_i3_body: 'Não entregamos o plano e nos afastamos. Trabalhamos junto às equipes responsáveis pela execução até a lógica operar de forma autônoma — treinamento, suporte em tempo real e adaptação quando o campo revela lacunas.',
+    c_i4_eyebrow: 'Acompanhamento de KPIs',c_i4_h3: 'Medindo o que de fato aconteceu',
+    c_i4_body: 'Dashboards de desempenho e análise de variância ciclo a ciclo, integrados desde o início. Os resultados são medidos contra um baseline pré-definido — não contra a percepção interna do progresso.',
+    c_i5_eyebrow: 'Governança Comercial',  c_i5_h3: 'Disciplina de execução entre ciclos',
+    c_i5_body: 'Cadência de revisão estruturada, rotas de escalação e frameworks de responsabilidade para manter a disciplina comercial além do deployment inicial — institucionalizando a lógica, não apenas o resultado.',
+    c_i6_eyebrow: 'Loop de Aprendizado',   c_i6_h3: 'Retroalimentando o sistema com os resultados',
+    c_i6_body: 'O que o Braço C aprende na execução não se perde. É estruturado e retorna aos modelos analíticos, à infraestrutura de dados e ao framework de prioridades — para que cada ciclo seja mais informado que o anterior.',
+    loop_eyebrow: 'O loop se fecha',
+    loop_h2: 'A execução alimenta o sistema.<br>O sistema melhora.',
+    loop_lead: 'Cada ciclo retorna aprendizado estruturado ao Braço A e ao Braço B — os dados ficam mais ricos, os modelos mais precisos e as decisões mais informadas. O sistema se acumula.',
+    ln_a_title: 'Informação',  ln_a_body: 'Dados de mercado estruturados e consolidados',
+    ln_b_title: 'Inteligência',ln_b_body: 'Dados convertidos em decisões',
+    ln_c_title: 'Execução',    ln_c_body: 'Decisões capturadas no campo',
+    ln_l_title: 'Aprendizado', ln_l_body: 'Os resultados retroalimentam A e B',
+    loop_cta_btn: 'Agendar chamada',
+    loop_back_link: '← Voltar à Imberion',
+    footer_copy: '© 2025 Imberion. Todos os direitos reservados.',
+    footer_links: [['Início','index.html'],['Como Operamos','how-we-operate.html'],['Distribuidores','distribuidores.html'],['Agendar chamada','https://calendly.com/rodrigo-imberion/30min']]
+  }
+};
+
+/* ─────────────────────────────────────────────────────────
+   APPLY LANGUAGE
+   ───────────────────────────────────────────────────────── */
+function applyLang(lang) {
+  const t = T[lang] || T.en;
+  const s = (id, val) => { const el = document.getElementById(id); if(el && val !== undefined) el.innerHTML = val; };
+
+  document.documentElement.lang = lang;
+  document.getElementById('page-title').textContent = t.page_title;
+
+  // Nav
+  s('nav-cta', t.nav_cta);
+  s('nav-back-text', t.hero_back);
+
+  // Hero
+  s('hero-back-text', t.hero_back);
+  s('hero-eyebrow', t.hero_eyebrow);
+  s('hero-h1', t.hero_h1);
+  s('hero-lead', t.hero_lead);
+  s('hf-a-title', t.hf_a_title);  s('hf-a-sub', t.hf_a_sub);
+  s('hf-b-title', t.hf_b_title);  s('hf-b-sub', t.hf_b_sub);
+  s('hf-c-title', t.hf_c_title);  s('hf-c-sub', t.hf_c_sub);
+
+  // Section nav
+  s('snav-a', t.snav_a); s('snav-b', t.snav_b); s('snav-c', t.snav_c);
+
+  // Section A
+  s('a-eyebrow', t.a_eyebrow); s('a-h2', t.a_h2); s('a-lead', t.a_lead);
+  s('a-struct-label', t.a_struct_label);
+  s('a-unstruct-label', t.a_unstruct_label);
+  ['s1','s2','s3','s4','s5','s6'].forEach(k => { s('a-'+k+'-title', t['a_'+k+'_title']); s('a-'+k+'-body', t['a_'+k+'_body']); });
+  ['u1','u2','u3','u4','u5','u6'].forEach(k => { s('a-'+k+'-title', t['a_'+k+'_title']); s('a-'+k+'-body', t['a_'+k+'_body']); });
+  ['p1','p2','p3','p4','p5'].forEach(k => { s('a-'+k+'-title', t['a_'+k+'_title']); s('a-'+k+'-body', t['a_'+k+'_body']); });
+  s('a-process-footer', t.a_process_footer);
+
+  // Connectors
+  s('conn-ab-left', t.conn_ab_left); s('conn-ab-right', t.conn_ab_right);
+  s('conn-bc-left', t.conn_bc_left); s('conn-bc-right', t.conn_bc_right);
+
+  // Section B
+  s('b-eyebrow', t.b_eyebrow); s('b-h2', t.b_h2); s('b-lead', t.b_lead);
+  for(let i=1;i<=8;i++){ s('b-c'+i+'-title', t['b_c'+i+'_title']); s('b-c'+i+'-body', t['b_c'+i+'_body']); }
+  s('b-screenshot-caption', t.b_screenshot_caption);
+  s('b-ph-label', t.b_ph_label);
+
+  // Section C
+  s('c-eyebrow', t.c_eyebrow); s('c-h2', t.c_h2); s('c-lead', t.c_lead);
+  s('c-gap-note', t.c_gap_note);
+  for(let i=0;i<=6;i++){
+    s('c-i'+i+'-eyebrow', t['c_i'+i+'_eyebrow']);
+    s('c-i'+i+'-h3', t['c_i'+i+'_h3']);
+    s('c-i'+i+'-body', t['c_i'+i+'_body']);
+  }
+  s('c-i0-tag', t.c_i0_tag);
+
+  // Closing loop
+  s('loop-eyebrow', t.loop_eyebrow);
+  s('loop-h2', t.loop_h2);
+  s('loop-lead', t.loop_lead);
+  s('ln-a-title', t.ln_a_title); s('ln-a-body', t.ln_a_body);
+  s('ln-b-title', t.ln_b_title); s('ln-b-body', t.ln_b_body);
+  s('ln-c-title', t.ln_c_title); s('ln-c-body', t.ln_c_body);
+  s('ln-l-title', t.ln_l_title); s('ln-l-body', t.ln_l_body);
+  s('loop-cta-btn', t.loop_cta_btn);
+  s('loop-back-link', t.loop_back_link);
+
+  // Footer
+  s('footer-copy', t.footer_copy);
+  const fl = document.getElementById('footer-links');
+  if(fl) fl.innerHTML = t.footer_links.map(([label,href]) => `<a href="${href}">${label}</a>`).join('');
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION NAV ACTIVE STATE
+   ───────────────────────────────────────────────────────── */
+(function(){
+  const anchors = ['arm-a','arm-b','arm-c'];
+  const navLinks = document.querySelectorAll('.section-nav a');
+  function updateActive(){
+    let current = '';
+    anchors.forEach(id => {
+      const el = document.getElementById(id);
+      if(el && window.scrollY >= el.offsetTop - 140) current = id;
+    });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', updateActive, {passive:true});
+  updateActive();
+})();
+
+/* ─────────────────────────────────────────────────────────
+   LANG TOGGLE
+   ───────────────────────────────────────────────────────── */
+let currentLang = 'en';
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    currentLang = b.dataset.lang;
     document.querySelectorAll('.lang-btn').forEach(x => x.classList.toggle('active', x === b));
-  }));
+    applyLang(currentLang);
+  });
+});
+
+// Init
+applyLang('en');
 </script>
 </body>
 </html>
