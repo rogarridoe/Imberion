@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Imberion — How It Works</title>
+  <meta name="description" content="A connected system with three distinct capabilities: Information Infrastructure, Intelligence Layer, and Execution & Value Capture."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+
+    :root{
+      --navy:#1b2a3b;--navy-80:rgba(27,42,59,.8);--navy-40:rgba(27,42,59,.4);
+      --navy-12:rgba(27,42,59,.12);--navy-06:rgba(27,42,59,.06);
+      --paper:#f6f4f0;--paper-alt:#edeae4;--white:#fff;
+      --signal:#1b4332;--signal-lt:#d8ede1;--slate:#64748b;
+      --max:1140px;--r:4px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--navy);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%} a{color:inherit;text-decoration:none} ul{list-style:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 36px}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.12;font-weight:400}
+    h2{font-size:clamp(2.1rem,4vw,3.2rem)}
+    h3{font-size:clamp(1.3rem,2vw,1.7rem)}
+    .eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+    .lead{font-size:clamp(1.05rem,1.7vw,1.2rem);color:var(--navy-80);max-width:620px;line-height:1.7}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);padding:0 36px}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo img{height:36px;width:auto}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a:not(.btn):not(.lang-btn){color:rgba(255,255,255,.65);font-size:14px;font-weight:500;transition:color .2s}
+    .nav-links a:not(.btn):not(.lang-btn):hover{color:#fff}
+    .nav-right{display:flex;gap:14px;align-items:center}
+    .lang-toggle{display:flex;gap:2px;background:rgba(255,255,255,.08);border-radius:var(--r);padding:3px}
+    .lang-btn{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:2px;cursor:pointer;color:rgba(255,255,255,.4);transition:all .18s;border:none;background:transparent}
+    .lang-btn.active{background:rgba(255,255,255,.15);color:#fff}
+    .lang-btn:hover:not(.active){color:rgba(255,255,255,.7)}
+    .btn{display:inline-flex;align-items:center;padding:10px 22px;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+    .btn-primary{background:var(--white);color:var(--navy)}
+    .btn-primary:hover{background:var(--paper)}
+    @media(max-width:600px){nav{padding:0 20px} .nav-links{display:none}}
+
+    /* PAGE HERO */
+    .page-hero{background:var(--navy);padding:140px 36px 88px;position:relative;overflow:hidden}
+    .page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 60%,rgba(100,116,139,.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 30%,rgba(27,67,50,.22) 0%,transparent 50%);pointer-events:none}
+    .page-hero-content{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+    .page-hero .back{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:13px;font-weight:500;margin-bottom:44px;transition:color .2s}
+    .page-hero .back:hover{color:#fff}
+    .page-hero .eyebrow{color:rgba(255,255,255,.45)}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,4.8rem);font-weight:300;color:#fff;line-height:1.08;max-width:680px}
+    .page-hero .lead{margin-top:24px;max-width:560px;font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.6);line-height:1.75}
+
+    /* HERO FLOW */
+    .hero-flow{display:flex;align-items:center;gap:0;margin-top:56px;border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;max-width:680px}
+    .hero-flow-item{display:flex;align-items:center;gap:16px;padding:20px 28px;flex:1;background:rgba(255,255,255,.04);transition:background .2s;text-decoration:none}
+    .hero-flow-item:hover{background:rgba(255,255,255,.08)}
+    .hero-flow-item+.hero-flow-item{border-left:1px solid rgba(255,255,255,.1)}
+    .hf-letter{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:rgba(255,255,255,.35);line-height:1;flex-shrink:0}
+    .hf-label{font-size:12px;font-weight:500;color:rgba(255,255,255,.55);line-height:1.4}
+    .hf-label strong{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:2px}
+
+    /* SECTION NAV STRIP */
+    .section-nav{background:var(--paper-alt);border-bottom:1px solid var(--navy-12);position:sticky;top:68px;z-index:50;overflow-x:auto}
+    .section-nav-inner{display:flex;max-width:var(--max);margin:0 auto;padding:0 36px}
+    .section-nav a{display:inline-flex;align-items:center;gap:8px;padding:15px 20px;font-size:12.5px;font-weight:500;color:var(--navy-80);border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
+    .section-nav a:hover{color:var(--navy);border-bottom-color:var(--navy-12)}
+    .section-nav a.active{color:var(--signal);border-bottom-color:var(--signal)}
+    .section-nav-letter{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;opacity:.5}
+
+    /* SECTION SHARED */
+    .deep-section{padding:96px 0}
+    .section-arm-header{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;margin-bottom:56px}
+    .arm-letter-bg{font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;line-height:1;color:var(--navy-12);letter-spacing:.05em;margin-top:-12px;user-select:none}
+
+    /* ARM CONNECTOR */
+    .arm-connector{background:var(--white);border-top:1px solid var(--navy-06);border-bottom:1px solid var(--navy-06);padding:20px 36px;display:flex;align-items:center;justify-content:center;gap:16px}
+    .arm-connector-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;gap:16px}
+    .ac-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-40)}
+    .ac-line{flex:1;height:1px;background:var(--navy-12)}
+    .ac-arrow{color:var(--navy-40);font-size:14px}
+
+    /* ═══════ SECTION A ═══════ */
+    .section-a{background:var(--paper-alt)}
+    .sources-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:0}
+    .source-col{background:var(--white);padding:40px 40px}
+    .source-col-tint{background:var(--paper-alt);padding:40px 40px}
+    .source-col-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-40);margin-bottom:20px}
+    .source-list{display:flex;flex-direction:column;gap:10px}
+    .source-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--paper-alt);border-radius:var(--r)}
+    .source-col .source-item{background:var(--paper-alt)}
+    .source-col-tint .source-item{background:var(--white)}
+    .source-icon{width:30px;height:30px;border-radius:50%;background:var(--navy-06);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
+    .source-body h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
+    .source-body p{font-size:12px;color:var(--navy-80);line-height:1.5}
+    .submods-strip{margin-top:2px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+    .submod{background:var(--white);padding:28px 24px;border-top:3px solid var(--navy-12);transition:border-color .2s}
+    .submod:hover{border-top-color:var(--slate)}
+    .submod-code{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--navy-12);line-height:1;margin-bottom:10px}
+    .submod h4{font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:6px}
+    .submod p{font-size:12px;color:var(--navy-80);line-height:1.55}
+    .submod-footer{margin-top:2px;background:var(--paper-alt);padding:16px 24px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--navy-40);text-transform:uppercase}
+
+    /* ═══════ SECTION B ═══════ */
+    .section-b{background:var(--white)}
+    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:0}
+    .cap-item{padding:28px 28px;background:var(--paper-alt);border-top:3px solid transparent;transition:border-color .2s}
+    .cap-item:hover{border-top-color:var(--navy)}
+    .cap-icon{font-size:16px;margin-bottom:14px;color:var(--navy-40)}
+    .cap-item h4{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:8px}
+    .cap-item p{font-size:12.5px;color:var(--navy-80);line-height:1.6}
+
+    /* Screenshot zone */
+    .screenshot-zone{margin-top:2px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+    .screenshot-frame{background:var(--paper-alt);border-radius:var(--r);overflow:hidden}
+    .screenshot-frame img{display:block;width:100%;height:auto}
+    .screenshot-frame figcaption{padding:12px 16px;font-size:11.5px;color:var(--navy-40);letter-spacing:.03em}
+    /* SCREENSHOT PLACEHOLDER: drop additional images inside .screenshot-placeholder */
+    .screenshot-placeholder{background:var(--paper-alt);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;gap:12px;border:1.5px dashed var(--navy-12);border-radius:var(--r)}
+    .screenshot-placeholder .ph-icon{font-size:24px;color:var(--navy-12)}
+    .screenshot-placeholder p{font-size:12px;color:var(--navy-40);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+
+    /* ═══════ SECTION C ═══════ */
+    .section-c{background:var(--navy)}
+    .section-c .eyebrow{color:rgba(255,255,255,.45)}
+    .section-c h2{color:#fff}
+    .section-c .lead{color:rgba(255,255,255,.65)}
+    .section-c .arm-letter-bg{color:rgba(255,255,255,.06)}
+    .c-gap-note{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2vw,1.5rem);color:rgba(255,255,255,.5);font-style:italic;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);max-width:640px}
+    .c-items{display:flex;flex-direction:column;gap:2px}
+    .c-item{background:rgba(255,255,255,.05);padding:32px 36px;display:grid;grid-template-columns:56px 1fr 2.2fr;gap:32px;align-items:start;border-left:4px solid rgba(255,255,255,.1);transition:border-color .2s}
+    .c-item:hover{border-left-color:var(--signal-lt)}
+    .c-item.featured{background:rgba(255,255,255,.08);border-left-color:rgba(27,67,50,.7)}
+    .c-item.featured:hover{border-left-color:var(--signal-lt)}
+    .c-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:rgba(255,255,255,.15);line-height:1}
+    .c-head .eyebrow{margin-bottom:6px}
+    .c-head h3{font-size:1.15rem;color:#fff;line-height:1.2}
+    .c-body p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7}
+    .c-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);margin-top:10px}
+    .c-featured-tag{background:rgba(27,67,50,.5);color:rgba(255,255,255,.75)}
+
+    /* ═══════ CLOSING LOOP ═══════ */
+    .closing-loop{background:var(--signal);padding:88px 0}
+    .closing-loop .eyebrow{color:rgba(255,255,255,.45)}
+    .closing-loop h2{color:#fff;max-width:520px}
+    .closing-loop .lead{color:rgba(255,255,255,.7);margin-top:16px}
+    .loop-flow{display:flex;align-items:center;gap:0;margin:48px 0;max-width:680px}
+    .loop-node{flex:1;background:rgba(255,255,255,.08);padding:20px 24px;text-align:center}
+    .loop-node+.loop-node{border-left:1px solid rgba(255,255,255,.08)}
+    .loop-node-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,.25);margin-bottom:8px}
+    .loop-node h4{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:4px}
+    .loop-node p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+    .loop-cta{margin-top:40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .btn-light{display:inline-flex;align-items:center;padding:14px 30px;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;border:none;background:var(--white);color:var(--signal);transition:background .2s}
+    .btn-light:hover{background:var(--paper)}
+    .back-link{font-size:13px;font-weight:600;color:rgba(255,255,255,.55);transition:color .2s}
+    .back-link:hover{color:#fff}
+
+    /* FOOTER */
+    footer{background:var(--navy);padding:48px 36px;border-top:1px solid rgba(255,255,255,.06)}
+    .footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+    #footer-links a{font-size:13px;color:rgba(255,255,255,.4);transition:color .2s}
+    #footer-links a:hover{color:rgba(255,255,255,.85)}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .hero-flow{flex-direction:column;max-width:400px}
+      .hero-flow-item+.hero-flow-item{border-left:none;border-top:1px solid rgba(255,255,255,.1)}
+      .section-arm-header{grid-template-columns:1fr;gap:16px}
+      .arm-letter-bg{font-size:5rem;margin-top:0}
+      .sources-grid{grid-template-columns:1fr}
+      .submods-strip{grid-template-columns:1fr 1fr}
+      .cap-grid{grid-template-columns:1fr 1fr}
+      .screenshot-zone{grid-template-columns:1fr}
+      .c-item{grid-template-columns:1fr;gap:12px}
+      .c-num{font-size:2rem}
+      .loop-flow{flex-direction:column;max-width:320px}
+      .loop-node+.loop-node{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
+    }
+    @media(max-width:600px){
+      .container{padding:0 20px}
+      nav{padding:0 20px}
+      .nav-links{display:none}
+      .page-hero{padding:120px 20px 60px}
+      .deep-section{padding:64px 0}
+      .cap-grid{grid-template-columns:1fr}
+      .submods-strip{grid-template-columns:1fr}
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <a href="index.html"><img src="logo.png" alt="Imberion"/></a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion
+      </a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+      </div>
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <a href="index.html#how-it-works" class="back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+      Back to Imberion
+    </a>
+    <div class="eyebrow">How it works</div>
+    <h1>A connected system.<br>Three distinct capabilities.</h1>
+    <p class="lead">Built to work as a full loop — or deployed where the need is greatest.</p>
+    <div class="hero-flow">
+      <a href="#arm-a" class="hero-flow-item">
+        <span class="hf-letter">A</span>
+        <span class="hf-label"><strong>Information Infrastructure</strong>We build the visibility</span>
+      </a>
+      <a href="#arm-b" class="hero-flow-item">
+        <span class="hf-letter">B</span>
+        <span class="hf-label"><strong>Intelligence Layer</strong>We convert it into decisions</span>
+      </a>
+      <a href="#arm-c" class="hero-flow-item">
+        <span class="hf-letter">C</span>
+        <span class="hf-label"><strong>Execution & Value Capture</strong>We stay until value is captured</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION NAV -->
+<div class="section-nav" id="section-nav">
+  <div class="section-nav-inner">
+    <a href="#arm-a"><span class="section-nav-letter">A</span> Information Infrastructure</a>
+    <a href="#arm-b"><span class="section-nav-letter">B</span> Intelligence Layer</a>
+    <a href="#arm-c"><span class="section-nav-letter">C</span> Execution &amp; Value Capture</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION A — INFORMATION INFRASTRUCTURE
+     ═══════════════════════════════════════════ -->
+<section id="arm-a" class="deep-section section-a">
+  <div class="container">
+    <div class="section-arm-header">
+      <div class="arm-letter-bg">A</div>
+      <div>
+        <div class="eyebrow">Information Infrastructure</div>
+        <h2>We build the visibility<br>you don't have yet.</h2>
+        <p class="lead" style="margin-top:18px;">Most organizations cannot see their market clearly — not because the data doesn't exist, but because it has never been consolidated into a single reliable base. Arm A resolves that before anything else can be attempted.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sources grid (full bleed inside section) -->
+  <div style="max-width:var(--max);margin:0 auto;padding:0 36px">
+    <div class="sources-grid">
+      <div class="source-col">
+        <div class="source-col-label">Structured Sources</div>
+        <div class="source-list">
+          <div class="source-item">
+            <div class="source-icon">⊞</div>
+            <div class="source-body">
+              <h4>Internal transactional data</h4>
+              <p>ERP, sales systems, and billing records — the data the client already owns but rarely consolidates.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◉</div>
+            <div class="source-body">
+              <h4>Traditional channel POS</h4>
+              <p>Point-of-sale capture from fragmented traditional trade where traceability is typically low.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◈</div>
+            <div class="source-body">
+              <h4>Modern channel POS</h4>
+              <p>Transactional data from structured retail chains and modern trade formats.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">⊡</div>
+            <div class="source-body">
+              <h4>Distributor integrations</h4>
+              <p>Structured connections to receive and map sales, coverage, pricing, and promotional data.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">≡</div>
+            <div class="source-body">
+              <h4>Syndicated market data</h4>
+              <p>Third-party aggregated sources for benchmarking and market-level reads.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◰</div>
+            <div class="source-body">
+              <h4>Product &amp; price catalogs</h4>
+              <p>SKU master data, price lists, promotional calendars, and inventory records.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source-col-tint">
+        <div class="source-col-label">Unstructured &amp; Missing Sources</div>
+        <div class="source-list">
+          <div class="source-item">
+            <div class="source-icon">◌</div>
+            <div class="source-body">
+              <h4>Field surveys</h4>
+              <p>In-field capture for prices, inventory, promotions, visibility, competitive presence, and compliance.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◯</div>
+            <div class="source-body">
+              <h4>Sales force reports</h4>
+              <p>Route-level intelligence from commercial teams operating at the point of sale.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◧</div>
+            <div class="source-body">
+              <h4>Shelf &amp; in-store intelligence</h4>
+              <p>Assortment compliance, share of shelf, pricing execution, and promotional display tracking.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◈</div>
+            <div class="source-body">
+              <h4>Competitive price monitoring</h4>
+              <p>Observed competitor pricing at point of sale by channel, region, and format.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◉</div>
+            <div class="source-body">
+              <h4>Market studies &amp; benchmarking</h4>
+              <p>External research and category benchmarks that provide context beyond internal data.</p>
+            </div>
+          </div>
+          <div class="source-item">
+            <div class="source-icon">◌</div>
+            <div class="source-body">
+              <h4>Consumer &amp; shopper research</h4>
+              <p>Demand-side intelligence to complement supply-side and transactional data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Five submods -->
+    <div class="submods-strip">
+      <div class="submod">
+        <div class="submod-code">A1</div>
+        <h4>Data Capture</h4>
+        <p>Direct capture from POS systems, surveys, apps, and integrations. The entry point for all commercial information.</p>
+      </div>
+      <div class="submod">
+        <div class="submod-code">A2</div>
+        <h4>Data Ingestion</h4>
+        <p>Technical loading of multiple sources into a common architecture — regardless of format, cadence, or origin.</p>
+      </div>
+      <div class="submod">
+        <div class="submod-code">A3</div>
+        <h4>Data Cleansing</h4>
+        <p>Correction, validation, deduplication, imputation of missing values, and resolution of inconsistencies.</p>
+      </div>
+      <div class="submod">
+        <div class="submod-code">A4</div>
+        <h4>Harmonization</h4>
+        <p>Standardization of SKUs, customers, channels, and geographies so data becomes comparable across sources.</p>
+      </div>
+      <div class="submod">
+        <div class="submod-code">A5</div>
+        <h4>Data Asset Creation</h4>
+        <p>Generation of structured, usable datasets for analytics, benchmarking, and eventual monetization.</p>
+      </div>
+    </div>
+    <div class="submod-footer">Five submodules. One integrated base.</div>
+  </div>
+</section>
+
+<!-- A → B CONNECTOR -->
+<div class="arm-connector">
+  <div class="arm-connector-inner">
+    <span class="ac-label">A — Information Infrastructure</span>
+    <div class="ac-line"></div>
+    <span class="ac-arrow">→</span>
+    <div class="ac-line"></div>
+    <span class="ac-label">B — Intelligence Layer</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION B — INTELLIGENCE LAYER
+     ═══════════════════════════════════════════ -->
+<section id="arm-b" class="deep-section section-b">
+  <div class="container">
+    <div class="section-arm-header">
+      <div class="arm-letter-bg" style="color:rgba(27,42,59,.08)">B</div>
+      <div>
+        <div class="eyebrow">Intelligence Layer</div>
+        <h2>We convert visibility<br>into commercial decisions.</h2>
+        <p class="lead" style="margin-top:18px;">Eight analytical capabilities that transform structured commercial data into prioritized actions — not reports. Trade-offs made explicit. Decisions, not recommendations.</p>
+      </div>
+    </div>
+
+    <!-- 8 capabilities — 4 × 2 grid -->
+    <div class="cap-grid">
+
+      <div class="cap-item">
+        <div class="cap-icon">◈</div>
+        <h4>Pricing &amp; Pack Architecture</h4>
+        <p>Design prices and pack structures with economic rigor, demand sensitivity, and behavioral validation across channels and formats.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">◯</div>
+        <h4>Demand Moments &amp; Occasions</h4>
+        <p>Map when and where consumers engage — and configure the offer, price, and pack accordingly by occasion and channel.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">≈</div>
+        <h4>Predictive Elasticities</h4>
+        <p>Simulate how volume and margin respond to price moves before committing. Test scenarios across SKUs, segments, and markets.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">◉</div>
+        <h4>Promotion Intelligence</h4>
+        <p>Distinguish promotions that create genuine value from those that displace volume, destroy margin, or cannibalize adjacent SKUs.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">⊟</div>
+        <h4>Trade Terms Optimization</h4>
+        <p>Trace margin erosion from list price to pocket — and redirect trade spend where it generates measurable commercial return.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">⊞</div>
+        <h4>Portfolio &amp; Assortment</h4>
+        <p>Design the right offer for each format, channel, and occasion. Identify where current coverage leaves demand uncaptured.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">◌</div>
+        <h4>Competitive Intelligence</h4>
+        <p>Track competitor pricing, pack architecture, and promotions in real time at the point of sale — by channel, region, and format.</p>
+      </div>
+
+      <div class="cap-item">
+        <div class="cap-icon">≡</div>
+        <h4>Channel &amp; RTM Strategy</h4>
+        <p>Prioritize routes to market by value potential, coverage capacity, and commercial coherence. Align deployment to where the system can win.</p>
+      </div>
+
+    </div>
+
+    <!-- Screenshot zone -->
+    <!-- ════════════════════════════════════════════════════
+         SCREENSHOT ZONE
+         - Left frame: existing arm-b-simulator.png (pricing simulator)
+         - Right frame: PLACEHOLDER — drop additional product screenshot here
+         Replace .screenshot-placeholder div with <figure class="screenshot-frame"><img src="assets/YOUR-IMAGE.png" ...><figcaption>...</figcaption></figure>
+         ════════════════════════════════════════════════════ -->
+    <div class="screenshot-zone" style="margin-top:40px">
+      <figure class="screenshot-frame">
+        <img src="assets/arm-b-simulator.png" alt="Pricing simulator — scenario modeling interface" loading="lazy"/>
+        <figcaption>Pricing &amp; scenario modeling interface</figcaption>
+      </figure>
+      <div class="screenshot-placeholder">
+        <!-- PLACEHOLDER: Insert additional product screenshot here -->
+        <div class="ph-icon">⊞</div>
+        <p>Product screenshot</p>
+        <p style="font-size:11px;color:var(--navy-12);font-weight:400;letter-spacing:0;text-transform:none;">Replace this block with a <code>&lt;figure class="screenshot-frame"&gt;</code></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- B → C CONNECTOR -->
+<div class="arm-connector">
+  <div class="arm-connector-inner">
+    <span class="ac-label">B — Intelligence Layer</span>
+    <div class="ac-line"></div>
+    <span class="ac-arrow">→</span>
+    <div class="ac-line"></div>
+    <span class="ac-label">C — Execution &amp; Value Capture</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION C — EXECUTION & VALUE CAPTURE
+     ═══════════════════════════════════════════ -->
+<section id="arm-c" class="deep-section section-c">
+  <div class="container">
+    <div class="section-arm-header">
+      <div class="arm-letter-bg">C</div>
+      <div>
+        <div class="eyebrow">Execution &amp; Value Capture</div>
+        <h2>We stay until<br>the value is captured.</h2>
+        <p class="lead" style="margin-top:18px;">Most systems stop at the recommendation. Arm C is where the work becomes real — intelligence translated into field action, measured against baseline, and fed back into the system.</p>
+      </div>
+    </div>
+
+    <p class="c-gap-note">The distance between a good analysis and a measurable commercial result is where most systems — and most consulting engagements — fail. We do not hand off a deck and disengage.</p>
+
+    <div class="c-items">
+
+      <!-- Order Entry — featured -->
+      <div class="c-item featured">
+        <div class="c-num">C0</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Order Entry</div>
+          <h3>Omnichannel</h3>
+        </div>
+        <div class="c-body">
+          <p>Orders captured across all commercial channels — including <strong style="color:rgba(255,255,255,.85)">phone</strong>, WhatsApp, client systems, and digital platforms — and integrated into a single commercial flow. One system. One record. Unified execution regardless of channel origin.</p>
+          <span class="c-tag c-featured-tag">Strategically critical</span>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-num">C1</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Decision Translation</div>
+          <h3>Analysis into prioritized actions</h3>
+        </div>
+        <div class="c-body">
+          <p>B output converted into a specific, sequenced action list — what gets done first, what gets done second, what does not get done at all — with responsible owners and timelines.</p>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-num">C2</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Action Plans</div>
+          <h3>Decisions into concrete plans</h3>
+        </div>
+        <div class="c-body">
+          <p>Decisions structured into field-ready plans by commercial, trade, key account, and territory — with the specificity required for execution, not just communication.</p>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-num">C3</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Field Enablement</div>
+          <h3>Working alongside execution teams</h3>
+        </div>
+        <div class="c-body">
+          <p>We do not hand off the plan. We work alongside the teams responsible for execution until the logic operates on its own — training, real-time support, and adaptation when field signals reveal gaps.</p>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-num">C4</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">KPI Tracking</div>
+          <h3>Measuring what actually happened</h3>
+        </div>
+        <div class="c-body">
+          <p>Performance dashboards and cycle-by-cycle variance analysis built in from the start. Results measured against pre-defined baseline — not against internal perception of progress.</p>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-num">C5</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Governance</div>
+          <h3>Execution discipline across cycles</h3>
+        </div>
+        <div class="c-body">
+          <p>Structured review cadence, escalation paths, and accountability frameworks to maintain commercial discipline beyond the initial deployment — institutionalizing the logic, not just the output.</p>
+        </div>
+      </div>
+
+      <div class="c-item">
+        <div class="c-num">C6</div>
+        <div class="c-head">
+          <div class="eyebrow" style="color:rgba(255,255,255,.35);">Learning Loop</div>
+          <h3>Feeding results back into the system</h3>
+        </div>
+        <div class="c-body">
+          <p>What Arm C learns in execution is not lost. Structured and returned to the analytical models, the data infrastructure, and the priority framework — so every cycle is more informed than the last.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CLOSING LOOP
+     ═══════════════════════════════════════════ -->
+<section class="closing-loop">
+  <div class="container">
+    <div class="eyebrow">The loop closes</div>
+    <h2>Execution feeds the system.<br>The system improves.</h2>
+    <p class="lead">Every cycle returns structured learning to Arm A and Arm B — making the data richer, the models sharper, and the decisions more precise. The system compounds.</p>
+    <div class="loop-flow">
+      <div class="loop-node">
+        <div class="loop-node-num">A</div>
+        <h4>Information</h4>
+        <p>Market data structured and consolidated</p>
+      </div>
+      <div class="loop-node">
+        <div class="loop-node-num">B</div>
+        <h4>Intelligence</h4>
+        <p>Data converted into decisions</p>
+      </div>
+      <div class="loop-node">
+        <div class="loop-node-num">C</div>
+        <h4>Execution</h4>
+        <p>Decisions captured in the field</p>
+      </div>
+      <div class="loop-node" style="background:rgba(255,255,255,.14)">
+        <div class="loop-node-num" style="color:rgba(255,255,255,.5)">↺</div>
+        <h4>Learning</h4>
+        <p>Results feed back into A &amp; B</p>
+      </div>
+    </div>
+    <div class="loop-cta">
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn-light">Book a Call</a>
+      <a href="index.html" class="back-link">← Back to Imberion</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="logo.png" alt="Imberion" style="height:28px;width:auto;opacity:.6;margin-bottom:16px;filter:brightness(0) invert(1)"/>
+      <div style="font-size:13px;color:rgba(255,255,255,.3);">© 2025 Imberion. All rights reserved.</div>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links">
+      <a href="index.html">Home</a>
+      <a href="how-we-operate.html">How We Operate</a>
+      <a href="distribuidores.html">Distributors</a>
+      <a href="https://calendly.com/rodrigo-imberion/30min">Book a Call</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Section nav active state on scroll */
+  (function(){
+    const anchors = ['arm-a','arm-b','arm-c'];
+    const navLinks = document.querySelectorAll('.section-nav a');
+    const sectionNav = document.getElementById('section-nav');
+
+    function updateActive(){
+      let current = '';
+      anchors.forEach(id => {
+        const el = document.getElementById(id);
+        if(el && window.scrollY >= el.offsetTop - 140) current = id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActive, {passive:true});
+    updateActive();
+  })();
+
+  /* Lang toggle (visual only — same pattern as arm pages) */
+  document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.lang-btn').forEach(x => x.classList.toggle('active', x === b));
+  }));
+</script>
+</body>
+</html>
