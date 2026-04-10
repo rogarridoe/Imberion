@@ -612,7 +612,7 @@ setLang(detectLang());
       const dist  = Math.pow(Math.random(), 0.45) * 320;
       // Signal position: one sine-wave cycle across ~210px width
       const u  = i / N;                         // 0 → 1
-      const sx = cx0 + (u - 0.5) * 210;
+      const sx = cx0 - (u - 0.5) * 210;
       const sy = cy0 + Math.sin(u * Math.PI * 2) * 18;
       pts.push({
         nx:    cx0 + Math.cos(angle) * dist,
