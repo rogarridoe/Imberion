@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Imberion — One-Pager Ejecutivo</title>
+<link rel="icon" href="../assets/logos/favicon.png">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--imb-navy);font-family:var(--font-sans);color:#fff;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  deck-stage{display:block;width:1920px;height:1080px;position:relative}
+  .print-root{width:1920px;height:1080px;background:var(--imb-navy);color:#fff;position:relative;overflow:hidden;margin:0 auto}
+  section{background:var(--imb-navy);color:#fff;overflow:hidden;position:relative}
+
+  @page{size:1920px 1080px;margin:0}
+  @media print{
+    html,body{background:#fff;margin:0;padding:0;width:1920px;height:1080px}
+    .print-root{width:1920px;height:1080px;page-break-after:avoid}
+    section{width:1920px;height:1080px}
+  }
+</style>
+<style>
+  html,body{margin:0;padding:0;background:var(--imb-navy);font-family:var(--font-sans);color:#fff;-webkit-font-smoothing:antialiased}
+  section{background:var(--imb-navy);color:#fff;overflow:hidden;position:relative;width:1920px;height:1080px;display:block}
+
+  .page{position:absolute;inset:0;display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto 1fr auto auto;
+    gap:0}
+
+  /* ——— Background art ——— */
+  .bg-art{position:absolute;right:0;top:0;bottom:0;width:55%;overflow:hidden;z-index:0;pointer-events:none}
+  .bg-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28}
+  .bg-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--imb-navy) 0%,rgba(10,24,40,.95) 22%,rgba(10,24,40,.55) 65%,rgba(10,24,40,.85) 100%)}
+
+  /* ——— Header ——— */
+  .hdr{grid-column:1/-1;grid-row:1;display:flex;justify-content:space-between;align-items:center;padding:28px 80px 0;position:relative;z-index:2}
+  .hdr .mark img{height:32px;width:auto;display:block}
+  .hdr .meta{font:500 12px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(143,163,184,.7)}
+  .hdr .meta span{color:#fff;margin-right:16px}
+
+  /* ——— Hero band (spans both cols) ——— */
+  .hero{grid-column:1/-1;grid-row:2;padding:26px 80px 28px;position:relative;z-index:2;
+    display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;
+    border-bottom:1px solid rgba(255,255,255,.12)}
+  .hero .eyebrow-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .eyebrow{font:600 12px/1 var(--font-sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(143,163,184,.85)}
+  .eyebrow .num{font-family:var(--font-serif);font-weight:300;font-size:30px;color:rgba(255,255,255,.35);letter-spacing:0;font-variant-numeric:lining-nums;margin-right:10px}
+  .eyebrow .ln{flex:1;height:1px;background:rgba(255,255,255,.15);display:inline-block;min-width:40px}
+
+  .hero h1{font-family:var(--font-serif);font-weight:400;font-size:44px;line-height:1.08;letter-spacing:-.015em;margin:0;color:#fff}
+  .hero h1 em{font-style:italic;color:rgba(143,163,184,.9)}
+
+  .hero .lede{font-family:var(--font-serif);font-style:italic;font-size:19px;line-height:1.38;color:rgba(255,255,255,.88);margin:0 0 8px;max-width:560px}
+  .hero .lede b{font-style:normal;font-family:var(--font-sans);font-weight:500;color:#fff;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:2px;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+  .hero .lede-foot{font-size:13px;line-height:1.5;color:rgba(143,163,184,.85);margin:0;max-width:520px;letter-spacing:.01em}
+
+  /* ——— Mid band: Problem (L) + Model (R) ——— */
+  .band{grid-column:1/-1;grid-row:3;display:grid;grid-template-columns:1fr 1.25fr;gap:0;position:relative;z-index:2}
+
+  /* Problem column */
+  .col-problem{padding:28px 56px 26px 80px;border-right:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column}
+  .col-problem h2{font-family:var(--font-serif);font-weight:400;font-size:26px;line-height:1.12;letter-spacing:-.01em;margin:0 0 18px;color:#fff;max-width:440px}
+  .col-problem h2 em{font-style:italic;color:rgba(143,163,184,.9)}
+
+  .gap-title{font:600 11px/1 var(--font-sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(143,163,184,.8);margin:0 0 12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+  .gap-list{list-style:none;padding:0;margin:0 0 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
+  .gap-list li{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.9);padding-left:14px;position:relative}
+  .gap-list li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:1px;background:rgba(143,163,184,.9)}
+  .gap-list li b{font-weight:500;color:#fff}
+  .gap-list li em{display:block;font-style:italic;color:rgba(255,255,255,.72);font-size:13px;margin-top:3px;line-height:1.4;font-family:var(--font-sans);letter-spacing:0}
+
+  .implic{margin-top:auto;padding:14px 20px;background:rgba(255,255,255,.04);border-left:2px solid rgba(143,163,184,.6)}
+  .implic .k{font:600 10.5px/1 var(--font-sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(143,163,184,.85);margin-bottom:8px}
+  .implic p{font-family:var(--font-serif);font-style:italic;font-size:16px;line-height:1.4;color:#fff;margin:0}
+  .implic p em{color:rgba(143,163,184,.95);font-style:italic}
+
+  /* Model column */
+  .col-model{padding:28px 80px 26px 56px;display:flex;flex-direction:column}
+  .col-model h2{font-family:var(--font-serif);font-weight:400;font-size:26px;line-height:1.12;letter-spacing:-.01em;margin:0 0 10px;color:#fff}
+  .col-model h2 em{font-style:italic;color:rgba(143,163,184,.9)}
+  .col-model .kicker{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.78);margin:0 0 18px;max-width:620px;letter-spacing:.01em}
+  .col-model .kicker b{font-weight:500;color:#fff}
+
+  .blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.18);flex:1;position:relative}
+  .blocks::before, .blocks::after{content:"";position:absolute;top:44px;width:18px;height:1px;background:rgba(143,163,184,.55);z-index:2}
+  .blocks::before{left:calc(33.33% - 9px)}
+  .blocks::after{left:calc(66.67% - 9px)}
+  .block{padding:20px 20px 18px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;position:relative}
+  .block:last-child{border-right:none}
+  .block .letter{position:absolute;top:16px;right:18px;font-family:var(--font-serif);font-weight:300;font-size:48px;line-height:.9;color:rgba(255,255,255,.08);font-style:italic}
+  .block .tag{font:600 10.5px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:rgba(143,163,184,.9);margin-bottom:10px}
+  .block h3{font-family:var(--font-serif);font-weight:400;font-size:19px;line-height:1.18;margin:0 0 10px;color:#fff;max-width:190px}
+  .block .q{font-family:var(--font-serif);font-style:italic;font-size:13px;line-height:1.45;color:rgba(255,255,255,.7);margin:0 0 12px;padding-bottom:10px;border-bottom:1px dashed rgba(255,255,255,.14)}
+  .block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
+  .block li{font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.85);padding-left:12px;position:relative}
+  .block li::before{content:"·";position:absolute;left:0;color:rgba(143,163,184,.95);font-weight:700;top:-2px;font-size:16px}
+
+  .model-note{margin-top:14px;font-family:var(--font-serif);font-style:italic;font-size:13px;color:rgba(143,163,184,.9);text-align:center;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* ——— Impact + clients band ——— */
+  .impact{grid-column:1/-1;grid-row:4;display:grid;grid-template-columns:1.1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,.18);position:relative;z-index:2;background:rgba(6,16,28,.55)}
+
+  .impact-stats{padding:16px 56px 16px 80px;border-right:1px solid rgba(255,255,255,.12)}
+  .impact-stats .hd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;gap:20px}
+  .impact-stats .hd h3{font-family:var(--font-serif);font-weight:400;font-size:22px;line-height:1.15;margin:0;color:#fff}
+  .impact-stats .hd h3 em{font-style:italic;color:rgba(143,163,184,.9)}
+  .impact-stats .hd .sub{font-size:12px;color:rgba(143,163,184,.8);letter-spacing:.02em;line-height:1.45;max-width:260px;text-align:right;font-family:var(--font-serif);font-style:italic}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.18)}
+  .stat{padding:12px 18px 10px 0;border-right:1px solid rgba(255,255,255,.08)}
+  .stat:last-child{border-right:none;padding-right:0}
+  .stat:nth-child(n+2){padding-left:22px}
+  .stat .n{font-family:var(--font-sans);font-weight:300;font-size:42px;line-height:1;color:#fff;letter-spacing:-.025em;font-variant-numeric:lining-nums tabular-nums;margin-bottom:6px;display:block}
+  .stat .n .u{font-size:20px;color:rgba(143,163,184,.95);letter-spacing:0;margin-left:2px}
+  .stat .lbl{font-family:var(--font-serif);font-weight:400;font-size:14px;line-height:1.25;color:#fff}
+  .stat .lbl em{font-style:italic;color:rgba(255,255,255,.78);display:block;font-size:13.5px;margin-top:5px;letter-spacing:.005em;line-height:1.45;font-family:var(--font-serif);font-weight:500}
+  .stats-foot{font-size:11.5px;color:rgba(143,163,184,.65);font-style:italic;padding:10px 0 0;letter-spacing:.01em;line-height:1.5;font-family:var(--font-serif)}
+
+  /* Clients */
+  .clients{padding:16px 80px 16px 56px;display:flex;flex-direction:column;justify-content:center}
+  .clients .hd{margin-bottom:12px}
+  .clients .hd .kbow{font:600 11px/1 var(--font-sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(143,163,184,.85);margin-bottom:6px}
+  .clients .hd .t{font-family:var(--font-serif);font-style:italic;font-size:15px;line-height:1.35;color:rgba(255,255,255,.88);margin:0;max-width:420px}
+  .logos{display:grid;grid-template-columns:repeat(5,1fr);gap:12px 20px;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+  .logos img{max-width:100%;max-height:26px;width:auto;height:auto;object-fit:contain;opacity:.82;filter:brightness(0) invert(1);display:block;margin:0 auto}
+
+  /* ——— CTA band ——— */
+  .cta-band{grid-column:1/-1;grid-row:5;display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:40px;padding:10px 80px 10px;border-top:1px solid rgba(255,255,255,.15);position:relative;z-index:2}
+  .cta-band .line{font-family:var(--font-serif);font-weight:300;font-style:italic;font-size:20px;line-height:1.2;color:#fff;margin:0;letter-spacing:-.005em;max-width:620px}
+  .cta-band .line em{color:rgba(143,163,184,.95)}
+  .cta-right{display:flex;align-items:center;gap:28px;justify-content:flex-end}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#fff;color:var(--imb-navy);font:600 11px/1 var(--font-sans);letter-spacing:.08em;border-radius:3px;border:none;text-decoration:none;text-transform:uppercase;white-space:nowrap}
+  .contact{display:flex;flex-direction:column;gap:1px;font-size:11.5px;line-height:1.45;color:rgba(255,255,255,.75);letter-spacing:.02em;text-align:right}
+  .contact .name{font-family:var(--font-serif);font-size:15px;font-weight:400;color:#fff;letter-spacing:0}
+  .contact a{color:rgba(255,255,255,.75);text-decoration:none}
+
+  /* ——— Footer ——— */
+  .ftr{grid-column:1/-1;grid-row:6;padding:5px 80px 7px;display:flex;justify-content:space-between;align-items:center;font:500 10px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:rgba(143,163,184,.5);position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.06)}
+  .ftr .right{font-family:var(--font-serif);font-style:italic;text-transform:none;letter-spacing:.02em;font-size:12px;color:rgba(143,163,184,.65)}
+</style>
+</head>
+<body>
+<div class="print-root">
+<div class="deck-stage-print" style="display:block;width:1920px;height:1080px;position:relative">
+
+<!-- 01 — ONE-PAGER EJECUTIVO -->
+<section data-label="One-Pager Ejecutivo">
+
+  <div class="bg-art"><img src="../assets/textures/particle-wave.png" alt=""></div>
+
+  <div class="page">
+
+    <!-- Header -->
+    <div class="hdr">
+      <div class="mark">
+        <img src="../assets/logos/imberion-wordmark-white.png" alt="Imberion">
+      </div>
+      <div class="meta"><span>Resumen Ejecutivo</span>· B2B · 2026</div>
+    </div>
+
+    <!-- Hero band -->
+    <div class="hero">
+      <div>
+        <div class="eyebrow-row">
+          <span class="eyebrow"><span class="num">01</span>La oportunidad<span class="ln"></span></span>
+        </div>
+        <h1>Para escalar, la empresa necesita <em>capabilities comerciales</em> — hoy la IA las habilita a cualquier tamaño.</h1>
+      </div>
+      <div>
+        <p class="lede">Segmentación, pricing, cost-to-serve, prospección estructurada: lo que antes solo operaba una <b>AAA</b> con equipos dedicados.</p>
+        <p class="lede-foot">La IA cierra esa brecha. No como herramienta, sino como un <em>modelo</em> que decide y ejecuta junto al equipo comercial — al alcance de empresas medianas, sin importar su punto de madurez.</p>
+      </div>
+    </div>
+
+    <!-- Problem + Model band -->
+    <div class="band">
+
+      <!-- Problem column -->
+      <div class="col-problem">
+        <div class="eyebrow-row">
+          <span class="eyebrow"><span class="num">02</span>El gap estructural<span class="ln"></span></span>
+        </div>
+        <h2>Operan bien. Pero el <em>motor comercial</em> sigue siendo discrecional.</h2>
+
+        <div class="gap-title">Síntomas recurrentes</div>
+        <ul class="gap-list">
+          <li><b>Segmentación inexistente.</b><em>Misma propuesta para clientes de valor distinto — fuga de margen.</em></li>
+          <li><b>Pricing discrecional.</b><em>Variabilidad &gt;10–20% sin criterio — erosión invisible.</em></li>
+          <li><b>Prospección reactiva.</b><em>Pipeline no predecible — crecimiento errático.</em></li>
+          <li><b>Fuerza de ventas inconsistente.</b><em>Win-rate y mix dependen de la persona.</em></li>
+          <li><b>Margen poco visible.</b><em>Se optimizan ventas, no rentabilidad.</em></li>
+          <li><b>Cost-to-serve fuera de radar.</b><em>Clientes “rentables” que destruyen valor.</em></li>
+        </ul>
+
+        <div class="implic">
+          <div class="k">Implicación</div>
+          <p>El mayor pool de valor vive en la <em>decisión comercial</em> — hoy permanece sin capturar y sin medir.</p>
+        </div>
+      </div>
+
+      <!-- Model column -->
+      <div class="col-model">
+        <div class="eyebrow-row">
+          <span class="eyebrow"><span class="num">03</span>Qué hace Imberion<span class="ln"></span></span>
+        </div>
+        <h2>Un <em>modelo</em> de inteligencia y ejecución comercial.</h2>
+        <p class="kicker"><b>No es un software.</b> Es un modelo operado con IA que se integra al día a día del equipo comercial — tres bloques que funcionan como loop, o se despliegan donde la necesidad es mayor.</p>
+
+        <div class="blocks">
+          <div class="block">
+            <div class="letter">A</div>
+            <div class="tag">Bloque A</div>
+            <h3>Infraestructura de información</h3>
+            <div class="q">La base confiable sobre la cual se decide.</div>
+            <ul>
+              <li>Integra datos de venta, cliente, pedido y costo de servir.</li>
+              <li>Si no existen, se define cómo generarlos.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <div class="letter">B</div>
+            <div class="tag">Bloque B</div>
+            <h3>Inteligencia comercial</h3>
+            <div class="q">Decisiones consistentes sobre precio, mix y promoción.</div>
+            <ul>
+              <li>Agentes que analizan, recomiendan y explican.</li>
+              <li>Reglas de negocio + criterio comercial + datos.</li>
+              <li>Prioriza por impacto económico.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <div class="letter">C</div>
+            <div class="tag">Bloque C</div>
+            <h3>Ejecución y captura</h3>
+            <div class="q">La decisión se convierte en acción en campo.</div>
+            <ul>
+              <li>Traduce recomendación en acción operable.</li>
+              <li>Adopción, capacidad y gobernanza.</li>
+              <li>Mide impacto contra business case — <b>self-funded</b>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="model-note">El valor no se proyecta — se mide. Y paga la implementación.</div>
+      </div>
+    </div>
+
+    <!-- Impact + clients band -->
+    <div class="impact">
+
+      <div class="impact-stats">
+        <div class="hd">
+          <h3>Rangos de <em>referencia</em></h3>
+          <div class="sub">RGM aplicado a B2B · benchmarks de industria.</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="n">+2–5<span class="u">%</span></span>
+            <div class="lbl">Margen · 3–6 meses<em>Quick wins en pricing, cost-to-serve y disciplina.</em></div>
+          </div>
+          <div class="stat">
+            <span class="n">+5–15<span class="u">%</span></span>
+            <div class="lbl">Ventas · 6–12 meses<em>Ejecución, mix, cobertura y win-rate.</em></div>
+          </div>
+          <div class="stat">
+            <span class="n">−15–30<span class="u">%</span></span>
+            <div class="lbl">Inversión comercial · 6–12 meses<em>Elimina gasto no incremental, reasigna por ROI.</em></div>
+          </div>
+        </div>
+        <div class="stats-foot">Impacto visible desde semanas 6–8 en pilotos. Rango real depende del punto de partida.</div>
+      </div>
+
+      <div class="clients">
+        <div class="hd">
+          <div class="kbow">Algunas empresas con las que hemos trabajado</div>
+          <p class="t">De la AAA global a la empresa mediana en crecimiento.</p>
+        </div>
+        <div class="logos">
+          <img src="../assets/logos-clientes/gerdau-metaldom.png" alt="">
+          <img src="../assets/logos-clientes/nestle.png" alt="">
+          <img src="../assets/logos-clientes/pochteca.png" alt="">
+          <img src="../assets/logos-clientes/cargill.png" alt="">
+          <img src="../assets/logos-clientes/cmi.png" alt="">
+          <img src="../assets/logos-clientes/usg.png" alt="">
+          <img src="../assets/logos-clientes/coca-cola-company.png" alt="">
+          <img src="../assets/logos-clientes/ab-inbev.png" alt="">
+          <img src="../assets/logos-clientes/bimbo.png" alt="">
+          <img src="../assets/logos-clientes/kavak.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA band -->
+    <div class="cta-band">
+      <p class="line">No necesitas estar listo <em>para empezar.</em></p>
+      <div class="cta-right">
+        <div class="contact">
+          <div class="name">Rodrigo Garrido</div>
+          <div>Principal · Imberion</div>
+          <a href="mailto:rodrigo@imberion.com">rodrigo@imberion.com · imberion.com</a>
+        </div>
+        <a class="btn" href="mailto:rodrigo@imberion.com">Agendar conversación →</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="ftr">
+      <div>Imberion · Confidencial · Abril 2026</div>
+      <div class="right">from noise to signal.</div>
+    </div>
+
+  </div>
+</section>
+
+</div>
+<script>
+  (async()=>{
+    try{ if(document.fonts && document.fonts.ready) await document.fonts.ready; }catch(e){}
+    await new Promise(r=>setTimeout(r,600));
+    window.print();
+  })();
+</script>
+</body>
+</html>

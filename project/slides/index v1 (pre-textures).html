@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Imberion — Conversación Exploratoria</title>
+<link rel="icon" href="../assets/logos/favicon.png">
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="deck-stage.js"></script>
+<script type="application/json" id="speaker-notes">
+["","","","","","","","","",""]
+</script>
+<style>
+  html,body{margin:0;padding:0;background:#000;font-family:var(--font-sans);color:var(--imb-navy);-webkit-font-smoothing:antialiased}
+  section{background:var(--imb-paper);color:var(--imb-navy);overflow:hidden}
+  section.dark{background:var(--imb-navy);color:#fff}
+  section.paper-soft{background:var(--imb-paper-soft)}
+
+  /* ——— Frame scaffolding ——— */
+  .slide{position:relative;width:100%;height:100%;padding:80px 100px 72px;box-sizing:border-box;display:flex;flex-direction:column}
+  .slide .footer{
+    position:absolute;left:100px;right:100px;bottom:40px;
+    display:flex;justify-content:space-between;align-items:center;
+    font:500 14px/1 var(--font-sans);letter-spacing:.04em;color:var(--imb-navy-40);
+  }
+  section.dark .footer{color:rgba(255,255,255,.3)}
+  .slide .footer .no{font-family:var(--font-serif);font-weight:300;font-size:18px;letter-spacing:0}
+  .slide .brand{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--imb-slate);font-weight:600}
+  section.dark .brand{color:rgba(143,163,184,.7)}
+  .brand img{height:20px;width:auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:14px;font:600 13px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--imb-slate);margin-bottom:32px}
+  .eyebrow .ln{width:32px;height:1px;background:var(--imb-navy-20)}
+  section.dark .eyebrow{color:rgba(143,163,184,.7)}
+  section.dark .eyebrow .ln{background:rgba(255,255,255,.25)}
+
+  h1.display{font-family:var(--font-serif);font-weight:300;font-size:120px;line-height:1.02;letter-spacing:-.015em;margin:0;color:inherit}
+  h1.display em{font-style:italic;color:var(--imb-slate);font-weight:300}
+  section.dark h1.display em{color:rgba(255,255,255,.45)}
+  h2.title{font-family:var(--font-serif);font-weight:400;font-size:64px;line-height:1.1;letter-spacing:-.01em;margin:0 0 24px;color:inherit}
+  h2.title em{font-style:italic;color:var(--imb-slate)}
+  section.dark h2.title em{color:rgba(255,255,255,.5)}
+  p.lede{font-size:22px;line-height:1.55;color:var(--imb-navy-60);max-width:960px;margin:0}
+  section.dark p.lede{color:rgba(255,255,255,.7)}
+
+  /* ——— S1 Title ——— */
+  .s1{display:grid;grid-template-columns:1fr 1fr;align-items:end;padding:120px 100px 100px}
+  .s1 .main{position:relative}
+  .s1 .signal{position:absolute;top:-520px;right:-40px;width:420px;height:420px;border-radius:50%;background:var(--imb-navy);display:flex;align-items:center;justify-content:center;opacity:.06}
+  .s1 .signal img{width:320px;height:320px;filter:invert(1)}
+  .s1 .side{display:flex;flex-direction:column;gap:20px;padding-bottom:12px}
+  .s1 .side .kicker{font:600 14px/1 var(--font-sans);letter-spacing:.22em;text-transform:uppercase;color:var(--imb-slate)}
+  .s1 .side h3{font-family:var(--font-serif);font-weight:400;font-style:italic;font-size:44px;line-height:1.2;letter-spacing:-.005em;color:var(--imb-navy);margin:0}
+  .s1 .date{font:500 16px/1 var(--font-sans);letter-spacing:.05em;color:var(--imb-navy-60);margin-top:20px}
+  .s1 .date::before{content:"";display:inline-block;width:40px;height:1px;background:var(--imb-navy-40);vertical-align:middle;margin-right:16px}
+
+  /* ——— S2 Objetivos ——— */
+  .s2{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center}
+  .s2 .left{padding-right:40px;border-right:1px solid var(--imb-navy-12)}
+  .s2 .left h2{font-family:var(--font-serif);font-weight:400;font-size:56px;line-height:1.1;margin:0;color:var(--imb-navy)}
+  .s2 .left h2 em{font-style:italic;color:var(--imb-slate)}
+  .s2 .right p{font-size:28px;line-height:1.5;color:var(--imb-navy);margin:0;font-family:var(--font-serif);font-weight:400}
+  .s2 .right p em{font-style:italic;color:var(--imb-slate)}
+
+  /* ——— S3 Agenda ——— */
+  .s3 .list{margin-top:40px;border-top:1px solid var(--imb-navy-12)}
+  .s3 .item{display:grid;grid-template-columns:120px 1fr auto;gap:40px;align-items:center;padding:40px 0;border-bottom:1px solid var(--imb-navy-12);transition:background .2s}
+  .s3 .item .n{font-family:var(--font-serif);font-weight:300;font-size:64px;line-height:1;color:var(--imb-slate);opacity:.4}
+  .s3 .item .t{font-family:var(--font-serif);font-weight:400;font-size:42px;line-height:1.15;color:var(--imb-navy)}
+  .s3 .item .t em{font-style:italic;color:var(--imb-slate)}
+  .s3 .item .dur{font:500 14px/1 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--imb-slate)}
+
+  /* ——— S4 Por qué existe ——— */
+  .s4{display:grid;grid-template-columns:1.2fr 1fr;gap:80px}
+  .s4 h2{font-family:var(--font-serif);font-weight:400;font-size:54px;line-height:1.1;margin:0 0 36px;color:var(--imb-navy)}
+  .s4 h2 em{font-style:italic;color:var(--imb-slate)}
+  .s4 .bullets{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--imb-navy-12)}
+  .s4 .bullets li{padding:20px 0;border-bottom:1px solid var(--imb-navy-12);font-size:18px;line-height:1.55;color:var(--imb-navy-80);display:flex;gap:20px}
+  .s4 .bullets li::before{content:"—";color:var(--imb-slate);flex-shrink:0}
+  .s4 .implic{margin-top:56px;padding:28px 32px;background:var(--imb-navy);color:#fff;border-left:3px solid var(--imb-slate)}
+  .s4 .implic .label{font:600 11px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(143,163,184,.7);margin-bottom:12px}
+  .s4 .implic p{font-family:var(--font-serif);font-weight:400;font-style:italic;font-size:22px;line-height:1.4;margin:0;color:#fff}
+  .s4 .implic p em{color:rgba(255,255,255,.55)}
+
+  /* ——— S5 Modelo Imberion ——— */
+  .s5 h2{font-family:var(--font-serif);font-weight:400;font-size:52px;line-height:1.1;margin:0 0 12px;color:var(--imb-navy)}
+  .s5 h2 em{font-style:italic;color:var(--imb-slate)}
+  .s5 .sub{font-size:18px;color:var(--imb-navy-60);margin:0 0 48px;max-width:900px;line-height:1.5}
+  .s5 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--imb-navy);flex:1}
+  .s5 .pillar{padding:32px 32px 28px;border-right:1px solid var(--imb-navy-12);display:flex;flex-direction:column;position:relative}
+  .s5 .pillar:last-child{border-right:none}
+  .s5 .pillar .letter{font-family:var(--font-serif);font-weight:300;font-size:80px;line-height:.9;color:var(--imb-navy);opacity:.15;position:absolute;top:24px;right:32px}
+  .s5 .pillar .label{font:600 12px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--imb-slate);margin-bottom:12px;position:relative;z-index:1}
+  .s5 .pillar h3{font-family:var(--font-serif);font-weight:400;font-size:28px;line-height:1.2;margin:0 0 16px;color:var(--imb-navy);max-width:260px}
+  .s5 .pillar .quip{font-size:14px;line-height:1.55;color:var(--imb-navy-60);margin:0 0 20px;font-style:italic;font-family:var(--font-serif)}
+  .s5 .pillar ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+  .s5 .pillar li{font-size:13px;line-height:1.5;color:var(--imb-navy-80);padding-left:14px;position:relative}
+  .s5 .pillar li::before{content:"·";color:var(--imb-slate);position:absolute;left:0;font-weight:700}
+  .s5 .note{margin-top:28px;font-family:var(--font-serif);font-style:italic;font-size:18px;color:var(--imb-slate);text-align:center}
+
+  /* ——— S6 Experiencia ——— */
+  .s6{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center}
+  .s6 h2{font-family:var(--font-serif);font-weight:400;font-size:48px;line-height:1.1;margin:0 0 28px;color:#fff}
+  .s6 h2 em{font-style:italic;color:rgba(255,255,255,.5)}
+  .s6 ul{list-style:none;padding:0;margin:0;border-top:1px solid rgba(255,255,255,.12)}
+  .s6 li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px;line-height:1.5;color:rgba(255,255,255,.8);display:flex;gap:16px}
+  .s6 li::before{content:"—";color:rgba(143,163,184,.7);flex-shrink:0}
+  .s6 .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 24px;padding:24px 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+  .s6 .logos .cell{display:flex;align-items:center;justify-content:center;padding:12px;height:64px}
+  .s6 .logos img{max-height:36px;max-width:100%;width:auto;opacity:.75;filter:brightness(0) invert(1)}
+  .s6 .cap{font:500 11px/1 var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(143,163,184,.55);margin:14px 0 0}
+
+  /* ——— S7 Lo que entrega ——— */
+  .s7 h2{font-family:var(--font-serif);font-weight:400;font-size:52px;line-height:1.1;margin:0 0 12px;color:var(--imb-navy)}
+  .s7 h2 em{font-style:italic;color:var(--imb-slate)}
+  .s7 .sub{font-size:18px;color:var(--imb-navy-60);margin:0 0 56px;max-width:900px;line-height:1.5}
+  .s7 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;flex:1;background:var(--imb-navy-12)}
+  .s7 .stat{background:var(--imb-paper);padding:48px 40px 44px;display:flex;flex-direction:column;justify-content:space-between;border-top:2px solid var(--imb-navy)}
+  .s7 .stat .n{font-family:var(--font-serif);font-weight:300;line-height:1;font-size:112px;color:var(--imb-navy);letter-spacing:-.02em}
+  .s7 .stat .n .u{font-size:48px;color:var(--imb-slate)}
+  .s7 .stat .lbl{font-family:var(--font-serif);font-weight:400;font-size:22px;line-height:1.25;color:var(--imb-navy);margin:20px 0 8px;max-width:280px}
+  .s7 .stat .desc{font-size:13px;line-height:1.55;color:var(--imb-navy-60)}
+  .s7 .note{margin-top:20px;font-size:12px;color:var(--imb-slate);letter-spacing:.02em;font-style:italic;font-family:var(--font-serif)}
+
+  /* ——— S8 Madurez (5-col, 6-row matrix) ——— */
+  .s8{padding:60px 60px 60px}
+  .s8 h2{font-family:var(--font-serif);font-weight:400;font-size:40px;line-height:1.1;margin:0 0 6px;color:var(--imb-navy)}
+  .s8 h2 em{font-style:italic;color:var(--imb-slate)}
+  .s8 .sub{font-size:15px;color:var(--imb-navy-60);margin:0 0 28px}
+  .s8 table{width:100%;border-collapse:collapse;font-family:var(--font-sans)}
+  .s8 th, .s8 td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--imb-navy-12);font-size:12px;line-height:1.4}
+  .s8 thead th{font:600 11px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--imb-slate);border-bottom:2px solid var(--imb-navy);padding-bottom:14px}
+  .s8 thead .stage{font-style:italic;font-weight:400;font-family:var(--font-serif);font-size:10px;color:var(--imb-navy-40);text-transform:none;letter-spacing:.02em;margin-top:4px;display:block}
+  .s8 tbody th{font-family:var(--font-serif);font-weight:400;font-size:15px;color:var(--imb-navy);text-transform:none;letter-spacing:0;width:140px;border-right:1px solid var(--imb-navy-12);border-bottom:1px solid var(--imb-navy-12);padding:14px 16px 14px 4px}
+  .s8 td{color:var(--imb-navy-80)}
+  .s8 td.c1{background:rgba(10,24,40,.02)}
+  .s8 td.c2{background:rgba(10,24,40,.04)}
+  .s8 td.c3{background:rgba(10,24,40,.06)}
+  .s8 td.c4{background:rgba(10,24,40,.10)}
+  .s8 .close{margin-top:22px;font-family:var(--font-serif);font-style:italic;font-size:20px;line-height:1.35;color:var(--imb-navy);border-top:1px solid var(--imb-navy-12);padding-top:18px}
+  .s8 .close em{color:var(--imb-slate)}
+
+  /* ——— S9 Cómo trabajamos ——— */
+  .s9 h2{font-family:var(--font-serif);font-weight:400;font-size:48px;line-height:1.1;margin:0 0 6px;color:var(--imb-navy)}
+  .s9 h2 em{font-style:italic;color:var(--imb-slate)}
+  .s9 .sub{font-size:16px;color:var(--imb-navy-60);margin:0 0 40px}
+  .s9 .tracks{display:grid;grid-template-columns:260px 1fr 1fr 1fr;gap:0;flex:1;border-top:2px solid var(--imb-navy)}
+  .s9 .trackhead{padding:24px 24px 0;border-right:1px solid var(--imb-navy-12)}
+  .s9 .trackhead .tag{display:inline-flex;padding:6px 10px;background:var(--imb-navy);color:#fff;font:600 10px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;border-radius:2px;margin-bottom:14px}
+  .s9 .trackhead .tag.alt{background:transparent;color:var(--imb-navy);border:1px solid var(--imb-navy-20)}
+  .s9 .trackhead h3{font-family:var(--font-serif);font-weight:400;font-size:22px;line-height:1.2;margin:0 0 10px;color:var(--imb-navy)}
+  .s9 .trackhead h3 em{font-style:italic;color:var(--imb-slate)}
+  .s9 .phase{padding:24px 22px;border-right:1px solid var(--imb-navy-12);border-left:none;display:flex;flex-direction:column}
+  .s9 .phase:last-child{border-right:none}
+  .s9 .phase h4{font:600 11px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--imb-slate);margin:0 0 6px}
+  .s9 .phase h5{font-family:var(--font-serif);font-weight:400;font-size:20px;line-height:1.2;margin:0 0 14px;color:var(--imb-navy)}
+  .s9 .phase ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+  .s9 .phase li{font-size:12px;line-height:1.5;color:var(--imb-navy-80);padding-left:12px;position:relative}
+  .s9 .phase li::before{content:"·";position:absolute;left:0;color:var(--imb-slate);font-weight:700}
+  .s9 .row2{border-top:1px solid var(--imb-navy-12)}
+  .s9 .note{margin-top:22px;padding:16px 20px;background:var(--imb-paper-soft);font-family:var(--font-serif);font-style:italic;font-size:18px;line-height:1.4;color:var(--imb-navy);border-left:2px solid var(--imb-signal)}
+  .s9 .note em{color:var(--imb-slate)}
+
+  /* ——— S10 Closing ——— */
+  .s10{display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:center;padding:100px 100px}
+  .s10 h1{font-family:var(--font-serif);font-weight:300;font-size:80px;line-height:1.05;letter-spacing:-.015em;margin:0 0 32px;color:#fff}
+  .s10 h1 em{font-style:italic;color:rgba(255,255,255,.45)}
+  .s10 .quote{font-family:var(--font-serif);font-style:italic;font-size:22px;line-height:1.45;color:rgba(255,255,255,.7);max-width:520px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;margin-bottom:48px}
+  .s10 .cta{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;background:#fff;color:var(--imb-navy);font:600 14px/1 var(--font-sans);letter-spacing:.04em;border-radius:4px;border:none}
+  .s10 .side{display:flex;flex-direction:column;gap:28px;padding-left:40px;border-left:1px solid rgba(255,255,255,.15)}
+  .s10 .side .mark{height:32px;width:auto;margin-bottom:8px}
+  .s10 .side .label{font:600 11px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:rgba(143,163,184,.7)}
+  .s10 .side .name{font-family:var(--font-serif);font-weight:400;font-size:32px;line-height:1.1;color:#fff;margin:6px 0 2px}
+  .s10 .side .role{font-size:14px;color:rgba(255,255,255,.55);letter-spacing:.02em}
+  .s10 .side a{color:rgba(255,255,255,.7);font-size:14px;letter-spacing:.02em;text-decoration:none;display:block;margin-top:6px}
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+<!-- 01 — TITLE -->
+<section data-label="Portada" class="paper-soft">
+  <div class="slide s1">
+    <div class="main">
+      <div class="signal"><img src="../assets/logos/imberion-signal-white.png" alt=""></div>
+      <h1 class="display">Conversación<br><em>exploratoria</em></h1>
+    </div>
+    <div class="side">
+      <div class="kicker">Imberion × Cliente</div>
+      <h3>Cómo capturar valor en decisiones comerciales con IA.</h3>
+      <div class="date">20 de abril de 2026</div>
+    </div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">01 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — OBJETIVOS -->
+<section data-label="Objetivos">
+  <div class="slide s2">
+    <div class="left">
+      <div class="eyebrow"><span class="ln"></span>Objetivos de la Sesión</div>
+      <h2>Una agenda <em>concreta,</em> no una demo.</h2>
+    </div>
+    <div class="right">
+      <p>Alinear una visión sobre la evolución comercial en su empresa, evaluar sus palancas actuales e identificar oportunidades concretas para <em>definir un posible siguiente paso conjunto.</em></p>
+    </div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">02 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — AGENDA -->
+<section data-label="Agenda">
+  <div class="slide s3">
+    <div class="eyebrow"><span class="ln"></span>Agenda</div>
+    <h2 class="title">Dos movimientos, <em>una conversación.</em></h2>
+    <div class="list">
+      <div class="item"><div class="n">01</div><div class="t">Acerca de <em>Imberion.</em></div><div class="dur">~ 20 min</div></div>
+      <div class="item"><div class="n">02</div><div class="t">Madurez, <em>aspiraciones y retos.</em></div><div class="dur">~ 40 min</div></div>
+    </div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">03 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — POR QUÉ EXISTE -->
+<section data-label="Por qué existe Imberion">
+  <div class="slide s4">
+    <div>
+      <div class="eyebrow"><span class="ln"></span>¿Por qué existe Imberion?</div>
+      <h2>El valor de la AI en empresas industriales <em>no está capturándose donde realmente impacta el margen.</em></h2>
+      <div class="implic">
+        <div class="label">Implicación</div>
+        <p>El mayor pool de valor permanece <em>sin capturar.</em></p>
+      </div>
+    </div>
+    <div>
+      <ul class="bullets">
+        <li>La inversión en AI se ha enfocado en eficiencia operativa, con retornos acotados.</li>
+        <li>Las decisiones que definen el resultado comercial siguen siendo discrecionales y poco escalables.</li>
+        <li>Existe una brecha estructural entre la información disponible y su uso en decisiones críticas.</li>
+        <li>Las herramientas actuales generan visibilidad, pero no cambian el comportamiento.</li>
+        <li style="font-family:var(--font-serif);font-style:italic;color:var(--imb-navy);font-size:20px;padding-top:24px"><span style="color:var(--imb-slate);font-style:normal;margin-right:6px">→</span>Imberion habilita decisiones comerciales consistentes, escalables y con impacto medible.</li>
+      </ul>
+    </div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">04 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — MODELO IMBERION -->
+<section data-label="Modelo Imberion">
+  <div class="slide s5">
+    <div class="eyebrow"><span class="ln"></span>El Modelo Imberion</div>
+    <h2>Inteligencia y ejecución comercial <em>integradas</em> para evolucionar capacidades.</h2>
+    <p class="sub">Tres bloques que operan como un loop completo — o desplegados donde la necesidad es mayor.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="letter">A</div>
+        <div class="label">Bloque A</div>
+        <h3>Infraestructura de información</h3>
+        <div class="quip">Base confiable sobre la cual se toman decisiones comerciales.</div>
+        <ul>
+          <li>Integra, limpia y estructura datos de ventas, clientes, pedidos y operación.</li>
+          <li>Cuando la información no existe, se define cómo generarla.</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="letter">B</div>
+        <div class="label">Bloque B</div>
+        <h3>Inteligencia comercial</h3>
+        <div class="quip">Eleva la calidad de las decisiones y las hace consistentes.</div>
+        <ul>
+          <li>Precio, portafolio, promociones, política comercial y GTM.</li>
+          <li>Agentes de IA que analizan, recomiendan y explican.</li>
+          <li>Integra reglas de negocio, criterio comercial y datos.</li>
+          <li>Prioriza por impacto económico.</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="letter">C</div>
+        <div class="label">Bloque C</div>
+        <h3>Ejecución y captura de valor</h3>
+        <div class="quip">Convierte decisiones en resultados, fortaleciendo la operación.</div>
+        <ul>
+          <li>Traduce decisiones en acciones concretas.</li>
+          <li>Fortalece el modelo operativo.</li>
+          <li>Gestiona la adopción (change management).</li>
+          <li>Desarrolla capacidades en el equipo.</li>
+          <li>Mide impacto y ajusta continuamente.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">Diseñado para operar como un loop completo — o desplegado donde la necesidad es mayor.</div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">05 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — EXPERIENCIA -->
+<section data-label="Experiencia" class="dark">
+  <div class="slide s6">
+    <div>
+      <div class="eyebrow"><span class="ln"></span>Nuestra Experiencia</div>
+      <h2>Decisiones comerciales complejas, <em>ejecutadas en el mundo real.</em></h2>
+      <ul>
+        <li>Estrategia comercial + analítica avanzada + arquitectura de datos.</li>
+        <li>Experiencia en RGM en consumo, industrial y retail.</li>
+        <li>Implementación real: del modelo a la ejecución en campo.</li>
+        <li>Integración directa con los equipos comerciales del cliente.</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font:600 12px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;color:rgba(143,163,184,.7);margin-bottom:16px">Selección de clientes</div>
+      <div class="logos">
+        <div class="cell"><img src="../assets/logos-clientes/nestle.png" alt="Nestlé"></div>
+        <div class="cell"><img src="../assets/logos-clientes/heineken.png" alt="Heineken"></div>
+        <div class="cell"><img src="../assets/logos-clientes/pepsico.png" alt="PepsiCo"></div>
+        <div class="cell"><img src="../assets/logos-clientes/mondelez.png" alt="Mondelēz"></div>
+        <div class="cell"><img src="../assets/logos-clientes/bimbo.png" alt="Bimbo"></div>
+        <div class="cell"><img src="../assets/logos-clientes/cargill.png" alt="Cargill"></div>
+        <div class="cell"><img src="../assets/logos-clientes/ab-inbev.png" alt="AB InBev"></div>
+        <div class="cell"><img src="../assets/logos-clientes/coca-cola-company.png" alt="Coca-Cola"></div>
+        <div class="cell"><img src="../assets/logos-clientes/hersheys.png" alt="Hershey's"></div>
+        <div class="cell"><img src="../assets/logos-clientes/Diageo.png" alt="Diageo"></div>
+        <div class="cell"><img src="../assets/logos-clientes/campari.png" alt="Campari"></div>
+        <div class="cell"><img src="../assets/logos-clientes/lala.png" alt="Lala"></div>
+      </div>
+      <p class="cap">Proyectos ejecutados globalmente · foco en Latinoamérica</p>
+    </div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-white.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">06 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LO QUE ENTREGA EL SISTEMA -->
+<section data-label="Impacto">
+  <div class="slide s7">
+    <div class="eyebrow"><span class="ln"></span>Lo que entrega el Sistema</div>
+    <h2>Rangos de impacto típicos <em>— B2B industrial.</em></h2>
+    <p class="sub">Benchmarks de referencia en proyectos de RGM aplicados a B2B industrial.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="n">+2–5<span class="u">%</span></div>
+        <div>
+          <div class="lbl">Mejora en margen</div>
+          <div class="desc">Por disciplina comercial y pricing sistematizado.</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="n">+5–15<span class="u">%</span></div>
+        <div>
+          <div class="lbl">Crecimiento en ventas</div>
+          <div class="desc">En 6 a 12 meses, por escalabilidad y mejor ejecución.</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="n">15–30<span class="u">%</span></div>
+        <div>
+          <div class="lbl">Optimización de inversión comercial</div>
+          <div class="desc">Reasignando gasto hacia lo que sí funciona.</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">Rangos de referencia de la industria. El impacto real depende del punto de partida y la disciplina de ejecución.</div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">07 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — MODELO DE MADUREZ -->
+<section data-label="Modelo de Madurez">
+  <div class="slide s8">
+    <div class="eyebrow"><span class="ln"></span>Modelo de Madurez Comercial · B2B Industrial</div>
+    <h2>De decisiones <em>discrecionales</em> a decisiones <em>inteligentes y escalables.</em></h2>
+    <p class="sub">La diferencia no es usar AI o no. Es cómo evoluciona su rol: de eficiencia → a soporte → a decisiones.</p>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Discrecional<span class="stage">Improvisa</span></th>
+          <th>Reactivo<span class="stage">Defiende</span></th>
+          <th>Proactivo<span class="stage">Ataca</span></th>
+          <th>Inteligente<span class="stage">Hace la diferencia</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th>Margen</th><td class="c1">Costeo promedio; confunde facturación con rentabilidad.</td><td class="c2">Por producto, a posteriori; clientes no rentables se descubren tarde.</td><td class="c3">Real por cliente, SKU y pedido. Costo de servir.</td><td class="c4">Simulado antes de cotizar; alertas tempranas de erosión.</td></tr>
+        <tr><th>Cliente</th><td class="c1">Conocimiento superficial; sin segmentación.</td><td class="c2">CRM: historial no explotado; segmentación por tamaño o geografía.</td><td class="c3">ICP; segmentación por potencial; cross / up-sell mapeados.</td><td class="c4">Señales de compra y churn continuas; siguiente mejor acción por cuenta.</td></tr>
+        <tr><th>Precio</th><td class="c1">Sin lista; costo + margen deseado.</td><td class="c2">Lista no se sigue. Diferenciación solo por volumen.</td><td class="c3">Por valor, segmento y contexto; business case por cliente; guardrails.</td><td class="c4">Sugerido en tiempo real; elasticidad y win-rate simulados.</td></tr>
+        <tr><th>Portafolio / Mix</th><td class="c1">Se vende lo que el cliente pide; portafolio sin roles.</td><td class="c2">ABC existe, no dirige la venta.</td><td class="c3">Mix objetivo por cliente; productos con roles; incentivos alineados al mix.</td><td class="c4">Mix recomendado por pedido; racionalización continua; trade-offs a priori.</td></tr>
+        <tr><th>Inversión comercial</th><td class="c1">Crédito, descuentos y plazos a criterio.</td><td class="c2">Política dispar; se mide venta, no margen neto ni canibalización.</td><td class="c3">Trade terms con contraprestaciones; promos con ex-ante y post-mortem.</td><td class="c4">Diseñadas con simulación: ROI visible a priori; cada inversión alimenta la siguiente.</td></tr>
+        <tr><th>WoW y gobernanza</th><td class="c1">Decisiones dependen de 1 o 2 personas.</td><td class="c2">Procesos documentados, ejecución inconsistente.</td><td class="c3">Procesos, forecasts y comités en el día a día.</td><td class="c4">Decisiones trazables punta a punta; aprendizaje sistemático.</td></tr>
+      </tbody>
+    </table>
+    <div class="close">La diferencia no es usar AI o no. <em>Es cómo evoluciona su rol: de eficiencia → a soporte → a decisiones.</em></div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">08 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — CÓMO TRABAJAMOS JUNTOS -->
+<section data-label="Cómo trabajamos">
+  <div class="slide s9">
+    <div class="eyebrow"><span class="ln"></span>Cómo trabajamos juntos</div>
+    <h2>Nos adaptamos <em>a dónde están hoy.</em></h2>
+    <p class="sub">Dos puntos de entrada, una misma ruta hacia resultados medibles.</p>
+    <div class="tracks">
+      <div class="trackhead">
+        <span class="tag">Track A</span>
+        <h3>"Sé lo que <em>necesito.</em>"</h3>
+      </div>
+      <div class="phase"><h4>Diseño</h4><h5>Definir</h5><ul>
+        <li>Entendemos el problema y definimos la solución.</li>
+        <li>Especificamos datos, integración y alcance.</li>
+        <li>Entregamos plan de trabajo y business case.</li>
+      </ul></div>
+      <div class="phase"><h4>Implementación</h4><h5>Construir</h5><ul>
+        <li>Desarrollamos modelos, agentes o herramientas.</li>
+        <li>Integramos con sus sistemas y datos.</li>
+        <li>Habilitamos al equipo para operar.</li>
+      </ul></div>
+      <div class="phase"><h4>Resultados</h4><h5>Capturar</h5><ul>
+        <li>El capability opera en su flujo comercial.</li>
+        <li>Medimos impacto contra el business case.</li>
+        <li>Ajustamos y optimizamos con base en resultados.</li>
+      </ul></div>
+
+      <div class="trackhead row2">
+        <span class="tag alt">Track B</span>
+        <h3>"Quiero entender <em>mis oportunidades.</em>"</h3>
+      </div>
+      <div class="phase row2"><h4>Descubrimiento</h4><h5>Mapear</h5><ul>
+        <li>Mapeamos su madurez comercial por dimensión.</li>
+        <li>Identificamos las brechas de mayor impacto.</li>
+        <li>Entregamos business case con oportunidades priorizadas.</li>
+      </ul></div>
+      <div class="phase row2"><h4>Implementación</h4><h5>Cerrar brechas</h5><ul>
+        <li>Construimos el capability que cierra las brechas.</li>
+        <li>Integramos con sus sistemas y datos.</li>
+        <li>Habilitamos al equipo para operar.</li>
+      </ul></div>
+      <div class="phase row2"><h4>Evolución</h4><h5>Escalar</h5><ul>
+        <li>Acompañamos la captura de valor en campo.</li>
+        <li>Incorporamos nuevos casos de uso.</li>
+        <li>Cada decisión retroalimenta y mejora el sistema.</li>
+      </ul></div>
+    </div>
+    <div class="note">En todos los casos: <em>business case primero.</em> Si no se paga solo, no lo proponemos.</div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-navy.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">09 / 10</span>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — CLOSING -->
+<section data-label="Cierre" class="dark">
+  <div class="slide s10">
+    <div>
+      <div class="eyebrow"><span class="ln"></span>Siguiente paso</div>
+      <h1>No necesitas estar listo <em>para empezar.</em></h1>
+      <p class="quote">La madurez comercial no es un requisito previo — es el resultado. Definamos cómo capturar valor en tu operación.</p>
+      <button class="cta">Agendar conversación →</button>
+    </div>
+    <div class="side">
+      <img class="mark" src="../assets/logos/imberion-wordmark-white.png" alt="Imberion">
+      <div>
+        <div class="label">Contacto</div>
+        <div class="name">Rodrigo Garrido</div>
+        <div class="role">Principal</div>
+        <a href="mailto:rodrigo@imberion.com">rodrigo@imberion.com</a>
+        <a href="https://www.imberion.com">www.imberion.com</a>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="brand"><img src="../assets/logos/imberion-wordmark-white.png" alt="Imberion">Imberion intro · 2026-04</span>
+      <span class="no">10 / 10</span>
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+</body>
+</html>

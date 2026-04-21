@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Imberion — Marketing UI Kit</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="../../assets/logos/favicon.png">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--font-sans);
+    font-size:var(--fs-body);
+    line-height:var(--lh-body);
+    color:var(--fg);
+    background:var(--imb-paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+  .wide{max-width:var(--container-wide)}
+  section{padding:var(--space-9) 0}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;height:68px;
+    background:rgba(10,24,40,.94);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--imb-white-06);
+    z-index:50;
+  }
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+  .nav-brand img{height:26px;width:auto}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .lang{
+    display:flex;gap:2px;background:var(--imb-white-06);
+    border-radius:var(--radius);padding:3px;
+  }
+  .lang span{
+    font:600 10px/1 var(--font-sans);letter-spacing:.08em;
+    padding:6px 10px;border-radius:2px;color:var(--imb-white-45);cursor:pointer;
+  }
+  .lang span.on{background:var(--imb-white-12);color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:var(--radius);
+    font:600 13px/1 var(--font-sans);letter-spacing:var(--tracking-button);
+    border:none;cursor:pointer;transition:all var(--dur) var(--ease-out);
+  }
+  .btn-primary{background:#fff;color:var(--imb-navy)}
+  .btn-primary:hover{background:var(--imb-paper-warm);transform:translateY(-1px)}
+  .btn-outline{background:transparent;border:1.5px solid var(--imb-white-25);color:var(--imb-white-85)}
+  .btn-outline:hover{border-color:var(--imb-white-45);color:#fff}
+  .btn-dark{background:var(--imb-navy);color:#fff}
+  .btn-dark:hover{background:var(--imb-navy-deep)}
+  .btn-light-outline{background:transparent;border:1.5px solid var(--imb-navy-20);color:var(--imb-navy-80)}
+  .btn-light-outline:hover{border-color:var(--imb-navy-40)}
+  .inline-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font:600 13px/1 var(--font-sans);letter-spacing:var(--tracking-button);
+    color:var(--imb-slate);cursor:pointer;
+  }
+  .inline-cta .arr{transition:transform var(--dur) var(--ease-out)}
+  .inline-cta:hover .arr{transform:translateX(4px)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--imb-navy);color:#fff;
+    padding:160px 0 120px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at 80% 10%,rgba(111,133,156,.12),transparent 55%);
+  }
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .9fr;gap:80px;align-items:end}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:12px;
+    font:600 10px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(143,163,184,.6);margin-bottom:28px;
+  }
+  .eyebrow .line{width:24px;height:1px;background:var(--imb-white-25)}
+  .hero h1{
+    font-family:var(--font-serif);font-weight:300;
+    font-size:clamp(3rem,7vw,5.8rem);line-height:1.02;
+    letter-spacing:-.015em;margin:0;color:#fff;
+  }
+  .hero h1 em{font-style:italic;color:var(--imb-white-45);font-weight:300}
+  .hero-lede{
+    font-size:var(--fs-lead);line-height:1.7;
+    color:var(--imb-white-65);max-width:480px;margin:0 0 32px;
+  }
+  .hero-cta{display:flex;gap:14px;align-items:center}
+
+  /* ---------- LOGO BAND ---------- */
+  .logo-band{background:var(--imb-navy);padding:40px 0 80px;border-top:1px solid var(--imb-white-06)}
+  .logo-band-label{
+    font:600 10px/1 var(--font-sans);letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(143,163,184,.45);text-align:center;margin-bottom:36px;
+  }
+  .logo-row{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+  .logo-row img{
+    height:28px;width:auto;opacity:.7;
+    filter:brightness(0) invert(1);
+    transition:opacity var(--dur) var(--ease-out);
+  }
+  .logo-row img:hover{opacity:1}
+
+  /* ---------- SECTIONS ---------- */
+  .sec-label{
+    display:inline-flex;align-items:center;gap:12px;
+    font:600 10px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--imb-slate);margin-bottom:24px;
+  }
+  .sec-label .line{width:24px;height:1px;background:var(--imb-navy-20)}
+  .sec-h{
+    font-family:var(--font-serif);font-weight:400;
+    font-size:var(--fs-h2);line-height:var(--lh-heading);
+    letter-spacing:var(--tracking-tight);color:var(--imb-navy);
+    margin:0 0 28px;max-width:780px;
+  }
+  .sec-h em{font-style:italic;color:var(--imb-slate)}
+  .sec-lede{
+    font-size:var(--fs-lead);line-height:1.75;
+    color:var(--imb-navy-60);max-width:620px;margin:0 0 56px;
+  }
+
+  /* Problem grid */
+  .problem .grid{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    border-top:1px solid var(--imb-navy-12);
+    border-left:1px solid var(--imb-navy-12);
+  }
+  .problem .cell{
+    padding:32px 24px 36px;
+    border-right:1px solid var(--imb-navy-12);
+    border-bottom:1px solid var(--imb-navy-12);
+    background:transparent;transition:background var(--dur) var(--ease-out);
+  }
+  .problem .cell:hover{background:var(--imb-navy-06)}
+  .problem .num{
+    font-family:var(--font-serif);font-weight:300;font-size:2.4rem;line-height:1;
+    color:var(--imb-slate);opacity:.5;margin-bottom:18px;
+  }
+  .problem .cell h4{
+    font-family:var(--font-sans);font-size:14px;font-weight:600;
+    color:var(--imb-navy);margin:0 0 8px;line-height:1.3;
+  }
+  .problem .cell p{
+    font-size:13px;line-height:1.6;color:var(--imb-navy-60);margin:0;
+  }
+
+  /* How it works — dark */
+  .how{background:var(--imb-navy-soft);color:#fff}
+  .how .sec-label{color:rgba(143,163,184,.6)}
+  .how .sec-label .line{background:var(--imb-white-25)}
+  .how .sec-h{color:#fff}
+  .how .sec-h em{color:var(--imb-white-45)}
+  .how .sec-lede{color:var(--imb-white-65)}
+  .how .loop{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+    margin-top:24px;
+  }
+  .how .step{
+    background:rgba(10,24,40,.5);padding:36px 28px 40px;
+    border-top:2px solid var(--imb-slate);
+    min-height:220px;display:flex;flex-direction:column;
+  }
+  .how .step .n{
+    font-family:var(--font-serif);font-weight:300;font-size:2rem;line-height:1;
+    color:var(--imb-slate);margin-bottom:18px;
+  }
+  .how .step h4{
+    font-family:var(--font-serif);font-weight:400;font-size:20px;
+    line-height:1.25;margin:0 0 12px;color:#fff;
+  }
+  .how .step p{
+    font-size:13px;line-height:1.65;color:var(--imb-white-65);margin:0 0 16px;
+  }
+  .how .step .tag{
+    margin-top:auto;font:500 10px/1 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;
+    color:rgba(143,163,184,.7);
+  }
+
+  /* Modules — 3x3 */
+  .modules .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--imb-navy-12);
+    border-left:1px solid var(--imb-navy-12);
+  }
+  .modules .mod{
+    padding:32px 28px 36px;background:transparent;
+    border-right:1px solid var(--imb-navy-12);
+    border-bottom:1px solid var(--imb-navy-12);
+    position:relative;transition:background var(--dur) var(--ease-out);cursor:pointer;
+  }
+  .modules .mod:hover{background:var(--imb-white);}
+  .modules .mod .idx{
+    font-family:var(--font-serif);font-weight:300;font-size:1.3rem;
+    color:var(--imb-slate);opacity:.5;margin-bottom:16px;letter-spacing:-.01em;
+  }
+  .modules .mod h4{
+    font-family:var(--font-serif);font-weight:400;font-size:22px;
+    line-height:1.2;margin:0 0 10px;color:var(--imb-navy);
+  }
+  .modules .mod p{
+    font-size:13px;line-height:1.65;color:var(--imb-navy-60);margin:0;
+  }
+
+  /* Impact band */
+  .impact{background:var(--imb-navy);color:#fff;padding:100px 0}
+  .impact .sec-label{color:rgba(143,163,184,.6)}
+  .impact .sec-label .line{background:var(--imb-white-25)}
+  .impact .sec-h{color:#fff;max-width:640px}
+  .impact .sec-h em{color:var(--imb-white-45)}
+  .impact .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:56px;
+  }
+  .impact .stat{
+    padding:28px 22px 30px;border-top:2px solid rgba(143,163,184,.35);
+    background:var(--imb-navy-deep);
+  }
+  .impact .stat .n{
+    font-family:var(--font-serif);font-weight:300;line-height:1;
+    font-size:clamp(2.2rem,4vw,3rem);color:var(--imb-slate);
+  }
+  .impact .stat .unit{
+    font-family:var(--font-serif);font-weight:300;font-size:1.2rem;color:var(--imb-slate);
+  }
+  .impact .stat p{font-size:13px;line-height:1.6;color:var(--imb-white-65);margin:18px 0 0}
+
+  /* Industries tabs */
+  .industries .tabs{
+    display:flex;gap:0;border-bottom:1px solid var(--imb-navy-20);margin-bottom:48px;flex-wrap:wrap;
+  }
+  .industries .tab{
+    padding:16px 22px;font:600 12px/1 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--imb-navy-40);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;
+    transition:all var(--dur) var(--ease-out);
+  }
+  .industries .tab.on{color:var(--imb-navy);border-bottom-color:var(--imb-navy)}
+  .industries .tab:hover:not(.on){color:var(--imb-navy-60)}
+  .industries .panel{display:none;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+  .industries .panel.on{display:grid}
+  .industries .panel h3{
+    font-family:var(--font-serif);font-weight:400;font-size:2rem;line-height:1.15;
+    margin:0 0 20px;color:var(--imb-navy);
+  }
+  .industries .panel p{font-size:16px;line-height:1.7;color:var(--imb-navy-60);margin:0 0 24px;max-width:500px}
+  .industries .panel ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--imb-navy-12)}
+  .industries .panel li{
+    padding:14px 0;border-bottom:1px solid var(--imb-navy-12);
+    display:flex;justify-content:space-between;gap:24px;
+  }
+  .industries .panel li .k{font-size:13px;color:var(--imb-navy-60);letter-spacing:.02em}
+  .industries .panel li .v{font-family:var(--font-serif);font-weight:400;font-size:15px;color:var(--imb-navy)}
+
+  /* Quote */
+  .quote{background:var(--imb-paper-soft);padding:100px 0}
+  .quote blockquote{
+    font-family:var(--font-serif);font-weight:400;font-style:italic;
+    font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.3;letter-spacing:-.005em;
+    color:var(--imb-navy);margin:0;max-width:900px;
+  }
+  .quote blockquote::before{content:"";display:block;width:40px;height:1px;background:var(--imb-slate);margin-bottom:32px}
+  .quote cite{
+    display:block;font-style:normal;font-family:var(--font-sans);font-size:12px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--imb-slate);margin-top:32px;
+  }
+
+  /* CTA band */
+  .cta{background:var(--imb-navy-deep);color:#fff;padding:120px 0;text-align:center}
+  .cta h2{
+    font-family:var(--font-serif);font-weight:300;
+    font-size:clamp(2.4rem,5vw,4rem);line-height:1.05;color:#fff;margin:0 0 28px;
+  }
+  .cta h2 em{color:var(--imb-white-45);font-style:italic}
+  .cta p{font-size:17px;line-height:1.7;color:var(--imb-white-65);max-width:560px;margin:0 auto 40px}
+  .cta-row{display:flex;gap:14px;justify-content:center}
+
+  /* Footer */
+  footer{background:var(--imb-navy-deep);color:var(--imb-white-45);padding:64px 0 48px;border-top:1px solid var(--imb-white-06)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+  footer img.mark{height:22px;width:auto;margin-bottom:20px}
+  footer p.tag{font-size:13px;line-height:1.6;color:var(--imb-white-45);max-width:280px;margin:0}
+  footer h5{
+    font:600 10px/1 var(--font-sans);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--imb-white-65);margin:0 0 20px;
+  }
+  footer ul{list-style:none;padding:0;margin:0}
+  footer li{padding:6px 0;font-size:13px;color:var(--imb-white-45);cursor:pointer;transition:color var(--dur) var(--ease-out)}
+  footer li:hover{color:#fff}
+  .foot-meta{
+    margin-top:56px;padding-top:24px;border-top:1px solid var(--imb-white-06);
+    display:flex;justify-content:space-between;font:500 11px/1 var(--font-sans);letter-spacing:.05em;
+    color:rgba(255,255,255,.3);
+  }
+
+  /* responsive fallback */
+  @media (max-width:960px){
+    .hero-inner{grid-template-columns:1fr;gap:48px}
+    .problem .grid,.how .loop,.impact .stats,.modules .grid{grid-template-columns:repeat(2,1fr)}
+    .industries .panel.on{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav"><div class="container nav-inner">
+  <a class="nav-brand" href="#"><img src="../../assets/logos/imberion-wordmark-white.png" alt="Imberion"></a>
+  <div class="nav-right">
+    <div class="lang" id="lang">
+      <span class="on" data-l="EN">EN</span>
+      <span data-l="ES">ES</span>
+      <span data-l="PT">PT</span>
+    </div>
+    <button class="btn btn-primary">Book a Call</button>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero"><div class="container hero-inner">
+  <div>
+    <div class="eyebrow"><span class="line"></span>Commercial Intelligence &amp; Execution System</div>
+    <h1>From <em>noise</em><br>to signal.</h1>
+  </div>
+  <div>
+    <p class="hero-lede">Most commercial decisions are made blind. Not for lack of talent — for lack of a system. Imberion turns fragmented data into structured, economically optimized decisions in pricing, promotions, portfolio, trade terms, and go-to-market.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary">Book a 30-min call →</button>
+      <button class="btn btn-outline">See how it works</button>
+    </div>
+  </div>
+</div></header>
+
+<!-- LOGO BAND -->
+<section class="logo-band" style="padding-top:0"><div class="container">
+  <div class="logo-band-label">Trusted across industrial, consumer &amp; services</div>
+  <div class="logo-row">
+    <img src="../../assets/logos-clientes/nestle.png" alt="Nestlé">
+    <img src="../../assets/logos-clientes/heineken.png" alt="Heineken">
+    <img src="../../assets/logos-clientes/pepsico.png" alt="PepsiCo">
+    <img src="../../assets/logos-clientes/mondelez.png" alt="Mondelēz">
+    <img src="../../assets/logos-clientes/bimbo.png" alt="Bimbo">
+    <img src="../../assets/logos-clientes/cargill.png" alt="Cargill">
+    <img src="../../assets/logos-clientes/ab-inbev.png" alt="AB InBev">
+  </div>
+</div></section>
+
+<!-- PROBLEM -->
+<section class="problem"><div class="container">
+  <div class="sec-label"><span class="line"></span>What We Solve</div>
+  <h2 class="sec-h">Most companies can answer some of these. <em>Very few can act on all of them — consistently, at scale.</em></h2>
+  <div class="grid">
+    <div class="cell"><div class="num">01</div><h4>No market visibility</h4><p>Sales data tells you what you sold. Not what happened at the point of sale.</p></div>
+    <div class="cell"><div class="num">02</div><h4>Fragmented data</h4><p>Multiple sources, different formats, no single working truth.</p></div>
+    <div class="cell"><div class="num">03</div><h4>Insight, never decisions</h4><p>Reports circulate, dashboards exist — pricing and investment stay unchanged.</p></div>
+    <div class="cell"><div class="num">04</div><h4>No execution</h4><p>Strategies dissolve before reaching the field.</p></div>
+    <div class="cell"><div class="num">05</div><h4>No feedback loop</h4><p>The system does not learn. Mistakes repeat.</p></div>
+  </div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section class="how"><div class="container">
+  <div class="sec-label"><span class="line"></span>How It Works</div>
+  <h2 class="sec-h">A closed decision loop. <em>From data to execution — and back.</em></h2>
+  <p class="sec-lede">Four stages, one system. Each stage feeds the next; the last feeds the first. Mistakes stop repeating.</p>
+  <div class="loop">
+    <div class="step"><div class="n">01</div><h4>Capture</h4><p>POS, distributors, field audits, ERP — harmonized into a single source of commercial truth.</p><div class="tag">Data · Integration</div></div>
+    <div class="step"><div class="n">02</div><h4>Decide</h4><p>Elasticities, mix, trade terms — quantified, scenario-tested, not guessed.</p><div class="tag">Intelligence · Modeling</div></div>
+    <div class="step"><div class="n">03</div><h4>Execute</h4><p>Recommendations reach the field as priced lists, promo playbooks, call routines.</p><div class="tag">Execution · Field</div></div>
+    <div class="step"><div class="n">04</div><h4>Learn</h4><p>Outcomes return to the model. The system gets sharper with every cycle.</p><div class="tag">Feedback · Loop</div></div>
+  </div>
+</div></section>
+
+<!-- MODULES -->
+<section class="modules"><div class="container">
+  <div class="sec-label"><span class="line"></span>Nine Analytical Modules</div>
+  <h2 class="sec-h">The full commercial surface, covered.</h2>
+  <p class="sec-lede">Composable. Deployed in the order that matches your decision gap — not a rigid platform.</p>
+  <div class="grid">
+    <div class="mod"><div class="idx">◈ 01</div><h4>Pricing intelligence</h4><p>Elasticity models per SKU, channel, customer cluster.</p></div>
+    <div class="mod"><div class="idx">◉ 02</div><h4>Promotion value</h4><p>Incremental vs cannibalized uplift. Pay-for-performance logic.</p></div>
+    <div class="mod"><div class="idx">◧ 03</div><h4>Portfolio optimization</h4><p>Mix-to-margin trade-offs, SKU rationalization, long-tail review.</p></div>
+    <div class="mod"><div class="idx">⊞ 04</div><h4>Trade terms</h4><p>Rebates, discounts, conditions — priced by economic return.</p></div>
+    <div class="mod"><div class="idx">⊡ 05</div><h4>Channel strategy</h4><p>Coverage, route economics, traditional trade intelligence.</p></div>
+    <div class="mod"><div class="idx">◌ 06</div><h4>Customer segmentation</h4><p>Behavior-driven clusters that align pricing and service effort.</p></div>
+    <div class="mod"><div class="idx">◯ 07</div><h4>Go-to-market</h4><p>Launch sequencing, portfolio rollout, geographic prioritization.</p></div>
+    <div class="mod"><div class="idx">◰ 08</div><h4>Field execution</h4><p>Compliance, shelf share, perfect store — turned into call-level briefs.</p></div>
+    <div class="mod"><div class="idx">≡ 09</div><h4>Commercial governance</h4><p>KPIs, accountability, review cadence — the system that sustains discipline.</p></div>
+  </div>
+</div></section>
+
+<!-- IMPACT -->
+<section class="impact"><div class="container">
+  <div class="sec-label"><span class="line"></span>Measurable Impact</div>
+  <h2 class="sec-h">Margin and growth, <em>quantified.</em></h2>
+  <div class="stats">
+    <div class="stat"><span class="n">2–5</span><span class="unit">%</span><p>Margin recovery through pricing discipline.</p></div>
+    <div class="stat"><span class="n">15–30</span><span class="unit">%</span><p>Of trade spend reassignable with pay-for-performance logic.</p></div>
+    <div class="stat"><span class="n">20</span><span class="unit">×</span><p>Typical ROI when intelligence reaches execution.</p></div>
+    <div class="stat"><span class="n">+30</span><span class="unit">%</span><p>Uplift identified from promotion value classification.</p></div>
+  </div>
+</div></section>
+
+<!-- INDUSTRIES -->
+<section class="industries"><div class="container">
+  <div class="sec-label"><span class="line"></span>Industries</div>
+  <h2 class="sec-h">One system. <em>Adapted, never diluted.</em></h2>
+  <div class="tabs" id="tabs">
+    <div class="tab on" data-t="cpg">Consumer Goods</div>
+    <div class="tab" data-t="ind">Industrial</div>
+    <div class="tab" data-t="svc">Services</div>
+    <div class="tab" data-t="rtl">Retail</div>
+  </div>
+  <div class="panel on" data-p="cpg">
+    <div>
+      <h3>CPG &amp; FMCG</h3>
+      <p>Fragmented trade, thousands of SKUs, promotional intensity. The core loop applies — pricing, portfolio, trade terms, and in-store execution — calibrated to modern and traditional channels in parallel.</p>
+      <button class="btn btn-dark">See CPG deployment</button>
+    </div>
+    <ul>
+      <li><span class="k">Typical gap</span><span class="v">Promo ROI blind spots</span></li>
+      <li><span class="k">Primary lever</span><span class="v">Promotion value classification</span></li>
+      <li><span class="k">Data capture</span><span class="v">POS + field audit</span></li>
+      <li><span class="k">KPI frame</span><span class="v">Incremental margin / point of distribution</span></li>
+      <li><span class="k">Timeline</span><span class="v">12–16 weeks to first decisions</span></li>
+    </ul>
+  </div>
+  <div class="panel" data-p="ind">
+    <div>
+      <h3>Industrial</h3>
+      <p>Long sales cycles, few customers, high-specification deals. The loop sharpens quotation discipline, rebate economics, and portfolio rationalization across lines with divergent margin profiles.</p>
+      <button class="btn btn-dark">See industrial deployment</button>
+    </div>
+    <ul>
+      <li><span class="k">Typical gap</span><span class="v">Quote-by-quote leakage</span></li>
+      <li><span class="k">Primary lever</span><span class="v">Deal-level pricing discipline</span></li>
+      <li><span class="k">Data capture</span><span class="v">ERP + CRM unification</span></li>
+      <li><span class="k">KPI frame</span><span class="v">Pocket margin per contract</span></li>
+      <li><span class="k">Timeline</span><span class="v">10–14 weeks to first decisions</span></li>
+    </ul>
+  </div>
+  <div class="panel" data-p="svc">
+    <div>
+      <h3>Services</h3>
+      <p>Packaged offers, variable utilization, bundled terms. The loop brings price-mix transparency, renewal economics, and cross-sell prioritization into a single commercial view.</p>
+      <button class="btn btn-dark">See services deployment</button>
+    </div>
+    <ul>
+      <li><span class="k">Typical gap</span><span class="v">Silent price erosion on renewal</span></li>
+      <li><span class="k">Primary lever</span><span class="v">Bundle &amp; tier re-engineering</span></li>
+      <li><span class="k">Data capture</span><span class="v">Contract &amp; billing systems</span></li>
+      <li><span class="k">KPI frame</span><span class="v">Revenue per active account</span></li>
+      <li><span class="k">Timeline</span><span class="v">8–12 weeks to first decisions</span></li>
+    </ul>
+  </div>
+  <div class="panel" data-p="rtl">
+    <div>
+      <h3>Retail</h3>
+      <p>Thin margins, assortment complexity, promotional saturation. The loop isolates category roles, price architecture, and markdown effectiveness — store cluster by store cluster.</p>
+      <button class="btn btn-dark">See retail deployment</button>
+    </div>
+    <ul>
+      <li><span class="k">Typical gap</span><span class="v">Uniform pricing across unequal stores</span></li>
+      <li><span class="k">Primary lever</span><span class="v">Cluster-level price architecture</span></li>
+      <li><span class="k">Data capture</span><span class="v">POS + basket data</span></li>
+      <li><span class="k">KPI frame</span><span class="v">Gross margin / sqm</span></li>
+      <li><span class="k">Timeline</span><span class="v">12–14 weeks to first decisions</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- QUOTE -->
+<section class="quote"><div class="container">
+  <blockquote>
+    Imberion installed a rhythm of commercial decisions we had never sustained before — pricing, promo, and portfolio decided on the same weekly cadence, with the same data in the room.
+    <cite>— VP Commercial, Global CPG (name withheld)</cite>
+  </blockquote>
+</div></section>
+
+<!-- CTA -->
+<section class="cta"><div class="container">
+  <h2>Move from reactive decisions <em>to a structured system.</em></h2>
+  <p>A 30-minute call is enough to map the largest decision gap in your commercial motion — and show you how the loop would close it.</p>
+  <div class="cta-row">
+    <button class="btn btn-primary">Book a 30-min call →</button>
+    <button class="btn btn-outline">Explore the approach</button>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="container">
+  <div class="foot">
+    <div>
+      <img class="mark" src="../../assets/logos/imberion-wordmark-white.png" alt="Imberion">
+      <p class="tag">Commercial Intelligence Model for companies moving from discretionary decisions to structured, economically optimized commercial systems.</p>
+    </div>
+    <div>
+      <h5>System</h5>
+      <ul><li>The Loop</li><li>Nine Modules</li><li>Impact</li><li>Deployment</li></ul>
+    </div>
+    <div>
+      <h5>Industries</h5>
+      <ul><li>Consumer Goods</li><li>Industrial</li><li>Services</li><li>Retail</li></ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul><li>Approach</li><li>Team</li><li>Perspectives</li><li>Contact</li></ul>
+    </div>
+  </div>
+  <div class="foot-meta">
+    <span>© 2026 Imberion</span>
+    <span>Privacy · Terms</span>
+  </div>
+</div></footer>
+
+<script>
+  // Lang toggle
+  document.getElementById('lang').addEventListener('click', (e) => {
+    const t = e.target.closest('span[data-l]'); if(!t) return;
+    document.querySelectorAll('#lang span').forEach(s => s.classList.remove('on'));
+    t.classList.add('on');
+  });
+  // Industry tabs
+  document.getElementById('tabs').addEventListener('click', (e) => {
+    const t = e.target.closest('.tab'); if(!t) return;
+    document.querySelectorAll('.industries .tab').forEach(s => s.classList.remove('on'));
+    document.querySelectorAll('.industries .panel').forEach(s => s.classList.remove('on'));
+    t.classList.add('on');
+    document.querySelector(`.industries .panel[data-p="${t.dataset.t}"]`).classList.add('on');
+  });
+</script>
+</body>
+</html>
