@@ -273,6 +273,8 @@
   <div class="hero-scroll"><div class="hero-scroll-line"></div><span>scroll</span></div>
 </section>
 
+<div class="imb-divider" aria-hidden="true"></div>
+
 <!-- WHAT WE SOLVE -->
 <section class="solve-section" id="what-we-solve">
   <div class="container">
@@ -348,6 +350,8 @@
   </div>
 </section>
 
+<div class="imb-divider imb-divider--flip" aria-hidden="true"></div>
+
 <!-- WHO -->
 <section class="section" id="who">
   <div class="container">
@@ -383,6 +387,8 @@
     </div>
   </div>
 </section>
+
+<div class="imb-divider imb-divider--flip" aria-hidden="true"></div>
 
 <!-- SECTORS -->
 <section class="section" id="sectors" style="background:var(--white)">
@@ -771,5 +777,120 @@ setLang(detectLang());
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/51273309.js"></script>
 <!-- End of HubSpot Embed Code -->
+
+<!-- ── Visual Depth Layer: textures ── -->
+<style>
+/* Dark sections — texture 01 */
+.hero{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
+.section--dark{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
+.mat-section{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
+.cta-section{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
+
+/* Light editorial sections — texture 02 (override existing ::before) */
+.solve-section::before{background:url('assets/textures/02_paper_navy_veil.png') center/cover no-repeat;opacity:.55;filter:none;inset:0;}
+#sectors::before{background:url('assets/textures/02_paper_navy_veil.png') center/cover no-repeat;opacity:.45;filter:none;inset:0;}
+.arms-section{position:relative;}
+.arms-section::before{content:'';position:absolute;inset:0;background:url('assets/textures/02_paper_navy_veil.png') center/cover no-repeat;opacity:.4;pointer-events:none;z-index:0;}
+.arms-section>.container,.three-arms{position:relative;z-index:1;}
+
+/* Card surfaces — texture 03 */
+.arm-card{background-image:url('assets/textures/03_white_data_grain.png');background-size:cover;background-position:center;}
+.mod-card{background-image:url('assets/textures/03_white_data_grain.png');background-size:cover;background-position:center;}
+.serve-card{background-image:url('assets/textures/03_white_data_grain.png');background-size:cover;background-position:center;}
+
+/* Section dividers — texture 04 */
+.imb-divider{display:block;width:100%;height:90px;background:url('assets/textures/04_diagonal_section_divider.png') center/cover no-repeat;font-size:0;line-height:0;}
+.imb-divider--flip{transform:scaleY(-1);}
+</style>
+
+<!-- ── UX Layer: scroll-reveal · nav elevation · active sections ── -->
+<style>
+/* Reveal base — starts invisible, slides up */
+.imb-reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .42s cubic-bezier(.2,.8,.2,1),
+             transform .42s cubic-bezier(.2,.8,.2,1);
+}
+.imb-reveal.imb-in{opacity:1;transform:none}
+/* Stagger siblings */
+.imb-reveal[data-d="1"]{transition-delay:.07s}
+.imb-reveal[data-d="2"]{transition-delay:.14s}
+.imb-reveal[data-d="3"]{transition-delay:.21s}
+.imb-reveal[data-d="4"]{transition-delay:.28s}
+.imb-reveal[data-d="5"]{transition-delay:.35s}
+/* Respect reduced-motion */
+@media(prefers-reduced-motion:reduce){
+  .imb-reveal{opacity:1;transform:none;transition:none}
+}
+/* Nav: subtle depth as page scrolls away from hero */
+nav{transition:border-bottom-color .22s cubic-bezier(.4,0,.2,1),
+              box-shadow .22s cubic-bezier(.4,0,.2,1)}
+nav.imb-elevated{
+  border-bottom-color:rgba(255,255,255,.18);
+  box-shadow:0 2px 24px rgba(0,0,0,.26)
+}
+/* Active nav link */
+.nav-links a.imb-active:not(.btn):not(.lang-btn){color:#fff!important}
+</style>
+<script>
+(function(){
+  /* ── Nav elevation on scroll ── */
+  var nav = document.querySelector('nav');
+  function syncNav() { if(nav) nav.classList.toggle('imb-elevated', window.scrollY > 80); }
+  window.addEventListener('scroll', syncNav, {passive:true});
+  syncNav();
+
+  /* Guard: skip animation setup if user prefers reduced motion */
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  /* ── IntersectionObserver for scroll-reveal ── */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('imb-in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.07, rootMargin: '0px 0px -28px 0px'});
+
+  function reveal(el, delay) {
+    if(!el || el.classList.contains('imb-reveal')) return;
+    el.classList.add('imb-reveal');
+    if(delay) el.setAttribute('data-d', delay);
+    io.observe(el);
+  }
+
+  /* ── Static section headers & bodies ── */
+  var staticSelectors = ['.eyebrow','h2','.lead','.solve-inner','.mat-inner',
+    '.diff-grid','.team-text','.team-clients-label','.cta-actions','.solve-bridge',
+    '.solve-close','.arm-loop','.arm-bridge','.impact-foot','.impact-mid-cta'];
+  document.querySelectorAll(
+    '.problem-section,.arms-section,.solve-section,.diff-section,.mat-section,#sectors,#team,#who,.cta-section'
+  ).forEach(function(sec){
+    staticSelectors.forEach(function(sel){
+      sec.querySelectorAll(':scope > .container > ' + sel).forEach(function(el){ reveal(el); });
+      sec.querySelectorAll(':scope > ' + sel).forEach(function(el){ reveal(el); });
+    });
+  });
+
+  /* ── Dynamic card grids (populated by setLang, already in DOM by now) ── */
+  ['.problem-item', '.arm-card', '.impact-card', '.serve-card-wrapper', '.mod-card'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el, i){ reveal(el, Math.min(i + 1, 5)); });
+  });
+
+  /* ── Active nav link tracking ── */
+  var navIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var href = '#' + e.target.id;
+      document.querySelectorAll('.nav-links a').forEach(function(a){
+        if(a.getAttribute('href') === href) a.classList.toggle('imb-active', e.isIntersecting);
+      });
+    });
+  }, {threshold: 0.2, rootMargin: '-68px 0px 0px 0px'});
+
+  ['how-it-works', 'who', 'maturity'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) navIO.observe(el);
+  });
+})();
+</script>
 </body>
 </html>

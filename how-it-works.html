@@ -69,7 +69,7 @@
     .section-nav-inner{display:flex;max-width:var(--max);margin:0 auto;padding:0 36px}
     .section-nav a{display:inline-flex;align-items:center;gap:8px;padding:15px 20px;font-size:12.5px;font-weight:500;color:var(--navy-80);border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
     .section-nav a:hover{color:var(--navy);border-bottom-color:var(--navy-12)}
-    .section-nav a.active{color:var(--signal);border-bottom-color:var(--signal)}
+    .section-nav a.active{color:var(--navy);border-bottom-color:var(--navy)}
     .section-nav-letter{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;opacity:.5}
 
     /* SECTION SHARED */
@@ -932,6 +932,114 @@ document.querySelectorAll('.lang-btn').forEach(b => {
 
 // Init
 applyLang('en');
+</script>
+
+<!-- ── UX Layer: scroll-reveal · nav elevation · reading progress ── -->
+<style>
+/* Reveal animation — same tokens as index */
+.imb-reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .42s cubic-bezier(.2,.8,.2,1),
+             transform .42s cubic-bezier(.2,.8,.2,1);
+}
+.imb-reveal.imb-in{opacity:1;transform:none}
+.imb-reveal[data-d="1"]{transition-delay:.07s}
+.imb-reveal[data-d="2"]{transition-delay:.14s}
+.imb-reveal[data-d="3"]{transition-delay:.21s}
+.imb-reveal[data-d="4"]{transition-delay:.28s}
+.imb-reveal[data-d="5"]{transition-delay:.35s}
+@media(prefers-reduced-motion:reduce){
+  .imb-reveal{opacity:1;transform:none;transition:none}
+}
+/* Nav elevation */
+nav{transition:border-bottom-color .22s cubic-bezier(.4,0,.2,1),
+              box-shadow .22s cubic-bezier(.4,0,.2,1)}
+nav.imb-elevated{
+  border-bottom-color:rgba(255,255,255,.18);
+  box-shadow:0 2px 24px rgba(0,0,0,.26)
+}
+/* Reading progress: 1px navy line at bottom of the sticky section-nav strip */
+#section-nav{position:relative}
+.imb-progress{
+  position:absolute;
+  bottom:0;left:0;
+  height:1px;
+  width:0%;
+  background:var(--navy);
+  pointer-events:none
+}
+</style>
+<script>
+(function(){
+  /* ── Nav elevation ── */
+  var nav = document.querySelector('nav');
+  function syncNav(){ if(nav) nav.classList.toggle('imb-elevated', window.scrollY > 80); }
+  window.addEventListener('scroll', syncNav, {passive:true});
+  syncNav();
+
+  /* ── Reading progress bar ── */
+  var snav = document.getElementById('section-nav');
+  if(snav){
+    var bar = document.createElement('div');
+    bar.className = 'imb-progress';
+    snav.appendChild(bar);
+    function syncProgress(){
+      var armA = document.getElementById('arm-a');
+      var closing = document.querySelector('.closing-loop');
+      if(!armA || !closing) return;
+      var start = armA.getBoundingClientRect().top + window.scrollY - 140;
+      var end   = closing.getBoundingClientRect().top + window.scrollY + closing.offsetHeight;
+      var pct   = Math.max(0, Math.min(1, (window.scrollY - start) / (end - start)));
+      bar.style.width = (pct * 100) + '%';
+    }
+    window.addEventListener('scroll', syncProgress, {passive:true});
+    syncProgress();
+  }
+
+  /* Guard: skip animation setup if reduced motion */
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  /* ── IntersectionObserver ── */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('imb-in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.07, rootMargin: '0px 0px -28px 0px'});
+
+  function reveal(el, delay){
+    if(!el || el.classList.contains('imb-reveal')) return;
+    el.classList.add('imb-reveal');
+    if(delay) el.setAttribute('data-d', delay);
+    io.observe(el);
+  }
+
+  /* ── Section-level headers ── */
+  document.querySelectorAll('.deep-section, .closing-loop').forEach(function(sec){
+    ['.eyebrow', 'h2', '.lead', '.c-gap-note', '.section-arm-header', '.loop-cta', '.loop-flow'].forEach(function(sel){
+      var found = sec.querySelector(':scope > .container > ' + sel) ||
+                  sec.querySelector(':scope > .container ' + sel);
+      if(found) reveal(found);
+    });
+  });
+  /* Page hero */
+  ['.page-hero .back', '.page-hero .eyebrow', '.page-hero h1', '.page-hero .lead', '.hero-flow'].forEach(function(sel){
+    var el = document.querySelector(sel);
+    if(el) reveal(el);
+  });
+
+  /* ── Staggered card grids ── */
+  /* Group by parent so stagger resets per section, not globally */
+  ['.source-item', '.process-step', '.cap-item', '.c-item', '.loop-node'].forEach(function(sel){
+    var parents = {};
+    document.querySelectorAll(sel).forEach(function(el){
+      var parentKey = el.parentElement ? el.parentElement.className : 'root';
+      if(!parents[parentKey]) parents[parentKey] = 0;
+      parents[parentKey]++;
+      reveal(el, Math.min(parents[parentKey], 5));
+    });
+  });
+})();
 </script>
 </body>
 </html>
