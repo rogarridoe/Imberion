@@ -63,7 +63,7 @@
     @media(max-width:600px){.container{padding:0 20px} nav{padding:0 20px} .nav-links{display:none}}
     /* HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:var(--navy);padding:80px 36px 56px;position:relative;overflow:hidden}
-    .hero-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:.35}
+    .hero-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:.72}
     .hero-content{max-width:var(--max);margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
     .hero-right{display:flex;flex-direction:column;align-items:flex-start;justify-self:end}
     .hero-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(143,163,184,.6);margin-bottom:40px;min-height:20px}
@@ -416,7 +416,7 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section section-cta-dust">
   <div class="container">
     <div class="eyebrow" style="color:rgba(255,255,255,.4);" id="cta-eyebrow">Get Started</div>
     <h2 id="cta-h2">Ready to go from<br>noise to signal?</h2>
@@ -608,7 +608,7 @@ setLang(detectLang());
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, pts, frame = 0, cx0 = 0, cy0 = 0;
-  const N = 280;
+  const N = 380;
 
   // Gap center = horizontal midpoint of .hero-content (symmetric 1fr 1fr grid)
   function updateCenter(){
@@ -634,7 +634,7 @@ setLang(detectLang());
     for(let i = 0; i < N; i++){
       // Noise position: organic oval cloud around the gap center
       const angle = Math.random() * Math.PI * 2;
-      const dist  = Math.pow(Math.random(), 0.45) * 320;
+      const dist  = Math.pow(Math.random(), 0.45) * 420;
       // Signal position: one sine-wave cycle across ~210px width
       const u  = i / N;                         // 0 → 1
       const sx = cx0 - (u - 0.5) * 210;
@@ -644,8 +644,8 @@ setLang(detectLang());
         ny:    cy0 + Math.sin(angle) * dist * 0.78,
         sx:    sx,
         sy:    sy,
-        r:     Math.random() * 1.4 + 0.25,
-        alpha: Math.random() * 0.42 + 0.12,
+        r:     Math.random() * 1.9 + 0.4,
+        alpha: Math.random() * 0.55 + 0.22,
         phase: Math.random() * Math.PI * 2,
         da:    (Math.random() - 0.5) * 2,       // drift direction x
         db:    (Math.random() - 0.5) * 2,       // drift direction y
@@ -685,15 +685,15 @@ setLang(detectLang());
       const ndy = p.ny + Math.cos(t * 0.80 + p.phase * 1.15)    * 16
                        + Math.cos(t * 0.35 + p.phase)           *  7;
 
-      // Signal: barely-there breathing
-      const sdx = p.sx + Math.sin(t * 0.28 + p.phase) * 1.1;
-      const sdy = p.sy + Math.cos(t * 0.28 + p.phase) * 1.1;
+      // Signal: visible breathing
+      const sdx = p.sx + Math.sin(t * 0.28 + p.phase) * 3.5;
+      const sdy = p.sy + Math.cos(t * 0.28 + p.phase) * 3.5;
 
       const rx = ndx + (sdx - ndx) * conv;
       const ry = ndy + (sdy - ndy) * conv;
 
-      const alpha  = p.alpha * (0.65 - conv * 0.33);
-      const radius = p.r    * (1.8  - conv * 0.8);
+      const alpha  = p.alpha * (0.85 - conv * 0.25);
+      const radius = p.r    * (1.6  - conv * 0.55);
       ctx.beginPath();
       ctx.arc(rx, ry, radius, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,255,255,' + alpha.toFixed(2) + ')';
@@ -702,18 +702,18 @@ setLang(detectLang());
 
     // Signal line: fades in as particles converge, traces the sine-wave path
     if(conv > 0.38){
-      const lineAlpha = Math.min((conv - 0.38) / 0.28, 1) * 0.13;
+      const lineAlpha = Math.min((conv - 0.38) / 0.28, 1) * 0.38;
       ctx.beginPath();
       let first = true;
       for(let i = 0; i < N; i++){
         const p = pts[i];
-        const px = p.sx + Math.sin(t * 0.28 + p.phase) * 1.1;
-        const py = p.sy + Math.cos(t * 0.28 + p.phase) * 1.1;
+        const px = p.sx + Math.sin(t * 0.28 + p.phase) * 3.5;
+        const py = p.sy + Math.cos(t * 0.28 + p.phase) * 3.5;
         if(first){ ctx.moveTo(px, py); first = false; }
         else ctx.lineTo(px, py);
       }
       ctx.strokeStyle = 'rgba(255,255,255,' + lineAlpha.toFixed(3) + ')';
-      ctx.lineWidth   = 0.5;
+      ctx.lineWidth   = 1.2;
       ctx.stroke();
     }
 

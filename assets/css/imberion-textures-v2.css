@@ -13,6 +13,7 @@ Place PNG files in /assets/textures/
   --texture-left-panel: url('/assets/textures/08_left_panel_mist.png');
   --texture-right-panel: url('/assets/textures/09_right_panel_mist.png');
   --texture-data-haze: url('/assets/textures/10_gridless_data_haze.png');
+  --texture-cta-dust: url('/assets/textures/11_cta_dust_navy.png');
 }
 
 .hero, .hero-section {
@@ -72,6 +73,12 @@ Place PNG files in /assets/textures/
 
 .section-data-haze {
   background-image: var(--texture-data-haze);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-cta-dust {
+  background-image: var(--texture-cta-dust);
   background-size: cover;
   background-position: center;
 }
