@@ -276,7 +276,7 @@
 <div class="imb-divider" aria-hidden="true"></div>
 
 <!-- WHAT WE SOLVE -->
-<section class="solve-section" id="what-we-solve">
+<section class="solve-section section-paper" id="what-we-solve">
   <div class="container">
     <div class="solve-inner">
       <div class="eyebrow" id="solve-eyebrow">What We Solve</div>
@@ -290,7 +290,7 @@
 </section>
 
 <!-- THREE ARMS -->
-<section class="arms-section" id="how-it-works">
+<section class="arms-section section-signal-light" id="how-it-works">
   <div class="container">
     <div class="eyebrow" id="arms-eyebrow">How It Works</div>
     <h2 id="arms-h2">A connected system.<br>Three distinct capabilities.</h2>
@@ -338,7 +338,7 @@
 </section>
 
 <!-- IMPACT -->
-<section class="section section--dark">
+<section class="section section--dark section-dark-flow">
   <div class="container">
     <div class="eyebrow" id="impact-eyebrow">Impact</div>
     <h2 id="impact-h2">What the system delivers</h2>
@@ -353,7 +353,7 @@
 <div class="imb-divider imb-divider--flip" aria-hidden="true"></div>
 
 <!-- WHO -->
-<section class="section" id="who">
+<section class="section section-white" id="who">
   <div class="container">
     <div class="eyebrow" id="who-eyebrow">Who It's For</div>
     <h2 id="who-h2">Built for fragmented,<br>high-complexity markets.</h2>
@@ -363,7 +363,7 @@
 </section>
 
 <!-- MATURITY -->
-<section class="mat-section" id="maturity">
+<section class="mat-section section-dark-signal" id="maturity">
   <div class="container">
     <div class="mat-inner">
       <div>
@@ -391,7 +391,7 @@
 <div class="imb-divider imb-divider--flip" aria-hidden="true"></div>
 
 <!-- SECTORS -->
-<section class="section" id="sectors" style="background:var(--white)">
+<section class="section section-data-haze" id="sectors">
   <div class="container">
     <div class="eyebrow" id="sect-eyebrow">Sectors</div>
     <h2 id="sect-h2">Where we play</h2>
@@ -401,7 +401,7 @@
 </section>
 
 <!-- TEAM + CAROUSEL -->
-<section class="section" id="team">
+<section class="section section-paper" id="team">
   <div class="container">
     <div class="eyebrow" id="team-eyebrow">The Team</div>
     <h2 id="team-h2">Built by practitioners,<br>not theorists.</h2>
@@ -778,30 +778,7 @@ setLang(detectLang());
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/51273309.js"></script>
 <!-- End of HubSpot Embed Code -->
 
-<!-- ── Visual Depth Layer: textures ── -->
-<style>
-/* Dark sections — texture 01 */
-.hero{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
-.section--dark{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
-.mat-section{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
-.cta-section{background-image:url('assets/textures/01_noise_to_signal_dark.png');background-size:cover;background-position:center;}
-
-/* Light editorial sections — texture 02 (override existing ::before) */
-.solve-section::before{background:url('assets/textures/02_paper_navy_veil.png') center/cover no-repeat;opacity:.55;filter:none;inset:0;}
-#sectors::before{background:url('assets/textures/02_paper_navy_veil.png') center/cover no-repeat;opacity:.45;filter:none;inset:0;}
-.arms-section{position:relative;}
-.arms-section::before{content:'';position:absolute;inset:0;background:url('assets/textures/02_paper_navy_veil.png') center/cover no-repeat;opacity:.4;pointer-events:none;z-index:0;}
-.arms-section>.container,.three-arms{position:relative;z-index:1;}
-
-/* Card surfaces — texture 03 */
-.arm-card{background-image:url('assets/textures/03_white_data_grain.png');background-size:cover;background-position:center;}
-.mod-card{background-image:url('assets/textures/03_white_data_grain.png');background-size:cover;background-position:center;}
-.serve-card{background-image:url('assets/textures/03_white_data_grain.png');background-size:cover;background-position:center;}
-
-/* Section dividers — texture 04 */
-.imb-divider{display:block;width:100%;height:90px;background:url('assets/textures/04_diagonal_section_divider.png') center/cover no-repeat;font-size:0;line-height:0;}
-.imb-divider--flip{transform:scaleY(-1);}
-</style>
+<link rel="stylesheet" href="/assets/css/imberion-textures-v2.css"/>
 
 <!-- ── UX Layer: scroll-reveal · nav elevation · active sections ── -->
 <style>
@@ -832,6 +809,9 @@ nav.imb-elevated{
 }
 /* Active nav link */
 .nav-links a.imb-active:not(.btn):not(.lang-btn){color:#fff!important}
+/* Section dividers */
+.imb-divider{display:block;width:100%;height:90px;background:url('assets/textures/04_diagonal_section_divider.png') center/cover no-repeat;font-size:0;line-height:0;}
+.imb-divider--flip{transform:scaleY(-1);}
 </style>
 <script>
 (function(){
