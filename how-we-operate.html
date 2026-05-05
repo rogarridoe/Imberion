@@ -328,5 +328,83 @@ document.querySelectorAll('.lang-btn').forEach(b =>
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')))
 );
 </script>
+
+<!-- ── UX Layer: scroll-reveal · nav elevation ── -->
+<style>
+.imb-reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .42s cubic-bezier(.2,.8,.2,1),
+             transform .42s cubic-bezier(.2,.8,.2,1);
+}
+.imb-reveal.imb-in{opacity:1;transform:none}
+.imb-reveal[data-d="1"]{transition-delay:.07s}
+.imb-reveal[data-d="2"]{transition-delay:.14s}
+.imb-reveal[data-d="3"]{transition-delay:.21s}
+.imb-reveal[data-d="4"]{transition-delay:.28s}
+.imb-reveal[data-d="5"]{transition-delay:.35s}
+@media(prefers-reduced-motion:reduce){
+  .imb-reveal{opacity:1;transform:none;transition:none}
+}
+nav{transition:border-bottom-color .22s cubic-bezier(.4,0,.2,1),
+              box-shadow .22s cubic-bezier(.4,0,.2,1)}
+nav.imb-elevated{
+  border-bottom-color:rgba(255,255,255,.18);
+  box-shadow:0 2px 24px rgba(0,0,0,.26)
+}
+</style>
+<script>
+(function(){
+  /* ── Nav elevation on scroll ── */
+  var nav = document.querySelector('nav');
+  function syncNav(){ if(nav) nav.classList.toggle('imb-elevated', window.scrollY > 80); }
+  window.addEventListener('scroll', syncNav, {passive:true});
+  syncNav();
+
+  /* Guard: skip animation setup if user prefers reduced motion */
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  /* ── IntersectionObserver ── */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('imb-in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.07, rootMargin: '0px 0px -28px 0px'});
+
+  function reveal(el, delay){
+    if(!el || el.classList.contains('imb-reveal')) return;
+    el.classList.add('imb-reveal');
+    if(delay) el.setAttribute('data-d', delay);
+    io.observe(el);
+  }
+
+  /* ── Page hero ── */
+  ['.page-hero .back', '.page-hero h1', '.page-hero .sub'].forEach(function(sel){
+    var el = document.querySelector(sel);
+    if(el) reveal(el);
+  });
+
+  /* ── Section headers ── */
+  var eyebrow = document.querySelector('.principles-section .eyebrow');
+  if(eyebrow) reveal(eyebrow);
+
+  var practicalH2 = document.querySelector('.practical-section h2');
+  if(practicalH2) reveal(practicalH2);
+
+  /* ── Divider ── */
+  var divider = document.querySelector('.imb-divider');
+  if(divider) reveal(divider);
+
+  /* ── Principle items: staggered, reset every 5 ── */
+  document.querySelectorAll('.principle-item').forEach(function(el, i){
+    reveal(el, (i % 5) + 1);
+  });
+
+  /* ── Practical list items: staggered ── */
+  document.querySelectorAll('.practical-list li').forEach(function(el, i){
+    reveal(el, Math.min(i + 1, 5));
+  });
+})();
+</script>
 </body>
 </html>
