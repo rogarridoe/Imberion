@@ -1040,6 +1040,16 @@ nav.imb-elevated{
       reveal(el, Math.min(parents[parentKey], 5));
     });
   });
+
+  /* ── Arm connectors (outside .deep-section, loop doesn't catch them) ── */
+  document.querySelectorAll('.arm-connector').forEach(function(el){ reveal(el); });
+
+  /* ── Section B: screenshot frames ── */
+  document.querySelectorAll('.screenshot-frame').forEach(function(el, i){ reveal(el, i + 1); });
+
+  /* ── Section A: process footer ── */
+  var procFooter = document.querySelector('.process-footer');
+  if(procFooter) reveal(procFooter);
 })();
 </script>
 </body>
