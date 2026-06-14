@@ -211,6 +211,7 @@
 
   </style>
   <link rel="stylesheet" href="/assets/css/imberion-textures-v2.css"/>
+  <link rel="stylesheet" href="assets/css/imberion-site.css"/>
 </head>
 <body>
 
@@ -224,6 +225,7 @@
       <a href="index.html" id="nav-back" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg><span id="nav-back-text">← Imberion</span>
       </a>
+      <a href="estrategia.html" id="nav-estrat-link" style="color:rgba(255,255,255,.65);font-size:14px;font-weight:500;">Estrategia</a>
     </div>
     <div class="nav-right">
       <div class="lang-toggle">
@@ -559,6 +561,7 @@
    ───────────────────────────────────────────────────────── */
 const T = {
   en: {
+    nav_estrat: 'Strategy',
     page_title: 'Imberion — How It Works',
     nav_cta: 'Book a Call',
     hero_back: '← Imberion',
@@ -651,6 +654,7 @@ const T = {
   },
 
   es: {
+    nav_estrat: 'Estrategia',
     page_title: 'Imberion, Cómo Funciona',
     nav_cta: 'Agendar llamada',
     hero_back: '← Imberion',
@@ -740,6 +744,7 @@ const T = {
   },
 
   pt: {
+    nav_estrat: 'Estratégia',
     page_title: 'Imberion, Como Funciona',
     nav_cta: 'Agendar chamada',
     hero_back: '← Imberion',
@@ -842,6 +847,7 @@ function applyLang(lang) {
   // Nav
   s('nav-cta', t.nav_cta);
   s('nav-back-text', t.hero_back);
+  s('nav-estrat-link', t.nav_estrat);
 
   // Hero
   s('hero-back-text', t.hero_back);
@@ -922,17 +928,24 @@ function applyLang(lang) {
 /* ─────────────────────────────────────────────────────────
    LANG TOGGLE
    ───────────────────────────────────────────────────────── */
-let currentLang = 'en';
+let currentLang = 'es';
 document.querySelectorAll('.lang-btn').forEach(b => {
   b.addEventListener('click', () => {
     currentLang = b.dataset.lang;
     document.querySelectorAll('.lang-btn').forEach(x => x.classList.toggle('active', x === b));
     applyLang(currentLang);
+    try{localStorage.setItem('imb_lang',currentLang);}catch(e){}
   });
 });
 
-// Init
-applyLang('en');
+// Init — Spanish is canonical; respect explicit en/pt browsers
+(function(){
+  var il; try{ il = localStorage.getItem('imb_lang'); }catch(e){}
+  if(['en','es','pt'].indexOf(il)<0){ var nl=(navigator.language||'es').slice(0,2); il=['en','es','pt'].indexOf(nl)>-1?nl:'es'; }
+  currentLang = il;
+  applyLang(il);
+  document.querySelectorAll('.lang-btn').forEach(function(x){ x.classList.toggle('active', x.dataset.lang === il); });
+})();
 </script>
 
 <!-- ── UX Layer: scroll-reveal · nav elevation · reading progress ── -->
@@ -1052,5 +1065,6 @@ nav.imb-elevated{
   if(procFooter) reveal(procFooter);
 })();
 </script>
+<script src="assets/js/imberion-site.js"></script>
 </body>
 </html>

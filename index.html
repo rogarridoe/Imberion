@@ -10,200 +10,245 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
   <style>
 
+    /* ============================================================
+       IMBERION — Editorial Instrument
+       Serif: Cormorant Garamond · Sans: DM Sans
+       Anchor: Navy. Light: warm paper. Accent: slate signal.
+       ============================================================ */
     :root{
-      --navy:#0A1828;
+      --navy:#0A1828; --navy-deep:#06101C; --navy-soft:#13263b;
       --navy-80:rgba(10,24,40,.8);--navy-60:rgba(10,24,40,.6);
       --navy-40:rgba(10,24,40,.4);--navy-20:rgba(10,24,40,.2);
-      --navy-12:rgba(10,24,40,.12);--navy-06:rgba(10,24,40,.06);
-      --gray-blue:#6F859C;
-      --beige:#CFCBC6;--beige-dark:rgba(207,203,198,.6);
+      --navy-12:rgba(10,24,40,.12);--navy-08:rgba(10,24,40,.08);--navy-06:rgba(10,24,40,.06);
+      --gray-blue:#6F859C; --slate-soft:#8FA3B8; --slate-mist:#C8D2DC;
+      --beige:#CFCBC6; --beige-dark:rgba(207,203,198,.6); --paper-warm:#E4E0DA;
       --white:#fff;
-      --max:1140px;--r:4px;
+      --white-85:rgba(255,255,255,.85);--white-65:rgba(255,255,255,.65);
+      --white-45:rgba(255,255,255,.45);--white-25:rgba(255,255,255,.25);
+      --white-12:rgba(255,255,255,.12);--white-06:rgba(255,255,255,.06);
+      --max:1180px; --r:3px;
+      --font-serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+      --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+      --ease:cubic-bezier(.19,1,.22,1);
+      --ease-io:cubic-bezier(.4,0,.2,1);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--beige);color:var(--navy);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:var(--font-sans);background:var(--beige);color:var(--navy);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     img{display:block;max-width:100%} a{color:inherit;text-decoration:none} ul{list-style:none}
-    .container{max-width:var(--max);margin:0 auto;padding:0 36px}
-    .section{padding:96px 0}
-    .section--dark{background:var(--navy);color:var(--white)}
+    ::selection{background:var(--navy);color:var(--beige)}
+    .section--dark ::selection{background:var(--beige);color:var(--navy)}
+    :focus-visible{outline:2px solid var(--gray-blue);outline-offset:3px;border-radius:1px}
+
+    .container{max-width:var(--max);margin:0 auto;padding:0 40px}
+    .section{padding:128px 0;position:relative}
+    .section--dark{background-color:var(--navy);color:var(--white)}
     .section--dark h1,.section--dark h2,.section--dark h3,.section--dark h4{color:var(--white)}
-    .section--tint{background:var(--beige)}
-    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.12;font-weight:400;color:var(--navy)}
-    h2{font-size:clamp(2.1rem,4vw,3.2rem)}
-    h3{font-size:clamp(1.3rem,2vw,1.7rem)}
-    .eyebrow{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-blue);margin-bottom:14px}
-    .section--dark .eyebrow{color:rgba(143,163,184,.65)}
-    .lead{font-size:clamp(1.05rem,1.7vw,1.2rem);color:var(--navy-60);max-width:620px;line-height:1.7}
-    .section--dark .lead{color:rgba(255,255,255,.6)}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);padding:0 36px}
-    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
-    .nav-logo img{height:36px;width:auto}
-    .nav-links{display:flex;gap:28px;align-items:center}
-    .nav-links a:not(.btn):not(.lang-btn){color:rgba(255,255,255,.65);font-size:14px;font-weight:500;transition:color .2s}
+    .section--tint{background-color:var(--beige)}
+
+    h1,h2,h3,h4{font-family:var(--font-serif);line-height:1.1;font-weight:400;color:var(--navy);letter-spacing:-.012em}
+    h2{font-size:clamp(2.4rem,4.6vw,3.9rem);font-weight:300}
+    h3{font-size:clamp(1.35rem,2vw,1.75rem)}
+    .text-balance{text-wrap:balance}
+
+    /* ---- Eyebrow + section index ---- */
+    .eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-blue)}
+    .section--dark .eyebrow{color:var(--slate-soft)}
+    .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+    .sec-num{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--navy-40);font-variant-numeric:tabular-nums;position:relative;padding-right:16px}
+    .sec-num::after{content:"";position:absolute;right:0;top:50%;width:8px;height:1px;background:var(--navy-20)}
+    .section--dark .sec-num{color:var(--white-45)}
+    .section--dark .sec-num::after{background:var(--white-25)}
+
+    .lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--navy-60);max-width:640px;line-height:1.7}
+    .section--dark .lead{color:var(--white-65)}
+
+    /* ---- NAV ---- */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,18,30,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--white-06);padding:0 40px;transition:background .3s var(--ease-io),border-color .3s var(--ease-io)}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;position:relative}
+    .nav-logo img{height:34px;width:auto;transition:opacity .25s var(--ease)}
+    .nav-logo:hover img{opacity:.78}
+    .nav-links{display:flex;gap:30px;align-items:center}
+    .nav-links a:not(.btn):not(.lang-btn){position:relative;color:var(--white-65);font-size:13.5px;font-weight:500;letter-spacing:.01em;transition:color .25s var(--ease);padding:4px 0}
+    .nav-links a:not(.btn):not(.lang-btn)::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--slate-soft);transition:right .35s var(--ease)}
     .nav-links a:not(.btn):not(.lang-btn):hover{color:#fff}
-    .nav-right{display:flex;gap:14px;align-items:center}
-    .lang-toggle{display:flex;gap:2px;background:rgba(255,255,255,.08);border-radius:var(--r);padding:3px}
-    .lang-btn{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:2px;cursor:pointer;color:rgba(255,255,255,.4);transition:all .18s;border:none;background:transparent}
-    .lang-btn.active{background:rgba(255,255,255,.15);color:#fff}
-    .lang-btn:hover:not(.active){color:rgba(255,255,255,.7)}
-    .btn{display:inline-flex;align-items:center;padding:10px 22px;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
-    .btn-primary{background:var(--white);color:var(--navy)}
-    .btn-primary:hover{background:var(--beige)}
-    .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.8)}
-    .btn-outline:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.05)}
-    .btn-signal{background:var(--navy);color:#fff;padding:14px 32px;font-size:15px;border:1.5px solid rgba(255,255,255,.3)}
-    .btn-signal:hover{background:rgba(15,42,63,.85)}
-    .inline-cta{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gray-blue);letter-spacing:.04em;transition:opacity .2s}
-    .inline-cta:hover{opacity:.7}
-    .inline-cta.white{color:rgba(255,255,255,.7)}
-    .inline-cta.white:hover{color:#fff;opacity:1}
-    .tag{font-size:11px;font-weight:500;letter-spacing:.06em;padding:4px 10px;border-radius:2px;background:var(--navy-06);color:var(--navy-60)}
-    .tag-light{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8)}
-    @media(max-width:600px){.container{padding:0 20px} nav{padding:0 20px} .nav-links{display:none}}
-    /* HERO */
-    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:var(--navy);padding:80px 36px 56px;position:relative;overflow:hidden}
-    .hero-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:.72}
+    .nav-links a:not(.btn):not(.lang-btn):hover::after,
+    .nav-links a.imb-active:not(.btn):not(.lang-btn)::after{right:0}
+    .nav-links a.imb-active:not(.btn):not(.lang-btn){color:#fff}
+    .nav-right{display:flex;gap:16px;align-items:center}
+    .lang-toggle{display:flex;gap:1px;background:var(--white-06);border:1px solid var(--white-06);border-radius:var(--r);padding:3px}
+    .lang-btn{font-family:var(--font-sans);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:2px;cursor:pointer;color:var(--white-45);transition:color .2s var(--ease),background .2s var(--ease);border:none;background:transparent}
+    .lang-btn.active{background:var(--white-12);color:#fff}
+    .lang-btn:hover:not(.active){color:var(--white-85)}
+    /* scroll progress signal line */
+    .nav-progress{position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:linear-gradient(90deg,transparent,var(--slate-soft) 24%,#fff);box-shadow:0 0 8px rgba(143,163,184,.5)}
+
+    /* ---- BUTTONS ---- */
+    .btn{position:relative;display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:var(--r);font-family:var(--font-sans);font-size:13.5px;font-weight:600;letter-spacing:.02em;cursor:pointer;border:1px solid transparent;transition:background .28s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .3s var(--ease);overflow:hidden;will-change:transform}
+    .btn .btn-arrow{display:inline-block;transition:transform .35s var(--ease)}
+    .btn:hover .btn-arrow{transform:translateX(4px)}
+    .btn-primary{background:var(--beige);color:var(--navy);border-color:var(--beige)}
+    .btn-primary:hover{background:#fff;border-color:#fff}
+    .section--dark .btn-primary,nav .btn-primary{background:var(--beige);color:var(--navy)}
+    .btn-outline{background:transparent;border-color:var(--white-25);color:var(--white-85)}
+    .btn-outline:hover{border-color:var(--white-65);background:var(--white-06);color:#fff}
+    .btn-dark{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .btn-dark:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+    .btn-ghost-dark{background:transparent;border-color:var(--navy-20);color:var(--navy)}
+    .btn-ghost-dark:hover{border-color:var(--navy-40);background:var(--navy-06)}
+    .inline-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--gray-blue);letter-spacing:.03em;transition:gap .3s var(--ease),color .25s var(--ease)}
+    .inline-cta .btn-arrow{transition:transform .35s var(--ease)}
+    .inline-cta:hover .btn-arrow{transform:translateX(4px)}
+    .inline-cta:hover{color:var(--navy)}
+    .inline-cta.white{color:var(--white-65)}
+    .inline-cta.white:hover{color:#fff}
+
+    .tag{font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:.04em;padding:5px 11px;border-radius:2px;background:var(--navy-06);color:var(--navy-60);border:1px solid var(--navy-08);transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+    .tag-light{background:var(--white-12);color:var(--white-85);border-color:var(--white-12)}
+
+    /* ---- SIGNAL DIVIDER (the brand motif as a rule) ---- */
+    .imb-divider{position:relative;height:1px;width:100%;max-width:var(--max);margin:0 auto;background:none;overflow:visible;font-size:0;line-height:0}
+    .imb-divider::before{content:"";position:absolute;left:40px;right:40px;top:0;height:1px;
+      background:
+        linear-gradient(90deg,transparent,var(--navy-20) 50%,transparent) right/52% 1px no-repeat,
+        repeating-linear-gradient(90deg,var(--navy-20) 0 2px,transparent 2px 9px) left/46% 1px no-repeat;}
+    .imb-divider::after{content:"";position:absolute;left:49%;top:-2.5px;width:5px;height:5px;border:1px solid var(--gray-blue);background:var(--beige);transform:rotate(45deg)}
+    .imb-divider--flip::after{background:var(--beige)}
+
+    @media(max-width:600px){.container{padding:0 22px} nav{padding:0 22px} .nav-links{display:none}}
+
+    /* ============================================================ HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;background-color:var(--navy);padding:120px 40px 72px;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(to bottom,transparent,rgba(6,16,28,.6));z-index:1;pointer-events:none}
+    .hero-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:.7}
     @media(max-width:960px){.hero-canvas{display:none}}
-    .hero-content{max-width:var(--max);margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .hero-right{display:flex;flex-direction:column;align-items:flex-start;justify-self:end}
-    .hero-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(143,163,184,.6);margin-bottom:40px;min-height:20px}
-    .hero-label .line{width:28px;height:1px;background:rgba(255,255,255,.25);flex-shrink:0}
-    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;color:#fff;line-height:1.05;max-width:520px;letter-spacing:-.01em}
-    .hero h1 em{font-style:italic;color:rgba(255,255,255,.4)}
-    .hero-sub{margin-top:72px;max-width:520px;font-size:clamp(.95rem,1.4vw,1.1rem);color:rgba(255,255,255,.6);line-height:1.8}
-    .hero-sub span{display:block}.hero-sub span+span{margin-top:32px}
-    .hero-sub strong{color:rgba(255,255,255,.9);font-weight:500}
-    .hero-close{max-width:440px;font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2rem);color:#fff;font-weight:400;line-height:1.2;letter-spacing:-.01em}
+    .hero-content{max-width:var(--max);margin:0 auto;width:100%;position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center}
+    .hero-left{position:relative}
+    .hero-right{display:flex;flex-direction:column;align-items:flex-start;justify-self:end;max-width:440px}
+    .hero-label{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-soft);margin-bottom:38px;max-width:420px;line-height:1.5}
+    .hero-label .line{width:30px;height:1px;background:var(--white-25);flex-shrink:0;position:relative;overflow:hidden}
+    .hero-label .line::after{content:"";position:absolute;inset:0;background:var(--slate-soft);animation:hl-sweep 3.4s var(--ease-io) infinite}
+    @keyframes hl-sweep{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+    .hero h1{font-family:var(--font-serif);font-size:clamp(3.3rem,8.4vw,7rem);font-weight:300;color:#fff;line-height:1.02;max-width:9ch;letter-spacing:-.02em}
+    .hero h1 em{font-style:italic;color:var(--slate-soft);position:relative}
+    .hero-sub{margin-top:44px;max-width:480px;font-size:clamp(.95rem,1.35vw,1.08rem);color:var(--white-65);line-height:1.8}
+    .hero-sub span{display:block}.hero-sub span+span{margin-top:24px}
+    .hero-sub strong{color:var(--white-85);font-weight:500}
+    .hero-rule{width:46px;height:1px;background:var(--white-25);margin-bottom:30px}
+    .hero-close{font-family:var(--font-serif);font-size:clamp(1.55rem,2.4vw,2.15rem);color:#fff;font-weight:400;line-height:1.22;letter-spacing:-.01em}
     .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
-    .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.25);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-    .hero-scroll-line{width:1px;height:40px;background:rgba(255,255,255,.15);animation:sp 2s ease-in-out infinite}
-    @keyframes sp{0%,100%{opacity:.3;transform:scaleY(1);transform-origin:top}50%{opacity:.9;transform:scaleY(.55);transform-origin:top}}
-    /* PROBLEM */
-    .problem-section{padding:88px 0;background:var(--beige)}
-    .problem-intro{max-width:680px;margin-bottom:52px}
-    .problem-intro h2{margin-bottom:18px}
-    .problem-intro p{font-size:1.05rem;color:var(--navy-60);line-height:1.75}
-    .problem-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--navy-12);background:rgba(255,255,255,.4)}
-    .problem-item{padding:32px 22px;border-right:1px solid var(--navy-12)}
-    .problem-item:last-child{border-right:none}
-    .problem-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;line-height:1;color:var(--gray-blue);margin-bottom:14px;opacity:.5}
-    .problem-item h4{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;margin-bottom:8px;color:var(--navy)}
-    .problem-item p{font-size:13px;color:var(--navy-60);line-height:1.6}
-    .problem-close{margin-top:40px;font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;color:var(--navy);font-style:italic;padding-left:16px;border-left:2px solid var(--gray-blue)}
-    /* THREE ARMS, hero of the page, larger */
-    .arms-section{padding:112px 0;background:var(--beige)}
-    .three-arms{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:72px;position:relative}
-    .arm-card{background:var(--white);padding:48px 40px;position:relative;transition:transform .2s}
-    .arm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transition:background .25s}
-    .arm-card.a::before{background:rgba(143,163,184,.25)}.arm-card.b::before{background:rgba(15,42,63,.2)}.arm-card.c::before{background:rgba(143,163,184,.25)}
-    .arm-card.a:hover::before{background:var(--gray-blue)}.arm-card.b:hover::before{background:var(--navy)}.arm-card.c:hover::before{background:var(--gray-blue)}
-    .arm-card:hover{transform:translateY(-4px)}
-    .arm-letter{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;line-height:1;color:var(--beige);margin-bottom:16px;letter-spacing:.05em}
-    .arm-card h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-bottom:16px}
-    .arm-card p{font-size:15px;color:var(--navy-60);line-height:1.75;margin-bottom:20px}
-    .arm-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
-    .arm-cta-link{display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:var(--gray-blue);letter-spacing:.04em;transition:opacity .2s}
-    .arm-cta-link:hover{opacity:.7}
-    .arm-card-preview{margin:20px 0 20px;border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(27,42,59,.10)}
-    .arm-card-preview img{display:block;width:100%;height:auto;cursor:pointer;transition:transform .25s}
-    .arm-card-preview img:hover{transform:scale(1.02)}
-    .arm-card-preview figcaption{padding:10px 14px;font-size:12px;color:var(--gray-blue);letter-spacing:.03em;text-align:center;background:var(--beige)}
-    #arm-a-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(15,22,31,.82);align-items:center;justify-content:center;padding:24px}
-    #arm-a-modal.open{display:flex}
-    #arm-a-modal img{max-width:1100px;width:90%;border-radius:8px;box-shadow:0 8px 48px rgba(0,0,0,.5)}
-    #arm-b-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(15,22,31,.82);align-items:center;justify-content:center;padding:24px}
-    #arm-b-modal.open{display:flex}
-    #arm-b-modal img{max-width:1100px;width:90%;border-radius:8px;box-shadow:0 8px 48px rgba(0,0,0,.5)}
-    #arm-c-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(15,22,31,.82);align-items:center;justify-content:center;padding:24px}
-    #arm-c-modal.open{display:flex}
-    #arm-c-modal img{max-width:1100px;width:90%;border-radius:8px;box-shadow:0 8px 48px rgba(0,0,0,.5)}
-    .arm-loop{margin-top:40px;padding:24px 36px;background:var(--navy);color:rgba(255,255,255,.55);font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.55;font-style:italic;text-align:center;border-left:3px solid rgba(143,163,184,.35)}
-    .arm-bridge{margin-top:2px;padding:28px 36px;background:var(--white);font-size:15px;color:var(--navy-60);line-height:1.75;border-left:3px solid rgba(143,163,184,.4)}
+    .hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--white-25);font-size:10px;letter-spacing:.22em;text-transform:uppercase;z-index:2}
+    .hero-scroll-line{width:1px;height:46px;background:linear-gradient(var(--white-45),transparent);position:relative;overflow:hidden}
+    .hero-scroll-line::after{content:"";position:absolute;top:0;left:0;width:100%;height:50%;background:var(--slate-soft);animation:sp 2.4s var(--ease-io) infinite}
+    @keyframes sp{0%{transform:translateY(-100%)}70%,100%{transform:translateY(220%)}}
+
+    /* ============================================================ WHAT WE SOLVE */
+    .solve-section{padding:128px 0;position:relative;overflow:hidden}
+    .solve-section .container{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.84fr);gap:72px;align-items:stretch}
+    .solve-inner{max-width:none;align-self:center}
+    .solve-visual{position:relative;border-radius:6px;overflow:hidden;background:var(--navy);min-height:520px;box-shadow:0 22px 60px rgba(10,24,40,.14)}
+    .solve-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .solve-visual .sv-eyebrow{position:absolute;left:26px;top:24px;z-index:2;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-soft)}
+    .solve-visual .sv-cap{position:absolute;left:26px;right:26px;bottom:24px;z-index:2;font-family:var(--font-serif);font-style:italic;font-size:clamp(1.15rem,1.5vw,1.5rem);color:#fff;line-height:1.25;letter-spacing:-.01em}
+    @media(max-width:960px){.solve-section .container{grid-template-columns:1fr;gap:44px}.solve-visual{min-height:300px}}
+    .solve-section h2{margin-bottom:26px}
+    .solve-body{font-size:clamp(1.05rem,1.5vw,1.18rem);color:var(--navy-60);line-height:1.75;margin-bottom:46px;max-width:600px}
+    .solve-bullets{display:flex;flex-direction:column;max-width:760px;border-top:1px solid var(--navy-12);counter-reset:sv}
+    .solve-bullets li{counter-increment:sv;font-size:clamp(1rem,1.5vw,1.18rem);color:var(--navy-80);line-height:1.45;padding:22px 0 22px 56px;display:flex;align-items:baseline;gap:0;cursor:default;position:relative;border-bottom:1px solid var(--navy-12);transition:color .3s var(--ease),padding .3s var(--ease)}
+    .solve-bullets li::before{content:"0" counter(sv);position:absolute;left:0;top:23px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--gray-blue);font-variant-numeric:tabular-nums;transition:color .3s var(--ease)}
+    .solve-bullets li::after{content:"";position:absolute;left:30px;top:30px;width:12px;height:1px;background:var(--navy-20);transition:width .35s var(--ease),background .3s var(--ease)}
+    .solve-bullets:hover li{color:var(--navy-40)}
+    .solve-bullets li:hover{color:var(--navy);padding-left:64px}
+    .solve-bullets li:hover::before{color:var(--navy)}
+    .solve-bullets li:hover::after{width:18px;background:var(--gray-blue)}
+    .solve-bullets li:last-child{border-bottom:none}
+    .solve-bridge{margin-top:46px;padding-top:30px;border-top:1px solid var(--navy-12);font-size:clamp(1rem,1.4vw,1.12rem);font-weight:500;color:var(--navy);line-height:1.6;max-width:620px}
+    .solve-close{margin-top:18px;font-family:var(--font-serif);font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--navy);font-weight:400;font-style:italic;line-height:1.25}
+
+    /* ============================================================ THREE ARMS */
+    .arms-section{padding:128px 0;position:relative}
+    .arms-section>.container>.lead{margin-top:22px}
+    .three-arms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:72px;background:var(--navy-12);border:1px solid var(--navy-12)}
+    .arm-card{background:var(--beige);padding:48px 38px;position:relative;display:flex;flex-direction:column;transition:background .35s var(--ease),transform .4s var(--ease);overflow:hidden}
+    .arm-card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--gray-blue);transition:width .5s var(--ease);z-index:2}
+    .arm-card:hover::before{width:100%}
+    .arm-card:hover{background:var(--white)}
+    .arm-letter{font-family:var(--font-serif);font-size:clamp(3rem,4vw,4rem);font-weight:300;line-height:.9;color:var(--navy-12);margin-bottom:18px;letter-spacing:.02em;transition:color .4s var(--ease)}
+    .arm-card:hover .arm-letter{color:var(--gray-blue)}
+    .arm-card .eyebrow{margin-bottom:12px}
+    .arm-card h3{font-size:clamp(1.3rem,1.9vw,1.7rem);margin-bottom:16px;line-height:1.12}
+    .arm-card p{font-family:var(--font-sans);font-size:14.5px;color:var(--navy-60);line-height:1.72;margin-bottom:20px}
+    .arm-card p:empty{display:none}
+    .arm-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;margin-bottom:26px}
+    .arm-cta-link{display:inline-flex;align-items:center;gap:7px;margin-top:auto;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--gray-blue);letter-spacing:.03em;transition:gap .3s var(--ease),color .25s var(--ease)}
+    .arm-cta-link .btn-arrow{transition:transform .35s var(--ease)}
+    .arm-cta-link:hover{color:var(--navy)}
+    .arm-cta-link:hover .btn-arrow{transform:translateX(4px)}
+    .arm-loop{margin-top:48px;padding:28px 40px;background-color:var(--navy);color:var(--white-65);font-family:var(--font-serif);font-size:clamp(1.1rem,1.6vw,1.4rem);line-height:1.5;font-style:italic;text-align:center;position:relative;overflow:hidden}
+    .arm-loop::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gray-blue)}
+    .arm-bridge{margin-top:1px;padding:28px 40px;background:var(--white);font-size:14.5px;color:var(--navy-60);line-height:1.75;border-left:3px solid var(--slate-soft)}
     .arm-bridge strong{font-weight:600;color:var(--navy)}
-    /* Flow connectors A→B and B→C */
-    .arm-card.a::after,.arm-card.b::after{content:'';position:absolute;right:-6px;top:52px;width:9px;height:9px;border-right:1.5px solid rgba(27,42,59,.22);border-top:1.5px solid rgba(27,42,59,.22);transform:rotate(45deg);pointer-events:none;z-index:3}
-    /* Return path: left-pointing arrowhead at card A's bottom (loop closes here) */
-    .three-arms::before{content:'';position:absolute;bottom:-14px;left:0;width:8px;height:8px;border-right:1.5px solid rgba(27,42,59,.26);border-top:1.5px solid rgba(27,42,59,.26);transform:rotate(225deg);pointer-events:none;z-index:2}
-    /* Return path: horizontal line spanning C → A below the card group */
-    .three-arms::after{content:'';position:absolute;bottom:-10px;left:4px;right:4px;height:1px;background:rgba(27,42,59,.18);pointer-events:none;z-index:1}
-    /* System continuity caption */
-    .arm-system-caption{margin-top:28px;text-align:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-blue)}
-    /* MODULES in arm section */
-    .mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
-    .mod-card{background:var(--white);padding:26px 28px;border-left:3px solid var(--navy-12);transition:border-left-color .2s,transform .18s;cursor:pointer;text-decoration:none;display:block;color:inherit}
-    .mod-card:hover{border-left-color:var(--gray-blue);transform:translateX(3px)}
+    .arm-system-caption{margin-top:30px;text-align:center;font-family:var(--font-sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-blue)}
+
+    /* modules (dormant but styled) */
+    .mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:52px;background:var(--navy-12)}
+    .mod-card{background:var(--beige);padding:26px 28px;border-left:2px solid transparent;transition:border-left-color .25s var(--ease),background .25s var(--ease),transform .25s var(--ease);cursor:pointer;text-decoration:none;display:block;color:inherit}
+    .mod-card:hover{border-left-color:var(--gray-blue);background:var(--white);transform:translateX(3px)}
     .mod-icon{font-size:20px;margin-bottom:10px;color:var(--navy-40)}
-    .mod-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--navy)}
-    /* WHAT WE SOLVE */
-    .solve-section{padding:96px 0;background:var(--white);position:relative;overflow:hidden}
-    .solve-section::before{content:'';position:absolute;inset:-30px;background:url('assets/background-solve.png') center/cover no-repeat;opacity:.15;filter:blur(4px);z-index:0}
-    .solve-section::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 78%,#fff 100%);z-index:1;pointer-events:none}
-    .solve-section .container{position:relative;z-index:2}
-    .solve-inner{max-width:680px}
-    .solve-section h2{margin-bottom:24px}
-    .solve-body{font-size:1.05rem;color:var(--navy-60);line-height:1.75;margin-bottom:36px;max-width:580px}
-    .solve-bullets{display:flex;flex-direction:column;max-width:600px}
-    .solve-bullets li{font-size:15px;color:var(--navy-80);line-height:1.65;padding:11px 0;display:flex;align-items:baseline;gap:14px;cursor:default;transition:color 200ms ease,opacity 200ms ease,transform 200ms ease}
-    .solve-bullets li::before{content:'→';font-size:11px;color:var(--gray-blue);flex-shrink:0;font-weight:600;letter-spacing:.04em;transition:color 200ms ease}
-    .solve-bullets:hover li{opacity:.4;color:var(--navy)}
-    .solve-bullets:hover li:hover{opacity:1;color:var(--navy);transform:translateX(3px)}
-    .solve-bridge{margin-top:36px;padding-top:28px;border-top:1px solid var(--navy-12);font-size:15px;font-weight:500;color:var(--navy);line-height:1.7;max-width:560px}
-    .solve-close{margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2vw,1.65rem);color:var(--navy);font-weight:400;font-style:italic;line-height:1.25}
-    /* DIFF */
-    .diff-section{padding:110px 0;background:var(--beige)}
-    .diff-grid{display:grid;grid-template-columns:55fr 45fr;gap:80px;align-items:center}
-    .diff-left .eyebrow{margin-bottom:28px}
-    .diff-statement{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:300;line-height:1.2;color:var(--navy)}
-    .diff-statement em{font-style:italic;color:var(--navy-40)}
-    .diff-body p{line-height:1.7;margin-bottom:0}
-    .diff-body p:nth-child(1){font-size:0.85rem;color:var(--navy-40);margin-bottom:2px}
-    .diff-body p:nth-child(2){font-size:0.85rem;color:var(--navy-40);line-height:1.65;margin-bottom:28px}
-    .diff-body p:nth-child(3){font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--navy);font-style:italic;line-height:1.35;margin-bottom:28px}
-    .diff-body p:nth-child(4){font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:400;line-height:1.25;color:var(--navy);padding-top:24px;border-top:1px solid var(--navy-20)}
-    /* IMPACT */
-    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px}
-    .impact-card{padding:36px 28px;border:1px solid rgba(255,255,255,.07);border-top:2px solid rgba(143,163,184,.3)}
-    .impact-num{font-family:'DM Sans',sans-serif;font-size:clamp(2.4rem,4vw,3.2rem);font-weight:300;line-height:1;color:#fff;letter-spacing:-.025em;font-variant-numeric:lining-nums tabular-nums}
-    .impact-unit{font-size:1.5rem;color:rgba(255,255,255,.55);letter-spacing:0;margin-left:2px}
-    .impact-label{margin-top:12px;font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,.75);line-height:1.4}
-    .impact-label-sub{display:block;font-family:'DM Sans',sans-serif;font-size:13.5px;font-style:italic;color:rgba(255,255,255,.45);margin-top:6px;line-height:1.5;font-weight:400}
-    .impact-foot{margin-top:28px;font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.01em;line-height:1.55}
-    .impact-mid-cta{margin-top:36px;text-align:right}
-    /* WHO */
-    .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
-    .serve-card-wrapper{display:flex;flex-direction:column}
-    .serve-card-image{flex:1;min-height:180px;overflow:hidden}
-    .serve-card-image img{width:100%;height:100%;object-fit:cover;display:block}
-    .serve-card{flex:1;background:var(--white);padding:36px 32px;border-left:3px solid var(--navy-12)}
-    .serve-card.active{border-left-color:var(--gray-blue)}
-    .serve-card h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-bottom:14px}
-    .serve-card p{font-size:15px;color:var(--navy-60);line-height:1.65}
-    .serve-link{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:13px;font-weight:600;color:var(--gray-blue);transition:opacity .2s}
-    .serve-link:hover{opacity:.7}
-    /* MATURITY */
-    .mat-section{padding:96px 0;background:var(--navy);color:var(--white)}
+    .mod-card h4{font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:var(--navy)}
+
+    /* ============================================================ IMPACT */
+    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:64px;background:var(--white-12);border:1px solid var(--white-12)}
+    .impact-card{padding:44px 34px;background-color:var(--navy);position:relative}
+    .impact-card::before{content:"";position:absolute;top:0;left:0;width:42px;height:2px;background:var(--slate-soft)}
+    .impact-num{font-family:var(--font-sans);font-size:clamp(2.6rem,4.4vw,3.6rem);font-weight:300;line-height:1;color:#fff;letter-spacing:-.03em;font-variant-numeric:lining-nums tabular-nums}
+    .impact-unit{font-size:1.5rem;color:var(--white-45);letter-spacing:0;margin-left:3px}
+    .impact-label{margin-top:16px;font-family:var(--font-serif);font-size:1.05rem;color:var(--white-85);line-height:1.4}
+    .impact-label-sub{display:block;font-family:var(--font-sans);font-size:13px;font-style:normal;color:var(--white-45);margin-top:8px;line-height:1.55;font-weight:400}
+    .impact-foot{margin-top:30px;font-family:var(--font-sans);font-size:12px;color:var(--white-45);letter-spacing:.01em;line-height:1.55}
+    .impact-mid-cta{margin-top:34px;text-align:right}
+
+    /* ============================================================ WHO */
+    .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
+    .serve-card-wrapper{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--navy-08);overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+    .serve-card-wrapper:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(10,24,40,.12)}
+    .serve-card-image{flex:0 0 auto;height:188px;overflow:hidden;background:var(--beige)}
+    .serve-card-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);filter:grayscale(.18) saturate(.95)}
+    .serve-card-wrapper:hover .serve-card-image img{transform:scale(1.05);filter:grayscale(0) saturate(1)}
+    .serve-card{flex:1;padding:34px 30px;border-top:2px solid var(--navy-12);transition:border-top-color .3s var(--ease)}
+    .serve-card-wrapper:hover .serve-card{border-top-color:var(--gray-blue)}
+    .serve-card h3{font-size:clamp(1.3rem,1.9vw,1.65rem);margin-bottom:14px}
+    .serve-card p{font-family:var(--font-sans);font-size:14.5px;color:var(--navy-60);line-height:1.68}
+    .serve-link{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--gray-blue);transition:gap .3s var(--ease),color .25s var(--ease)}
+    .serve-link:hover{color:var(--navy);gap:11px}
+
+    /* ============================================================ MATURITY */
+    .mat-section{padding:128px 0;background-color:var(--navy);color:var(--white)}
     .mat-inner{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
-    .mat-inner h2{color:#fff;font-size:clamp(1.9rem,3.5vw,2.9rem)}
-    .mat-section .eyebrow{color:rgba(143,163,184,.65)}
+    .mat-inner h2{color:#fff;font-size:clamp(2.1rem,3.6vw,3.1rem)}
+    .mat-section .eyebrow{color:var(--slate-soft)}
     .mat-body{display:flex;flex-direction:column}
-    .mat-setup p{font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:10px}
-    .mat-setup p:last-child{font-size:15px;color:rgba(255,255,255,.8);font-weight:500;margin-bottom:0}
-    .mat-resolution-block{border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);margin:28px 0;padding:28px 0;border-left:3px solid rgba(143,163,184,.35);padding-left:20px}
-    .mat-resolution{font-family:'Cormorant Garamond',serif;font-size:clamp(1.25rem,2.4vw,1.55rem);color:#fff;font-weight:400;line-height:1.4;letter-spacing:-0.01em;margin-bottom:0}
-    .mat-evidence p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:10px}
-    .mat-evidence p:last-child{margin-bottom:0;color:rgba(255,255,255,.75);font-size:15px}
-    /* SECTORS */
+    .mat-setup p{font-family:var(--font-sans);font-size:15px;color:var(--white-45);line-height:1.78;margin-bottom:10px}
+    .mat-setup p:last-child{color:var(--white-85);font-weight:500;margin-bottom:0}
+    .mat-resolution-block{border-top:1px solid var(--white-12);border-bottom:1px solid var(--white-12);margin:30px 0;padding:30px 0 30px 22px;border-left:3px solid var(--gray-blue)}
+    .mat-resolution{font-family:var(--font-serif);font-size:clamp(1.3rem,2.3vw,1.6rem);color:#fff;font-weight:400;line-height:1.4;letter-spacing:-.01em;margin-bottom:0}
+    .mat-evidence p{font-family:var(--font-sans);font-size:15px;color:var(--white-45);line-height:1.78;margin-bottom:10px}
+    .mat-evidence p:last-child{margin-bottom:0;color:var(--white-85)}
+
+    .checkup-inner{max-width:780px}
+    .checkup-inner .lead{margin-top:18px;max-width:700px}
+    .checkup-actions{margin-top:34px}
+    /* ============================================================ SECTORS */
     #sectors{position:relative;overflow:hidden}
-    #sectors::before{content:'';position:absolute;inset:-30px;background:url('assets/background-solve.png') center/cover no-repeat;opacity: 0.15;;filter:blur(4px);transform:scaleX(-1);z-index:0}
-    #sectors::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 78%,#fff 100%);z-index:1;pointer-events:none}
     #sectors .container{position:relative;z-index:2}
-    .sectors-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
-    .sector-chip{padding:10px 20px;background:var(--navy-06);border:1px solid var(--navy-12);border-radius:2px;font-size:14px;color:var(--navy-60)}
-    /* TEAM + CAROUSEL */
-    .team-text p{font-size:1.05rem;color:var(--navy-60);line-height:1.8;margin-bottom:20px}
-    .team-clients-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-blue);margin-top:56px;margin-bottom:28px}
-    .carousel-outer{overflow:hidden;width:100%;background:var(--navy);padding:32px 0;position:relative;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+    .sectors-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:44px}
+    .sector-chip{padding:11px 20px;background:var(--white);border:1px solid var(--navy-12);border-radius:2px;font-family:var(--font-sans);font-size:13.5px;color:var(--navy-60);transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+    .sector-chip:hover{color:var(--navy);border-color:var(--gray-blue);background:var(--beige)}
+
+    /* ============================================================ TEAM */
+    .team-text p{font-family:var(--font-sans);font-size:1.05rem;color:var(--navy-60);line-height:1.85;margin-bottom:22px}
+    .team-clients-label{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-blue);margin-top:56px;margin-bottom:28px}
+    .carousel-outer{overflow:hidden;width:100%;background:var(--navy);padding:32px 0;position:relative;border-top:1px solid var(--white-06);border-bottom:1px solid var(--white-06)}
     .carousel-outer::before,.carousel-outer::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
     .carousel-outer::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
     .carousel-outer::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
@@ -212,30 +257,84 @@
     .logo-item{width:180px;height:72px;display:flex;align-items:center;justify-content:center}
     .logo-item img{max-width:140px;max-height:40px;width:auto;height:auto;object-fit:contain;opacity:.85}
     @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    /* CTA */
-    .cta-section{padding:120px 0;text-align:center;background:var(--navy);border-top:1px solid rgba(143,163,184,.12)}
-    .cta-section h2{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem);max-width:640px;margin:0 auto 24px;font-weight:300}
-    .cta-section .lead{margin:0 auto 40px;color:rgba(255,255,255,.5);max-width:520px}
+
+    /* ============================================================ GROWTH STRATEGY (upstream band) */
+    .estrat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:60px;background:var(--white-12);border:1px solid var(--white-12)}
+    .estrat-card{background:var(--navy);padding:34px 26px;position:relative;overflow:hidden;transition:background .35s var(--ease)}
+    .estrat-card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--slate-soft);transition:width .5s var(--ease);z-index:2}
+    .estrat-card:hover::before{width:100%}
+    .estrat-card:hover{background:var(--navy-soft)}
+    .estrat-card h4{font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:#fff;line-height:1.18;margin-bottom:12px;letter-spacing:-.01em}
+    .estrat-card p{font-family:var(--font-sans);font-size:13.5px;color:var(--white-65);line-height:1.6}
+    .estrat-cta{margin-top:40px}
+    @media(max-width:960px){.estrat-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.estrat-grid{grid-template-columns:1fr}}
+
+    /* ============================================================ PERSPECTIVES */
+    .persp-section{padding:128px 0;position:relative}
+    .persp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:64px;background:var(--navy-12);border:1px solid var(--navy-12)}
+    .persp-card{background:var(--beige);padding:42px 34px;position:relative;display:flex;flex-direction:column;overflow:hidden;transition:background .35s var(--ease)}
+    .persp-card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--gray-blue);transition:width .5s var(--ease);z-index:2}
+    .persp-card:hover::before{width:100%}
+    .persp-card:hover{background:var(--white)}
+    .persp-pillar{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-blue);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+    .persp-pillar::before{content:"";width:14px;height:1px;background:var(--gray-blue);flex-shrink:0}
+    .persp-card h3{font-size:clamp(1.25rem,1.7vw,1.5rem);line-height:1.18;margin-bottom:16px;color:var(--navy);font-weight:400}
+    .persp-card p{font-family:var(--font-sans);font-size:14px;color:var(--navy-60);line-height:1.7;margin-bottom:26px}
+    .persp-link{display:inline-flex;align-items:center;gap:7px;margin-top:auto;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--gray-blue);letter-spacing:.02em;transition:gap .3s var(--ease),color .25s var(--ease)}
+    .persp-link .btn-arrow{transition:transform .35s var(--ease)}
+    .persp-link:hover{color:var(--navy)}
+    .persp-link:hover .btn-arrow{transform:translateX(4px)}
+    .persp-follow{margin-top:44px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+    @media(max-width:960px){.persp-grid{grid-template-columns:1fr}}
+
+    /* ============================================================ CTA */
+    .cta-section{padding:148px 0;text-align:center;background-color:var(--navy);position:relative;overflow:hidden}
+    .cta-section .container{position:relative;z-index:2}
+    .cta-wave{position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--slate-soft),transparent);opacity:.5}
+    .cta-section h2{color:#fff;font-size:clamp(2.5rem,5.4vw,4.2rem);max-width:14ch;margin:0 auto 24px;font-weight:300;line-height:1.04}
+    .cta-section .lead{margin:0 auto 42px;color:var(--white-65);max-width:540px}
     .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    /* RESPONSIVE */
+
+    /* ============================================================ REVEAL */
+    .imb-reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .imb-reveal.imb-in{opacity:1;transform:none}
+    .imb-reveal[data-d="1"]{transition-delay:.06s}
+    .imb-reveal[data-d="2"]{transition-delay:.12s}
+    .imb-reveal[data-d="3"]{transition-delay:.18s}
+    .imb-reveal[data-d="4"]{transition-delay:.24s}
+    .imb-reveal[data-d="5"]{transition-delay:.3s}
+    @media(prefers-reduced-motion:reduce){
+      .imb-reveal{opacity:1;transform:none;transition:none}
+      .hero-label .line::after,.hero-scroll-line::after,.nav-progress{animation:none!important}
+      *{scroll-behavior:auto!important}
+    }
+
+    /* ============================================================ RESPONSIVE */
     @media(max-width:960px){
-      .arm-card.a::after,.arm-card.b::after{display:none}
-      .three-arms::before,.three-arms::after{display:none}
-      .three-arms,.serve-grid,.diff-grid,.mat-inner{grid-template-columns:1fr}
+      .section{padding:96px 0}
+      .three-arms,.serve-grid,.mat-inner{grid-template-columns:1fr}
       .impact-grid{grid-template-columns:1fr 1fr 1fr}
-      .problem-grid{grid-template-columns:1fr 1fr}
-      .mod-grid{grid-template-columns:1fr 1fr}
+      .hero-content{grid-template-columns:1fr;gap:52px}
+      .hero-right{justify-self:stretch;max-width:none}
+      .hero h1{max-width:none}
     }
     @media(max-width:600px){
-      .impact-grid,.problem-grid{grid-template-columns:1fr}
+      .section{padding:80px 0}
+      .impact-grid{grid-template-columns:1fr}
       .mod-grid{grid-template-columns:1fr}
-      .hero{padding:100px 20px 80px} .hero-content{grid-template-columns:1fr;gap:48px} .hero-close{max-width:none} .hero-right{display:flex;justify-self:stretch}
+      .hero{padding:108px 22px 84px} .hero h1{font-size:clamp(3rem,13vw,4.2rem)}
+      .arm-card{padding:38px 28px}
+      .solve-bullets li{padding-left:46px}
+      .solve-bullets li:hover{padding-left:50px}
     }
   </style>
+
 </head>
 <body>
-<nav>
+<nav id="top">
   <div class="nav-inner">
+    <div class="nav-progress" aria-hidden="true"></div>
     <a class="nav-logo" href="index.html"><img src="brand_assets/logo-white.png" alt="Imberion"/></a>
     <div class="nav-links">
       
@@ -259,11 +358,12 @@
       <div class="hero-label"><span class="line"></span><span id="hero-eyebrow">AI-enabled commercial strategy and execution</span></div>
       <h1 id="hero-h1">From <em>noise</em><br>to signal.</h1>
       <p class="hero-sub" id="hero-sub">
-        <span>Most commercial decisions are made blind. Not for lack of talent, for lack of a connected capability.</span>
+        <span>Most commercial decisions are made blind, for lack of a connected capability.</span>
         <span>We build it. Connecting data, decisions, and execution end-to-end. Deployed where the need is greatest. Integrated with what works. Replacing what doesn't.</span>
       </p>
     </div>
     <div class="hero-right">
+      <div class="hero-rule" aria-hidden="true"></div>
       <p class="hero-close" id="hero-close">Not a tool. Not a one-off project. The intelligence that operates commercial growth.</p>
       <div class="hero-actions">
         <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="hero-btn1">Book a 30-min call</a>
@@ -287,6 +387,24 @@
       <p class="solve-bridge" id="solve-bridge">And most importantly: how do we turn those decisions into actions in the field, and make them stick?</p>
       <p class="solve-close" id="solve-close">From decision to execution, and back again.</p>
     </div>
+    <div class="solve-visual" aria-hidden="true">
+      <canvas id="solveCanvas"></canvas>
+      <span class="sv-eyebrow" id="solve-visual-eyebrow">Signal</span>
+      <span class="sv-cap" id="solve-visual-cap">From noise to signal.</span>
+    </div>
+  </div>
+</section>
+
+<!-- GROWTH STRATEGY (upstream of the operation) -->
+<section class="section section--dark" id="estrategia">
+  <div class="container">
+    <div class="eyebrow" id="estrat-eyebrow">Estrategia de Crecimiento</div>
+    <h2 id="estrat-h2">Antes de operar el crecimiento,<br>decidir dónde crecer.</h2>
+    <p class="lead" style="margin-top:18px;" id="estrat-lead"></p>
+    <div class="estrat-grid" id="estrat-grid"></div>
+    <div class="estrat-cta">
+      <a href="estrategia.html" class="inline-cta white" id="estrat-link">Ver Estrategia de Crecimiento →</a>
+    </div>
   </div>
 </section>
 
@@ -302,10 +420,6 @@
         <div class="eyebrow" id="arm-a-eyebrow">Information Infrastructure</div>
         <h3 id="arm-a-h3">We build the visibility<br>you don't have yet</h3>
         <p id="arm-a-p"></p>
-        <figure class="arm-card-preview">
-          <img src="assets/arm-a-flow.png" alt="Arm A information infrastructure flow" loading="lazy" onclick="document.getElementById('arm-a-modal').classList.add('open')">
-          <figcaption id="arm-a-preview-caption"></figcaption>
-        </figure>
         <div class="arm-tags" id="arm-a-tags"></div>
         <a href="how-it-works.html#arm-a" class="arm-cta-link" id="arm-a-cta">Explore in depth →</a>
       </div>
@@ -315,10 +429,6 @@
         <h3 id="arm-b-h3">We convert that visibility<br>into commercial decisions</h3>
         <p id="arm-b-p"></p>
         <p id="arm-b-p2"></p>
-        <figure class="arm-card-preview">
-          <img src="assets/arm-b-simulator.png" alt="Pricing simulator, scenario modeling interface" loading="lazy" onclick="document.getElementById('arm-b-modal').classList.add('open')">
-          <figcaption id="arm-b-preview-caption"></figcaption>
-        </figure>
         <div class="arm-tags" id="arm-b-tags"></div>
         <a href="how-it-works.html#arm-b" class="arm-cta-link" id="arm-b-cta">Explore in depth →</a>
       </div>
@@ -327,10 +437,6 @@
         <div class="eyebrow" id="arm-c-eyebrow">Execution & Value Capture</div>
         <h3 id="arm-c-h3">We stay until<br>the value is captured</h3>
         <p id="arm-c-p"></p>
-        <figure class="arm-card-preview">
-          <img src="assets/arm-c-routine.png" alt="Arm C execution routine" loading="lazy" onclick="document.getElementById('arm-c-modal').classList.add('open')">
-          <figcaption id="arm-c-preview-caption"></figcaption>
-        </figure>
         <div class="arm-tags" id="arm-c-tags"></div>
         <a href="how-it-works.html#arm-c" class="arm-cta-link" id="arm-c-cta">Explore in depth →</a>
       </div>
@@ -391,6 +497,20 @@
 
 <div class="imb-divider imb-divider--flip" aria-hidden="true"></div>
 
+<!-- IMBERION CHECKUP -->
+<section class="section section-paper" id="checkup">
+  <div class="container">
+    <div class="checkup-inner">
+      <div class="eyebrow" id="checkup-eyebrow">The entry point</div>
+      <h2 id="checkup-h2">Imberion Checkup.</h2>
+      <p class="lead" id="checkup-lead"></p>
+      <div class="checkup-actions">
+        <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-dark" id="checkup-cta">Start with a Checkup</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTORS -->
 <section class="section section-data-haze" id="sectors">
   <div class="container">
@@ -419,6 +539,22 @@
   -->
 </section>
 
+<div class="imb-divider imb-divider--flip" aria-hidden="true"></div>
+
+<!-- PERSPECTIVES -->
+<section class="persp-section section-paper" id="perspectivas">
+  <div class="container">
+    <div class="eyebrow" id="persp-eyebrow">Perspectivas</div>
+    <h2 id="persp-h2">Cómo pensamos<br>el crecimiento comercial.</h2>
+    <p class="lead" style="margin-top:16px;" id="persp-lead"></p>
+    <div class="persp-grid" id="persp-grid"></div>
+    <div class="persp-follow">
+      <a href="https://www.linkedin.com/company/imberion/" target="_blank" rel="noopener" class="btn btn-dark" id="persp-cta">Seguir a Imberion en LinkedIn</a>
+      <a href="https://www.linkedin.com/in/rogarridoe/" target="_blank" rel="noopener" class="inline-cta" id="persp-cta2">Rodrigo en LinkedIn →</a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section section-cta-dust">
   <div class="container">
@@ -433,21 +569,36 @@
 </section>
 
 <footer>
+  <div class="footer-ghost" aria-hidden="true">Imberion</div>
   <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div><img src="brand_assets/logo-white.png" alt="Imberion" style="height:28px;width:auto;"/></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy">© 2026 Imberion. All rights reserved.</div>
-      </div>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links"></div>
+    <div class="footer-top">
+      <a class="footer-brand" href="#top" aria-label="Imberion, back to top"><img src="brand_assets/logo-white.png" alt="Imberion" class="footer-logo"/></a>
+      <nav class="footer-links" id="footer-links" aria-label="Footer"></nav>
+    </div>
+    <div class="footer-base">
+      <div id="footer-copy">© 2026 Imberion. All rights reserved.</div>
+      <a class="footer-back" href="#top" aria-label="Back to top"><span class="btn-arrow">↑</span></a>
     </div>
   </div>
 </footer>
 <style>
-footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding:48px 0 36px}
-.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
-#footer-links a{font-size:13px;color:rgba(255,255,255,.35);transition:color .2s}
-#footer-links a:hover{color:rgba(255,255,255,.8)}
+footer{position:relative;background:var(--navy-deep);border-top:1px solid var(--white-06);padding:92px 0 40px;overflow:hidden}
+.footer-ghost{position:absolute;left:50%;bottom:-2.6vw;transform:translateX(-50%);font-family:var(--font-serif);font-weight:300;font-size:23vw;line-height:.78;color:var(--white-06);letter-spacing:-.03em;pointer-events:none;white-space:nowrap;-webkit-user-select:none;user-select:none}
+footer .container{position:relative;z-index:1}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid var(--white-12)}
+.footer-logo{height:34px;width:auto;transition:opacity .25s var(--ease)}
+.footer-brand:hover .footer-logo{opacity:.78}
+.footer-links{display:flex;gap:14px 30px;flex-wrap:wrap;max-width:580px;justify-content:flex-end}
+#footer-links a{position:relative;font-family:var(--font-sans);font-size:13px;color:var(--white-45);transition:color .25s var(--ease)}
+#footer-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1px;background:var(--slate-soft);transition:right .35s var(--ease)}
+#footer-links a:hover{color:#fff}
+#footer-links a:hover::after{right:0}
+.footer-base{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:30px}
+#footer-copy{font-family:var(--font-sans);font-size:12px;color:var(--white-25);letter-spacing:.02em}
+.footer-back{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--white-12);border-radius:50%;color:var(--white-45);transition:color .25s var(--ease),border-color .25s var(--ease),transform .35s var(--ease)}
+.footer-back:hover{color:#fff;border-color:var(--white-45);transform:translateY(-3px)}
+.footer-back .btn-arrow{font-size:15px}
+@media(max-width:600px){.footer-links{justify-content:flex-start}.footer-ghost{font-size:30vw}}
 </style>
 
 <script>
@@ -500,7 +651,7 @@ const CLIENT_LOGOS = [
   track.innerHTML = all.map(src => `<div class="logo-item"><img src="${src}" alt="client" loading="lazy"></div>`).join('');
 })();
 
-const T = {"en": {"lang": "en", "page_title": "Imberion — From Noise to Signal", "nav_how": "How It Works", "nav_solutions": "Solutions", "nav_who": "Who It's For", "nav_dist": "For Distributors", "nav_operate": "How we operate", "nav_cta": "Book a Call", "hero_eyebrow": "AI-enabled commercial strategy and execution", "hero_h1": "From <em>noise</em><br>to signal.", "hero_p1": "Most commercial decisions are made blind. Not for lack of talent, for lack of a connected capability.", "hero_p2": "We build it. Connecting data, decisions, and execution end-to-end. Deployed where the need is greatest. Integrated with what works. Replacing what doesn't.", "hero_p3": "", "hero_close": "Not a tool. Not a one-off project. The intelligence that operates commercial growth.", "hero_btn1": "Book a 30-min call", "hero_btn2": "See how it works", "prob_eyebrow": "Why this exists", "prob_h2": "Five reasons commercial decisions fail", "prob_intro": "These are not exceptional situations. They are the default operating condition in most fragmented markets.", "prob_items": [["No market visibility", "Sales data tells you what you sold. Not what happened at the point of sale, in the distribution chain, or in competitive positioning."], ["Fragmented, incomparable data", "Multiple sources. Different formats, cadences, reliability levels. No single working truth, every team operates on a different version of reality."], ["Analysis that never becomes decisions", "Reports circulate. Dashboards exist. Pricing, promotions, and portfolio priorities remain unchanged, because the link between insight and action was never built."], ["Decisions that never reach execution", "Strategies defined in planning cycles dissolve before reaching the field. Without governance, playbooks, and measurement, the best analysis produces no result."], ["No feedback loop", "Execution is not measured against a baseline. The operation does not learn. The same structural mistakes repeat across cycles."]], "prob_close": "Imberion was built to solve all five, as a single operation.", "arms_eyebrow": "How It Works", "arms_h2": "One connected operation.<br>Three distinct capabilities.", "arms_lead": "Built to work as a full loop, or deployed where the need is greatest.", "arm_a_eyebrow": "Information Infrastructure", "arm_a_h3": "We build the visibility<br>you don't have yet", "arm_a_p": "Your market sends signals you do not capture yet. Market Signal reads the external market: competition, prices, the point of sale. Floor Signal reads the physical floor: shopper, journey, and shelf, with computer vision. We sense them, harmonize the data, and consolidate it into a single structured base. From scattered signals to one reliable picture. This is where the work starts, not where it ends.", "arm_a_tags": ["Market Signal", "Floor Signal", "POS Integration", "Distributor Integration", "Field Intelligence", "Data Harmonization", "Data Asset Creation"], "arm_b_eyebrow": "Commercial Intelligence Engine", "arm_b_h3": "We convert that visibility<br>into commercial decisions", "arm_b_p": "This layer combines economic modeling, behavioral validation, and AI-assisted decisioning to turn fragmented data into concrete commercial actions. This is AI-enabled. We operate the models and own the analysis, so you do not maintain a platform. You get decisions, delivered into the way you already work.", "arm_b_tags": ["Pricing & Pack Architecture", "Demand Moments & Occasions", "Predictive Elasticities", "Promotion Intelligence", "Trade Terms Optimization", "Portfolio & Assortment", "Competitive Intelligence", "Channel & RTM Strategy"], "arm_c_eyebrow": "Execution & Value Capture", "arm_c_h3": "We stay until<br>the value is captured", "arm_c_p": "Most engagements stop at the recommendation. We turn intelligence into action in two ways. We operate for you: Concierge runs omnichannel customer interaction, takes orders, recommends, and serves, through the Companion, a conversational layer with live dashboards. Or we equip your team: capability, ways of working, dashboards, and governance, so the decisions stick. Either way, we track results against baseline and stay until the value is captured.", "arm_c_tags": ["Concierge","Decision Translation", "Action Plans", "Field Enablement", "KPI Tracking", "Governance", "Learning Loop", "Companion"], "arm_loop": "Imberion is built as a continuous commercial operation. Every cycle sharpens the next decision, improves execution, and compounds value over time.", "arm_a_cta": "Explore in depth →", "arm_a_preview_caption": "From scattered sources to a single structured commercial base.", "arm_b_cta": "Explore in depth →", "arm_c_cta": "Explore in depth →", "arm_c_preview_caption": "Deploy the decision. Capture the value. Close the loop.", "arm_b_preview_caption": "Simulate trade-offs. Decide with AI-assisted clarity.", "mod_eyebrow": "Solutions, Arm B", "mod_h2": "Nine analytical modules.", "mod_lead": "Each module can operate independently. They are designed to work together, sharing data, context, and scenario logic across every commercial lever.", "mod_items": [["◈", "Pricing Intelligence", "arm-b.html#pricing"], ["◉", "Promotion Intelligence", "arm-b.html#promotions"], ["◧", "Trade Terms Intelligence", "arm-b.html#trade"], ["⊞", "Channel & Route-to-Market", "arm-b.html#channel"], ["⊡", "OBPPC & Portfolio Design", "arm-b.html#obppc"], ["≡", "Assortment", "arm-b.html#assortment"], ["◌", "Scenario Engine", "arm-b.html#scenario"], ["◯", "Strategic Alignment", "arm-b.html#alignment"], ["◰", "Information Infrastructure", "arm-b.html#infra"]], "solve_eyebrow": "What We Solve", "solve_h2": "Decisions. Execution.<br>Measurable impact.", "solve_body": "Most companies can answer some of these questions.<br>Very few can act on them, consistently, at scale.", "solve_bullets": ["What should we actually trust to make decisions, when data is fragmented and unreliable?", "What prices should we set, by channel, pack, and customer?", "Which products and portfolio bets will actually drive growth?", "What promotions create real incremental value, vs. just shifting volume?", "Which customers deserve investment, and under what terms, incentives, and conditions?"], "solve_bridge": "And most importantly: how do we turn those decisions into actions in the field, and make them stick?", "solve_close": "From decision to execution, and back again.", "impact_eyebrow": "Impact", "impact_h2": "What the operation delivers", "impact_cta": "Book a call to see what this looks like for your business →", "impact_stats": [["+2–5", "%", "Gross margin", "Pricing, mix and commercial discipline (3–6 months)."], ["+3–8", "%", "Revenue growth", "Better execution, coverage and win-rate (6–12 months)."], ["+10–20", "%", "Commercial investment efficiency", "Reallocation to positive-ROI activities (6–12 months)."]], "impact_foot": "Impact visible from weeks 6–8 in pilots. Actual range depends on starting point.", "who_eyebrow": "Who It's For", "who_h2": "Built for fragmented,<br>high-complexity markets.", "who_lead": "The common thread is not the industry. It is the structural condition: fragmented channels, incomplete data, and commercial decisions made without a reliable picture of the market.", "who_cards": [["Manufacturers & CPG", "Understand the market beyond your own sell-in data. Price and promote with discipline. Align trade investment to measurable performance.", null, null, "assets/who-manufacturers.png"], ["Distributors", "Structure your commercial information and turn it into a differentiator. Become an intelligence node between manufacturers and retail.", "Full proposal →", "distribuidores.html", "assets/who-distributors.png"], ["Retailers & Commercial Ecosystems", "Connect fragmented downstream data. Make execution visible, measurable, and governable.", null, null, "assets/who-retailers.png"]], "mat_eyebrow": "Any starting point", "mat_h2": "You do not need<br>to be ready.", "mat_p1": "Most organizations believe they need to \"be ready\" before they start.", "mat_p2": "That is the trap.", "mat_p3": "Commercial maturity is not a prerequisite, it is the outcome.", "mat_p4": "We've started from scattered spreadsheets, disconnected tools, and incomplete data.", "mat_p5": "That's not the exception. It's the typical starting point.", "mat_p6": "We grow with you, at your pace.", "sect_eyebrow": "Sectors", "sect_h2": "Where we play", "sect_lead": "Imberion applies wherever commercial complexity creates an information gap.", "sect_chips": ["CPG / FMCG", "Retail", "e-Commerce", "Industrial & Manufacturing", "Logistics & Transportation", "Construction & Building Materials", "Healthcare & Pharma", "Financial Services"], "team_eyebrow": "The Team", "team_h2": "Built by practitioners,<br>not theorists.", "team_p1": "Built by people who have solved this before. Not in theory, in complex, messy, real-world environments.", "team_p2": "We come from top-tier strategy, AI, and advanced analytics. We’ve worked on pricing, promotions, portfolio, and commercial transformation where the stakes are real and the data is imperfect. We don’t build frameworks. We build capabilities that work, because we’ve seen what happens when they don’t.", "team_clients": "A selection of organizations our team has served:", "cta_eyebrow": "Get Started", "cta_h2": "Ready to go from<br>noise to signal?", "cta_lead": "Book a 30-minute call. We will show you exactly where the gaps are and what it takes to close them.", "cta_btn1": "Book a 30-min call", "cta_btn2": "hello@imberion.com", "footer_copy": "© 2026 Imberion. All rights reserved.", "footer_links": [["How It Works", "#how-it-works"], ["Solutions", "#solutions"], ["Who It's For", "#who"], ["For Distributors", "distribuidores.html"], ["How we operate", "how-we-operate.html"], ["Book a Call", "https://calendly.com/rodrigo-imberion/30min"], ["Contact", "mailto:hello@imberion.com"]]}, "es": {"lang": "es", "page_title": "Imberion — Del Ruido a la Señal", "nav_how": "Cómo Funciona", "nav_solutions": "Soluciones", "nav_who": "Para Quién", "nav_dist": "Para Distribuidores", "nav_operate": "Cómo operamos", "nav_cta": "Agendar llamada", "hero_eyebrow": "Estrategia, inteligencia y ejecución comercial habilitada con AI", "hero_h1": "Del <em>ruido</em><br>a la señal.", "hero_p1": "La mayoría de las decisiones comerciales se toman a ciegas. No por falta de talento, por falta de una capacidad conectada.", "hero_p2": "Nosotros lo construimos. Conectando datos, decisiones y ejecución de punta a punta. Desplegado donde más se necesita. Integrado con lo que funciona. Reemplazando lo que no.", "hero_p3": "", "hero_close": "No es una herramienta. No es un proyecto puntual. Es la inteligencia que opera el crecimiento comercial.", "hero_btn1": "Agenda una llamada de 30 min", "hero_btn2": "Cómo funciona", "prob_eyebrow": "Por qué existe esto", "prob_h2": "Cinco razones por las que fallan las decisiones comerciales", "prob_intro": "Estas no son situaciones excepcionales. Son la condición operativa por defecto en la mayoría de los mercados fragmentados.", "prob_items": [["Sin visibilidad del mercado", "Los datos de ventas te dicen qué vendiste. No qué pasó en el punto de venta, en la cadena de distribución, ni en el posicionamiento competitivo."], ["Data fragmentada e incomparable", "Múltiples fuentes. Formatos, cadencias y niveles de confiabilidad distintos. No hay una sola verdad operativa, cada equipo opera con una versión diferente de la realidad."], ["Análisis que nunca se convierte en decisiones", "Los reportes circulan. Los dashboards existen. Los precios, promociones y prioridades de portafolio no cambian, porque el vínculo entre insight y acción nunca se construyó."], ["Decisiones que nunca llegan a la ejecución", "Las estrategias definidas en planeación se disuelven antes de llegar al campo. Sin gobierno, playbooks y medición, el mejor análisis no produce resultado."], ["Sin feedback loop", "La ejecución no se mide contra un baseline. La operación no aprende. Los mismos errores estructurales se repiten ciclo a ciclo."]], "prob_close": "Imberion fue construido para resolver los cinco, como una sola operación.", "arms_eyebrow": "Cómo Funciona", "arms_h2": "Una operación conectada.<br>Tres capacidades distintas.", "arms_lead": "Diseñado para operar como un loop completo, o desplegado donde la necesidad es mayor.", "arm_a_eyebrow": "Infraestructura de Información", "arm_a_h3": "Construimos la visibilidad<br>que aún no tienes", "arm_a_p": "Tu mercado emite señales que aún no capturas. Market Signal lee el mercado externo: competencia, precios, punto de venta. Floor Signal lee el piso físico: shopper, journey y anaquel, con visión por computadora. Las captamos, homologamos y consolidamos en una base estructurada. De señales dispersas a una imagen confiable. Aquí es donde empieza el trabajo, no donde termina.", "arm_a_tags": ["Market Signal", "Floor Signal", "Integración POS", "Integración Distribuidores", "Field Intelligence", "Homologación", "Data Asset Creation"], "arm_b_eyebrow": "Motor de Inteligencia Comercial", "arm_b_h3": "Convertimos esa visibilidad<br>en decisiones comerciales", "arm_b_p": "Esta capa combina modelado económico, validación conductual y decisioning asistido por AI para convertir data fragmentada en acciones comerciales concretas. Nosotros corremos los modelos y somos dueños del análisis, así que tú no administras una plataforma. Recibes decisiones, dentro de tu forma de trabajar.", "arm_b_tags": ["Arquitectura de Precios y Packs", "Momentos y Ocasiones de Demanda", "Elasticidades Predictivas", "Inteligencia de Promociones", "Optimización de Trade Terms", "Portafolio y Surtido", "Inteligencia Competitiva", "Estrategia de Canal y RTM"], "arm_c_eyebrow": "Ejecución y Captura de Valor", "arm_c_h3": "Nos quedamos hasta<br>que el valor es capturado", "arm_c_p": "La mayoría de los proyectos se detiene en la recomendación. Convertimos la inteligencia en acción de dos formas. Operamos por ti: Concierge lleva la interacción omnicanal con tus clientes, toma pedidos, recomienda y da servicio, a través del Companion, una capa conversacional con dashboards vivos. O equipamos a tu equipo: capability, ways of working, tableros y gobierno, para que las decisiones se sostengan. En ambos casos medimos resultados contra el baseline y nos quedamos hasta que el valor se captura.", "arm_c_tags": ["Concierge","Traducción de Decisiones", "Planes de Acción", "Habilitación de Campo", "Seguimiento KPIs", "Gobierno", "Learning Loop", "Companion"], "arm_loop": "Imberion está construido como una operación comercial continua. Cada ciclo afina la siguiente decisión, mejora la ejecución y acumula valor con el tiempo.", "arm_a_cta": "Explorar en profundidad →", "arm_a_preview_caption": "De fuentes dispersas a una base comercial estructurada.", "arm_b_cta": "Explorar en profundidad →", "arm_c_cta": "Explorar en profundidad →", "arm_c_preview_caption": "Despliega la decisión. Captura el valor. Cierra el loop.", "arm_b_preview_caption": "Simula trade-offs. Decide con claridad asistida por AI.", "mod_eyebrow": "Soluciones, Brazo B", "mod_h2": "Nueve módulos analíticos.", "mod_lead": "Cada módulo puede operar de forma independiente. Están diseñados para trabajar juntos, compartiendo data, contexto y lógica de escenarios a través de cada palanca comercial.", "mod_items": [["◈", "Inteligencia de Precios", "arm-b.html#pricing"], ["◉", "Inteligencia de Promociones", "arm-b.html#promotions"], ["◧", "Inteligencia de Trade Terms", "arm-b.html#trade"], ["⊞", "Canal y Route-to-Market", "arm-b.html#channel"], ["⊡", "OBPPC y Diseño de Portafolio", "arm-b.html#obppc"], ["≡", "Surtido", "arm-b.html#assortment"], ["◌", "Motor de Escenarios", "arm-b.html#scenario"], ["◯", "Alineación Estratégica", "arm-b.html#alignment"], ["◰", "Infraestructura de Información", "arm-b.html#infra"]], "solve_eyebrow": "Lo que resolvemos", "solve_h2": "Decisiones. Ejecución.<br>Impacto medible.", "solve_body": "La mayoría de las empresas puede responder algunas de estas preguntas.<br>Muy pocas pueden actuar sobre ellas, con consistencia y a escala.", "solve_bullets": ["Tengo datos fragmentados e inconsistentes, ¿en qué debería basar realmente mis decisiones?", "¿Qué precios debemos fijar, por canal, pack y cliente?", "¿Qué productos y apuestas de portafolio impulsarán realmente el crecimiento?", "¿Qué promociones crean valor incremental real, y cuáles solo desplazan volumen?", "¿Qué clientes merecen inversión, y bajo qué condiciones, incentivos y términos?"], "solve_bridge": "Y lo más importante: ¿cómo convertimos esas decisiones en ejecución, y hacemos que se sostengan?", "solve_close": "De la decisión a la ejecución, y de vuelta.", "impact_eyebrow": "Impacto", "impact_h2": "Lo que entrega la operación", "impact_cta": "Agenda una llamada para ver cómo se ve esto en tu negocio →", "impact_stats": [["+2–5", "%", "Margen bruto", "Pricing, mix y disciplina comercial (3–6 meses)."], ["+3–8", "%", "Crecimiento en ventas", "Mejor ejecución, cobertura y win-rate (6–12 meses)."], ["+10–20", "%", "Eficiencia en inversión comercial", "Reasignación a actividades con ROI positivo (6–12 meses)."]], "impact_foot": "Impacto visible desde semanas 6–8 en pilotos. Rango real depende del punto de partida.", "who_eyebrow": "Para Quién", "who_h2": "Construido para mercados<br>fragmentados y de alta complejidad.", "who_lead": "El denominador común no es la industria. Es la condición estructural: canales fragmentados, data incompleta y decisiones tomadas sin una imagen confiable del mercado.", "who_cards": [["Fabricantes y CPG", "Entiende el mercado más allá de tu propia data de sell-in. Ponle disciplina a precios y promociones. Alinea la inversión comercial a desempeño medible.", null, null, "assets/who-manufacturers.png"], ["Distribuidores", "Estructura tu información comercial y conviértela en un diferenciador. Sé un nodo de inteligencia entre fabricantes y retail.", "Ver propuesta completa →", "distribuidores.html", "assets/who-distributors.png"], ["Retailers y Ecosistemas Comerciales", "Conecta data downstream fragmentada. Haz la ejecución visible, medible y gobernable.", null, null, "assets/who-retailers.png"]], "mat_eyebrow": "Cualquier punto de partida", "mat_h2": "No necesitas estar<br>listo para empezar.", "mat_p1": "La mayoría de las organizaciones cree que primero tiene que \"estar lista\".", "mat_p2": "Esa es la trampa.", "mat_p3": "La madurez comercial no es un requisito previo, es el resultado.", "mat_p4": "Hemos empezado desde hojas de cálculo dispersas, herramientas desconectadas y data incompleta.", "mat_p5": "No es la excepción. Es el punto de partida típico.", "mat_p6": "Crecemos contigo, a tu ritmo.", "sect_eyebrow": "Sectores", "sect_h2": "Dónde jugamos", "sect_lead": "Imberion aplica donde sea que la complejidad comercial genere una brecha de información.", "sect_chips": ["CPG / FMCG", "Retail", "e-Commerce", "Industria y Manufactura", "Logística y Transporte", "Construcción y Materiales", "Salud y Farma", "Sector Financiero"], "team_eyebrow": "El Equipo", "team_h2": "Construido por gente que ya lo resolvió,<br>no por teóricos.","team_p1": "Construido por quienes ya resolvieron esto antes. No en teoría, en entornos complejos, desordenados y reales.", "team_p2": "Venimos de estrategia top-tier, inteligencia artificial y analítica avanzada. Hemos trabajado en pricing, promociones, portafolio y transformación comercial donde lo que está en juego es real y la data es imperfecta. No construimos frameworks. Construimos capacidades que funcionan, porque ya vimos lo que pasa cuando no funcionan." , "team_clients": "Una selección de organizaciones con las que nuestro equipo ha trabajado:", "cta_eyebrow": "Empieza ahora", "cta_h2": "¿Listo para ir del<br>ruido a la señal?", "cta_lead": "Agenda una llamada de 30 minutos. Te mostramos exactamente dónde están las brechas y qué hace falta para cerrarlas.", "cta_btn1": "Agendar llamada de 30 min", "cta_btn2": "hello@imberion.com", "footer_copy": "© 2026 Imberion. Todos los derechos reservados.", "footer_links": [["Cómo Funciona", "#how-it-works"], ["Soluciones", "#solutions"], ["Para Quién", "#who"], ["Para Distribuidores", "distribuidores.html"], ["Cómo operamos", "how-we-operate.html"], ["Agendar llamada", "https://calendly.com/rodrigo-imberion/30min"], ["Contacto", "mailto:hello@imberion.com"]]}, "pt": {"lang": "pt", "page_title": "Imberion — Do Ruído ao Sinal", "nav_how": "Como Funciona", "nav_solutions": "Soluções", "nav_who": "Para Quem", "nav_dist": "Para Distribuidores", "nav_operate": "Como operamos", "nav_cta": "Agendar chamada", "hero_eyebrow": "Estratégia, inteligência e execução comercial habilitada por AI", "hero_h1": "Do <em>ruído</em><br>ao sinal.", "hero_p1": "A maioria das decisões comerciais é tomada às cegas. Não por falta de talento, por falta de uma capacidade conectada.", "hero_p2": "Nós o construímos. Conectando dados, decisões e execução de ponta a ponta. Implantado onde a necessidade é maior. Integrado com o que funciona. Substituindo o que não funciona mais.", "hero_p3": "", "hero_close": "Não é uma ferramenta. Não é um projeto pontual. É a inteligência que opera o crescimento comercial.", "hero_btn1": "Agende uma call de 30 min", "hero_btn2": "Como funciona", "prob_eyebrow": "Por que isso existe", "prob_h2": "Cinco razões pelas quais as decisões comerciais falham", "prob_intro": "Estas não são situações excepcionais. São a condição operacional padrão na maioria dos mercados fragmentados.", "prob_items": [["Sem visibilidade do mercado", "Os dados de vendas dizem o que você vendeu. Não o que aconteceu no ponto de venda, na cadeia de distribuição ou no posicionamento competitivo."], ["Dados fragmentados e incomparáveis", "Múltiplas fontes. Formatos, cadências e níveis de confiabilidade diferentes. Não existe uma verdade operacional única."], ["Análises que nunca viram decisões", "Os relatórios circulam. Os dashboards existem. Mas preços, promoções e prioridades de portfólio permanecem inalterados."], ["Decisões que nunca chegam à execução", "As estratégias definidas no planejamento se dissolvem antes de chegar ao campo."], ["Sem feedback loop", "A execução não é medida contra uma linha de base. A operação não aprende. Os mesmos erros estruturais se repetem."]], "prob_close": "Imberion foi construído para resolver os cinco, como uma única operação.", "arms_eyebrow": "Como Funciona", "arms_h2": "Uma operação conectada.<br>Três capacidades distintas.", "arms_lead": "Projetado para operar como um loop completo, ou implantado onde a necessidade é maior.", "arm_a_eyebrow": "Infraestrutura de Informação", "arm_a_h3": "Construímos a visibilidade<br>que você ainda não tem", "arm_a_p": "Seu mercado emite sinais que você ainda não captura. Market Signal lê o mercado externo: concorrência, preços, ponto de venda. Floor Signal lê o piso físico: shopper, jornada e gôndola, com visão computacional. Nós os captamos, harmonizamos e consolidamos em uma base estruturada. De sinais dispersos a uma imagem confiável.", "arm_a_tags": ["Market Signal", "Floor Signal", "Integração POS", "Integração Distribuidores", "Field Intelligence", "Harmonização", "Data Asset Creation"], "arm_b_eyebrow": "Motor de Inteligência Comercial", "arm_b_h3": "Convertemos essa visibilidade<br>em decisões comerciais", "arm_b_p": "Esta camada combina modelagem econômica, validação comportamental e decisioning assistido por AI para transformar dados fragmentados em ações comerciais concretas. Nós rodamos os modelos e somos donos da análise, então você não mantém uma plataforma. Você recebe decisões, dentro da sua forma de trabalhar.", "arm_b_tags": ["Arquitetura de Preços e Packs", "Momentos e Ocasiões de Demanda", "Elasticidades Preditivas", "Inteligência de Promoções", "Otimização de Trade Terms", "Portfólio e Sortimento", "Inteligência Competitiva", "Estratégia de Canal e RTM"], "arm_c_eyebrow": "Execução e Captura de Valor", "arm_c_h3": "Ficamos até que<br>o valor seja capturado", "arm_c_p": "A maioria dos projetos para na recomendação. Transformamos inteligência em ação de duas formas. Operamos por você: o Concierge conduz a interação omnicanal com seus clientes, recebe pedidos, recomenda e atende, através do Companion, uma camada conversacional com dashboards ao vivo. Ou equipamos seu time: capability, ways of working, painéis e governança, para que as decisões se sustentem. Nos dois casos acompanhamos resultados contra a linha de base e ficamos até que o valor seja capturado.", "arm_c_tags": ["Concierge","Tradução de Decisões", "Planos de Ação", "Habilitação de Campo", "Acompanhamento KPIs", "Governança", "Learning Loop", "Companion"], "arm_loop": "A Imberion foi construída como uma operação comercial contínua. Cada ciclo refina a próxima decisão, melhora a execução e acumula valor ao longo do tempo.", "arm_a_cta": "Explorar em profundidade →", "arm_a_preview_caption": "De fontes dispersas a uma base comercial estruturada.", "arm_b_cta": "Explorar em profundidade →", "arm_c_cta": "Explorar em profundidade →", "arm_c_preview_caption": "Implante a decisão. Capture o valor. Feche o loop.", "arm_b_preview_caption": "Simule trade-offs. Decida com clareza assistida por AI.", "mod_eyebrow": "Soluções, Braço B", "mod_h2": "Nove módulos analíticos.", "mod_lead": "Cada módulo pode operar de forma independente. Eles são projetados para trabalhar juntos, compartilhando dados, contexto e lógica de cenários.", "mod_items": [["◈", "Inteligência de Preços", "arm-b.html#pricing"], ["◉", "Inteligência de Promoções", "arm-b.html#promotions"], ["◧", "Inteligência de Trade Terms", "arm-b.html#trade"], ["⊞", "Canal e Route-to-Market", "arm-b.html#channel"], ["⊡", "OBPPC e Design de Portfólio", "arm-b.html#obppc"], ["≡", "Sortimento", "arm-b.html#assortment"], ["◌", "Motor de Cenários", "arm-b.html#scenario"], ["◯", "Alinhamento Estratégico", "arm-b.html#alignment"], ["◰", "Infraestrutura de Informação", "arm-b.html#infra"]], "solve_eyebrow": "O que resolvemos", "solve_h2": "Decisões. Execução.<br>Impacto mensurável.", "solve_body": "A maioria das empresas consegue responder algumas dessas perguntas.<br>Muito poucas conseguem agir sobre elas, com consistência e em escala.", "solve_bullets": ["Tenho dados fragmentados e pouco confiáveis, em que devo me basear para decidir?", "Quais preços devemos praticar, por canal, embalagem e cliente?", "Quais produtos e apostas de portfólio vão realmente impulsionar o crescimento?", "Quais promoções criam valor incremental real, e quais apenas deslocam volume?", "Quais clientes merecem investimento, e em quais condições, incentivos e termos?"], "solve_bridge": "E o mais importante: como transformamos essas decisões em ações no campo, e fazemos com que se sustentem?", "solve_close": "Da decisão à execução, e de volta.", "impact_eyebrow": "Impacto", "impact_h2": "O que a operação entrega", "impact_cta": "Agende uma chamada para ver como isso se aplica ao seu negócio →", "impact_stats": [["+2–5", "%", "Margem bruta", "Pricing, mix e disciplina comercial (3–6 meses)."], ["+3–8", "%", "Crescimento em vendas", "Melhor execução, cobertura e win-rate (6–12 meses)."], ["+10–20", "%", "Eficiência em investimento comercial", "Realocação para atividades com ROI positivo (6–12 meses)."]], "impact_foot": "Impacto visível a partir das semanas 6–8 em pilotos. O intervalo real depende do ponto de partida.", "who_eyebrow": "Para Quem", "who_h2": "Construído para mercados<br>fragmentados e de alta complexidade.", "who_lead": "O denominador comum não é a indústria. É a condição estrutural: canais fragmentados, dados incompletos e decisões tomadas sem uma visão confiável do mercado.", "who_cards": [["Fabricantes e CPG", "Entenda o mercado além dos seus próprios dados de sell-in. Aplique disciplina a preços e promoções. Alinhe o investimento comercial ao desempenho mensurável.", null, null, "assets/who-manufacturers.png"], ["Distribuidores", "Estruture suas informações comerciais e as transforme em um diferencial. Torne-se um nó de inteligência entre fabricantes e varejo.", "Proposta completa →", "distribuidores.html", "assets/who-distributors.png"], ["Varejistas e Ecossistemas Comerciais", "Conecte dados downstream fragmentados. Torne a execução visível, mensurável e governável.", null, null, "assets/who-retailers.png"]], "mat_eyebrow": "Qualquer ponto de partida", "mat_h2": "Você não precisa<br>estar pronto para começar.", "mat_p1": "A maioria das organizações acredita que precisa \"estar pronta\" antes de começar.", "mat_p2": "Essa é a armadilha.", "mat_p3": "A maturidade comercial não é um pré-requisito, é o resultado.", "mat_p4": "Já começamos com planilhas dispersas, ferramentas desconectadas e dados incompletos.", "mat_p5": "Isso não é exceção. É o ponto de partida típico.", "mat_p6": "Crescemos com você, no seu ritmo.", "sect_eyebrow": "Setores", "sect_h2": "Onde atuamos", "sect_lead": "Imberion se aplica onde quer que a complexidade comercial crie uma lacuna de informação.", "sect_chips": ["CPG / FMCG", "Retail", "e-Commerce", "Indústria e Manufatura", "Logística e Transporte", "Construção e Materiais", "Saúde e Farma", "Serviços Financeiros"], "team_eyebrow": "O Time", "team_h2": "Construído por quem já resolveu,<br>não por teóricos.", "team_p1": "Construído por quem já resolveu isso antes. Não na teoria, em ambientes complexos, caóticos e reais.", "team_p2": "Viemos de estratégia top-tier, inteligência artificial e analytics avançado. Trabalhamos com pricing, promoções, portfólio e transformação comercial onde o que está em jogo é real e os dados são imperfeitos. Não construímos frameworks. Construímos capacidades que funcionam, porque já vimos o que acontece quando não funcionam.", "team_clients": "Uma seleção de organizações que nossa equipe atendeu:", "cta_eyebrow": "Comece agora", "cta_h2": "Pronto para ir do<br>ruído ao sinal?", "cta_lead": "Agende uma chamada de 30 minutos. Mostraremos exatamente onde estão as lacunas e o que é preciso para fechá-las.", "cta_btn1": "Agendar chamada de 30 min", "cta_btn2": "hello@imberion.com", "footer_copy": "© 2026 Imberion. Todos os direitos reservados.", "footer_links": [["Como Funciona", "#how-it-works"], ["Soluções", "#solutions"], ["Para Quem", "#who"], ["Para Distribuidores", "distribuidores.html"], ["Como operamos", "how-we-operate.html"], ["Agendar chamada", "https://calendly.com/rodrigo-imberion/30min"], ["Contato", "mailto:hello@imberion.com"]]}};
+const T = {"en": {"lang": "en", "page_title": "Imberion — From Noise to Signal", "nav_how": "How It Works", "nav_solutions": "Solutions", "nav_who": "Who It's For", "nav_dist": "For Distributors", "nav_operate": "How we operate", "nav_cta": "Book a Call", "hero_eyebrow": "AI-enabled commercial strategy and execution", "hero_h1": "From <em>noise</em><br>to signal.", "hero_p1": "Most commercial decisions are made blind, for lack of a connected capability.", "hero_p2": "We build it. Connecting data, decisions, and execution end-to-end. Deployed where the need is greatest. Integrated with what works. Replacing what doesn't.", "hero_p3": "", "hero_close": "Not a tool. Not a one-off project. The intelligence that operates commercial growth.", "hero_btn1": "Book a 30-min call", "hero_btn2": "See how it works", "prob_eyebrow": "Why this exists", "prob_h2": "Five reasons commercial decisions fail", "prob_intro": "These are not exceptional situations. They are the default operating condition in most fragmented markets.", "prob_items": [["No market visibility", "Sales data tells you what you sold. Not what happened at the point of sale, in the distribution chain, or in competitive positioning."], ["Fragmented, incomparable data", "Multiple sources. Different formats, cadences, reliability levels. No single working truth, every team operates on a different version of reality."], ["Analysis that never becomes decisions", "Reports circulate. Dashboards exist. Pricing, promotions, and portfolio priorities remain unchanged, because the link between insight and action was never built."], ["Decisions that never reach execution", "Strategies defined in planning cycles dissolve before reaching the field. Without governance, playbooks, and measurement, the best analysis produces no result."], ["No feedback loop", "Execution is not measured against a baseline. The operation does not learn. The same structural mistakes repeat across cycles."]], "prob_close": "Imberion was built to solve all five, as a single operation.", "arms_eyebrow": "How It Works", "arms_h2": "One connected operation.<br>Three distinct capabilities.", "arms_lead": "Built to work as a full loop, or deployed where the need is greatest.", "arm_a_eyebrow": "Information Infrastructure", "arm_a_h3": "We build the visibility<br>you don't have yet", "arm_a_p": "Your market sends signals you do not capture yet. Market Signal reads the external market: competition, prices, the point of sale. Floor Signal reads the physical floor: shopper, journey, and shelf, with computer vision. We sense them, harmonize the data, and consolidate it into a single structured base. From scattered signals to one reliable picture. This is where the work starts, not where it ends.", "arm_a_tags": ["Market Signal", "Floor Signal", "Data Integration", "Data Asset Creation"], "arm_b_eyebrow": "Commercial Intelligence Engine", "arm_b_h3": "We convert that visibility<br>into commercial decisions", "arm_b_p": "This layer combines economic modeling, behavioral validation, and AI-assisted decisioning to turn fragmented data into concrete commercial actions. This is AI-enabled. We operate the models and own the analysis, so you do not maintain a platform. You get decisions, delivered into the way you already work.", "arm_b_tags": ["Value-Attribute Compass", "Price Value Compass", "Whitespace Compass", "Growth Bridge", "Virtual Buyer Personas", "Pricing & Assortment", "Promotion Intelligence", "Commercial Policy"], "arm_c_eyebrow": "Execution & Value Capture", "arm_c_h3": "We stay until<br>the value is captured", "arm_c_p": "Most engagements stop at the recommendation. We turn intelligence into action in two modes. We operate for you: Concierge runs omnichannel customer interaction (takes orders, recommends, and serves) through the Companion, a conversational layer with live dashboards; and Training Signal coaches your salesforce, with each product's pitch and negotiation rehearsals against Account Twin. Or we equip your team: installed capability, ways of working, dashboards, and governance, so the decisions stick. Either way, we track results against baseline and stay until the value is captured.", "arm_c_tags": ["Imberion Concierge", "Companion", "Training Signal", "Account Twin", "Capability Building", "Variable Compensation", "Commercial Governance", "Learning Loop"], "arm_loop": "Imberion is built as a continuous commercial operation. Every cycle sharpens the next decision, improves execution, and compounds value over time.", "arm_a_cta": "Explore in depth →", "arm_a_preview_caption": "From scattered sources to a single structured commercial base.", "arm_b_cta": "Explore in depth →", "arm_c_cta": "Explore in depth →", "arm_c_preview_caption": "Deploy the decision. Capture the value. Close the loop.", "arm_b_preview_caption": "Simulate trade-offs. Decide with AI-assisted clarity.", "mod_eyebrow": "Solutions, Arm B", "mod_h2": "Nine analytical modules.", "mod_lead": "Each module can operate independently. They are designed to work together, sharing data, context, and scenario logic across every commercial lever.", "mod_items": [["◈", "Pricing Intelligence", "arm-b.html#pricing"], ["◉", "Promotion Intelligence", "arm-b.html#promotions"], ["◧", "Trade Terms Intelligence", "arm-b.html#trade"], ["⊞", "Channel & Route-to-Market", "arm-b.html#channel"], ["⊡", "OBPPC & Portfolio Design", "arm-b.html#obppc"], ["≡", "Assortment", "arm-b.html#assortment"], ["◌", "Scenario Engine", "arm-b.html#scenario"], ["◯", "Leadership Alignment Compass", "arm-b.html#alignment"], ["◰", "Information Infrastructure", "arm-b.html#infra"]], "solve_eyebrow": "What We Solve", "solve_h2": "Decisions. Execution.<br>Measurable impact.", "solve_body": "Most companies can answer some of these questions.<br>Very few can act on them, consistently, at scale.", "solve_bullets": ["What should we actually trust to make decisions, when data is fragmented and unreliable?", "What prices should we set, by channel, pack, and customer?", "Which products and portfolio bets will actually drive growth?", "What promotions create real incremental value, vs. just shifting volume?", "Which customers deserve investment, and under what terms, incentives, and conditions?"], "solve_bridge": "And most importantly: how do we turn those decisions into actions in the field, and make them stick?", "solve_close": "From decision to execution, and back again.", "solve_visual_eyebrow": "Signal", "solve_visual_cap": "From noise to signal.", "impact_eyebrow": "Impact", "impact_h2": "What the operation delivers", "impact_cta": "Book a call to see what this looks like for your business →", "impact_stats": [["+2–5", "%", "Gross margin", "Pricing, mix and commercial discipline (3–6 months)."], ["+3–8", "%", "Revenue growth", "Better execution, coverage and win-rate (6–12 months)."], ["+10–20", "%", "Commercial investment efficiency", "Reallocation to positive-ROI activities (6–12 months)."]], "impact_foot": "Impact visible from weeks 6–8 in pilots. Actual range depends on starting point.", "who_eyebrow": "Who It's For", "who_h2": "Built for fragmented,<br>high-complexity markets.", "who_lead": "The common thread is not the industry. It is the structural condition: fragmented channels, incomplete data, and commercial decisions made without a reliable picture of the market.", "who_cards": [["Manufacturers & CPG", "Understand the market beyond your own sell-in data. Price and promote with discipline. Align trade investment to measurable performance.", null, null, "assets/who-manufacturers.png"], ["Distributors", "Structure your commercial information and turn it into a differentiator. Become an intelligence node between manufacturers and retail.", "Full proposal →", "distribuidores.html", "assets/who-distributors.png"], ["Retailers & Commercial Ecosystems", "Connect fragmented downstream data. Make execution visible, measurable, and governable.", null, null, "assets/who-retailers.png"]], "mat_eyebrow": "Any starting point", "mat_h2": "You do not need<br>to be ready.", "mat_p1": "Most organizations believe they need to \"be ready\" before they start.", "mat_p2": "That is the trap.", "mat_p3": "Commercial maturity is not a prerequisite, it is the outcome.", "mat_p4": "We've started from scattered spreadsheets, disconnected tools, and incomplete data.", "mat_p5": "That's not the exception. It's the typical starting point.", "mat_p6": "We grow with you, at your pace.", "checkup_eyebrow": "The entry point", "checkup_h2": "Imberion Checkup.", "checkup_lead": "A commercial entry diagnostic. We x-ray your operation: strategy, pricing, governance, ways of working. We build an initiative matrix with a business case and leave an actionable playbook. The low-risk way in.", "checkup_cta": "Start with a Checkup", "sect_eyebrow": "Sectors", "sect_h2": "Where we play", "sect_lead": "Imberion applies wherever commercial complexity creates an information gap.", "sect_chips": ["CPG / FMCG", "Retail", "e-Commerce", "Industrial & Manufacturing", "Logistics & Transportation", "Construction & Building Materials", "Healthcare & Pharma"], "team_eyebrow": "The Team", "team_h2": "Built by practitioners,<br>not theorists.", "team_p1": "Built by people who have solved this before. Not in theory, in complex, messy, real-world environments.", "team_p2": "We come from top-tier strategy, AI, and advanced analytics. We’ve worked on pricing, promotions, portfolio, and commercial transformation where the stakes are real and the data is imperfect. We don’t build frameworks. We build capabilities that work, because we’ve seen what happens when they don’t.", "team_clients": "A selection of organizations our team has served:", "cta_eyebrow": "Get Started", "cta_h2": "Ready to go from<br>noise to signal?", "cta_lead": "Book a 30-minute call. We will show you exactly where the gaps are and what it takes to close them.", "cta_btn1": "Book a 30-min call", "cta_btn2": "hello@imberion.com", "nav_persp": "Perspectives", "persp_eyebrow": "Perspectives", "persp_h2": "How we think about<br>commercial growth.", "persp_lead": "Imberion's take on market, pricing, and AI that operates. Published on LinkedIn, distilled here.", "persp_cta": "Follow Imberion on LinkedIn", "persp_cta2": "Rodrigo on LinkedIn →", "persp_cards": [["Knowing the market", "The value of an ICP is measured by the customers it leaves out.", "An ICP is a binary decision: who you say yes to, and who you say no to. Its job is to protect focus.", "Read on LinkedIn", "https://www.linkedin.com/in/rogarridoe/"], ["The physical floor", "The register records what sold. Not what almost sold.", "A system that watches the floor turns the shopper's hesitation into signal: where they stop, what they compare, what makes them put it back.", "Read on LinkedIn", "https://www.linkedin.com/company/imberion/"], ["Knowing the market", "The buyer persona stopped being a portrait. Now it's an agent you can interrogate.", "Software trained on real data that reproduces how a shopper decides. A pricing or pack decision gets tested against it before it ships.", "Read on LinkedIn", "https://www.linkedin.com/in/rogarridoe/"]], "nav_estrat": "Strategy", "estrat_eyebrow": "Growth Strategy", "estrat_h2": "Before operating growth,<br>deciding where to grow.", "estrat_lead": "The operation runs growth. Upstream sits the strategic decision: which markets to compete in, what prize is there, and whether you can win. It's where the most capital is committed with the least certainty.", "estrat_link": "Explore Growth Strategy →", "estrat_cards": [["Market Sizing & Right-to-Win", "Size the prize and test whether you can win, before you invest."], ["Market Entry & GTM", "Attractiveness by occasion, route to market, and risk, to decide go or no-go."], ["Value Creation & Capital Allocation", "Profit pools, inorganic growth, and disciplined capital allocation."], ["Commercial & Operating Model", "Strategic reset, RTM redesign, and governance that makes strategy stick."]], "footer_copy": "© 2026 Imberion. All rights reserved.", "footer_links": [["How It Works", "#how-it-works"], ["Strategy", "estrategia.html"], ["Solutions", "#solutions"], ["Who It's For", "#who"], ["For Distributors", "distribuidores.html"], ["How we operate", "how-we-operate.html"], ["Book a Call", "https://calendly.com/rodrigo-imberion/30min"], ["Contact", "mailto:hello@imberion.com"]]}, "es": {"lang": "es", "page_title": "Imberion — Del Ruido a la Señal", "nav_how": "Cómo Funciona", "nav_solutions": "Soluciones", "nav_who": "Para Quién", "nav_dist": "Para Distribuidores", "nav_operate": "Cómo operamos", "nav_cta": "Agendar llamada", "hero_eyebrow": "Estrategia, inteligencia y ejecución comercial habilitada con AI", "hero_h1": "Del <em>ruido</em><br>a la señal.", "hero_p1": "La mayoría de las decisiones comerciales se toman a ciegas, por falta de una capacidad conectada.", "hero_p2": "Nosotros lo construimos. Conectando datos, decisiones y ejecución de punta a punta. Desplegado donde más se necesita. Integrado con lo que funciona. Reemplazando lo que no.", "hero_p3": "", "hero_close": "No es una herramienta. No es un proyecto puntual. Es la inteligencia que opera el crecimiento comercial.", "hero_btn1": "Agenda una llamada de 30 min", "hero_btn2": "Cómo funciona", "prob_eyebrow": "Por qué existe esto", "prob_h2": "Cinco razones por las que fallan las decisiones comerciales", "prob_intro": "Estas no son situaciones excepcionales. Son la condición operativa por defecto en la mayoría de los mercados fragmentados.", "prob_items": [["Sin visibilidad del mercado", "Los datos de ventas te dicen qué vendiste. No qué pasó en el punto de venta, en la cadena de distribución, ni en el posicionamiento competitivo."], ["Data fragmentada e incomparable", "Múltiples fuentes. Formatos, cadencias y niveles de confiabilidad distintos. No hay una sola verdad operativa, cada equipo opera con una versión diferente de la realidad."], ["Análisis que nunca se convierte en decisiones", "Los reportes circulan. Los dashboards existen. Los precios, promociones y prioridades de portafolio no cambian, porque el vínculo entre insight y acción nunca se construyó."], ["Decisiones que nunca llegan a la ejecución", "Las estrategias definidas en planeación se disuelven antes de llegar al campo. Sin gobierno, playbooks y medición, el mejor análisis no produce resultado."], ["Sin feedback loop", "La ejecución no se mide contra un baseline. La operación no aprende. Los mismos errores estructurales se repiten ciclo a ciclo."]], "prob_close": "Imberion fue construido para resolver los cinco, como una sola operación.", "arms_eyebrow": "Cómo Funciona", "arms_h2": "Una operación conectada.<br>Tres capacidades distintas.", "arms_lead": "Diseñado para operar como un loop completo, o desplegado donde la necesidad es mayor.", "arm_a_eyebrow": "Infraestructura de Información", "arm_a_h3": "Construimos la visibilidad<br>que aún no tienes", "arm_a_p": "Tu mercado emite señales que aún no capturas. Market Signal lee el mercado externo: competencia, precios, punto de venta. Floor Signal lee el piso físico: shopper, journey y anaquel, con visión por computadora. Las captamos, homologamos y consolidamos en una base estructurada. De señales dispersas a una imagen confiable. Aquí es donde empieza el trabajo, no donde termina.", "arm_a_tags": ["Market Signal", "Floor Signal", "Integración de Datos", "Creación del Dato"], "arm_b_eyebrow": "Motor de Inteligencia Comercial", "arm_b_h3": "Convertimos esa visibilidad<br>en decisiones comerciales", "arm_b_p": "Esta capa combina modelado económico, validación conductual y decisioning asistido por AI para convertir data fragmentada en acciones comerciales concretas. Nosotros corremos los modelos y somos dueños del análisis, así que tú no administras una plataforma. Recibes decisiones, dentro de tu forma de trabajar.", "arm_b_tags": ["Value-Attribute Compass", "Price Value Compass", "Whitespace Compass", "Growth Bridge", "Virtual Buyer Personas", "Pricing y Surtido", "Inteligencia de Promociones", "Política Comercial"], "arm_c_eyebrow": "Ejecución y Captura de Valor", "arm_c_h3": "Nos quedamos hasta<br>que el valor es capturado", "arm_c_p": "La mayoría de los proyectos se detiene en la recomendación. Convertimos la inteligencia en acción en dos modos. Operamos por ti: Concierge lleva la interacción omnicanal con tus clientes (toma pedidos, recomienda y da servicio) a través del Companion, una capa conversacional con dashboards vivos; y Training Signal capacita a tu fuerza de ventas, con el pitch de cada producto y ensayos de negociación contra Account Twin. O equipamos a tu equipo: capacidad instalada, ways of working, tableros y gobierno, para que las decisiones se sostengan. En ambos casos medimos resultados contra el baseline y nos quedamos hasta que el valor se captura.", "arm_c_tags": ["Imberion Concierge", "Companion", "Training Signal", "Account Twin", "Habilitadores", "Compensación Variable", "Gobierno Comercial", "Learning Loop"], "arm_loop": "Imberion está construido como una operación comercial continua. Cada ciclo afina la siguiente decisión, mejora la ejecución y acumula valor con el tiempo.", "arm_a_cta": "Explorar en profundidad →", "arm_a_preview_caption": "De fuentes dispersas a una base comercial estructurada.", "arm_b_cta": "Explorar en profundidad →", "arm_c_cta": "Explorar en profundidad →", "arm_c_preview_caption": "Despliega la decisión. Captura el valor. Cierra el loop.", "arm_b_preview_caption": "Simula trade-offs. Decide con claridad asistida por AI.", "mod_eyebrow": "Soluciones, Brazo B", "mod_h2": "Nueve módulos analíticos.", "mod_lead": "Cada módulo puede operar de forma independiente. Están diseñados para trabajar juntos, compartiendo data, contexto y lógica de escenarios a través de cada palanca comercial.", "mod_items": [["◈", "Inteligencia de Precios", "arm-b.html#pricing"], ["◉", "Inteligencia de Promociones", "arm-b.html#promotions"], ["◧", "Inteligencia de Trade Terms", "arm-b.html#trade"], ["⊞", "Canal y Route-to-Market", "arm-b.html#channel"], ["⊡", "OBPPC y Diseño de Portafolio", "arm-b.html#obppc"], ["≡", "Surtido", "arm-b.html#assortment"], ["◌", "Motor de Escenarios", "arm-b.html#scenario"], ["◯", "Leadership Alignment Compass", "arm-b.html#alignment"], ["◰", "Infraestructura de Información", "arm-b.html#infra"]], "solve_eyebrow": "Lo que resolvemos", "solve_h2": "Decisiones. Ejecución.<br>Impacto medible.", "solve_body": "La mayoría de las empresas puede responder algunas de estas preguntas.<br>Muy pocas pueden actuar sobre ellas, con consistencia y a escala.", "solve_bullets": ["Tengo datos fragmentados e inconsistentes, ¿en qué debería basar realmente mis decisiones?", "¿Qué precios debemos fijar, por canal, pack y cliente?", "¿Qué productos y apuestas de portafolio impulsarán realmente el crecimiento?", "¿Qué promociones crean valor incremental real, y cuáles solo desplazan volumen?", "¿Qué clientes merecen inversión, y bajo qué condiciones, incentivos y términos?"], "solve_bridge": "Y lo más importante: ¿cómo convertimos esas decisiones en ejecución, y hacemos que se sostengan?", "solve_close": "De la decisión a la ejecución, y de vuelta.", "solve_visual_eyebrow": "Señal", "solve_visual_cap": "Del ruido a la señal.", "impact_eyebrow": "Impacto", "impact_h2": "Lo que entrega la operación", "impact_cta": "Agenda una llamada para ver cómo se ve esto en tu negocio →", "impact_stats": [["+2–5", "%", "Margen bruto", "Pricing, mix y disciplina comercial (3–6 meses)."], ["+3–8", "%", "Crecimiento en ventas", "Mejor ejecución, cobertura y win-rate (6–12 meses)."], ["+10–20", "%", "Eficiencia en inversión comercial", "Reasignación a actividades con ROI positivo (6–12 meses)."]], "impact_foot": "Impacto visible desde semanas 6–8 en pilotos. Rango real depende del punto de partida.", "who_eyebrow": "Para Quién", "who_h2": "Construido para mercados<br>fragmentados y de alta complejidad.", "who_lead": "El denominador común no es la industria. Es la condición estructural: canales fragmentados, data incompleta y decisiones tomadas sin una imagen confiable del mercado.", "who_cards": [["Fabricantes y CPG", "Entiende el mercado más allá de tu propia data de sell-in. Ponle disciplina a precios y promociones. Alinea la inversión comercial a desempeño medible.", null, null, "assets/who-manufacturers.png"], ["Distribuidores", "Estructura tu información comercial y conviértela en un diferenciador. Sé un nodo de inteligencia entre fabricantes y retail.", "Ver propuesta completa →", "distribuidores.html", "assets/who-distributors.png"], ["Retailers y Ecosistemas Comerciales", "Conecta data downstream fragmentada. Haz la ejecución visible, medible y gobernable.", null, null, "assets/who-retailers.png"]], "mat_eyebrow": "Cualquier punto de partida", "mat_h2": "No necesitas estar<br>listo para empezar.", "mat_p1": "La mayoría de las organizaciones cree que primero tiene que \"estar lista\".", "mat_p2": "Esa es la trampa.", "mat_p3": "La madurez comercial no es un requisito previo, es el resultado.", "mat_p4": "Hemos empezado desde hojas de cálculo dispersas, herramientas desconectadas y data incompleta.", "mat_p5": "No es la excepción. Es el punto de partida típico.", "mat_p6": "Crecemos contigo, a tu ritmo.", "checkup_eyebrow": "El punto de entrada", "checkup_h2": "Imberion Checkup.", "checkup_lead": "Un diagnóstico comercial de entrada. Radiografía tu operación: estrategia, pricing, gobierno, ways of working. Arma una matriz de iniciativas con business case y deja un playbook accionable. La puerta de entrada de bajo riesgo.", "checkup_cta": "Empezar con un Checkup", "sect_eyebrow": "Sectores", "sect_h2": "Dónde jugamos", "sect_lead": "Imberion aplica donde sea que la complejidad comercial genere una brecha de información.", "sect_chips": ["CPG / FMCG", "Retail", "e-Commerce", "Industria y Manufactura", "Logística y Transporte", "Construcción y Materiales", "Salud y Farma"], "team_eyebrow": "El Equipo", "team_h2": "Construido por gente que ya lo resolvió,<br>no por teóricos.","team_p1": "Construido por quienes ya resolvieron esto antes. No en teoría, en entornos complejos, desordenados y reales.", "team_p2": "Venimos de estrategia top-tier, inteligencia artificial y analítica avanzada. Hemos trabajado en pricing, promociones, portafolio y transformación comercial donde lo que está en juego es real y la data es imperfecta. No construimos frameworks. Construimos capacidades que funcionan, porque ya vimos lo que pasa cuando no funcionan." , "team_clients": "Una selección de organizaciones con las que nuestro equipo ha trabajado:", "cta_eyebrow": "Empieza ahora", "cta_h2": "¿Listo para ir del<br>ruido a la señal?", "cta_lead": "Agenda una llamada de 30 minutos. Te mostramos exactamente dónde están las brechas y qué hace falta para cerrarlas.", "cta_btn1": "Agendar llamada de 30 min", "cta_btn2": "hello@imberion.com", "nav_persp": "Perspectivas", "persp_eyebrow": "Perspectivas", "persp_h2": "Cómo pensamos<br>el crecimiento comercial.", "persp_lead": "Tesis de Imberion sobre mercado, pricing y AI que opera. Publicadas en LinkedIn, destiladas aquí.", "persp_cta": "Seguir a Imberion en LinkedIn", "persp_cta2": "Rodrigo en LinkedIn →", "persp_cards": [["Conocer el mercado", "El valor de un ICP se mide en los clientes que deja fuera.", "Un ICP es una decisión binaria: a quién se le dice que sí y a quién no. Su función es proteger el foco.", "Leer en LinkedIn", "https://www.linkedin.com/in/rogarridoe/"], ["El piso físico", "La caja registra qué se vendió. No qué estuvo a punto de venderse.", "Un sistema que mira el piso convierte la duda del shopper en señal: dónde se frena, qué compara, qué lo hace soltar el producto.", "Leer en LinkedIn", "https://www.linkedin.com/company/imberion/"], ["Conocer el mercado", "El buyer persona dejó de ser un retrato. Ahora es un agente al que se le pregunta.", "Software entrenado con datos reales que reproduce cómo decide un shopper. Una decisión de precio o pack se prueba contra él antes de exponerla.", "Leer en LinkedIn", "https://www.linkedin.com/in/rogarridoe/"]], "nav_estrat": "Estrategia", "estrat_eyebrow": "Estrategia de Crecimiento", "estrat_h2": "Antes de operar el crecimiento,<br>decidir dónde crecer.", "estrat_lead": "La operación corre el crecimiento. Antes está la decisión estratégica: en qué mercados competir, qué premio hay y si se puede ganar. Es donde más capital se compromete con menos certeza.", "estrat_link": "Ver Estrategia de Crecimiento →", "estrat_cards": [["Market Sizing & Right-to-Win", "Dimensionar el premio y probar si se puede ganar, antes de invertir."], ["Market Entry & GTM", "Atractivo por ocasión, ruta al mercado y riesgo, para decidir go o no-go."], ["Value Creation & Capital Allocation", "Pools de ganancias, crecimiento inorgánico y asignación de capital con disciplina."], ["Commercial & Operating Model", "Reset estratégico, rediseño RTM y gobierno que sostiene la estrategia."]], "footer_copy": "© 2026 Imberion. Todos los derechos reservados.", "footer_links": [["Cómo Funciona", "#how-it-works"], ["Estrategia", "estrategia.html"], ["Soluciones", "#solutions"], ["Para Quién", "#who"], ["Para Distribuidores", "distribuidores.html"], ["Cómo operamos", "how-we-operate.html"], ["Agendar llamada", "https://calendly.com/rodrigo-imberion/30min"], ["Contacto", "mailto:hello@imberion.com"]]}, "pt": {"lang": "pt", "page_title": "Imberion — Do Ruído ao Sinal", "nav_how": "Como Funciona", "nav_solutions": "Soluções", "nav_who": "Para Quem", "nav_dist": "Para Distribuidores", "nav_operate": "Como operamos", "nav_cta": "Agendar chamada", "hero_eyebrow": "Estratégia, inteligência e execução comercial habilitada por AI", "hero_h1": "Do <em>ruído</em><br>ao sinal.", "hero_p1": "A maioria das decisões comerciais é tomada às cegas, por falta de uma capacidade conectada.", "hero_p2": "Nós o construímos. Conectando dados, decisões e execução de ponta a ponta. Implantado onde a necessidade é maior. Integrado com o que funciona. Substituindo o que não funciona mais.", "hero_p3": "", "hero_close": "Não é uma ferramenta. Não é um projeto pontual. É a inteligência que opera o crescimento comercial.", "hero_btn1": "Agende uma call de 30 min", "hero_btn2": "Como funciona", "prob_eyebrow": "Por que isso existe", "prob_h2": "Cinco razões pelas quais as decisões comerciais falham", "prob_intro": "Estas não são situações excepcionais. São a condição operacional padrão na maioria dos mercados fragmentados.", "prob_items": [["Sem visibilidade do mercado", "Os dados de vendas dizem o que você vendeu. Não o que aconteceu no ponto de venda, na cadeia de distribuição ou no posicionamento competitivo."], ["Dados fragmentados e incomparáveis", "Múltiplas fontes. Formatos, cadências e níveis de confiabilidade diferentes. Não existe uma verdade operacional única."], ["Análises que nunca viram decisões", "Os relatórios circulam. Os dashboards existem. Mas preços, promoções e prioridades de portfólio permanecem inalterados."], ["Decisões que nunca chegam à execução", "As estratégias definidas no planejamento se dissolvem antes de chegar ao campo."], ["Sem feedback loop", "A execução não é medida contra uma linha de base. A operação não aprende. Os mesmos erros estruturais se repetem."]], "prob_close": "Imberion foi construído para resolver os cinco, como uma única operação.", "arms_eyebrow": "Como Funciona", "arms_h2": "Uma operação conectada.<br>Três capacidades distintas.", "arms_lead": "Projetado para operar como um loop completo, ou implantado onde a necessidade é maior.", "arm_a_eyebrow": "Infraestrutura de Informação", "arm_a_h3": "Construímos a visibilidade<br>que você ainda não tem", "arm_a_p": "Seu mercado emite sinais que você ainda não captura. Market Signal lê o mercado externo: concorrência, preços, ponto de venda. Floor Signal lê o piso físico: shopper, jornada e gôndola, com visão computacional. Nós os captamos, harmonizamos e consolidamos em uma base estruturada. De sinais dispersos a uma imagem confiável.", "arm_a_tags": ["Market Signal", "Floor Signal", "Integração de Dados", "Criação do Dado"], "arm_b_eyebrow": "Motor de Inteligência Comercial", "arm_b_h3": "Convertemos essa visibilidade<br>em decisões comerciais", "arm_b_p": "Esta camada combina modelagem econômica, validação comportamental e decisioning assistido por AI para transformar dados fragmentados em ações comerciais concretas. Nós rodamos os modelos e somos donos da análise, então você não mantém uma plataforma. Você recebe decisões, dentro da sua forma de trabalhar.", "arm_b_tags": ["Value-Attribute Compass", "Price Value Compass", "Whitespace Compass", "Growth Bridge", "Virtual Buyer Personas", "Pricing e Sortimento", "Inteligência de Promoções", "Política Comercial"], "arm_c_eyebrow": "Execução e Captura de Valor", "arm_c_h3": "Ficamos até que<br>o valor seja capturado", "arm_c_p": "A maioria dos projetos para na recomendação. Transformamos inteligência em ação em dois modos. Operamos por você: o Concierge conduz a interação omnicanal com seus clientes (recebe pedidos, recomenda e atende) através do Companion, uma camada conversacional com dashboards ao vivo; e o Training Signal capacita sua força de vendas, com o pitch de cada produto e ensaios de negociação contra o Account Twin. Ou equipamos seu time: capacidade instalada, ways of working, painéis e governança, para que as decisões se sustentem. Nos dois casos acompanhamos resultados contra a linha de base e ficamos até que o valor seja capturado.", "arm_c_tags": ["Imberion Concierge", "Companion", "Training Signal", "Account Twin", "Habilitadores", "Remuneração Variável", "Governança Comercial", "Learning Loop"], "arm_loop": "A Imberion foi construída como uma operação comercial contínua. Cada ciclo refina a próxima decisão, melhora a execução e acumula valor ao longo do tempo.", "arm_a_cta": "Explorar em profundidade →", "arm_a_preview_caption": "De fontes dispersas a uma base comercial estruturada.", "arm_b_cta": "Explorar em profundidade →", "arm_c_cta": "Explorar em profundidade →", "arm_c_preview_caption": "Implante a decisão. Capture o valor. Feche o loop.", "arm_b_preview_caption": "Simule trade-offs. Decida com clareza assistida por AI.", "mod_eyebrow": "Soluções, Braço B", "mod_h2": "Nove módulos analíticos.", "mod_lead": "Cada módulo pode operar de forma independente. Eles são projetados para trabalhar juntos, compartilhando dados, contexto e lógica de cenários.", "mod_items": [["◈", "Inteligência de Preços", "arm-b.html#pricing"], ["◉", "Inteligência de Promoções", "arm-b.html#promotions"], ["◧", "Inteligência de Trade Terms", "arm-b.html#trade"], ["⊞", "Canal e Route-to-Market", "arm-b.html#channel"], ["⊡", "OBPPC e Design de Portfólio", "arm-b.html#obppc"], ["≡", "Sortimento", "arm-b.html#assortment"], ["◌", "Motor de Cenários", "arm-b.html#scenario"], ["◯", "Leadership Alignment Compass", "arm-b.html#alignment"], ["◰", "Infraestrutura de Informação", "arm-b.html#infra"]], "solve_eyebrow": "O que resolvemos", "solve_h2": "Decisões. Execução.<br>Impacto mensurável.", "solve_body": "A maioria das empresas consegue responder algumas dessas perguntas.<br>Muito poucas conseguem agir sobre elas, com consistência e em escala.", "solve_bullets": ["Tenho dados fragmentados e pouco confiáveis, em que devo me basear para decidir?", "Quais preços devemos praticar, por canal, embalagem e cliente?", "Quais produtos e apostas de portfólio vão realmente impulsionar o crescimento?", "Quais promoções criam valor incremental real, e quais apenas deslocam volume?", "Quais clientes merecem investimento, e em quais condições, incentivos e termos?"], "solve_bridge": "E o mais importante: como transformamos essas decisões em ações no campo, e fazemos com que se sustentem?", "solve_close": "Da decisão à execução, e de volta.", "solve_visual_eyebrow": "Sinal", "solve_visual_cap": "Do ruído ao sinal.", "impact_eyebrow": "Impacto", "impact_h2": "O que a operação entrega", "impact_cta": "Agende uma chamada para ver como isso se aplica ao seu negócio →", "impact_stats": [["+2–5", "%", "Margem bruta", "Pricing, mix e disciplina comercial (3–6 meses)."], ["+3–8", "%", "Crescimento em vendas", "Melhor execução, cobertura e win-rate (6–12 meses)."], ["+10–20", "%", "Eficiência em investimento comercial", "Realocação para atividades com ROI positivo (6–12 meses)."]], "impact_foot": "Impacto visível a partir das semanas 6–8 em pilotos. O intervalo real depende do ponto de partida.", "who_eyebrow": "Para Quem", "who_h2": "Construído para mercados<br>fragmentados e de alta complexidade.", "who_lead": "O denominador comum não é a indústria. É a condição estrutural: canais fragmentados, dados incompletos e decisões tomadas sem uma visão confiável do mercado.", "who_cards": [["Fabricantes e CPG", "Entenda o mercado além dos seus próprios dados de sell-in. Aplique disciplina a preços e promoções. Alinhe o investimento comercial ao desempenho mensurável.", null, null, "assets/who-manufacturers.png"], ["Distribuidores", "Estruture suas informações comerciais e as transforme em um diferencial. Torne-se um nó de inteligência entre fabricantes e varejo.", "Proposta completa →", "distribuidores.html", "assets/who-distributors.png"], ["Varejistas e Ecossistemas Comerciais", "Conecte dados downstream fragmentados. Torne a execução visível, mensurável e governável.", null, null, "assets/who-retailers.png"]], "mat_eyebrow": "Qualquer ponto de partida", "mat_h2": "Você não precisa<br>estar pronto para começar.", "mat_p1": "A maioria das organizações acredita que precisa \"estar pronta\" antes de começar.", "mat_p2": "Essa é a armadilha.", "mat_p3": "A maturidade comercial não é um pré-requisito, é o resultado.", "mat_p4": "Já começamos com planilhas dispersas, ferramentas desconectadas e dados incompletos.", "mat_p5": "Isso não é exceção. É o ponto de partida típico.", "mat_p6": "Crescemos com você, no seu ritmo.", "checkup_eyebrow": "O ponto de entrada", "checkup_h2": "Imberion Checkup.", "checkup_lead": "Um diagnóstico comercial de entrada. Faz um raio-x da sua operação: estratégia, pricing, governança, ways of working. Monta uma matriz de iniciativas com business case e deixa um playbook acionável. A porta de entrada de baixo risco.", "checkup_cta": "Começar com um Checkup", "sect_eyebrow": "Setores", "sect_h2": "Onde atuamos", "sect_lead": "Imberion se aplica onde quer que a complexidade comercial crie uma lacuna de informação.", "sect_chips": ["CPG / FMCG", "Retail", "e-Commerce", "Indústria e Manufatura", "Logística e Transporte", "Construção e Materiais", "Saúde e Farma"], "team_eyebrow": "O Time", "team_h2": "Construído por quem já resolveu,<br>não por teóricos.", "team_p1": "Construído por quem já resolveu isso antes. Não na teoria, em ambientes complexos, caóticos e reais.", "team_p2": "Viemos de estratégia top-tier, inteligência artificial e analytics avançado. Trabalhamos com pricing, promoções, portfólio e transformação comercial onde o que está em jogo é real e os dados são imperfeitos. Não construímos frameworks. Construímos capacidades que funcionam, porque já vimos o que acontece quando não funcionam.", "team_clients": "Uma seleção de organizações que nossa equipe atendeu:", "cta_eyebrow": "Comece agora", "cta_h2": "Pronto para ir do<br>ruído ao sinal?", "cta_lead": "Agende uma chamada de 30 minutos. Mostraremos exatamente onde estão as lacunas e o que é preciso para fechá-las.", "cta_btn1": "Agendar chamada de 30 min", "cta_btn2": "hello@imberion.com", "nav_persp": "Perspectivas", "persp_eyebrow": "Perspectivas", "persp_h2": "Como pensamos<br>o crescimento comercial.", "persp_lead": "A tese da Imberion sobre mercado, pricing e AI que opera. Publicadas no LinkedIn, destiladas aqui.", "persp_cta": "Seguir a Imberion no LinkedIn", "persp_cta2": "Rodrigo no LinkedIn →", "persp_cards": [["Conhecer o mercado", "O valor de um ICP se mede pelos clientes que ele deixa de fora.", "Um ICP é uma decisão binária: para quem se diz sim e para quem se diz não. Sua função é proteger o foco.", "Ler no LinkedIn", "https://www.linkedin.com/in/rogarridoe/"], ["O piso físico", "O caixa registra o que foi vendido. Não o que quase foi vendido.", "Um sistema que observa o piso transforma a dúvida do shopper em sinal: onde ele para, o que compara, o que o faz devolver o produto.", "Ler no LinkedIn", "https://www.linkedin.com/company/imberion/"], ["Conhecer o mercado", "O buyer persona deixou de ser um retrato. Agora é um agente que se pode interrogar.", "Software treinado com dados reais que reproduz como um shopper decide. Uma decisão de preço ou pack é testada contra ele antes de ir ao ar.", "Ler no LinkedIn", "https://www.linkedin.com/in/rogarridoe/"]], "nav_estrat": "Estratégia", "estrat_eyebrow": "Estratégia de Crescimento", "estrat_h2": "Antes de operar o crescimento,<br>decidir onde crescer.", "estrat_lead": "A operação corre o crescimento. Antes está a decisão estratégica: em quais mercados competir, qual prêmio existe e se dá para ganhar. É onde mais capital se compromete com menos certeza.", "estrat_link": "Ver Estratégia de Crescimento →", "estrat_cards": [["Market Sizing & Right-to-Win", "Dimensionar o prêmio e testar se dá para ganhar, antes de investir."], ["Market Entry & GTM", "Atratividade por ocasião, rota ao mercado e risco, para decidir go ou no-go."], ["Value Creation & Capital Allocation", "Profit pools, crescimento inorgânico e alocação de capital com disciplina."], ["Commercial & Operating Model", "Reset estratégico, redesenho RTM e governança que sustenta a estratégia."]], "footer_copy": "© 2026 Imberion. Todos os direitos reservados.", "footer_links": [["Como Funciona", "#how-it-works"], ["Estratégia", "estrategia.html"], ["Soluções", "#solutions"], ["Para Quem", "#who"], ["Para Distribuidores", "distribuidores.html"], ["Como operamos", "how-we-operate.html"], ["Agendar chamada", "https://calendly.com/rodrigo-imberion/30min"], ["Contato", "mailto:hello@imberion.com"]]}};
 
 function setLang(lang) {
   const t = T[lang] || T['en'];
@@ -517,7 +668,9 @@ function setLang(lang) {
     const back = nl.querySelector('a:not(.btn)');
     nl.innerHTML = `
       <a href="#how-it-works">${t.nav_how}</a>
+      <a href="#estrategia">${t.nav_estrat}</a>
       <a href="#who">${t.nav_who}</a>
+      <a href="#perspectivas">${t.nav_persp}</a>
       <a href="how-we-operate.html">${t.nav_operate}</a>`;
   }
 
@@ -525,6 +678,7 @@ function setLang(lang) {
   const fields = {
     'hero-eyebrow':'hero_eyebrow','hero-btn1':'hero_btn1','hero-btn2':'hero_btn2',
     'solve-eyebrow':'solve_eyebrow','solve-h2':'solve_h2','solve-body':'solve_body','solve-bridge':'solve_bridge','solve-close':'solve_close',
+    'solve-visual-eyebrow':'solve_visual_eyebrow','solve-visual-cap':'solve_visual_cap',
     'prob-eyebrow':'prob_eyebrow','prob-h2':'prob_h2','prob-intro':'prob_intro','prob-close':'prob_close',
     'arms-eyebrow':'arms_eyebrow','arms-h2':'arms_h2','arms-lead':'arms_lead',
     'arm-a-eyebrow':'arm_a_eyebrow','arm-a-h3':'arm_a_h3','arm-a-p':'arm_a_p','arm-a-cta':'arm_a_cta','arm-a-preview-caption':'arm_a_preview_caption',
@@ -536,9 +690,12 @@ function setLang(lang) {
     'who-eyebrow':'who_eyebrow','who-h2':'who_h2','who-lead':'who_lead',
     'mat-eyebrow':'mat_eyebrow','mat-h2':'mat_h2',
     'mat-p1':'mat_p1','mat-p2':'mat_p2','mat-p3':'mat_p3','mat-p4':'mat_p4','mat-p5':'mat_p5','mat-p6':'mat_p6',
+    'checkup-eyebrow':'checkup_eyebrow','checkup-h2':'checkup_h2','checkup-lead':'checkup_lead','checkup-cta':'checkup_cta',
     'sect-eyebrow':'sect_eyebrow','sect-h2':'sect_h2','sect-lead':'sect_lead',
     'team-eyebrow':'team_eyebrow','team-h2':'team_h2','team-p1':'team_p1','team-p2':'team_p2','team-clients':'team_clients',
     'cta-eyebrow':'cta_eyebrow','cta-h2':'cta_h2','cta-lead':'cta_lead','cta-btn1':'cta_btn1','cta-btn2':'cta_btn2',
+    'estrat-eyebrow':'estrat_eyebrow','estrat-h2':'estrat_h2','estrat-lead':'estrat_lead','estrat-link':'estrat_link',
+    'persp-eyebrow':'persp_eyebrow','persp-h2':'persp_h2','persp-lead':'persp_lead','persp-cta':'persp_cta','persp-cta2':'persp_cta2',
     'footer-copy':'footer_copy',
   };
   Object.entries(fields).forEach(([id,key]) => {
@@ -592,20 +749,33 @@ function setLang(lang) {
   const sl = document.getElementById('sectors-list');
   if(sl&&t.sect_chips) sl.innerHTML=t.sect_chips.map(s=>`<span class="sector-chip">${s}</span>`).join('');
 
+  // Growth Strategy upstream cards
+  const eg = document.getElementById('estrat-grid');
+  if(eg&&t.estrat_cards) eg.innerHTML=t.estrat_cards.map(c=>
+    `<div class="estrat-card"><h4>${c[0]}</h4><p>${c[1]}</p></div>`
+  ).join('');
+
+  // Perspectives (curated LinkedIn theses)
+  const pp = document.getElementById('persp-grid');
+  if(pp&&t.persp_cards) pp.innerHTML=t.persp_cards.map(c=>
+    `<article class="persp-card"><div class="persp-pillar">${c[0]}</div><h3>${c[1]}</h3><p>${c[2]}</p><a href="${c[4]}" target="_blank" rel="noopener" class="persp-link">${c[3]} <span class="btn-arrow">→</span></a></article>`
+  ).join('');
+
   // Footer
   const fl = document.getElementById('footer-links');
   if(fl&&t.footer_links) fl.innerHTML=t.footer_links.map(l=>`<a href="${l[1]}">${l[0]}</a>`).join('');
 
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('data-lang')===lang));
+  try{localStorage.setItem('imb_lang',lang);}catch(e){}
 }
 
 
 document.querySelectorAll('.lang-btn').forEach(b =>
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')))
 );
-function detectLang(){ return ['en','es','pt'].includes((navigator.language||'en').slice(0,2)) ? (navigator.language||'en').slice(0,2) : 'en'; }
+function detectLang(){ return ['en','es','pt'].includes((navigator.language||'es').slice(0,2)) ? (navigator.language||'es').slice(0,2) : 'es'; }
 
-setLang(detectLang());
+setLang((function(){try{var s=localStorage.getItem('imb_lang');if(['en','es','pt'].indexOf(s)>-1)return s;}catch(e){}return detectLang();})());
 
 (function(){
   const canvas = document.getElementById('noiseCanvas');
@@ -730,152 +900,183 @@ setLang(detectLang());
 })();
 </script>
 
-<!-- ARM A IMAGE MODAL -->
-<div id="arm-a-modal" role="dialog" aria-modal="true" aria-label="Arm A preview">
-  <img src="assets/arm-a-flow.png" alt="Arm A information infrastructure flow">
-</div>
-<script>
-(function(){
-  const modal = document.getElementById('arm-a-modal');
-  if(!modal) return;
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) modal.classList.remove('open');
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') modal.classList.remove('open');
-  });
-})();
-</script>
-
-<!-- ARM B IMAGE MODAL -->
-<div id="arm-b-modal" role="dialog" aria-modal="true" aria-label="Pricing simulator preview">
-  <img src="assets/arm-b-simulator.png" alt="Pricing simulator, scenario modeling interface">
-</div>
-<script>
-(function(){
-  const modal = document.getElementById('arm-b-modal');
-  if(!modal) return;
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) modal.classList.remove('open');
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') modal.classList.remove('open');
-  });
-})();
-</script>
-<!-- ARM C IMAGE MODAL -->
-<div id="arm-c-modal" role="dialog" aria-modal="true" aria-label="Arm C execution routine preview">
-  <img src="assets/arm-c-routine.png" alt="Arm C execution routine">
-</div>
-<script>
-(function(){
-  const modal = document.getElementById('arm-c-modal');
-  if(!modal) return;
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) modal.classList.remove('open');
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') modal.classList.remove('open');
-  });
-})();
-</script>
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/51273309.js"></script>
 <!-- End of HubSpot Embed Code -->
 
 <link rel="stylesheet" href="/assets/css/imberion-textures-v2.css"/>
 
-<!-- ── UX Layer: scroll-reveal · nav elevation · active sections ── -->
-<style>
-/* Reveal base, starts invisible, slides up */
-.imb-reveal{
-  opacity:0;
-  transform:translateY(16px);
-  transition:opacity .42s cubic-bezier(.2,.8,.2,1),
-             transform .42s cubic-bezier(.2,.8,.2,1);
-}
-.imb-reveal.imb-in{opacity:1;transform:none}
-/* Stagger siblings */
-.imb-reveal[data-d="1"]{transition-delay:.07s}
-.imb-reveal[data-d="2"]{transition-delay:.14s}
-.imb-reveal[data-d="3"]{transition-delay:.21s}
-.imb-reveal[data-d="4"]{transition-delay:.28s}
-.imb-reveal[data-d="5"]{transition-delay:.35s}
-/* Respect reduced-motion */
-@media(prefers-reduced-motion:reduce){
-  .imb-reveal{opacity:1;transform:none;transition:none}
-}
-/* Nav: subtle depth as page scrolls away from hero */
-nav{transition:border-bottom-color .22s cubic-bezier(.4,0,.2,1),
-              box-shadow .22s cubic-bezier(.4,0,.2,1)}
-nav.imb-elevated{
-  border-bottom-color:rgba(255,255,255,.18);
-  box-shadow:0 2px 24px rgba(0,0,0,.26)
-}
-/* Active nav link */
-.nav-links a.imb-active:not(.btn):not(.lang-btn){color:#fff!important}
-/* Section dividers */
-.imb-divider{display:block;width:100%;height:90px;background:url('assets/textures/04_diagonal_section_divider.png') center/cover no-repeat;font-size:0;line-height:0;}
-.imb-divider--flip{transform:scaleY(-1);}
-</style>
+<!-- ── UX Layer: section index · scroll-reveal · nav signal · magnetic CTA ── -->
 <script>
 (function(){
-  /* ── Nav elevation on scroll ── */
-  var nav = document.querySelector('nav');
-  function syncNav() { if(nav) nav.classList.toggle('imb-elevated', window.scrollY > 80); }
-  window.addEventListener('scroll', syncNav, {passive:true});
-  syncNav();
+  var nav  = document.querySelector('nav');
+  var prog = document.querySelector('.nav-progress');
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var fine   = window.matchMedia('(pointer:fine)').matches;
 
-  /* Guard: skip animation setup if user prefers reduced motion */
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  /* ── Nav elevation + scroll-progress signal ── */
+  function onScroll(){
+    var y = window.scrollY || 0;
+    if(nav) nav.classList.toggle('imb-elevated', y > 60);
+    if(prog){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.width = (h > 0 ? Math.min(y / h, 1) * 100 : 0) + '%';
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
 
-  /* ── IntersectionObserver for scroll-reveal ── */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('imb-in'); io.unobserve(e.target); }
+  /* ── Section index: number the narrative chapters 01–07 ── */
+  var order = ['solve-eyebrow','estrat-eyebrow','arms-eyebrow','impact-eyebrow','who-eyebrow','mat-eyebrow','sect-eyebrow','team-eyebrow','persp-eyebrow'];
+  order.forEach(function(id, i){
+    var eb = document.getElementById(id);
+    if(!eb || eb.closest('.sec-head')) return;
+    var head = document.createElement('div');
+    head.className = 'sec-head';
+    var num = document.createElement('span');
+    num.className = 'sec-num';
+    num.textContent = (i+1 < 10 ? '0' : '') + (i+1);
+    eb.parentNode.insertBefore(head, eb);
+    head.appendChild(num);
+    head.appendChild(eb);
+  });
+
+  /* ── Magnetic CTAs ── */
+  if(!reduce && fine){
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.addEventListener('mousemove', function(e){
+        var r = b.getBoundingClientRect();
+        var mx = e.clientX - r.left - r.width/2;
+        var my = e.clientY - r.top  - r.height/2;
+        b.style.transform = 'translate(' + (mx*0.16).toFixed(1) + 'px,' + (my*0.22).toFixed(1) + 'px)';
+      });
+      b.addEventListener('mouseleave', function(){ b.style.transform = ''; });
     });
-  }, {threshold: 0.07, rootMargin: '0px 0px -28px 0px'});
-
-  function reveal(el, delay) {
-    if(!el || el.classList.contains('imb-reveal')) return;
-    el.classList.add('imb-reveal');
-    if(delay) el.setAttribute('data-d', delay);
-    io.observe(el);
   }
 
-  /* ── Static section headers & bodies ── */
-  var staticSelectors = ['.eyebrow','h2','.lead','.solve-inner','.mat-inner',
-    '.diff-grid','.team-text','.team-clients-label','.cta-actions','.solve-bridge',
-    '.solve-close','.arm-loop','.arm-bridge','.impact-foot','.impact-mid-cta'];
-  document.querySelectorAll(
-    '.problem-section,.arms-section,.solve-section,.diff-section,.mat-section,#sectors,#team,#who,.cta-section'
-  ).forEach(function(sec){
-    staticSelectors.forEach(function(sel){
-      sec.querySelectorAll(':scope > .container > ' + sel).forEach(function(el){ reveal(el); });
-      sec.querySelectorAll(':scope > ' + sel).forEach(function(el){ reveal(el); });
-    });
+  /* ── Reveal + active-nav (rAF scroll, geometry-driven for robustness) ── */
+  if(reduce) return;
+
+  var revealEls = [];
+  function mark(el, d){
+    if(!el || el.__rv) return;
+    el.__rv = 1;
+    el.classList.add('imb-reveal');
+    if(d) el.setAttribute('data-d', d);
+    revealEls.push(el);
+  }
+
+  /* Hero load sequence */
+  [['.hero-label',0],['.hero h1',1],['.hero-sub',2],['.hero-rule',2],['.hero-close',3],['.hero-actions',4]].forEach(function(p){
+    mark(document.querySelector(p[0]), p[1]);
   });
 
-  /* ── Dynamic card grids (populated by setLang, already in DOM by now) ── */
-  ['.problem-item', '.arm-card', '.impact-card', '.serve-card-wrapper', '.mod-card'].forEach(function(sel){
-    document.querySelectorAll(sel).forEach(function(el, i){ reveal(el, Math.min(i + 1, 5)); });
-  });
-
-  /* ── Active nav link tracking ── */
-  var navIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      var href = '#' + e.target.id;
-      document.querySelectorAll('.nav-links a').forEach(function(a){
-        if(a.getAttribute('href') === href) a.classList.toggle('imb-active', e.isIntersecting);
+  /* Section intros */
+  var introSel = ['.sec-head','.eyebrow','h2','.lead','.solve-body','.solve-bridge','.solve-close',
+    '.arm-loop','.arm-bridge','.arm-system-caption','.impact-foot','.impact-mid-cta',
+    '.mat-body','.team-text','.team-clients-label','.persp-follow','.cta-actions'];
+  document.querySelectorAll('section, footer').forEach(function(sec){
+    introSel.forEach(function(sel){
+      sec.querySelectorAll(sel).forEach(function(el){
+        if(el.closest('.hero')) return;            // hero handled above
+        if(sel === '.eyebrow' && el.closest('.sec-head')) return; // numbered already
+        mark(el);
       });
     });
-  }, {threshold: 0.2, rootMargin: '-68px 0px 0px 0px'});
-
-  ['how-it-works', 'who', 'maturity'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(el) navIO.observe(el);
   });
+
+  /* Staggered card grids (already in DOM via setLang) */
+  ['.problem-item','.arm-card','.impact-card','.serve-card-wrapper','.mod-card','.sector-chip','.persp-card','.estrat-card'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el, i){ mark(el, Math.min(i+1, 5)); });
+  });
+
+  /* Active-nav targets */
+  var navMap = [];
+  ['how-it-works','estrategia','who','maturity','perspectivas'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) navMap.push({el:el, href:'#'+id});
+  });
+
+  var ticking = false;
+  function frame(){
+    ticking = false;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    for(var i = revealEls.length - 1; i >= 0; i--){
+      var r = revealEls[i].getBoundingClientRect();
+      if(r.top < vh - 40){
+        revealEls[i].classList.add('imb-in');
+        revealEls.splice(i, 1);
+      }
+    }
+    if(navMap.length){
+      var active = null;
+      navMap.forEach(function(m){
+        var r = m.el.getBoundingClientRect();
+        if(r.top <= vh*0.42 && r.bottom >= vh*0.2) active = m.href;
+      });
+      document.querySelectorAll('.nav-links a').forEach(function(a){
+        a.classList.toggle('imb-active', active !== null && a.getAttribute('href') === active);
+      });
+    }
+  }
+  function schedule(){ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule, {passive:true});
+  frame();
+})();
+</script>
+<script>
+/* Solve panel: compact noise -> signal field */
+(function(){
+  var c = document.getElementById('solveCanvas'); if(!c) return;
+  var ctx = c.getContext('2d'), W, H, pts, frame = 0, N = 150;
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function init(){
+    pts = [];
+    for(var i=0;i<N;i++){
+      var a = Math.sin(i*12.9898)*43758.5453; a = a - Math.floor(a);
+      var b = Math.sin(i*78.233)*43758.5453; b = b - Math.floor(b);
+      var ang = a*Math.PI*2, dist = Math.pow(b,0.5)*Math.min(W,H)*0.52, u = i/N;
+      pts.push({nx:W*0.5+Math.cos(ang)*dist, ny:H*0.5+Math.sin(ang)*dist*0.78,
+                sx:W*(0.12+u*0.76), sy:H*0.5+Math.sin(u*Math.PI*4)*H*0.12,
+                r:b*1.5+0.5, ph:a*6.28});
+    }
+    pts.sort(function(x,y){return x.sx-y.sx;});
+  }
+  function resize(){ W=c.width=c.offsetWidth; H=c.height=c.offsetHeight; init(); }
+  function ease(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+  function frameDraw(conv){
+    ctx.clearRect(0,0,W,H);
+    var t = frame*0.01;
+    for(var i=0;i<N;i++){
+      var p = pts[i];
+      var nx = p.nx+Math.sin(t*0.7+p.ph)*16, ny = p.ny+Math.cos(t*0.8+p.ph)*12;
+      var sx = p.sx+Math.sin(t*0.3+p.ph)*2.5, sy = p.sy+Math.cos(t*0.3+p.ph)*2.5;
+      var rx = nx+(sx-nx)*conv, ry = ny+(sy-ny)*conv;
+      ctx.beginPath(); ctx.arc(rx,ry,p.r*(1.4-conv*0.5),0,6.2832);
+      ctx.fillStyle='rgba(255,255,255,'+(0.5-conv*0.18).toFixed(2)+')'; ctx.fill();
+    }
+    if(conv>0.4){
+      var la = Math.min((conv-0.4)/0.3,1)*0.42;
+      ctx.beginPath();
+      for(var j=0;j<N;j++){ var q=pts[j]; var px=q.sx+Math.sin(t*0.3+q.ph)*2.5, py=q.sy+Math.cos(t*0.3+q.ph)*2.5; j?ctx.lineTo(px,py):ctx.moveTo(px,py); }
+      ctx.strokeStyle='rgba(143,163,184,'+la.toFixed(3)+')'; ctx.lineWidth=1.1; ctx.stroke();
+    }
+  }
+  function loop(){
+    frame++;
+    var CY=560, ph=(frame%CY)/CY, conv;
+    if(ph<0.18) conv=0; else if(ph<0.5) conv=ease((ph-0.18)/0.32);
+    else if(ph<0.72) conv=1; else conv=1-ease((ph-0.72)/0.28);
+    frameDraw(conv);
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  if(reduce){ frame=0; frameDraw(1); } else { loop(); }
 })();
 </script>
 </body>
+
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8"/><link rel="icon" type="image/png" href="brand_assets/favicon.png"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Imberion — Arm A: Information Infrastructure</title>
+  <title>Imberion — Brazo A: Infraestructura de Información</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
@@ -95,21 +95,18 @@
     @media(max-width:960px){.sources-grid{grid-template-columns:1fr} .submods-grid{grid-template-columns:1fr 1fr} .value-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:600px){.submods-grid,.value-grid{grid-template-columns:1fr} .page-hero{padding:120px 20px 60px}}
   </style>
+  <link rel="stylesheet" href="assets/css/imberion-site.css"/>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html"><img src="brand_assets/logo-white.png" alt="Imberion"/></a>
     <div class="nav-links">
-      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion</a>
+      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion</a><a href="estrategia.html" data-i18n="nav_estrat" style="margin-left:22px;">Estrategia</a>
     </div>
     <div class="nav-right">
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn " data-lang="es">ES</button>
-        <button class="lang-btn " data-lang="pt">PT</button>
-      </div>
-      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta">Book a Call</a>
+      <div class="lang-toggle"><button class="lang-btn active" data-lang="es">ES</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="pt">PT</button></div>
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta" data-i18n="nav_cta">Agendar llamada</a>
     </div>
   </div>
 </nav>
@@ -117,33 +114,44 @@
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-content">
-    <a href="index.html#how-it-works" class="back">← Back to how it works</a>
-    <div class="eyebrow" style="color:rgba(255,255,255,.5);">Arm A</div>
-    <h1>Information Infrastructure</h1>
-    <p class="lead">We capture, clean, harmonize, and consolidate commercial information from multiple sources to build the observable market that others assume already exists.</p>
+    <a href="index.html#how-it-works" class="back" data-i18n="back">← Volver a cómo funciona</a>
+    <div class="eyebrow" style="color:rgba(255,255,255,.5);" data-i18n="hero_eyebrow">Brazo A</div>
+    <h1 data-i18n="hero_h1">Infraestructura de Información</h1>
+    <p class="lead" data-i18n="hero_lead">Capturamos, limpiamos, homologamos y consolidamos la información comercial de múltiples fuentes para construir el mercado observable que otros suponen que ya existe.</p>
   </div>
   <div class="page-hero .arm-badge" style="position:absolute;right:60px;bottom:40px;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;color:rgba(255,255,255,.05);line-height:1;user-select:none;">A</div>
+</section>
+
+<!-- PRODUCT MOCKUP -->
+<section class="section mockup-band">
+  <div class="container">
+    <div class="mockup-lead"><span class="eyebrow" data-i18n="mockup_eyebrow">Vista de producto</span></div>
+    <figure class="mockup-figure">
+      <img src="assets/arm-a-mockup.png" alt="Una sola base estructurada a partir de fuentes dispersas." loading="lazy">
+      <figcaption data-i18n="mockup_cap">Una sola base estructurada a partir de fuentes dispersas.</figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- WHAT IT RESOLVES -->
 <section class="section section--tint">
   <div class="container">
-    <div class="eyebrow">What Arm A resolves</div>
-    <h2>Opacidad comercial.<br>We make it observable.</h2>
-    <p class="lead" style="margin-top:16px;">Most organizations cannot see their market clearly. Not because the data doesn't exist, but because it has never been consolidated into a single reliable base. Arm A solves that problem before anything else can be attempted.</p>
-    <div class="pipeline-note">Data ingestion is orchestrated through automated pipelines that normalize, validate, and route information from each source, without manual intervention at each step. The result is a living data infrastructure that improves with every cycle.</div>
+    <div class="eyebrow" data-i18n="resolve_eyebrow">Lo que resuelve el Brazo A</div>
+    <h2 data-i18n="resolve_h2">La opacidad comercial.<br>La volvemos observable.</h2>
+    <p class="lead" style="margin-top:16px;" data-i18n="resolve_lead">La mayoría de las organizaciones no ven su mercado con claridad. No porque la data no exista, sino porque nunca se ha consolidado en una sola base confiable. El Brazo A resuelve ese problema antes de poder intentar cualquier otra cosa.</p>
+    <div class="pipeline-note" data-i18n="pipeline_note">La ingesta de data se orquesta mediante pipelines automatizados que normalizan, validan y enrutan la información de cada fuente, sin intervención manual en cada paso. El resultado es una infraestructura de data viva que mejora con cada ciclo.</div>
   </div>
 </section>
 
 <!-- THE SIGNALS -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">The Signals</div>
-    <h2>Two named Signals lead the way in.</h2>
-    <p class="lead" style="margin-top:16px;">Signals are the diagnostic entry point: the analysis that turns scattered data into a first reliable read of the market.</p>
+    <div class="eyebrow" data-i18n="signals_eyebrow">Las Signals</div>
+    <h2 data-i18n="signals_h2">Dos Signals con nombre abren el camino.</h2>
+    <p class="lead" style="margin-top:16px;" data-i18n="signals_lead">Las Signals son el punto de entrada del diagnóstico: el análisis que convierte data dispersa en una primera lectura confiable del mercado.</p>
     <div class="value-grid" style="grid-template-columns:1fr 1fr;">
-      <div class="value-card"><h4>Market Signal</h4><p>The external market made observable: competition, prices, and what happens at the point of sale.</p></div>
-      <div class="value-card"><h4>Floor Signal</h4><p>The physical floor made observable: shopper, journey, and shelf, read with computer vision.</p></div>
+      <div class="value-card"><h4 data-i18n="signals_market_h">Market Signal</h4><p data-i18n="signals_market_p">El mercado externo vuelto observable: competencia, precios y lo que ocurre en el punto de venta.</p></div>
+      <div class="value-card"><h4 data-i18n="signals_floor_h">Floor Signal</h4><p data-i18n="signals_floor_p">El piso físico vuelto observable: shopper, journey y anaquel, leídos con visión computacional.</p></div>
     </div>
   </div>
 </section>
@@ -151,29 +159,29 @@
 <!-- SOURCES -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">What we integrate</div>
-    <h2>We integrate what exists.<br>We capture what doesn't.</h2>
+    <div class="eyebrow" data-i18n="sources_eyebrow">Lo que integramos</div>
+    <h2 data-i18n="sources_h2">Integramos lo que existe.<br>Capturamos lo que no.</h2>
     <div class="sources-grid">
       <div class="source-col">
-        <h3>STRUCTURED SOURCES</h3>
+        <h3 data-i18n="sources_struct_h3">FUENTES ESTRUCTURADAS</h3>
         <div class="source-list">
-          <div class="source-item"><div class="source-item-icon">⊞</div><div class="source-item-body"><h4>Internal transactional data</h4><p>ERP, sales systems, billing records, the data the client already owns but rarely consolidates.</p></div></div>
-          <div class="source-item"><div class="source-item-icon">◉</div><div class="source-item-body"><h4>Traditional channel POS</h4><p>Point-of-sale capture from fragmented traditional trade where traceability is typically low.</p></div></div>
-          <div class="source-item"><div class="source-item-icon">◈</div><div class="source-item-body"><h4>Modern channel POS</h4><p>Transactional data from structured retail chains and modern trade formats.</p></div></div>
-          <div class="source-item"><div class="source-item-icon">⊡</div><div class="source-item-body"><h4>Distributor integrations</h4><p>Structured connections with distributors to receive and map sales, coverage, pricing, and promotional data.</p></div></div>
-          <div class="source-item"><div class="source-item-icon">≡</div><div class="source-item-body"><h4>Syndicated data</h4><p>Nielsen, Kantar, and other third-party aggregated sources for benchmarking and market-level reads.</p></div></div>
-          <div class="source-item"><div class="source-item-icon">◰</div><div class="source-item-body"><h4>Product & price catalogs</h4><p>SKU master data, price lists, promotional calendars, and inventory records.</p></div></div>
+          <div class="source-item"><div class="source-item-icon">⊞</div><div class="source-item-body"><h4 data-i18n="src_s1_h">Data transaccional interna</h4><p data-i18n="src_s1_p">ERP, sistemas de ventas, registros de facturación: la data que el cliente ya posee pero rara vez consolida.</p></div></div>
+          <div class="source-item"><div class="source-item-icon">◉</div><div class="source-item-body"><h4 data-i18n="src_s2_h">POS de canal tradicional</h4><p data-i18n="src_s2_p">Captura en el punto de venta del canal tradicional fragmentado, donde la trazabilidad suele ser baja.</p></div></div>
+          <div class="source-item"><div class="source-item-icon">◈</div><div class="source-item-body"><h4 data-i18n="src_s3_h">POS de canal moderno</h4><p data-i18n="src_s3_p">Data transaccional de cadenas de retail estructuradas y formatos de canal moderno.</p></div></div>
+          <div class="source-item"><div class="source-item-icon">⊡</div><div class="source-item-body"><h4 data-i18n="src_s4_h">Integraciones con distribuidores</h4><p data-i18n="src_s4_p">Conexiones estructuradas con distribuidores para recibir y mapear data de ventas, cobertura, pricing y promociones.</p></div></div>
+          <div class="source-item"><div class="source-item-icon">≡</div><div class="source-item-body"><h4 data-i18n="src_s5_h">Data sindicada</h4><p data-i18n="src_s5_p">Nielsen, Kantar y otras fuentes agregadas de terceros para benchmarking y lecturas a nivel de mercado.</p></div></div>
+          <div class="source-item"><div class="source-item-icon">◰</div><div class="source-item-body"><h4 data-i18n="src_s6_h">Catálogos de producto y precio</h4><p data-i18n="src_s6_p">Maestros de SKU, listas de precios, calendarios promocionales y registros de inventario.</p></div></div>
         </div>
       </div>
       <div class="source-col" style="background:var(--paper-alt);">
-        <h3>UNSTRUCTURED & MISSING SOURCES</h3>
+        <h3 data-i18n="sources_unstruct_h3">FUENTES NO ESTRUCTURADAS Y FALTANTES</h3>
         <div class="source-list">
-          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◌</div><div class="source-item-body"><h4>Field surveys</h4><p>In-field data capture for prices, inventory, promotions, visibility, competitive presence, and compliance.</p></div></div>
-          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◯</div><div class="source-item-body"><h4>Sales force reports</h4><p>Route-level intelligence from commercial teams operating at the point of sale.</p></div></div>
-          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◧</div><div class="source-item-body"><h4>Shelf observation & in-store intelligence</h4><p>Assortment compliance, share of shelf, pricing execution, and promotional display tracking.</p></div></div>
-          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">⊞</div><div class="source-item-body"><h4>Competitive price monitoring</h4><p>Observed competitor pricing at point of sale by channel, region, and format.</p></div></div>
-          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◈</div><div class="source-item-body"><h4>Market studies & benchmarking</h4><p>External research and category benchmarks that provide context beyond internal data.</p></div></div>
-          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◉</div><div class="source-item-body"><h4>Consumer & shopper research</h4><p>Demand-side intelligence to complement supply-side and transactional data.</p></div></div>
+          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◌</div><div class="source-item-body"><h4 data-i18n="src_u1_h">Levantamientos en campo</h4><p data-i18n="src_u1_p">Captura de data en campo de precios, inventario, promociones, visibilidad, presencia competitiva y cumplimiento.</p></div></div>
+          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◯</div><div class="source-item-body"><h4 data-i18n="src_u2_h">Reportes de la fuerza de ventas</h4><p data-i18n="src_u2_p">Inteligencia a nivel de ruta desde los equipos comerciales que operan en el punto de venta.</p></div></div>
+          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◧</div><div class="source-item-body"><h4 data-i18n="src_u3_h">Observación de anaquel e inteligencia en tienda</h4><p data-i18n="src_u3_p">Cumplimiento de surtido, share de anaquel, ejecución de precios y seguimiento de exhibición promocional.</p></div></div>
+          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">⊞</div><div class="source-item-body"><h4 data-i18n="src_u4_h">Monitoreo de precios de competencia</h4><p data-i18n="src_u4_p">Precios de competencia observados en el punto de venta por canal, región y formato.</p></div></div>
+          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◈</div><div class="source-item-body"><h4 data-i18n="src_u5_h">Estudios de mercado y benchmarking</h4><p data-i18n="src_u5_p">Investigación externa y benchmarks de categoría que aportan contexto más allá de la data interna.</p></div></div>
+          <div class="source-item" style="background:var(--white);"><div class="source-item-icon">◉</div><div class="source-item-body"><h4 data-i18n="src_u6_h">Investigación de consumidor y shopper</h4><p data-i18n="src_u6_p">Inteligencia del lado de la demanda para complementar la data de oferta y transaccional.</p></div></div>
         </div>
       </div>
     </div>
@@ -183,14 +191,14 @@
 <!-- 5 SUBMODS -->
 <section class="section section--tint">
   <div class="container">
-    <div class="eyebrow">Internal architecture</div>
-    <h2>Five submódules. One integrated base.</h2>
+    <div class="eyebrow" data-i18n="submods_eyebrow">Arquitectura interna</div>
+    <h2 data-i18n="submods_h2">Cinco submódulos. Una base integrada.</h2>
     <div class="submods-grid">
-      <div class="submod"><div class="submod-code">A1</div><h4>Data Capture</h4><p>Direct capture from POS systems, surveys, apps, forms, and integrations. The entry point for all commercial information.</p></div>
-      <div class="submod"><div class="submod-code">A2</div><h4>Data Ingestion</h4><p>Technical loading of multiple sources into a common architecture, regardless of format, cadence, or origin.</p></div>
-      <div class="submod"><div class="submod-code">A3</div><h4>Data Cleansing</h4><p>Correction, validation, deduplication, imputation of missing values, and resolution of inconsistencies.</p></div>
-      <div class="submod"><div class="submod-code">A4</div><h4>Data Harmonization</h4><p>Standardization of SKUs, customers, channels, geographies, and other entities so data becomes comparable across sources.</p></div>
-      <div class="submod"><div class="submod-code">A5</div><h4>Data Asset Creation</h4><p>Generation of structured, usable datasets for analytics, benchmarking, and eventual monetization.</p></div>
+      <div class="submod"><div class="submod-code">A1</div><h4 data-i18n="submod_a1_h">Captura de data</h4><p data-i18n="submod_a1_p">Captura directa desde sistemas POS, encuestas, apps, formularios e integraciones. El punto de entrada de toda la información comercial.</p></div>
+      <div class="submod"><div class="submod-code">A2</div><h4 data-i18n="submod_a2_h">Ingesta de data</h4><p data-i18n="submod_a2_p">Carga técnica de múltiples fuentes a una arquitectura común, sin importar formato, cadencia u origen.</p></div>
+      <div class="submod"><div class="submod-code">A3</div><h4 data-i18n="submod_a3_h">Limpieza de data</h4><p data-i18n="submod_a3_p">Corrección, validación, deduplicación, imputación de valores faltantes y resolución de inconsistencias.</p></div>
+      <div class="submod"><div class="submod-code">A4</div><h4 data-i18n="submod_a4_h">Homologación de data</h4><p data-i18n="submod_a4_p">Estandarización de SKUs, clientes, canales, geografías y otras entidades para que la data sea comparable entre fuentes.</p></div>
+      <div class="submod"><div class="submod-code">A5</div><h4 data-i18n="submod_a5_h">Creación de activos de data</h4><p data-i18n="submod_a5_p">Generación de datasets estructurados y utilizables para analítica, benchmarking y eventual monetización.</p></div>
     </div>
   </div>
 </section>
@@ -198,13 +206,13 @@
 <!-- VALUE -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">Value generated</div>
-    <h2>Arm A is not only an enabler.<br>It is a business in itself.</h2>
+    <div class="eyebrow" data-i18n="value_eyebrow">Valor generado</div>
+    <h2 data-i18n="value_h2">El Brazo A no es solo un habilitador.<br>Es un negocio en sí mismo.</h2>
     <div class="value-grid">
-      <div class="value-card"><h4>Enables Arm B</h4><p>Without a structured, reliable data base, no analytical module can produce trustworthy output. Arm A makes everything else possible.</p></div>
-      <div class="value-card"><h4>Improves internal decisions</h4><p>The client organization gains visibility into their own market, often for the first time, independent of any analytical output.</p></div>
-      <div class="value-card"><h4>Builds proprietary information assets</h4><p>The structured data generated by Arm A becomes a proprietary asset that compounds in value with each cycle.</p></div>
-      <div class="value-card"><h4>Creates monetizable intelligence</h4><p>Distributors and manufacturers who structure downstream data can offer that intelligence commercially, a model already proven in modern trade.</p></div>
+      <div class="value-card"><h4 data-i18n="value_c1_h">Habilita el Brazo B</h4><p data-i18n="value_c1_p">Sin una base de data estructurada y confiable, ningún módulo analítico puede producir resultados confiables. El Brazo A hace posible todo lo demás.</p></div>
+      <div class="value-card"><h4 data-i18n="value_c2_h">Mejora las decisiones internas</h4><p data-i18n="value_c2_p">La organización del cliente gana visibilidad de su propio mercado, muchas veces por primera vez, con independencia de cualquier resultado analítico.</p></div>
+      <div class="value-card"><h4 data-i18n="value_c3_h">Construye activos de información propios</h4><p data-i18n="value_c3_p">La data estructurada que genera el Brazo A se vuelve un activo propio cuyo valor se acumula con cada ciclo.</p></div>
+      <div class="value-card"><h4 data-i18n="value_c4_h">Crea inteligencia monetizable</h4><p data-i18n="value_c4_p">Distribuidores y fabricantes que estructuran la data del sell-out pueden ofrecer esa inteligencia comercialmente, un modelo ya probado en el canal moderno.</p></div>
     </div>
   </div>
 </section>
@@ -212,18 +220,18 @@
 <!-- CTA STRIP -->
 <div class="cta-strip">
   <div class="container">
-    <h2>Ready to make your market observable?</h2>
-    <p>Book a 30-minute call. We'll show you exactly where the information gaps are in your operation.</p>
-    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">Book a call</a>
+    <h2 data-i18n="ctastrip_h2">¿Listos para volver observable su mercado?</h2>
+    <p data-i18n="ctastrip_p">Agenden una llamada de 30 minutos. Mostramos exactamente dónde están las brechas de información en su operación.</p>
+    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" style="font-size:15px;padding:14px 32px;" data-i18n="ctastrip_btn">Agendar llamada</a>
   </div>
 </div>
 
 <!-- NAV BETWEEN ARMS -->
 <div style="background:var(--paper-alt);padding:32px 36px;display:flex;justify-content:space-between;align-items:center;max-width:100%;">
-  <div style="color:var(--navy-40);font-size:13px;">← You are on Arm A</div>
+  <div style="color:var(--navy-40);font-size:13px;" data-i18n="arms_current">← Estás en el Brazo A</div>
   <div style="display:flex;gap:24px;">
-    <a href="arm-b.html" style="font-size:13px;font-weight:600;color:var(--signal);">Arm B: Intelligence Layer →</a>
-    <a href="arm-c.html" style="font-size:13px;font-weight:600;color:var(--navy-40);">Arm C: Execution →</a>
+    <a href="arm-b.html" style="font-size:13px;font-weight:600;color:var(--signal);" data-i18n="arms_b">Brazo B: Motor de Inteligencia →</a>
+    <a href="arm-c.html" style="font-size:13px;font-weight:600;color:var(--navy-40);" data-i18n="arms_c">Brazo C: Ejecución →</a>
   </div>
 </div>
 
@@ -232,7 +240,7 @@
     <div class="footer-inner">
       <div>
         <div><img src="brand_assets/logo-white.png" alt="Imberion" style="height:28px;width:auto;"/></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy">© 2026 Imberion. All rights reserved.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy">© 2026 Imberion. Todos los derechos reservados.</div>
       </div>
       <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links"></div>
     </div>
@@ -259,5 +267,242 @@ document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', 
   if(nc) nc.textContent = {'en':'Book a Call','es':'Agendar llamada','pt':'Agendar chamada'}[lang] || 'Book a Call';
 }));
 </script>
+<script>window.IMB_I18N = {
+  "es": {
+    "nav_estrat": "Estrategia",
+    "__title": "Imberion — Brazo A: Infraestructura de Información",
+    "nav_cta": "Agendar llamada",
+    "back": "← Volver a cómo funciona",
+    "hero_eyebrow": "Brazo A",
+    "hero_h1": "Infraestructura de Información",
+    "hero_lead": "Capturamos, limpiamos, homologamos y consolidamos la información comercial de múltiples fuentes para construir el mercado observable que otros suponen que ya existe.",
+    "mockup_eyebrow": "Vista de producto",
+    "mockup_cap": "Una sola base estructurada a partir de fuentes dispersas.",
+    "resolve_eyebrow": "Lo que resuelve el Brazo A",
+    "resolve_h2": "La opacidad comercial.<br>La volvemos observable.",
+    "resolve_lead": "La mayoría de las organizaciones no ven su mercado con claridad. No porque la data no exista, sino porque nunca se ha consolidado en una sola base confiable. El Brazo A resuelve ese problema antes de poder intentar cualquier otra cosa.",
+    "pipeline_note": "La ingesta de data se orquesta mediante pipelines automatizados que normalizan, validan y enrutan la información de cada fuente, sin intervención manual en cada paso. El resultado es una infraestructura de data viva que mejora con cada ciclo.",
+    "signals_eyebrow": "Las Signals",
+    "signals_h2": "Dos Signals con nombre abren el camino.",
+    "signals_lead": "Las Signals son el punto de entrada del diagnóstico: el análisis que convierte data dispersa en una primera lectura confiable del mercado.",
+    "signals_market_h": "Market Signal",
+    "signals_market_p": "El mercado externo vuelto observable: competencia, precios y lo que ocurre en el punto de venta.",
+    "signals_floor_h": "Floor Signal",
+    "signals_floor_p": "El piso físico vuelto observable: shopper, journey y anaquel, leídos con visión computacional.",
+    "sources_eyebrow": "Lo que integramos",
+    "sources_h2": "Integramos lo que existe.<br>Capturamos lo que no.",
+    "sources_struct_h3": "FUENTES ESTRUCTURADAS",
+    "src_s1_h": "Data transaccional interna",
+    "src_s1_p": "ERP, sistemas de ventas, registros de facturación: la data que el cliente ya posee pero rara vez consolida.",
+    "src_s2_h": "POS de canal tradicional",
+    "src_s2_p": "Captura en el punto de venta del canal tradicional fragmentado, donde la trazabilidad suele ser baja.",
+    "src_s3_h": "POS de canal moderno",
+    "src_s3_p": "Data transaccional de cadenas de retail estructuradas y formatos de canal moderno.",
+    "src_s4_h": "Integraciones con distribuidores",
+    "src_s4_p": "Conexiones estructuradas con distribuidores para recibir y mapear data de ventas, cobertura, pricing y promociones.",
+    "src_s5_h": "Data sindicada",
+    "src_s5_p": "Nielsen, Kantar y otras fuentes agregadas de terceros para benchmarking y lecturas a nivel de mercado.",
+    "src_s6_h": "Catálogos de producto y precio",
+    "src_s6_p": "Maestros de SKU, listas de precios, calendarios promocionales y registros de inventario.",
+    "sources_unstruct_h3": "FUENTES NO ESTRUCTURADAS Y FALTANTES",
+    "src_u1_h": "Levantamientos en campo",
+    "src_u1_p": "Captura de data en campo de precios, inventario, promociones, visibilidad, presencia competitiva y cumplimiento.",
+    "src_u2_h": "Reportes de la fuerza de ventas",
+    "src_u2_p": "Inteligencia a nivel de ruta desde los equipos comerciales que operan en el punto de venta.",
+    "src_u3_h": "Observación de anaquel e inteligencia en tienda",
+    "src_u3_p": "Cumplimiento de surtido, share de anaquel, ejecución de precios y seguimiento de exhibición promocional.",
+    "src_u4_h": "Monitoreo de precios de competencia",
+    "src_u4_p": "Precios de competencia observados en el punto de venta por canal, región y formato.",
+    "src_u5_h": "Estudios de mercado y benchmarking",
+    "src_u5_p": "Investigación externa y benchmarks de categoría que aportan contexto más allá de la data interna.",
+    "src_u6_h": "Investigación de consumidor y shopper",
+    "src_u6_p": "Inteligencia del lado de la demanda para complementar la data de oferta y transaccional.",
+    "submods_eyebrow": "Arquitectura interna",
+    "submods_h2": "Cinco submódulos. Una base integrada.",
+    "submod_a1_h": "Captura de data",
+    "submod_a1_p": "Captura directa desde sistemas POS, encuestas, apps, formularios e integraciones. El punto de entrada de toda la información comercial.",
+    "submod_a2_h": "Ingesta de data",
+    "submod_a2_p": "Carga técnica de múltiples fuentes a una arquitectura común, sin importar formato, cadencia u origen.",
+    "submod_a3_h": "Limpieza de data",
+    "submod_a3_p": "Corrección, validación, deduplicación, imputación de valores faltantes y resolución de inconsistencias.",
+    "submod_a4_h": "Homologación de data",
+    "submod_a4_p": "Estandarización de SKUs, clientes, canales, geografías y otras entidades para que la data sea comparable entre fuentes.",
+    "submod_a5_h": "Creación de activos de data",
+    "submod_a5_p": "Generación de datasets estructurados y utilizables para analítica, benchmarking y eventual monetización.",
+    "value_eyebrow": "Valor generado",
+    "value_h2": "El Brazo A no es solo un habilitador.<br>Es un negocio en sí mismo.",
+    "value_c1_h": "Habilita el Brazo B",
+    "value_c1_p": "Sin una base de data estructurada y confiable, ningún módulo analítico puede producir resultados confiables. El Brazo A hace posible todo lo demás.",
+    "value_c2_h": "Mejora las decisiones internas",
+    "value_c2_p": "La organización del cliente gana visibilidad de su propio mercado, muchas veces por primera vez, con independencia de cualquier resultado analítico.",
+    "value_c3_h": "Construye activos de información propios",
+    "value_c3_p": "La data estructurada que genera el Brazo A se vuelve un activo propio cuyo valor se acumula con cada ciclo.",
+    "value_c4_h": "Crea inteligencia monetizable",
+    "value_c4_p": "Distribuidores y fabricantes que estructuran la data del sell-out pueden ofrecer esa inteligencia comercialmente, un modelo ya probado en el canal moderno.",
+    "ctastrip_h2": "¿Listos para volver observable su mercado?",
+    "ctastrip_p": "Agenden una llamada de 30 minutos. Mostramos exactamente dónde están las brechas de información en su operación.",
+    "ctastrip_btn": "Agendar llamada",
+    "arms_current": "← Estás en el Brazo A",
+    "arms_b": "Brazo B: Motor de Inteligencia →",
+    "arms_c": "Brazo C: Ejecución →"
+  },
+  "en": {
+    "nav_estrat": "Strategy",
+    "__title": "Imberion — Arm A: Information Infrastructure",
+    "nav_cta": "Book a Call",
+    "back": "← Back to how it works",
+    "hero_eyebrow": "Arm A",
+    "hero_h1": "Information Infrastructure",
+    "hero_lead": "We capture, clean, harmonize, and consolidate commercial information from multiple sources to build the observable market that others assume already exists.",
+    "mockup_eyebrow": "Product view",
+    "mockup_cap": "A single structured base built from scattered sources.",
+    "resolve_eyebrow": "What Arm A resolves",
+    "resolve_h2": "Commercial opacity.<br>We make it observable.",
+    "resolve_lead": "Most organizations cannot see their market clearly. Not because the data doesn't exist, but because it has never been consolidated into a single reliable base. Arm A solves that problem before anything else can be attempted.",
+    "pipeline_note": "Data ingestion is orchestrated through automated pipelines that normalize, validate, and route information from each source, without manual intervention at each step. The result is a living data infrastructure that improves with every cycle.",
+    "signals_eyebrow": "The Signals",
+    "signals_h2": "Two named Signals lead the way in.",
+    "signals_lead": "Signals are the diagnostic entry point: the analysis that turns scattered data into a first reliable read of the market.",
+    "signals_market_h": "Market Signal",
+    "signals_market_p": "The external market made observable: competition, prices, and what happens at the point of sale.",
+    "signals_floor_h": "Floor Signal",
+    "signals_floor_p": "The physical floor made observable: shopper, journey, and shelf, read with computer vision.",
+    "sources_eyebrow": "What we integrate",
+    "sources_h2": "We integrate what exists.<br>We capture what doesn't.",
+    "sources_struct_h3": "STRUCTURED SOURCES",
+    "src_s1_h": "Internal transactional data",
+    "src_s1_p": "ERP, sales systems, billing records: the data the client already owns but rarely consolidates.",
+    "src_s2_h": "Traditional channel POS",
+    "src_s2_p": "Point-of-sale capture from fragmented traditional trade, where traceability is typically low.",
+    "src_s3_h": "Modern channel POS",
+    "src_s3_p": "Transactional data from structured retail chains and modern trade formats.",
+    "src_s4_h": "Distributor integrations",
+    "src_s4_p": "Structured connections with distributors to receive and map sales, coverage, pricing, and promotional data.",
+    "src_s5_h": "Syndicated data",
+    "src_s5_p": "Nielsen, Kantar, and other third-party aggregated sources for benchmarking and market-level reads.",
+    "src_s6_h": "Product & price catalogs",
+    "src_s6_p": "SKU master data, price lists, promotional calendars, and inventory records.",
+    "sources_unstruct_h3": "UNSTRUCTURED & MISSING SOURCES",
+    "src_u1_h": "Field surveys",
+    "src_u1_p": "In-field data capture for prices, inventory, promotions, visibility, competitive presence, and compliance.",
+    "src_u2_h": "Sales force reports",
+    "src_u2_p": "Route-level intelligence from commercial teams operating at the point of sale.",
+    "src_u3_h": "Shelf observation & in-store intelligence",
+    "src_u3_p": "Assortment compliance, share of shelf, pricing execution, and promotional display tracking.",
+    "src_u4_h": "Competitive price monitoring",
+    "src_u4_p": "Observed competitor pricing at the point of sale by channel, region, and format.",
+    "src_u5_h": "Market studies & benchmarking",
+    "src_u5_p": "External research and category benchmarks that provide context beyond internal data.",
+    "src_u6_h": "Consumer & shopper research",
+    "src_u6_p": "Demand-side intelligence to complement supply-side and transactional data.",
+    "submods_eyebrow": "Internal architecture",
+    "submods_h2": "Five submodules. One integrated base.",
+    "submod_a1_h": "Data Capture",
+    "submod_a1_p": "Direct capture from POS systems, surveys, apps, forms, and integrations. The entry point for all commercial information.",
+    "submod_a2_h": "Data Ingestion",
+    "submod_a2_p": "Technical loading of multiple sources into a common architecture, regardless of format, cadence, or origin.",
+    "submod_a3_h": "Data Cleansing",
+    "submod_a3_p": "Correction, validation, deduplication, imputation of missing values, and resolution of inconsistencies.",
+    "submod_a4_h": "Data Harmonization",
+    "submod_a4_p": "Standardization of SKUs, customers, channels, geographies, and other entities so data becomes comparable across sources.",
+    "submod_a5_h": "Data Asset Creation",
+    "submod_a5_p": "Generation of structured, usable datasets for analytics, benchmarking, and eventual monetization.",
+    "value_eyebrow": "Value generated",
+    "value_h2": "Arm A is not only an enabler.<br>It is a business in itself.",
+    "value_c1_h": "Enables Arm B",
+    "value_c1_p": "Without a structured, reliable data base, no analytical module can produce trustworthy output. Arm A makes everything else possible.",
+    "value_c2_h": "Improves internal decisions",
+    "value_c2_p": "The client organization gains visibility into their own market, often for the first time, independent of any analytical output.",
+    "value_c3_h": "Builds proprietary information assets",
+    "value_c3_p": "The structured data generated by Arm A becomes a proprietary asset that compounds in value with each cycle.",
+    "value_c4_h": "Creates monetizable intelligence",
+    "value_c4_p": "Distributors and manufacturers who structure sell-out data can offer that intelligence commercially, a model already proven in modern trade.",
+    "ctastrip_h2": "Ready to make your market observable?",
+    "ctastrip_p": "Book a 30-minute call. We'll show you exactly where the information gaps are in your operation.",
+    "ctastrip_btn": "Book a call",
+    "arms_current": "← You are on Arm A",
+    "arms_b": "Arm B: Commercial Intelligence Engine →",
+    "arms_c": "Arm C: Execution →"
+  },
+  "pt": {
+    "nav_estrat": "Estratégia",
+    "__title": "Imberion — Braço A: Infraestrutura de Informação",
+    "nav_cta": "Agendar chamada",
+    "back": "← Voltar para como funciona",
+    "hero_eyebrow": "Braço A",
+    "hero_h1": "Infraestrutura de Informação",
+    "hero_lead": "Capturamos, limpamos, homologamos e consolidamos a informação comercial de múltiplas fontes para construir o mercado observável que outros supõem já existir.",
+    "mockup_eyebrow": "Visão do produto",
+    "mockup_cap": "Uma única base estruturada a partir de fontes dispersas.",
+    "resolve_eyebrow": "O que o Braço A resolve",
+    "resolve_h2": "A opacidade comercial.<br>Nós a tornamos observável.",
+    "resolve_lead": "A maioria das organizações não enxerga o seu mercado com clareza. Não porque a data não exista, mas porque ela nunca foi consolidada em uma única base confiável. O Braço A resolve esse problema antes que qualquer outra coisa possa ser tentada.",
+    "pipeline_note": "A ingestão de data é orquestrada por pipelines automatizados que normalizam, validam e roteiam a informação de cada fonte, sem intervenção manual em cada etapa. O resultado é uma infraestrutura de data viva que melhora a cada ciclo.",
+    "signals_eyebrow": "As Signals",
+    "signals_h2": "Duas Signals com nome abrem o caminho.",
+    "signals_lead": "As Signals são o ponto de entrada do diagnóstico: a análise que converte data dispersa em uma primeira leitura confiável do mercado.",
+    "signals_market_h": "Market Signal",
+    "signals_market_p": "O mercado externo tornado observável: concorrência, preços e o que acontece no ponto de venda.",
+    "signals_floor_h": "Floor Signal",
+    "signals_floor_p": "O piso físico tornado observável: shopper, journey e gôndola, lidos com visão computacional.",
+    "sources_eyebrow": "O que integramos",
+    "sources_h2": "Integramos o que existe.<br>Capturamos o que não existe.",
+    "sources_struct_h3": "FONTES ESTRUTURADAS",
+    "src_s1_h": "Data transacional interna",
+    "src_s1_p": "ERP, sistemas de vendas, registros de faturamento: a data que o cliente já possui mas raramente consolida.",
+    "src_s2_h": "POS do canal tradicional",
+    "src_s2_p": "Captura no ponto de venda do canal tradicional fragmentado, onde a rastreabilidade costuma ser baixa.",
+    "src_s3_h": "POS do canal moderno",
+    "src_s3_p": "Data transacional de redes de retail estruturadas e formatos de canal moderno.",
+    "src_s4_h": "Integrações com distribuidores",
+    "src_s4_p": "Conexões estruturadas com distribuidores para receber e mapear data de vendas, cobertura, pricing e promoções.",
+    "src_s5_h": "Data sindicada",
+    "src_s5_p": "Nielsen, Kantar e outras fontes agregadas de terceiros para benchmarking e leituras a nível de mercado.",
+    "src_s6_h": "Catálogos de produto e preço",
+    "src_s6_p": "Cadastros mestres de SKU, listas de preços, calendários promocionais e registros de inventário.",
+    "sources_unstruct_h3": "FONTES NÃO ESTRUTURADAS E FALTANTES",
+    "src_u1_h": "Levantamentos em campo",
+    "src_u1_p": "Captura de data em campo de preços, inventário, promoções, visibilidade, presença competitiva e conformidade.",
+    "src_u2_h": "Relatórios da força de vendas",
+    "src_u2_p": "Inteligência a nível de rota a partir das equipes comerciais que operam no ponto de venda.",
+    "src_u3_h": "Observação de gôndola e inteligência em loja",
+    "src_u3_p": "Conformidade de sortimento, share de gôndola, execução de preços e acompanhamento de exposição promocional.",
+    "src_u4_h": "Monitoramento de preços da concorrência",
+    "src_u4_p": "Preços da concorrência observados no ponto de venda por canal, região e formato.",
+    "src_u5_h": "Estudos de mercado e benchmarking",
+    "src_u5_p": "Pesquisa externa e benchmarks de categoria que trazem contexto além da data interna.",
+    "src_u6_h": "Pesquisa de consumidor e shopper",
+    "src_u6_p": "Inteligência do lado da demanda para complementar a data de oferta e transacional.",
+    "submods_eyebrow": "Arquitetura interna",
+    "submods_h2": "Cinco submódulos. Uma base integrada.",
+    "submod_a1_h": "Captura de data",
+    "submod_a1_p": "Captura direta de sistemas POS, pesquisas, apps, formulários e integrações. O ponto de entrada de toda a informação comercial.",
+    "submod_a2_h": "Ingestão de data",
+    "submod_a2_p": "Carga técnica de múltiplas fontes em uma arquitetura comum, independentemente de formato, cadência ou origem.",
+    "submod_a3_h": "Limpeza de data",
+    "submod_a3_p": "Correção, validação, deduplicação, imputação de valores faltantes e resolução de inconsistências.",
+    "submod_a4_h": "Homologação de data",
+    "submod_a4_p": "Padronização de SKUs, clientes, canais, geografias e outras entidades para que a data seja comparável entre fontes.",
+    "submod_a5_h": "Criação de ativos de data",
+    "submod_a5_p": "Geração de datasets estruturados e utilizáveis para analytics, benchmarking e eventual monetização.",
+    "value_eyebrow": "Valor gerado",
+    "value_h2": "O Braço A não é apenas um habilitador.<br>É um negócio em si mesmo.",
+    "value_c1_h": "Habilita o Braço B",
+    "value_c1_p": "Sem uma base de data estruturada e confiável, nenhum módulo analítico pode produzir resultados confiáveis. O Braço A torna possível todo o resto.",
+    "value_c2_h": "Melhora as decisões internas",
+    "value_c2_p": "A organização do cliente ganha visibilidade do seu próprio mercado, muitas vezes pela primeira vez, com independência de qualquer resultado analítico.",
+    "value_c3_h": "Constrói ativos de informação próprios",
+    "value_c3_p": "A data estruturada que o Braço A gera se torna um ativo próprio cujo valor se acumula a cada ciclo.",
+    "value_c4_h": "Cria inteligência monetizável",
+    "value_c4_p": "Distribuidores e fabricantes que estruturam a data do sell-out podem oferecer essa inteligência comercialmente, um modelo já comprovado no canal moderno.",
+    "ctastrip_h2": "Prontos para tornar o seu mercado observável?",
+    "ctastrip_p": "Agendem uma chamada de 30 minutos. Mostramos exatamente onde estão as lacunas de informação na sua operação.",
+    "ctastrip_btn": "Agendar chamada",
+    "arms_current": "← Você está no Braço A",
+    "arms_b": "Braço B: Motor de Inteligência Comercial →",
+    "arms_c": "Braço C: Execução →"
+  }
+};</script>
+<script src="assets/js/imberion-site.js"></script>
 </body>
 </html>

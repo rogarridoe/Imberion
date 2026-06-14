@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8"/><link rel="icon" type="image/png" href="brand_assets/favicon.png"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Imberion — Arm C: Execution & Value Capture</title>
+  <title>Imberion — Brazo C: Ejecución y Captura de Valor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
@@ -94,21 +94,18 @@
       .c-submod{grid-template-columns:1fr;gap:16px} .stays-grid{grid-template-columns:1fr}
     }
   </style>
+  <link rel="stylesheet" href="assets/css/imberion-site.css"/>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html"><img src="brand_assets/logo-white.png" alt="Imberion"/></a>
     <div class="nav-links">
-      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion</a>
+      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion</a><a href="estrategia.html" data-i18n="nav_estrat" style="margin-left:22px;">Estrategia</a>
     </div>
     <div class="nav-right">
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn " data-lang="es">ES</button>
-        <button class="lang-btn " data-lang="pt">PT</button>
-      </div>
-      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta">Book a Call</a>
+      <div class="lang-toggle"><button class="lang-btn active" data-lang="es">ES</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="pt">PT</button></div>
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta" data-i18n="nav_cta">Agendar llamada</a>
     </div>
   </div>
 </nav>
@@ -116,30 +113,41 @@
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-content">
-    <a href="index.html#how-it-works" class="back">← Back to how it works</a>
-    <div class="eyebrow" style="color:rgba(255,255,255,.5);">Arm C</div>
-    <h1>Execution &<br>Value Capture</h1>
-    <p class="lead">Most engagements stop at the recommendation. Arm C is where the work becomes real, where intelligence is translated into field action, measured against baseline, and fed back into the operation.</p>
+    <a href="index.html#how-it-works" class="back" data-i18n="back">← Volver a cómo funciona</a>
+    <div class="eyebrow" style="color:rgba(255,255,255,.5);" data-i18n="hero_eyebrow">Brazo C</div>
+    <h1 data-i18n="hero_h1">Ejecución y<br>Captura de Valor</h1>
+    <p class="lead" data-i18n="hero_lead">La mayoría de los proyectos se detiene en la recomendación. El Brazo C es donde el trabajo se vuelve real, donde la inteligencia se traduce en acción de campo, se mide contra baseline y se devuelve a la operación.</p>
   </div>
   <div style="position:absolute;right:60px;bottom:40px;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;color:rgba(255,255,255,.08);line-height:1;user-select:none;">C</div>
+</section>
+
+<!-- PRODUCT MOCKUP -->
+<section class="section mockup-band">
+  <div class="container">
+    <div class="mockup-lead"><span class="eyebrow" data-i18n="mockup_eyebrow">Vista de producto</span></div>
+    <figure class="mockup-figure">
+      <img src="assets/arm-c-mockup.png" alt="El loop de ejecución, de la decisión al aprendizaje contra baseline." data-i18n-alt="mockup_alt" loading="lazy">
+      <figcaption data-i18n="mockup_cap">El loop de ejecución, de la decisión al aprendizaje contra baseline.</figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- THE GAP -->
 <section class="gap-section">
   <div class="container">
-    <div class="eyebrow">What Arm C resolves</div>
-    <h2>The gap between insight and result.</h2>
-    <p class="lead" style="margin-top:16px;">Many organizations reach the diagnosis. Few capture the value. The distance between a good analysis and a measurable commercial result is where most consulting engagements fail.</p>
+    <div class="eyebrow" data-i18n="gap_eyebrow">Qué resuelve el Brazo C</div>
+    <h2 data-i18n="gap_h2">La brecha entre el insight y el resultado.</h2>
+    <p class="lead" style="margin-top:16px;" data-i18n="gap_lead">Muchas organizaciones llegan al diagnóstico. Pocas capturan el valor. La distancia entre un buen análisis y un resultado comercial medible es donde fracasan la mayoría de los proyectos de consultoría.</p>
     <div class="gap-grid">
       <div class="gap-col">
-        <h3>What typically happens</h3>
-        <p>A diagnostic is produced. Recommendations are delivered. The deck circulates. Six months later, pricing hasn't changed, promotions are running the same way, and the organization has moved on to the next project. The insight existed. The result didn't follow.</p>
-        <p style="margin-top:14px;">This is not a failure of analysis. It is a failure of translation, from recommendation to decision, from decision to field action, from field action to measurement, from measurement to learning.</p>
+        <h3 data-i18n="gap_typical_h">Lo que suele pasar</h3>
+        <p data-i18n="gap_typical_p1">Se produce un diagnóstico. Se entregan recomendaciones. El deck circula. Seis meses después, el pricing no cambió, las promociones corren igual y la organización ya está en el siguiente proyecto. El insight existía. El resultado no llegó.</p>
+        <p style="margin-top:14px;" data-i18n="gap_typical_p2">Esto no es una falla de análisis. Es una falla de traducción: de la recomendación a la decisión, de la decisión a la acción de campo, de la acción de campo a la medición, de la medición al aprendizaje.</p>
       </div>
       <div class="gap-col" style="background:var(--white);padding:36px 40px;border-left:4px solid var(--signal);">
-        <h3>What Arm C does differently</h3>
-        <p>We do not hand off a deck and disengage. We stay in the loop, translating, deploying, measuring, and feeding what we learn back into the operation. The measure of success is not the quality of the recommendation. It is the margin recovered, the trade spend redirected, and the execution made consistent.</p>
-        <p style="margin-top:14px;font-weight:600;color:var(--navy);">We stay until the value is captured.</p>
+        <h3 data-i18n="gap_diff_h">Qué hace distinto el Brazo C</h3>
+        <p data-i18n="gap_diff_p1">No entregamos un deck y nos desconectamos. Nos quedamos en el loop: traduciendo, desplegando, midiendo y devolviendo lo que aprendemos a la operación. La medida del éxito no es la calidad de la recomendación. Es el margen recuperado, el trade spend redirigido y la ejecución vuelta consistente.</p>
+        <p style="margin-top:14px;font-weight:600;color:var(--navy);" data-i18n="gap_diff_p2">Nos quedamos hasta que el valor es capturado.</p>
       </div>
     </div>
   </div>
@@ -148,19 +156,19 @@
 <!-- TWO MODES -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">Two ways we execute</div>
-    <h2>We operate for you, or we equip your team.</h2>
-    <p class="lead" style="margin-top:16px;">Execution is delivered in two modes, depending on where you need us.</p>
+    <div class="eyebrow" data-i18n="modes_eyebrow">Dos formas de ejecutar</div>
+    <h2 data-i18n="modes_h2">Operamos por ti, o habilitamos a tu equipo.</h2>
+    <p class="lead" style="margin-top:16px;" data-i18n="modes_lead">La ejecución se entrega en dos modos, según dónde se necesite.</p>
     <div class="gap-grid">
       <div class="gap-col" style="background:var(--white);padding:36px 40px;border-left:4px solid var(--signal);">
-        <div class="eyebrow">Operators</div>
-        <h3>We operate for you</h3>
-        <p>Concierge runs omnichannel customer interaction on your behalf: it takes orders, recommends, and serves the customer, through the Companion, a conversational layer with live dashboards. AI does the work; we operate it.</p>
+        <div class="eyebrow" data-i18n="modes_operators_eyebrow">Operators</div>
+        <h3 data-i18n="modes_operators_h">Operamos por ti</h3>
+        <p data-i18n="modes_operators_p">Concierge corre la interacción omnicanal con el cliente en tu nombre: toma pedidos, recomienda y atiende al cliente, a través del Companion, una capa conversacional con dashboards en vivo. La IA hace el trabajo; nosotros lo operamos.</p>
       </div>
       <div class="gap-col" style="background:var(--white);padding:36px 40px;border-left:4px solid var(--navy-12);">
-        <div class="eyebrow">Enablers</div>
-        <h3>We equip your team</h3>
-        <p>When the work belongs inside your organization, we build the capability: ways of working, RGM playbooks, dashboards, and governance, so your team runs the operation and the decisions stick.</p>
+        <div class="eyebrow" data-i18n="modes_enablers_eyebrow">Enablers</div>
+        <h3 data-i18n="modes_enablers_h">Habilitamos a tu equipo</h3>
+        <p data-i18n="modes_enablers_p">Cuando el trabajo pertenece dentro de tu organización, construimos la capacidad: ways of working, playbooks de RGM, dashboards y gobierno, para que tu equipo opere y las decisiones se sostengan.</p>
       </div>
     </div>
   </div>
@@ -169,62 +177,62 @@
 <!-- 5 SUBMODS -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow">How Arm C works</div>
-    <h2>Five submódules. One continuous loop.</h2>
+    <div class="eyebrow" data-i18n="submods_eyebrow">Cómo funciona el Brazo C</div>
+    <h2 data-i18n="submods_h2">Cinco submódulos. Un loop continuo.</h2>
     <div class="c-submods">
       <div class="c-submod">
         <div class="c-submod-code">C1</div>
         <div class="c-submod-head">
-          <div class="eyebrow">Decision Translation</div>
-          <h3>Analysis into prioritized actions</h3>
+          <div class="eyebrow" data-i18n="c1_eyebrow">Traducción de Decisiones</div>
+          <h3 data-i18n="c1_h">Del análisis a las acciones priorizadas</h3>
         </div>
         <div class="c-submod-body">
-          <p>The output of Arm B is a set of insights and recommendations. C1 converts that into a specific, sequenced action list, what gets done first, what gets done second, what does not get done at all, with responsible owners and timelines.</p>
-          <p>This is not a summary of the analysis. It is an operational plan built from it.</p>
+          <p data-i18n="c1_p1">El output del Brazo B es un conjunto de insights y recomendaciones. C1 lo convierte en una lista de acciones específica y secuenciada: qué se hace primero, qué se hace después, qué no se hace en absoluto, con responsables y plazos.</p>
+          <p data-i18n="c1_p2">Esto no es un resumen del análisis. Es un plan operativo construido a partir de él.</p>
         </div>
       </div>
       <div class="c-submod">
         <div class="c-submod-code">C2</div>
         <div class="c-submod-head">
-          <div class="eyebrow">Action Design</div>
-          <h3>Decisions into concrete plans</h3>
+          <div class="eyebrow" data-i18n="c2_eyebrow">Diseño de Acciones</div>
+          <h3 data-i18n="c2_h">De las decisiones a planes concretos</h3>
         </div>
         <div class="c-submod-body">
-          <p>Each prioritized action is designed as an executable initiative: what changes, where, for whom, by when, and how it will be measured. Every initiative has a defined baseline and an expected outcome before it launches.</p>
-          <p>Playbooks and guidelines are built here, commercial logic made operational for the teams that will execute it.</p>
+          <p data-i18n="c2_p1">Cada acción priorizada se diseña como una iniciativa ejecutable: qué cambia, dónde, para quién, para cuándo y cómo se va a medir. Cada iniciativa tiene un baseline definido y un resultado esperado antes de lanzarse.</p>
+          <p data-i18n="c2_p2">Aquí se construyen los playbooks y las guías: la lógica comercial vuelta operativa para los equipos que la van a ejecutar.</p>
         </div>
       </div>
       <div class="c-submod">
         <div class="c-submod-code">C3</div>
         <div class="c-submod-head">
-          <div class="eyebrow">Field Enablement</div>
-          <h3>Working alongside execution teams</h3>
+          <div class="eyebrow" data-i18n="c3_eyebrow">Habilitación de Campo</div>
+          <h3 data-i18n="c3_h">Trabajando junto a los equipos de ejecución</h3>
         </div>
         <div class="c-submod-body">
-          <p>We do not just hand off the plan. We work alongside the teams responsible for execution, commercial, trade, key accounts, field force, until the logic is operating on its own.</p>
-          <p>This includes training, real-time support, interpretation of in-market signals, and adaptation when execution reveals gaps in the original plan.</p>
+          <p data-i18n="c3_p1">No solo entregamos el plan. Trabajamos junto a los equipos responsables de la ejecución (comercial, trade, key accounts, fuerza de campo) hasta que la lógica opera por sí sola.</p>
+          <p data-i18n="c3_p2">Esto incluye capacitación, soporte en tiempo real, interpretación de señales de mercado y adaptación cuando la ejecución revela brechas en el plan original.</p>
         </div>
       </div>
       <div class="c-submod">
         <div class="c-submod-code">C4</div>
         <div class="c-submod-head">
-          <div class="eyebrow">Performance Tracking</div>
-          <h3>Measuring what actually happened</h3>
+          <div class="eyebrow" data-i18n="c4_eyebrow">Seguimiento de Desempeño</div>
+          <h3 data-i18n="c4_h">Medir lo que realmente pasó</h3>
         </div>
         <div class="c-submod-body">
-          <p>Results are compared against the baseline established before each initiative launched. Not against a moving target, against a fixed reference that allows honest measurement of what the initiative produced.</p>
-          <p>KPI dashboards, variance analysis, and cycle-by-cycle review cycles are built into the tracking infrastructure from the start.</p>
+          <p data-i18n="c4_p1">Los resultados se comparan contra el baseline establecido antes de lanzar cada iniciativa. No contra un objetivo móvil, sino contra una referencia fija que permite medir con honestidad lo que la iniciativa produjo.</p>
+          <p data-i18n="c4_p2">Dashboards de KPIs, análisis de varianza y revisiones ciclo a ciclo se integran en la infraestructura de seguimiento desde el inicio.</p>
         </div>
       </div>
       <div class="c-submod">
         <div class="c-submod-code">C5</div>
         <div class="c-submod-head">
-          <div class="eyebrow">Learning Feedback</div>
-          <h3>Feeding results back into the operation</h3>
+          <div class="eyebrow" data-i18n="c5_eyebrow">Retroalimentación de Aprendizaje</div>
+          <h3 data-i18n="c5_h">Devolver los resultados a la operación</h3>
         </div>
         <div class="c-submod-body">
-          <p>Every cycle teaches the operation something. Execution results, what worked, what didn't, and why, are structured and fed back into the models, rules, and priorities that drive the next cycle.</p>
-          <p>This is where commercial maturity compounds. The operation does not just repeat the same analysis. It improves with every iteration.</p>
+          <p data-i18n="c5_p1">Cada ciclo le enseña algo a la operación. Los resultados de ejecución (qué funcionó, qué no y por qué) se estructuran y se devuelven a los modelos, las reglas y las prioridades que guían el siguiente ciclo.</p>
+          <p data-i18n="c5_p2">Aquí es donde la madurez comercial se acumula. La operación no solo repite el mismo análisis. Mejora con cada iteración.</p>
         </div>
       </div>
     </div>
@@ -234,20 +242,20 @@
 <!-- WHAT STAYS -->
 <section class="stays-section">
   <div class="container">
-    <div class="eyebrow" style="color:rgba(255,255,255,.5);">What clients value most</div>
-    <h2 style="color:#fff;">The work that others don't do.</h2>
+    <div class="eyebrow" style="color:rgba(255,255,255,.5);" data-i18n="stays_eyebrow">Lo que más valoran los clientes</div>
+    <h2 style="color:#fff;" data-i18n="stays_h2">El trabajo que otros no hacen.</h2>
     <div class="stays-grid">
       <div class="stays-card">
-        <h4>We stay past the deck</h4>
-        <p>Most consulting engagements end when the presentation is delivered. Arm C begins there. We remain engaged through execution, measurement, and the first learning cycle.</p>
+        <h4 data-i18n="stays_card1_h">Nos quedamos más allá del deck</h4>
+        <p data-i18n="stays_card1_p">La mayoría de los proyectos de consultoría terminan cuando se entrega la presentación. El Brazo C empieza ahí. Seguimos comprometidos a través de la ejecución, la medición y el primer ciclo de aprendizaje.</p>
       </div>
       <div class="stays-card">
-        <h4>We measure against baseline</h4>
-        <p>Every initiative has a pre-defined baseline. Success is not defined by the client's perception of improvement, it is defined by the delta between what happened and what would have happened without the initiative.</p>
+        <h4 data-i18n="stays_card2_h">Medimos contra baseline</h4>
+        <p data-i18n="stays_card2_p">Cada iniciativa tiene un baseline predefinido. El éxito no se define por la percepción de mejora del cliente, se define por el delta entre lo que pasó y lo que habría pasado sin la iniciativa.</p>
       </div>
       <div class="stays-card">
-        <h4>We feed the operation</h4>
-        <p>What Arm C learns in execution is not lost. It is structured and returned to the analytical models, the data infrastructure, and the priority framework, so every cycle is more informed than the last.</p>
+        <h4 data-i18n="stays_card3_h">Alimentamos la operación</h4>
+        <p data-i18n="stays_card3_p">Lo que el Brazo C aprende en la ejecución no se pierde. Se estructura y se devuelve a los modelos analíticos, la infraestructura de data y el marco de prioridades, para que cada ciclo esté más informado que el anterior.</p>
       </div>
     </div>
   </div>
@@ -255,15 +263,15 @@
 
 <div class="cta-strip">
   <div class="container">
-    <h2>Ready to close the gap<br>between insight and result?</h2>
-    <p>Book a 30-minute call. We'll show you where that gap exists in your current operation, and what closing it looks like.</p>
-    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">Book a call</a>
+    <h2 data-i18n="cta_h2">¿Listo para cerrar la brecha<br>entre el insight y el resultado?</h2>
+    <p data-i18n="cta_p">Agenda una llamada de 30 minutos. Te mostramos dónde existe esa brecha en tu operación actual y cómo se ve cerrarla.</p>
+    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" style="font-size:15px;padding:14px 32px;" data-i18n="cta_btn">Agendar llamada</a>
   </div>
 </div>
 
 <div style="background:var(--paper-alt);padding:32px 36px;display:flex;justify-content:space-between;align-items:center;">
-  <div><a href="arm-a.html" style="font-size:13px;font-weight:600;color:var(--navy-80);">← Arm A: Information Infrastructure</a></div>
-  <div><a href="arm-b.html" style="font-size:13px;font-weight:600;color:var(--navy-80);">← Arm B: Intelligence Layer</a></div>
+  <div><a href="arm-a.html" style="font-size:13px;font-weight:600;color:var(--navy-80);" data-i18n="arm_a_link">Brazo A: Infraestructura de Información →</a></div>
+  <div><a href="arm-b.html" style="font-size:13px;font-weight:600;color:var(--navy-80);" data-i18n="arm_b_link">Brazo B: Motor de Inteligencia →</a></div>
 </div>
 
 <footer>
@@ -271,7 +279,7 @@
     <div class="footer-inner">
       <div>
         <div><img src="brand_assets/logo-white.png" alt="Imberion" style="height:28px;width:auto;"/></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy">© 2026 Imberion. All rights reserved.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy" data-i18n="footer_copy">© 2026 Imberion. Todos los derechos reservados.</div>
       </div>
       <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links"></div>
     </div>
@@ -283,19 +291,206 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding
 #footer-links a{font-size:13px;color:rgba(255,255,255,.4);transition:color .2s}
 #footer-links a:hover{color:rgba(255,255,255,.85)}
 </style>
-<script>
-
-document.querySelectorAll('.lang-btn').forEach(b =>
-  b.addEventListener('click', () => setLang(b.getAttribute('data-lang')))
-);
-function detectLang(){ return ['en','es','pt'].includes((navigator.language||'en').slice(0,2)) ? (navigator.language||'en').slice(0,2) : 'en'; }
-
-document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
-  const lang = b.getAttribute('data-lang');
-  document.querySelectorAll('.lang-btn').forEach(x => x.classList.toggle('active', x === b));
-  const nc = document.getElementById('nav-cta');
-  if(nc) nc.textContent = {'en':'Book a Call','es':'Agendar llamada','pt':'Agendar chamada'}[lang] || 'Book a Call';
-}));
-</script>
+<script>window.IMB_I18N = {
+  "es": {
+    "nav_estrat": "Estrategia",
+    "__title": "Imberion — Brazo C: Ejecución y Captura de Valor",
+    "nav_cta": "Agendar llamada",
+    "back": "← Volver a cómo funciona",
+    "hero_eyebrow": "Brazo C",
+    "hero_h1": "Ejecución y<br>Captura de Valor",
+    "hero_lead": "La mayoría de los proyectos se detiene en la recomendación. El Brazo C es donde el trabajo se vuelve real, donde la inteligencia se traduce en acción de campo, se mide contra baseline y se devuelve a la operación.",
+    "mockup_eyebrow": "Vista de producto",
+    "mockup_alt": "El loop de ejecución, de la decisión al aprendizaje contra baseline.",
+    "mockup_cap": "El loop de ejecución, de la decisión al aprendizaje contra baseline.",
+    "gap_eyebrow": "Qué resuelve el Brazo C",
+    "gap_h2": "La brecha entre el insight y el resultado.",
+    "gap_lead": "Muchas organizaciones llegan al diagnóstico. Pocas capturan el valor. La distancia entre un buen análisis y un resultado comercial medible es donde fracasan la mayoría de los proyectos de consultoría.",
+    "gap_typical_h": "Lo que suele pasar",
+    "gap_typical_p1": "Se produce un diagnóstico. Se entregan recomendaciones. El deck circula. Seis meses después, el pricing no cambió, las promociones corren igual y la organización ya está en el siguiente proyecto. El insight existía. El resultado no llegó.",
+    "gap_typical_p2": "Esto no es una falla de análisis. Es una falla de traducción: de la recomendación a la decisión, de la decisión a la acción de campo, de la acción de campo a la medición, de la medición al aprendizaje.",
+    "gap_diff_h": "Qué hace distinto el Brazo C",
+    "gap_diff_p1": "No entregamos un deck y nos desconectamos. Nos quedamos en el loop: traduciendo, desplegando, midiendo y devolviendo lo que aprendemos a la operación. La medida del éxito no es la calidad de la recomendación. Es el margen recuperado, el trade spend redirigido y la ejecución vuelta consistente.",
+    "gap_diff_p2": "Nos quedamos hasta que el valor es capturado.",
+    "modes_eyebrow": "Dos formas de ejecutar",
+    "modes_h2": "Operamos por ti, o habilitamos a tu equipo.",
+    "modes_lead": "La ejecución se entrega en dos modos, según dónde se necesite.",
+    "modes_operators_eyebrow": "Operators",
+    "modes_operators_h": "Operamos por ti",
+    "modes_operators_p": "Concierge corre la interacción omnicanal con el cliente en tu nombre: toma pedidos, recomienda y atiende al cliente, a través del Companion, una capa conversacional con dashboards en vivo. La IA hace el trabajo; nosotros lo operamos.",
+    "modes_enablers_eyebrow": "Enablers",
+    "modes_enablers_h": "Habilitamos a tu equipo",
+    "modes_enablers_p": "Cuando el trabajo pertenece dentro de tu organización, construimos la capacidad: ways of working, playbooks de RGM, dashboards y gobierno, para que tu equipo opere y las decisiones se sostengan.",
+    "submods_eyebrow": "Cómo funciona el Brazo C",
+    "submods_h2": "Cinco submódulos. Un loop continuo.",
+    "c1_eyebrow": "Traducción de Decisiones",
+    "c1_h": "Del análisis a las acciones priorizadas",
+    "c1_p1": "El output del Brazo B es un conjunto de insights y recomendaciones. C1 lo convierte en una lista de acciones específica y secuenciada: qué se hace primero, qué se hace después, qué no se hace en absoluto, con responsables y plazos.",
+    "c1_p2": "Esto no es un resumen del análisis. Es un plan operativo construido a partir de él.",
+    "c2_eyebrow": "Diseño de Acciones",
+    "c2_h": "De las decisiones a planes concretos",
+    "c2_p1": "Cada acción priorizada se diseña como una iniciativa ejecutable: qué cambia, dónde, para quién, para cuándo y cómo se va a medir. Cada iniciativa tiene un baseline definido y un resultado esperado antes de lanzarse.",
+    "c2_p2": "Aquí se construyen los playbooks y las guías: la lógica comercial vuelta operativa para los equipos que la van a ejecutar.",
+    "c3_eyebrow": "Habilitación de Campo",
+    "c3_h": "Trabajando junto a los equipos de ejecución",
+    "c3_p1": "No solo entregamos el plan. Trabajamos junto a los equipos responsables de la ejecución (comercial, trade, key accounts, fuerza de campo) hasta que la lógica opera por sí sola.",
+    "c3_p2": "Esto incluye capacitación, soporte en tiempo real, interpretación de señales de mercado y adaptación cuando la ejecución revela brechas en el plan original.",
+    "c4_eyebrow": "Seguimiento de Desempeño",
+    "c4_h": "Medir lo que realmente pasó",
+    "c4_p1": "Los resultados se comparan contra el baseline establecido antes de lanzar cada iniciativa. No contra un objetivo móvil, sino contra una referencia fija que permite medir con honestidad lo que la iniciativa produjo.",
+    "c4_p2": "Dashboards de KPIs, análisis de varianza y revisiones ciclo a ciclo se integran en la infraestructura de seguimiento desde el inicio.",
+    "c5_eyebrow": "Retroalimentación de Aprendizaje",
+    "c5_h": "Devolver los resultados a la operación",
+    "c5_p1": "Cada ciclo le enseña algo a la operación. Los resultados de ejecución (qué funcionó, qué no y por qué) se estructuran y se devuelven a los modelos, las reglas y las prioridades que guían el siguiente ciclo.",
+    "c5_p2": "Aquí es donde la madurez comercial se acumula. La operación no solo repite el mismo análisis. Mejora con cada iteración.",
+    "stays_eyebrow": "Lo que más valoran los clientes",
+    "stays_h2": "El trabajo que otros no hacen.",
+    "stays_card1_h": "Nos quedamos más allá del deck",
+    "stays_card1_p": "La mayoría de los proyectos de consultoría terminan cuando se entrega la presentación. El Brazo C empieza ahí. Seguimos comprometidos a través de la ejecución, la medición y el primer ciclo de aprendizaje.",
+    "stays_card2_h": "Medimos contra baseline",
+    "stays_card2_p": "Cada iniciativa tiene un baseline predefinido. El éxito no se define por la percepción de mejora del cliente, se define por el delta entre lo que pasó y lo que habría pasado sin la iniciativa.",
+    "stays_card3_h": "Alimentamos la operación",
+    "stays_card3_p": "Lo que el Brazo C aprende en la ejecución no se pierde. Se estructura y se devuelve a los modelos analíticos, la infraestructura de data y el marco de prioridades, para que cada ciclo esté más informado que el anterior.",
+    "cta_h2": "¿Listo para cerrar la brecha<br>entre el insight y el resultado?",
+    "cta_p": "Agenda una llamada de 30 minutos. Te mostramos dónde existe esa brecha en tu operación actual y cómo se ve cerrarla.",
+    "cta_btn": "Agendar llamada",
+    "arm_a_link": "Brazo A: Infraestructura de Información →",
+    "arm_b_link": "Brazo B: Motor de Inteligencia →",
+    "footer_copy": "© 2026 Imberion. Todos los derechos reservados."
+  },
+  "en": {
+    "nav_estrat": "Strategy",
+    "__title": "Imberion — Arm C: Execution & Value Capture",
+    "nav_cta": "Book a Call",
+    "back": "← Back to how it works",
+    "hero_eyebrow": "Arm C",
+    "hero_h1": "Execution &<br>Value Capture",
+    "hero_lead": "Most engagements stop at the recommendation. Arm C is where the work becomes real, where intelligence is translated into field action, measured against baseline, and fed back into the operation.",
+    "mockup_eyebrow": "Product view",
+    "mockup_alt": "The execution loop, from decision to learning against baseline.",
+    "mockup_cap": "The execution loop, from decision to learning against baseline.",
+    "gap_eyebrow": "What Arm C resolves",
+    "gap_h2": "The gap between insight and result.",
+    "gap_lead": "Many organizations reach the diagnosis. Few capture the value. The distance between a good analysis and a measurable commercial result is where most consulting engagements fail.",
+    "gap_typical_h": "What typically happens",
+    "gap_typical_p1": "A diagnostic is produced. Recommendations are delivered. The deck circulates. Six months later, pricing hasn't changed, promotions are running the same way, and the organization has moved on to the next project. The insight existed. The result didn't follow.",
+    "gap_typical_p2": "This is not a failure of analysis. It is a failure of translation: from recommendation to decision, from decision to field action, from field action to measurement, from measurement to learning.",
+    "gap_diff_h": "What Arm C does differently",
+    "gap_diff_p1": "We do not hand off a deck and disengage. We stay in the loop: translating, deploying, measuring, and feeding what we learn back into the operation. The measure of success is not the quality of the recommendation. It is the margin recovered, the trade spend redirected, and the execution made consistent.",
+    "gap_diff_p2": "We stay until the value is captured.",
+    "modes_eyebrow": "Two ways we execute",
+    "modes_h2": "We operate for you, or we equip your team.",
+    "modes_lead": "Execution is delivered in two modes, depending on where it is needed.",
+    "modes_operators_eyebrow": "Operators",
+    "modes_operators_h": "We operate for you",
+    "modes_operators_p": "Concierge runs omnichannel customer interaction on your behalf: it takes orders, recommends, and serves the customer, through the Companion, a conversational layer with live dashboards. AI does the work; we operate it.",
+    "modes_enablers_eyebrow": "Enablers",
+    "modes_enablers_h": "We equip your team",
+    "modes_enablers_p": "When the work belongs inside your organization, we build the capability: ways of working, RGM playbooks, dashboards, and governance, so your team runs the operation and the decisions stick.",
+    "submods_eyebrow": "How Arm C works",
+    "submods_h2": "Five submodules. One continuous loop.",
+    "c1_eyebrow": "Decision Translation",
+    "c1_h": "From analysis to prioritized actions",
+    "c1_p1": "The output of Arm B is a set of insights and recommendations. C1 converts that into a specific, sequenced action list: what gets done first, what gets done next, what does not get done at all, with owners and timelines.",
+    "c1_p2": "This is not a summary of the analysis. It is an operational plan built from it.",
+    "c2_eyebrow": "Action Design",
+    "c2_h": "From decisions to concrete plans",
+    "c2_p1": "Each prioritized action is designed as an executable initiative: what changes, where, for whom, by when, and how it will be measured. Every initiative has a defined baseline and an expected outcome before it launches.",
+    "c2_p2": "Playbooks and guidelines are built here: commercial logic made operational for the teams that will execute it.",
+    "c3_eyebrow": "Field Enablement",
+    "c3_h": "Working alongside the execution teams",
+    "c3_p1": "We do not just hand off the plan. We work alongside the teams responsible for execution (commercial, trade, key accounts, field force) until the logic operates on its own.",
+    "c3_p2": "This includes training, real-time support, interpretation of in-market signals, and adaptation when execution reveals gaps in the original plan.",
+    "c4_eyebrow": "Performance Tracking",
+    "c4_h": "Measuring what actually happened",
+    "c4_p1": "Results are compared against the baseline established before each initiative launched. Not against a moving target, but against a fixed reference that allows an honest measurement of what the initiative produced.",
+    "c4_p2": "KPI dashboards, variance analysis, and cycle-by-cycle reviews are built into the tracking infrastructure from the start.",
+    "c5_eyebrow": "Learning Feedback",
+    "c5_h": "Feeding results back into the operation",
+    "c5_p1": "Every cycle teaches the operation something. Execution results (what worked, what didn't, and why) are structured and fed back into the models, rules, and priorities that guide the next cycle.",
+    "c5_p2": "This is where commercial maturity compounds. The operation does not just repeat the same analysis. It improves with every iteration.",
+    "stays_eyebrow": "What clients value most",
+    "stays_h2": "The work that others don't do.",
+    "stays_card1_h": "We stay past the deck",
+    "stays_card1_p": "Most consulting engagements end when the presentation is delivered. Arm C begins there. We remain engaged through execution, measurement, and the first learning cycle.",
+    "stays_card2_h": "We measure against baseline",
+    "stays_card2_p": "Every initiative has a pre-defined baseline. Success is not defined by the client's perception of improvement, it is defined by the delta between what happened and what would have happened without the initiative.",
+    "stays_card3_h": "We feed the operation",
+    "stays_card3_p": "What Arm C learns in execution is not lost. It is structured and returned to the analytical models, the data infrastructure, and the priority framework, so every cycle is more informed than the last.",
+    "cta_h2": "Ready to close the gap<br>between insight and result?",
+    "cta_p": "Book a 30-minute call. We show you where that gap exists in your current operation and what closing it looks like.",
+    "cta_btn": "Book a Call",
+    "arm_a_link": "Arm A: Information Infrastructure →",
+    "arm_b_link": "Arm B: Intelligence Engine →",
+    "footer_copy": "© 2026 Imberion. All rights reserved."
+  },
+  "pt": {
+    "nav_estrat": "Estratégia",
+    "__title": "Imberion — Braço C: Execução e Captura de Valor",
+    "nav_cta": "Agendar chamada",
+    "back": "← Voltar para como funciona",
+    "hero_eyebrow": "Braço C",
+    "hero_h1": "Execução e<br>Captura de Valor",
+    "hero_lead": "A maioria dos projetos para na recomendação. O Braço C é onde o trabalho se torna real, onde a inteligência é traduzida em ação de campo, medida contra baseline e devolvida à operação.",
+    "mockup_eyebrow": "Visão do produto",
+    "mockup_alt": "O loop de execução, da decisão ao aprendizado contra baseline.",
+    "mockup_cap": "O loop de execução, da decisão ao aprendizado contra baseline.",
+    "gap_eyebrow": "O que o Braço C resolve",
+    "gap_h2": "A lacuna entre o insight e o resultado.",
+    "gap_lead": "Muitas organizações chegam ao diagnóstico. Poucas capturam o valor. A distância entre uma boa análise e um resultado comercial mensurável é onde a maioria dos projetos de consultoria fracassa.",
+    "gap_typical_h": "O que costuma acontecer",
+    "gap_typical_p1": "Um diagnóstico é produzido. Recomendações são entregues. O deck circula. Seis meses depois, o pricing não mudou, as promoções rodam do mesmo jeito e a organização já está no próximo projeto. O insight existia. O resultado não veio.",
+    "gap_typical_p2": "Isso não é uma falha de análise. É uma falha de tradução: da recomendação à decisão, da decisão à ação de campo, da ação de campo à medição, da medição ao aprendizado.",
+    "gap_diff_h": "O que o Braço C faz de diferente",
+    "gap_diff_p1": "Não entregamos um deck e nos desconectamos. Ficamos no loop: traduzindo, implantando, medindo e devolvendo o que aprendemos à operação. A medida do sucesso não é a qualidade da recomendação. É a margem recuperada, o trade spend redirecionado e a execução tornada consistente.",
+    "gap_diff_p2": "Ficamos até que o valor seja capturado.",
+    "modes_eyebrow": "Duas formas de executar",
+    "modes_h2": "Operamos por você ou habilitamos o seu time.",
+    "modes_lead": "A execução é entregue em dois modos, conforme onde for necessária.",
+    "modes_operators_eyebrow": "Operators",
+    "modes_operators_h": "Operamos por você",
+    "modes_operators_p": "O Concierge conduz a interação omnicanal com o cliente em seu nome: registra pedidos, recomenda e atende o cliente, por meio do Companion, uma camada conversacional com dashboards ao vivo. A IA faz o trabalho; nós o operamos.",
+    "modes_enablers_eyebrow": "Enablers",
+    "modes_enablers_h": "Habilitamos o seu time",
+    "modes_enablers_p": "Quando o trabalho pertence dentro da sua organização, construímos a capacidade: ways of working, playbooks de RGM, dashboards e governança, para que o seu time opere e as decisões se sustentem.",
+    "submods_eyebrow": "Como o Braço C funciona",
+    "submods_h2": "Cinco submódulos. Um loop contínuo.",
+    "c1_eyebrow": "Tradução de Decisões",
+    "c1_h": "Da análise às ações priorizadas",
+    "c1_p1": "O output do Braço B é um conjunto de insights e recomendações. O C1 transforma isso em uma lista de ações específica e sequenciada: o que se faz primeiro, o que se faz depois, o que não se faz de jeito nenhum, com responsáveis e prazos.",
+    "c1_p2": "Isso não é um resumo da análise. É um plano operacional construído a partir dela.",
+    "c2_eyebrow": "Desenho de Ações",
+    "c2_h": "Das decisões a planos concretos",
+    "c2_p1": "Cada ação priorizada é desenhada como uma iniciativa executável: o que muda, onde, para quem, até quando e como será medida. Cada iniciativa tem um baseline definido e um resultado esperado antes de ser lançada.",
+    "c2_p2": "Aqui se constroem os playbooks e os guias: a lógica comercial tornada operacional para os times que vão executá-la.",
+    "c3_eyebrow": "Habilitação de Campo",
+    "c3_h": "Trabalhando junto aos times de execução",
+    "c3_p1": "Não apenas entregamos o plano. Trabalhamos junto aos times responsáveis pela execução (comercial, trade, key accounts, força de campo) até que a lógica opere por conta própria.",
+    "c3_p2": "Isso inclui capacitação, suporte em tempo real, interpretação de sinais de mercado e adaptação quando a execução revela lacunas no plano original.",
+    "c4_eyebrow": "Acompanhamento de Desempenho",
+    "c4_h": "Medir o que realmente aconteceu",
+    "c4_p1": "Os resultados são comparados contra o baseline estabelecido antes do lançamento de cada iniciativa. Não contra um alvo móvel, mas contra uma referência fixa que permite medir com honestidade o que a iniciativa produziu.",
+    "c4_p2": "Dashboards de KPI, análise de variância e revisões ciclo a ciclo são integrados à infraestrutura de acompanhamento desde o início.",
+    "c5_eyebrow": "Retroalimentação de Aprendizado",
+    "c5_h": "Devolver os resultados à operação",
+    "c5_p1": "Cada ciclo ensina algo à operação. Os resultados de execução (o que funcionou, o que não funcionou e por quê) são estruturados e devolvidos aos modelos, às regras e às prioridades que guiam o próximo ciclo.",
+    "c5_p2": "É aqui que a maturidade comercial se acumula. A operação não apenas repete a mesma análise. Ela melhora a cada iteração.",
+    "stays_eyebrow": "O que os clientes mais valorizam",
+    "stays_h2": "O trabalho que os outros não fazem.",
+    "stays_card1_h": "Ficamos além do deck",
+    "stays_card1_p": "A maioria dos projetos de consultoria termina quando a apresentação é entregue. O Braço C começa aí. Seguimos comprometidos ao longo da execução, da medição e do primeiro ciclo de aprendizado.",
+    "stays_card2_h": "Medimos contra baseline",
+    "stays_card2_p": "Cada iniciativa tem um baseline predefinido. O sucesso não é definido pela percepção de melhora do cliente, é definido pelo delta entre o que aconteceu e o que teria acontecido sem a iniciativa.",
+    "stays_card3_h": "Alimentamos a operação",
+    "stays_card3_p": "O que o Braço C aprende na execução não se perde. É estruturado e devolvido aos modelos analíticos, à infraestrutura de data e ao quadro de prioridades, para que cada ciclo esteja mais informado que o anterior.",
+    "cta_h2": "Pronto para fechar a lacuna<br>entre o insight e o resultado?",
+    "cta_p": "Agende uma chamada de 30 minutos. Mostramos onde essa lacuna existe na sua operação atual e como é fechá-la.",
+    "cta_btn": "Agendar chamada",
+    "arm_a_link": "Braço A: Infraestrutura de Informação →",
+    "arm_b_link": "Braço B: Motor de Inteligência →",
+    "footer_copy": "© 2026 Imberion. Todos os direitos reservados."
+  }
+};</script>
+<script src="assets/js/imberion-site.js"></script>
 </body>
 </html>

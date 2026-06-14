@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8"/><link rel="icon" type="image/png" href="brand_assets/favicon.png"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Imberion — Arm B: Intelligence Layer</title>
+  <title>Imberion — Brazo B: Motor de Inteligencia Comercial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
@@ -83,21 +83,18 @@
       section .container > div[style*="grid-template-columns:1fr 2fr"]{grid-template-columns:1fr !important;gap:36px}
     }
   </style>
+  <link rel="stylesheet" href="assets/css/imberion-site.css"/>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html"><img src="brand_assets/logo-white.png" alt="Imberion"/></a>
     <div class="nav-links">
-      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion</a>
+      <a href="index.html" style="color:rgba(255,255,255,.5);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.5)'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>← Imberion</a><a href="estrategia.html" data-i18n="nav_estrat" style="margin-left:22px;">Estrategia</a>
     </div>
     <div class="nav-right">
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn " data-lang="es">ES</button>
-        <button class="lang-btn " data-lang="pt">PT</button>
-      </div>
-      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta">Book a Call</a>
+      <div class="lang-toggle"><button class="lang-btn active" data-lang="es">ES</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="pt">PT</button></div>
+      <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" id="nav-cta" data-i18n="nav_cta">Agendar llamada</a>
     </div>
   </div>
 </nav>
@@ -105,10 +102,10 @@
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-content">
-    <a href="index.html#how-it-works" class="back">← Back to how it works</a>
-    <div class="eyebrow" style="color:rgba(255,255,255,.5);">Arm B</div>
-    <h1>Intelligence Layer</h1>
-    <p class="lead">A connected set of analytical capabilities that convert commercial data into decisions. Not reports, prioritized actions with trade-offs made explicit.</p>
+    <a href="index.html#how-it-works" class="back" data-i18n="hero_back">← Volver a cómo funciona</a>
+    <div class="eyebrow" style="color:rgba(255,255,255,.5);" data-i18n="hero_eyebrow">Brazo B</div>
+    <h1 data-i18n="hero_h1">Motor de Inteligencia Comercial</h1>
+    <p class="lead" data-i18n="hero_lead">Un conjunto conectado de capacidades analíticas que convierten la data comercial en decisiones. No reportes: acciones priorizadas con los trade-offs explícitos.</p>
   </div>
   <div style="position:absolute;right:60px;bottom:40px;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:300;color:rgba(255,255,255,.05);line-height:1;user-select:none;">B</div>
 </section>
@@ -116,21 +113,31 @@
 <!-- MODULE NAV -->
 <nav class="mod-nav">
   <div class="mod-nav-inner">
-    <a href="#pricing">B2 Pricing Intelligence</a><a href="#promotions">B3 Promotion Intelligence</a><a href="#trade">B4 Trade Terms Intelligence</a><a href="#channel">B5 Channel & Route-to-Market</a><a href="#obppc">B6 OBPPC & Portfolio Design</a><a href="#assortment">B8 Assortment</a><a href="#scenario">B9 Scenario Engine</a><a href="#alignment">B0 Strategic Alignment</a><a href="#infra">A5 Information Infrastructure</a><a href="#segmentation">B1 Segmentation & ICP</a><a href="#competitive">B7 Competitive Intelligence</a><a href="#sizing">B10 Market Sizing & Right-to-Win</a><a href="#retention">B11 Retention & Revenue Quality</a>
+    <a href="#pricing" data-i18n="nav_pricing">B2 Pricing</a><a href="#promotions" data-i18n="nav_promotions">B3 Inteligencia de Promociones</a><a href="#trade" data-i18n="nav_trade">B4 Trade Terms</a><a href="#channel" data-i18n="nav_channel">B5 Canal y Route-to-Market</a><a href="#obppc" data-i18n="nav_obppc">B6 OBPPC y Diseño de Portafolio</a><a href="#assortment" data-i18n="nav_assortment">B8 Surtido</a><a href="#scenario" data-i18n="nav_scenario">B9 Motor de Escenarios</a><a href="#alignment" data-i18n="nav_alignment">B0 Leadership Alignment Compass</a><a href="#infra" data-i18n="nav_infra">A5 Infraestructura de Información</a><a href="#segmentation" data-i18n="nav_segmentation">B1 Segmentación e ICP</a><a href="#competitive" data-i18n="nav_competitive">B7 Inteligencia Competitiva</a><a href="#retention" data-i18n="nav_retention">B11 Retención y Calidad de Ingresos</a><a href="#marketing" data-i18n="nav_marketing">B12 Marketing &amp; ROMI</a><a href="#loyalty" data-i18n="nav_loyalty">B13 Loyalty Program</a>
   </div>
 </nav>
 
+<!-- PRODUCT MOCKUP -->
+<section class="section mockup-band">
+  <div class="container">
+    <div class="mockup-lead"><span class="eyebrow" data-i18n="mockup_eyebrow">Vista de producto</span></div>
+    <figure class="mockup-figure">
+      <img src="assets/arm-b-mockup.png" alt="Simulador de precio: curva de volumen y margen, con el óptimo marcado." data-i18n-alt="mockup_alt" loading="lazy">
+      <figcaption data-i18n="mockup_caption">Simulador de precio: curva de volumen y margen, con el óptimo marcado.</figcaption>
+    </figure>
+  </div>
+</section>
 
 <section class="section" id="pricing" style="background:var(--paper-alt);">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B2, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_pricing_eyebrow">B2, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◈</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Pricing Intelligence</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We design prices with economic rigor, demand sensitivity, and behavioral validation.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_pricing_h2">Pricing</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_pricing_lead">Diseñamos precios con rigor económico, sensibilidad de demanda y validación conductual.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Elasticidades históricas y predictivas</h5><p>Historical and forward-looking price elasticities, own and cross.</p></div><div class="detail-item"><h5>Price architecture</h5><p>Logical structure of prices across sizes, formats, brands, and channels.</p></div><div class="detail-item"><h5>Price corridors & thresholds</h5><p>Ranges and inflection points where perception or demand changes disproportionately.</p></div><div class="detail-item"><h5>Scenario simulation</h5><p>What happens to volume and margin under alternative price configurations.</p></div><div class="detail-item"><h5>Value-based pricing</h5><p>Pricing centered on perceived value and willingness to pay, not cost alone.</p></div><div class="detail-item"><h5>WTP methodologies</h5><p>Van Westendorp, Gabor-Granger, Conjoint — declared and behavioral methods.</p></div><div class="detail-item"><h5>Virtual Buyers / Buyer Personas sintéticas</h5><p>Synthetic buyer profiles to test price reactions before market moves.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_pricing_c1_h5">Elasticidades históricas y predictivas</h5><p data-i18n="m_pricing_c1_p">Elasticidades de precio históricas y prospectivas, propias y cruzadas.</p></div><div class="detail-item"><h5 data-i18n="m_pricing_c2_h5">Arquitectura de precios</h5><p data-i18n="m_pricing_c2_p">Estructura lógica de precios a lo largo de tamaños, formatos, marcas y canales.</p></div><div class="detail-item"><h5 data-i18n="m_pricing_c3_h5">Corredores y umbrales de precio</h5><p data-i18n="m_pricing_c3_p">Rangos y puntos de inflexión donde la percepción o la demanda cambian de forma desproporcionada.</p></div><div class="detail-item"><h5 data-i18n="m_pricing_c4_h5">Simulación de escenarios</h5><p data-i18n="m_pricing_c4_p">Qué le pasa al volumen y al margen bajo configuraciones de precio alternativas.</p></div><div class="detail-item"><h5 data-i18n="m_pricing_c5_h5">Price Value Compass</h5><p data-i18n="m_pricing_c5_p">Precios centrados en el valor percibido y la disposición a pagar (WTP), no solo en el costo.</p></div><div class="detail-item"><h5 data-i18n="m_pricing_c6_h5">Value-Attribute Compass (VAC)</h5><p data-i18n="m_pricing_c6_p">Van Westendorp, Gabor-Granger, conjoint: métodos declarados y conductuales.</p></div><div class="detail-item"><h5 data-i18n="m_pricing_c7_h5">Virtual Buyers / personas sintéticas</h5><p data-i18n="m_pricing_c7_p">Perfiles de comprador sintéticos para probar reacciones de precio antes de mover el mercado.</p></div></div>
     </div>
   </div>
 </section>
@@ -138,12 +145,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B3, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_promo_eyebrow">B3, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◉</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Promotion Intelligence</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We measure which promotions create value and which only displace volume or destroy margin.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_promo_h2">Inteligencia de Promociones</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_promo_lead">Medimos qué promociones crean valor y cuáles solo desplazan volumen o destruyen margen.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Baseline & Uplift</h5><p>Expected volume without promotion, and the increment attributable to it.</p></div><div class="detail-item"><h5>Promotional ROI</h5><p>Economic return after full costs — volume, margin, cannibalization, forward buying.</p></div><div class="detail-item"><h5>TPO — Trade Promotion Optimization</h5><p>Forward-looking optimization of promotional calendars by retailer, SKU, and mechanic.</p></div><div class="detail-item"><h5>TPA — Trade Promotion Analytics</h5><p>Retroactive analysis of promotional performance patterns across periods and accounts.</p></div><div class="detail-item"><h5>Ex-Ante Analysis</h5><p>Scenario-based projection of promotional impact before commitment.</p></div><div class="detail-item"><h5>Post-Mortem Analysis</h5><p>Structured measurement of actual vs. expected results after execution.</p></div><div class="detail-item"><h5>Value creators vs. value destroyers</h5><p>Classification of every promotion by its net economic contribution.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_promo_c1_h5">Baseline y uplift</h5><p data-i18n="m_promo_c1_p">Volumen esperado sin promoción, y el incremento atribuible a ella.</p></div><div class="detail-item"><h5 data-i18n="m_promo_c2_h5">ROI promocional</h5><p data-i18n="m_promo_c2_p">Retorno económico después de costos completos: volumen, margen, canibalización, forward buying.</p></div><div class="detail-item"><h5 data-i18n="m_promo_c3_h5">TPO — Trade Promotion Optimization</h5><p data-i18n="m_promo_c3_p">Optimización prospectiva de calendarios promocionales por retailer, SKU y mecánica.</p></div><div class="detail-item"><h5 data-i18n="m_promo_c4_h5">TPA — Trade Promotion Analytics</h5><p data-i18n="m_promo_c4_p">Análisis retroactivo de patrones de desempeño promocional a lo largo de periodos y cuentas.</p></div><div class="detail-item"><h5 data-i18n="m_promo_c5_h5">Análisis ex-ante</h5><p data-i18n="m_promo_c5_p">Proyección por escenarios del impacto promocional antes de comprometerse.</p></div><div class="detail-item"><h5 data-i18n="m_promo_c6_h5">Análisis post-mortem</h5><p data-i18n="m_promo_c6_p">Medición estructurada de resultados reales contra esperados después de la ejecución.</p></div><div class="detail-item"><h5 data-i18n="m_promo_c7_h5">Creadores vs. destructores de valor</h5><p data-i18n="m_promo_c7_p">Clasificación de cada promoción por su contribución económica neta.</p></div></div>
     </div>
   </div>
 </section>
@@ -151,12 +158,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B4, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_trade_eyebrow">B4, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◧</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Trade Terms Intelligence</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We make visible how net price erodes from list to pocket, and give teams the tools to redirect trade spend with measurable return.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_trade_h2">Trade Terms</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_trade_lead">Hacemos visible cómo se erosiona el precio neto de la lista al bolsillo, y damos a los equipos las herramientas para redirigir la inversión comercial con retorno medible.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Price waterfall</h5><p>Full decomposition from list price to net price after all concessions.</p></div><div class="detail-item"><h5>Pocket price analysis</h5><p>Effective revenue actually captured after all discounts and rebates.</p></div><div class="detail-item"><h5>Trade spend diagnostics</h5><p>Total commercial investment by account, structured and unstructured.</p></div><div class="detail-item"><h5>Rebate analysis</h5><p>Structure, triggers, and ROI of retroactive commercial incentives.</p></div><div class="detail-item"><h5>Pay-for-performance logic</h5><p>Framework to link commercial investment to observable, measurable outcomes.</p></div><div class="detail-item"><h5>ROI by account</h5><p>Net return on commercial investment at the individual account level.</p></div><div class="detail-item"><h5>Commercial Policy design</h5><p>How conditions, rules, and investment criteria are structured and governed across the customer base.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_trade_c1_h5">Cascada de precio</h5><p data-i18n="m_trade_c1_p">Descomposición completa del precio de lista al precio neto después de todas las concesiones.</p></div><div class="detail-item"><h5 data-i18n="m_trade_c2_h5">Análisis de pocket price</h5><p data-i18n="m_trade_c2_p">Ingreso efectivo realmente capturado después de todos los descuentos y rebates.</p></div><div class="detail-item"><h5 data-i18n="m_trade_c3_h5">Diagnóstico de inversión comercial</h5><p data-i18n="m_trade_c3_p">Inversión comercial total por cuenta, estructurada y no estructurada.</p></div><div class="detail-item"><h5 data-i18n="m_trade_c4_h5">Análisis de rebates</h5><p data-i18n="m_trade_c4_p">Estructura, gatillos y ROI de los incentivos comerciales retroactivos.</p></div><div class="detail-item"><h5 data-i18n="m_trade_c5_h5">Lógica de pago por desempeño</h5><p data-i18n="m_trade_c5_p">Marco para vincular la inversión comercial a resultados observables y medibles.</p></div><div class="detail-item"><h5 data-i18n="m_trade_c6_h5">ROI por cuenta</h5><p data-i18n="m_trade_c6_p">Retorno neto sobre la inversión comercial a nivel de cuenta individual.</p></div><div class="detail-item"><h5 data-i18n="m_trade_c7_h5">Diseño de Política Comercial</h5><p data-i18n="m_trade_c7_p">Cómo se estructuran y gobiernan las condiciones, reglas y criterios de inversión a lo largo de la base de clientes.</p></div></div>
     </div>
   </div>
 </section>
@@ -164,12 +171,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B5, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_channel_eyebrow">B5, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">⊞</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Channel & Route-to-Market</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We prioritize channels by value potential, capacity to win, and commercial coherence.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_channel_h2">Canal y Route-to-Market</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_channel_lead">Priorizamos canales por potencial de valor, capacidad de ganar y coherencia comercial.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Channel attractiveness evaluation</h5><p>Economic and strategic potential of each commercial route.</p></div><div class="detail-item"><h5>Competitive strength assessment</h5><p>Realistic probability of winning within each channel given capabilities and positioning.</p></div><div class="detail-item"><h5>Route-to-market design</h5><p>Coverage and service architecture by channel, customer segment, and resource.</p></div><div class="detail-item"><h5>Channel conflict analysis</h5><p>Identification and resolution of value leakage from channel misalignment.</p></div><div class="detail-item"><h5>Price-channel coherence</h5><p>Alignment between pricing architecture and channel roles to prevent arbitrage.</p></div><div class="detail-item"><h5>Missions and moments by channel</h5><p>Occasion-based demand mapping to channel-specific opportunities.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_channel_c1_h5">Evaluación de atractividad de canal</h5><p data-i18n="m_channel_c1_p">Potencial económico y estratégico de cada ruta comercial.</p></div><div class="detail-item"><h5 data-i18n="m_channel_c2_h5">Evaluación de fortaleza competitiva</h5><p data-i18n="m_channel_c2_p">Probabilidad realista de ganar dentro de cada canal dadas las capacidades y el posicionamiento.</p></div><div class="detail-item"><h5 data-i18n="m_channel_c3_h5">Diseño de route-to-market</h5><p data-i18n="m_channel_c3_p">Arquitectura de cobertura y servicio por canal, segmento de cliente y recurso.</p></div><div class="detail-item"><h5 data-i18n="m_channel_c4_h5">Análisis de conflicto de canal</h5><p data-i18n="m_channel_c4_p">Identificación y resolución de fugas de valor por desalineación de canal.</p></div><div class="detail-item"><h5 data-i18n="m_channel_c5_h5">Coherencia precio-canal</h5><p data-i18n="m_channel_c5_p">Alineación entre la arquitectura de pricing y los roles de canal para evitar el arbitraje.</p></div><div class="detail-item"><h5 data-i18n="m_channel_c6_h5">Misiones y momentos por canal</h5><p data-i18n="m_channel_c6_p">Mapeo de demanda por ocasión hacia oportunidades específicas de cada canal.</p></div></div>
     </div>
   </div>
 </section>
@@ -177,12 +184,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B6, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_obppc_eyebrow">B6, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">⊡</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">OBPPC & Portfolio Design</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We design the right offer for each occasion, format, price point, and channel, and identify where current coverage leaves demand uncaptured.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_obppc_h2">OBPPC y Diseño de Portafolio</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_obppc_lead">Diseñamos la oferta correcta para cada ocasión, formato, punto de precio y canal, e identificamos dónde la cobertura actual deja demanda sin capturar.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Occasion mapping</h5><p>Concrete contexts of consumption and purchase that define demand spaces.</p></div><div class="detail-item"><h5>Brand fit by occasion</h5><p>Which brand best responds to each demand occasion.</p></div><div class="detail-item"><h5>Pack roles</h5><p>Entry, Frequency, Best Buy, Premium — explicit strategic roles for each format.</p></div><div class="detail-item"><h5>Pack-price coherence</h5><p>Alignment between format, price architecture, and occasion requirements.</p></div><div class="detail-item"><h5>Whitespace detection</h5><p>Uncovered or underserved spaces in price, pack, occasion, or channel.</p></div><div class="detail-item"><h5>Portfolio roadmap</h5><p>Sequenced development plan aligned to demand occasion priorities.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_obppc_c1_h5">Mapeo de ocasiones</h5><p data-i18n="m_obppc_c1_p">Contextos concretos de consumo y compra que definen los espacios de demanda.</p></div><div class="detail-item"><h5 data-i18n="m_obppc_c2_h5">Ajuste de marca por ocasión</h5><p data-i18n="m_obppc_c2_p">Qué marca responde mejor a cada ocasión de demanda.</p></div><div class="detail-item"><h5 data-i18n="m_obppc_c3_h5">Roles de pack</h5><p data-i18n="m_obppc_c3_p">Entrada, Frecuencia, Best Buy, Premium: roles estratégicos explícitos para cada formato.</p></div><div class="detail-item"><h5 data-i18n="m_obppc_c4_h5">Coherencia pack-precio</h5><p data-i18n="m_obppc_c4_p">Alineación entre formato, arquitectura de precios y requerimientos de la ocasión.</p></div><div class="detail-item"><h5 data-i18n="m_obppc_c5_h5">Whitespace Compass</h5><p data-i18n="m_obppc_c5_p">Espacios sin cubrir o mal atendidos en precio, pack, ocasión o canal.</p></div><div class="detail-item"><h5 data-i18n="m_obppc_c6_h5">Roadmap de portafolio</h5><p data-i18n="m_obppc_c6_p">Plan de desarrollo secuenciado, alineado a las prioridades de ocasión de demanda.</p></div></div>
     </div>
   </div>
 </section>
@@ -190,12 +197,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B8, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_assort_eyebrow">B8, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">≡</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Assortment</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">What goes on shelf, in which store, and in what priority.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_assort_h2">Surtido</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_assort_lead">Qué va en el anaquel, en qué tienda y con qué prioridad.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Must-have portfolio</h5><p>Minimum set of products required to compete effectively by cluster.</p></div><div class="detail-item"><h5>Must-win battles</h5><p>Critical focus areas where the company must win because they concentrate opportunity or risk.</p></div><div class="detail-item"><h5>Cluster-based assortment</h5><p>Assortment rules differentiated by store type, geography, or customer segment.</p></div><div class="detail-item"><h5>Mix promoters & offenders</h5><p>Portfolio elements that drive, or erode, the priority KPI.</p></div><div class="detail-item"><h5>Guardrails</h5><p>Rules that bound execution without breaking strategic logic.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_assort_c1_h5">Portafolio must-have</h5><p data-i18n="m_assort_c1_p">Conjunto mínimo de productos requerido para competir con eficacia por cluster.</p></div><div class="detail-item"><h5 data-i18n="m_assort_c2_h5">Batallas que hay que ganar</h5><p data-i18n="m_assort_c2_p">Áreas críticas de foco donde la empresa debe ganar porque concentran oportunidad o riesgo.</p></div><div class="detail-item"><h5 data-i18n="m_assort_c3_h5">Surtido por cluster</h5><p data-i18n="m_assort_c3_p">Reglas de surtido diferenciadas por tipo de tienda, geografía o segmento de cliente.</p></div><div class="detail-item"><h5 data-i18n="m_assort_c4_h5">Promotores y detractores del mix</h5><p data-i18n="m_assort_c4_p">Elementos del portafolio que impulsan, o erosionan, el KPI prioritario.</p></div><div class="detail-item"><h5 data-i18n="m_assort_c5_h5">Guardrails</h5><p data-i18n="m_assort_c5_p">Reglas que acotan la ejecución sin romper la lógica estratégica.</p></div></div>
     </div>
   </div>
 </section>
@@ -203,12 +210,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B9, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_scenario_eyebrow">B9, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◌</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Scenario Engine</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">A transversal simulation layer across all capabilities, to test decisions before committing.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_scenario_h2">Motor de Escenarios</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_scenario_lead">Una capa de simulación transversal a todas las capacidades, para probar decisiones antes de comprometerlas.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Base vs. alternative scenarios</h5><p>Structured comparison of current state against proposed changes.</p></div><div class="detail-item"><h5>Pricing scenarios</h5><p>Volume and margin impact of price moves, architecture changes, or threshold crossings.</p></div><div class="detail-item"><h5>Promotional scenarios</h5><p>Pre-evaluation of promotional mechanics, depths, and timing.</p></div><div class="detail-item"><h5>Competitor scenarios</h5><p>Modeling of competitor price moves or portfolio changes and their likely market impact.</p></div><div class="detail-item"><h5>What-if analysis</h5><p>Free-form variable sensitivity testing across any commercial lever.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_scenario_c1_h5">Escenario base vs. alternativos</h5><p data-i18n="m_scenario_c1_p">Comparación estructurada del estado actual contra los cambios propuestos.</p></div><div class="detail-item"><h5 data-i18n="m_scenario_c2_h5">Escenarios de pricing</h5><p data-i18n="m_scenario_c2_p">Impacto en volumen y margen de movimientos de precio, cambios de arquitectura o cruces de umbral.</p></div><div class="detail-item"><h5 data-i18n="m_scenario_c3_h5">Escenarios promocionales</h5><p data-i18n="m_scenario_c3_p">Pre-evaluación de mecánicas, profundidades y timing promocionales.</p></div><div class="detail-item"><h5 data-i18n="m_scenario_c4_h5">Escenarios de competidores</h5><p data-i18n="m_scenario_c4_p">Modelado de movimientos de precio o cambios de portafolio de competidores y su probable impacto en el mercado.</p></div><div class="detail-item"><h5 data-i18n="m_scenario_c5_h5">Análisis what-if</h5><p data-i18n="m_scenario_c5_p">Pruebas de sensibilidad libres de variables sobre cualquier palanca comercial.</p></div></div>
     </div>
   </div>
 </section>
@@ -216,12 +223,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B0, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_align_eyebrow">B0, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◯</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Strategic Alignment</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">Before any lever is optimized, objectives must be clear and trade-offs agreed.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_align_h2">Leadership Alignment Compass</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_align_lead">Antes de optimizar cualquier palanca, los objetivos deben estar claros y los trade-offs acordados.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>KPI prioritization</h5><p>Which metric matters most, and in what order when they conflict.</p></div><div class="detail-item"><h5>Trade-off framework</h5><p>Explicit agreements on acceptable sacrifices between margin, volume, share, and growth.</p></div><div class="detail-item"><h5>Stakeholder alignment</h5><p>Cross-functional agreement on commercial direction before analytical work begins.</p></div><div class="detail-item"><h5>RGM governance</h5><p>Mechanisms to maintain consistency, escalation, and learning across commercial decisions.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_align_c1_h5">Priorización de KPI</h5><p data-i18n="m_align_c1_p">Qué métrica importa más, y en qué orden cuando entran en conflicto.</p></div><div class="detail-item"><h5 data-i18n="m_align_c2_h5">Marco de trade-offs</h5><p data-i18n="m_align_c2_p">Acuerdos explícitos sobre sacrificios aceptables entre margen, volumen, participación y crecimiento.</p></div><div class="detail-item"><h5 data-i18n="m_align_c3_h5">Alineación de stakeholders</h5><p data-i18n="m_align_c3_p">Acuerdo interfuncional sobre la dirección comercial antes de que arranque el trabajo analítico.</p></div><div class="detail-item"><h5 data-i18n="m_align_c4_h5">Gobernanza de RGM</h5><p data-i18n="m_align_c4_p">Mecanismos para mantener consistencia, escalamiento y aprendizaje a lo largo de las decisiones comerciales.</p></div></div>
     </div>
   </div>
 </section>
@@ -229,12 +236,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">A5, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_infra_eyebrow">A5, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◰</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Information Infrastructure</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">The foundation that makes every other capability possible, built from scratch when needed.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_infra_h2">Infraestructura de Información</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_infra_lead">El cimiento que hace posible cada una de las demás capacidades, construido desde cero cuando hace falta.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>POS capture (traditional & modern)</h5><p>Transactional data from fragmented and structured trade.</p></div><div class="detail-item"><h5>Distributor integrations</h5><p>Structured data feeds from distribution partners.</p></div><div class="detail-item"><h5>Data cleansing & harmonization</h5><p>Normalization and standardization across all sources.</p></div><div class="detail-item"><h5>Field intelligence</h5><p>In-field data capture for prices, availability, and competitive intelligence.</p></div><div class="detail-item"><h5>Data asset creation</h5><p>Generation of structured datasets for analytics and eventual monetization.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_infra_c1_h5">Captura de POS (tradicional y moderno)</h5><p data-i18n="m_infra_c1_p">Data transaccional del canal fragmentado y estructurado.</p></div><div class="detail-item"><h5 data-i18n="m_infra_c2_h5">Integraciones con distribuidores</h5><p data-i18n="m_infra_c2_p">Flujos de data estructurada desde los socios de distribución.</p></div><div class="detail-item"><h5 data-i18n="m_infra_c3_h5">Limpieza y armonización de data</h5><p data-i18n="m_infra_c3_p">Normalización y estandarización a lo largo de todas las fuentes.</p></div><div class="detail-item"><h5 data-i18n="m_infra_c4_h5">Inteligencia de campo</h5><p data-i18n="m_infra_c4_p">Captura de data en campo para precios, disponibilidad e inteligencia competitiva.</p></div><div class="detail-item"><h5 data-i18n="m_infra_c5_h5">Creación de activos de data</h5><p data-i18n="m_infra_c5_p">Generación de datasets estructurados para analítica y eventual monetización.</p></div></div>
     </div>
   </div>
 </section>
@@ -242,12 +249,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B1, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_seg_eyebrow">B1, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">⊕</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Segmentation & ICP</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We segment customers and markets by what actually drives value, and define who to win and who to serve.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_seg_h2">Segmentación e ICP</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_seg_lead">Segmentamos clientes y mercados por lo que realmente impulsa el valor, y definimos a quién ganar y a quién servir.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Value-based segmentation</h5><p>Segments built on willingness to pay and value drivers, not demographics alone.</p></div><div class="detail-item"><h5>Behavioral & needs-based segments</h5><p>Grouping by behavior, needs, and occasions, not just profile.</p></div><div class="detail-item"><h5>Ideal Customer Profile</h5><p>The ICP, drawn from your best cohorts or from a forward thesis.</p></div><div class="detail-item"><h5>Segment-level strategy</h5><p>A distinct value proposition, price, and service level per segment.</p></div><div class="detail-item"><h5>Multi-method clustering</h5><p>k-means and mixed methods triangulated for robustness.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_seg_c1_h5">Segmentación por valor</h5><p data-i18n="m_seg_c1_p">Segmentos construidos sobre la disposición a pagar y los drivers de valor, no solo la demografía.</p></div><div class="detail-item"><h5 data-i18n="m_seg_c2_h5">Segmentos conductuales y por necesidades</h5><p data-i18n="m_seg_c2_p">Agrupación por comportamiento, necesidades y ocasiones, no solo por perfil.</p></div><div class="detail-item"><h5 data-i18n="m_seg_c3_h5">Ideal Customer Profile</h5><p data-i18n="m_seg_c3_p">El ICP, derivado de tus mejores cohortes o de una tesis prospectiva.</p></div><div class="detail-item"><h5 data-i18n="m_seg_c4_h5">Estrategia a nivel de segmento</h5><p data-i18n="m_seg_c4_p">Una propuesta de valor, precio y nivel de servicio distinto por segmento.</p></div><div class="detail-item"><h5 data-i18n="m_seg_c5_h5">Clustering multimétodo</h5><p data-i18n="m_seg_c5_p">k-means y métodos mixtos triangulados para mayor robustez.</p></div></div>
     </div>
   </div>
 </section>
@@ -255,25 +262,12 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B7, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_comp_eyebrow">B7, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◎</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Competitive Intelligence</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We read the competitive set continuously, in price, portfolio, and positioning.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_comp_h2">Inteligencia Competitiva</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_comp_lead">Leemos el set competitivo de forma continua, en precio, portafolio y posicionamiento.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Competitive price tracking</h5><p>Where you sit versus the market corridor, by zone and channel.</p></div><div class="detail-item"><h5>Competitive lineup mapping</h5><p>Their portfolio by occasion and pack, set against yours.</p></div><div class="detail-item"><h5>Brand-price positioning</h5><p>Brand power versus price, and the consistency corridor.</p></div><div class="detail-item"><h5>Competitive response modeling</h5><p>Likely reactions to your moves, before you make them.</p></div></div>
-    </div>
-  </div>
-</section>
-<section class="section" id="sizing" style="">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
-      <div>
-        <div class="eyebrow">B10, Deep Dive</div>
-        <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◍</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Market Sizing & Right-to-Win</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We size the opportunity and test whether you can realistically win it, before you invest.</p>
-      </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Market sizing (TAM / SAM / SOM)</h5><p>Top-down and bottom-up triangulation of the addressable opportunity.</p></div><div class="detail-item"><h5>Right-to-win assessment</h5><p>Realistic probability of winning a segment given capabilities and position.</p></div><div class="detail-item"><h5>Where-to-play map</h5><p>Where the prize is, and where you have permission to compete.</p></div><div class="detail-item"><h5>Opportunity prioritization</h5><p>Sequenced bets ranked by value, feasibility, and fit.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_comp_c1_h5">Tracking de precios competitivos</h5><p data-i18n="m_comp_c1_p">Dónde te ubicas frente al corredor de mercado, por zona y canal.</p></div><div class="detail-item"><h5 data-i18n="m_comp_c2_h5">Mapeo del lineup competitivo</h5><p data-i18n="m_comp_c2_p">Su portafolio por ocasión y pack, contrastado con el tuyo.</p></div><div class="detail-item"><h5 data-i18n="m_comp_c3_h5">Posicionamiento marca-precio</h5><p data-i18n="m_comp_c3_p">Poder de marca frente a precio, y el corredor de consistencia.</p></div><div class="detail-item"><h5 data-i18n="m_comp_c4_h5">Modelado de respuesta competitiva</h5><p data-i18n="m_comp_c4_p">Reacciones probables a tus movimientos, antes de que los hagas.</p></div></div>
     </div>
   </div>
 </section>
@@ -281,27 +275,54 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
       <div>
-        <div class="eyebrow">B11, Deep Dive</div>
+        <div class="eyebrow" data-i18n="m_ret_eyebrow">B11, A Fondo</div>
         <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">⟳</div>
-        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);">Retention & Revenue Quality</h2>
-        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;">We measure not just how much you sell, but how durable that revenue is.</p>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_ret_h2">Retención y Calidad de Ingresos</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_ret_lead">Medimos no solo cuánto vendes, sino qué tan duradero es ese ingreso.</p>
       </div>
-      <div class="detail-grid"><div class="detail-item"><h5>Retention cohorts</h5><p>Revenue bridge and churn read by customer cohort.</p></div><div class="detail-item"><h5>Net & gross revenue retention</h5><p>NRR and GRR as the quality signal of growth.</p></div><div class="detail-item"><h5>Churn & expansion drivers</h5><p>What makes customers leave, stay, or grow.</p></div><div class="detail-item"><h5>Revenue durability</h5><p>Recurring versus at-risk revenue, made explicit.</p></div></div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_ret_c1_h5">Cohortes de retención</h5><p data-i18n="m_ret_c1_p">Puente de ingresos y lectura de churn por cohorte de cliente.</p></div><div class="detail-item"><h5 data-i18n="m_ret_c2_h5">Retención neta y bruta de ingresos</h5><p data-i18n="m_ret_c2_p">NRR y GRR como señal de calidad del crecimiento.</p></div><div class="detail-item"><h5 data-i18n="m_ret_c3_h5">Drivers de churn y expansión</h5><p data-i18n="m_ret_c3_p">Qué hace que los clientes se vayan, se queden o crezcan.</p></div><div class="detail-item"><h5 data-i18n="m_ret_c4_h5">Durabilidad de los ingresos</h5><p data-i18n="m_ret_c4_p">Ingreso recurrente frente a ingreso en riesgo, hecho explícito.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="marketing" style="">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+      <div>
+        <div class="eyebrow" data-i18n="m_mkt_eyebrow"></div>
+        <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">◐</div>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_mkt_h2">Marketing &amp; ROMI</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_mkt_lead"></p>
+      </div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_mkt_c1_h5"></h5><p data-i18n="m_mkt_c1_p"></p></div><div class="detail-item"><h5 data-i18n="m_mkt_c2_h5"></h5><p data-i18n="m_mkt_c2_p"></p></div><div class="detail-item"><h5 data-i18n="m_mkt_c3_h5"></h5><p data-i18n="m_mkt_c3_p"></p></div><div class="detail-item"><h5 data-i18n="m_mkt_c4_h5"></h5><p data-i18n="m_mkt_c4_p"></p></div><div class="detail-item"><h5 data-i18n="m_mkt_c5_h5"></h5><p data-i18n="m_mkt_c5_p"></p></div><div class="detail-item"><h5 data-i18n="m_mkt_c6_h5"></h5><p data-i18n="m_mkt_c6_p"></p></div></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="loyalty" style="background:var(--paper-alt);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+      <div>
+        <div class="eyebrow" data-i18n="m_loy_eyebrow"></div>
+        <div style="font-size:3rem;margin:8px 0 20px;color:var(--navy-12);font-family:'Cormorant Garamond',serif;font-weight:300;">❖</div>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);" data-i18n="m_loy_h2">Loyalty Program</h2>
+        <p style="margin-top:16px;font-size:1.05rem;color:var(--navy-80);line-height:1.75;" data-i18n="m_loy_lead"></p>
+      </div>
+      <div class="detail-grid"><div class="detail-item"><h5 data-i18n="m_loy_c1_h5"></h5><p data-i18n="m_loy_c1_p"></p></div><div class="detail-item"><h5 data-i18n="m_loy_c2_h5"></h5><p data-i18n="m_loy_c2_p"></p></div><div class="detail-item"><h5 data-i18n="m_loy_c3_h5"></h5><p data-i18n="m_loy_c3_p"></p></div><div class="detail-item"><h5 data-i18n="m_loy_c4_h5"></h5><p data-i18n="m_loy_c4_p"></p></div><div class="detail-item"><h5 data-i18n="m_loy_c5_h5"></h5><p data-i18n="m_loy_c5_p"></p></div><div class="detail-item"><h5 data-i18n="m_loy_c6_h5"></h5><p data-i18n="m_loy_c6_p"></p></div></div>
     </div>
   </div>
 </section>
 
 <div class="cta-strip">
   <div class="container">
-    <h2>Ready to start converting data into decisions?</h2>
-    <p>Book a 30-minute call. We'll show you which capabilities apply to your situation and what the output looks like.</p>
-    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">Book a call</a>
+    <h2 data-i18n="cta_h2">¿Listo para empezar a convertir data en decisiones?</h2>
+    <p data-i18n="cta_p">Agenda una llamada de 30 minutos. Te mostramos qué capacidades aplican a tu situación y cómo se ve el output.</p>
+    <a href="https://calendly.com/rodrigo-imberion/30min" class="btn btn-primary" style="font-size:15px;padding:14px 32px;" data-i18n="cta_btn">Agendar llamada</a>
   </div>
 </div>
 
 <div style="background:var(--paper-alt);padding:32px 36px;display:flex;justify-content:space-between;align-items:center;">
-  <div><a href="arm-a.html" style="font-size:13px;font-weight:600;color:var(--navy-80);">← Arm A: Information Infrastructure</a></div>
-  <div><a href="arm-c.html" style="font-size:13px;font-weight:600;color:var(--signal);">Arm C: Execution & Value Capture →</a></div>
+  <div><a href="arm-a.html" style="font-size:13px;font-weight:600;color:var(--navy-80);" data-i18n="arm_prev">← Brazo A: Infraestructura de Información</a></div>
+  <div><a href="arm-c.html" style="font-size:13px;font-weight:600;color:var(--signal);" data-i18n="arm_next">Brazo C: Ejecución y Captura de Valor →</a></div>
 </div>
 
 <footer>
@@ -309,7 +330,7 @@
     <div class="footer-inner">
       <div>
         <div><img src="brand_assets/logo-white.png" alt="Imberion" style="height:28px;width:auto;"/></div>
-        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy">© 2026 Imberion. All rights reserved.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:16px;" id="footer-copy" data-i18n="footer_copy">© 2026 Imberion. Todos los derechos reservados.</div>
       </div>
       <div style="display:flex;gap:24px;flex-wrap:wrap;" id="footer-links"></div>
     </div>
@@ -343,5 +364,632 @@ document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', 
   if(nc) nc.textContent = {'en':'Book a Call','es':'Agendar llamada','pt':'Agendar chamada'}[lang] || 'Book a Call';
 }));
 </script>
+<script>window.IMB_I18N = {
+  "es": {
+    "nav_estrat": "Estrategia",
+    "__title": "Imberion — Brazo B: Motor de Inteligencia Comercial",
+    "nav_cta": "Agendar llamada",
+    "hero_back": "← Volver a cómo funciona",
+    "hero_eyebrow": "Brazo B",
+    "hero_h1": "Motor de Inteligencia Comercial",
+    "hero_lead": "Un conjunto conectado de capacidades analíticas que convierten la data comercial en decisiones. No reportes: acciones priorizadas con los trade-offs explícitos.",
+    "nav_pricing": "B2 Pricing",
+    "nav_promotions": "B3 Inteligencia de Promociones",
+    "nav_trade": "B4 Política Comercial",
+    "nav_channel": "B5 Canal y Route-to-Market",
+    "nav_obppc": "B6 OBPPC y Diseño de Portafolio",
+    "nav_assortment": "B8 Surtido",
+    "nav_scenario": "B9 Scenario Engine",
+    "nav_alignment": "B0 Leadership Alignment Compass",
+    "nav_infra": "A5 Infraestructura de Información",
+    "nav_segmentation": "B1 Segmentación e ICP",
+    "nav_competitive": "B7 Inteligencia Competitiva",
+    "nav_sizing": "B10 Dimensionamiento de Mercado y Right-to-Win",
+    "nav_retention": "B11 Retención y Calidad de Ingresos",
+    "mockup_eyebrow": "Vista de producto",
+    "mockup_alt": "Simulador de precio: curva de volumen y margen, con el óptimo marcado.",
+    "mockup_caption": "Simulador de precio: curva de volumen y margen, con el óptimo marcado.",
+    "m_pricing_eyebrow": "B2, A Fondo",
+    "m_pricing_h2": "Pricing",
+    "m_pricing_lead": "Diseñamos precios con rigor económico, sensibilidad de demanda y validación conductual.",
+    "m_pricing_c1_h5": "Elasticidades históricas y predictivas",
+    "m_pricing_c1_p": "Elasticidades de precio históricas y prospectivas, propias y cruzadas.",
+    "m_pricing_c2_h5": "Arquitectura de precios",
+    "m_pricing_c2_p": "Estructura lógica de precios a lo largo de tamaños, formatos, marcas y canales.",
+    "m_pricing_c3_h5": "Corredores y umbrales de precio",
+    "m_pricing_c3_p": "Rangos y puntos de inflexión donde la percepción o la demanda cambian de forma desproporcionada.",
+    "m_pricing_c4_h5": "Simulación de escenarios",
+    "m_pricing_c4_p": "Qué le pasa al volumen y al margen bajo configuraciones de precio alternativas.",
+    "m_pricing_c5_h5": "Price Value Compass",
+    "m_pricing_c5_p": "Precios centrados en el valor percibido y la disposición a pagar (WTP), no solo en el costo.",
+    "m_pricing_c6_h5": "Value-Attribute Compass (VAC)",
+    "m_pricing_c6_p": "Van Westendorp, Gabor-Granger, conjoint: métodos declarados y conductuales.",
+    "m_pricing_c7_h5": "Virtual Buyers / personas sintéticas",
+    "m_pricing_c7_p": "Perfiles de comprador sintéticos para probar reacciones de precio antes de mover el mercado.",
+    "m_promo_eyebrow": "B3, A Fondo",
+    "m_promo_h2": "Inteligencia de Promociones",
+    "m_promo_lead": "Medimos qué promociones crean valor y cuáles solo desplazan volumen o destruyen margen.",
+    "m_promo_c1_h5": "Baseline y uplift",
+    "m_promo_c1_p": "Volumen esperado sin promoción, y el incremento atribuible a ella.",
+    "m_promo_c2_h5": "ROI promocional",
+    "m_promo_c2_p": "Retorno económico después de costos completos: volumen, margen, canibalización, forward buying.",
+    "m_promo_c3_h5": "TPO — Trade Promotion Optimization",
+    "m_promo_c3_p": "Optimización prospectiva de calendarios promocionales por retailer, SKU y mecánica.",
+    "m_promo_c4_h5": "TPA — Trade Promotion Analytics",
+    "m_promo_c4_p": "Análisis retroactivo de patrones de desempeño promocional a lo largo de periodos y cuentas.",
+    "m_promo_c5_h5": "Análisis ex-ante",
+    "m_promo_c5_p": "Proyección por escenarios del impacto promocional antes de comprometerse.",
+    "m_promo_c6_h5": "Análisis post-mortem",
+    "m_promo_c6_p": "Medición estructurada de resultados reales contra esperados después de la ejecución.",
+    "m_promo_c7_h5": "Creadores vs. destructores de valor",
+    "m_promo_c7_p": "Clasificación de cada promoción por su contribución económica neta.",
+    "m_trade_eyebrow": "B4, A Fondo",
+    "m_trade_h2": "Política Comercial",
+    "m_trade_lead": "Hacemos visible cómo se erosiona el precio neto de la lista al bolsillo, y damos a los equipos las herramientas para redirigir la inversión comercial con retorno medible.",
+    "m_trade_c1_h5": "Cascada de precio",
+    "m_trade_c1_p": "Descomposición completa del precio de lista al precio neto después de todas las concesiones.",
+    "m_trade_c2_h5": "Análisis de pocket price",
+    "m_trade_c2_p": "Ingreso efectivo realmente capturado después de todos los descuentos y rebates.",
+    "m_trade_c3_h5": "Diagnóstico de inversión comercial",
+    "m_trade_c3_p": "Inversión comercial total por cuenta, estructurada y no estructurada.",
+    "m_trade_c4_h5": "Análisis de rebates",
+    "m_trade_c4_p": "Estructura, gatillos y ROI de los incentivos comerciales retroactivos.",
+    "m_trade_c5_h5": "Lógica de pago por desempeño",
+    "m_trade_c5_p": "Marco para vincular la inversión comercial a resultados observables y medibles.",
+    "m_trade_c6_h5": "ROI por cuenta",
+    "m_trade_c6_p": "Retorno neto sobre la inversión comercial a nivel de cuenta individual.",
+    "m_trade_c7_h5": "Diseño de Política Comercial",
+    "m_trade_c7_p": "Cómo se estructuran y gobiernan las condiciones, reglas y criterios de inversión a lo largo de la base de clientes.",
+    "m_channel_eyebrow": "B5, A Fondo",
+    "m_channel_h2": "Canal y Route-to-Market",
+    "m_channel_lead": "Priorizamos canales por potencial de valor, capacidad de ganar y coherencia comercial.",
+    "m_channel_c1_h5": "Evaluación de atractividad de canal",
+    "m_channel_c1_p": "Potencial económico y estratégico de cada ruta comercial.",
+    "m_channel_c2_h5": "Evaluación de fortaleza competitiva",
+    "m_channel_c2_p": "Probabilidad realista de ganar dentro de cada canal dadas las capacidades y el posicionamiento.",
+    "m_channel_c3_h5": "Diseño de route-to-market",
+    "m_channel_c3_p": "Arquitectura de cobertura y servicio por canal, segmento de cliente y recurso.",
+    "m_channel_c4_h5": "Análisis de conflicto de canal",
+    "m_channel_c4_p": "Identificación y resolución de fugas de valor por desalineación de canal.",
+    "m_channel_c5_h5": "Coherencia precio-canal",
+    "m_channel_c5_p": "Alineación entre la arquitectura de pricing y los roles de canal para evitar el arbitraje.",
+    "m_channel_c6_h5": "Misiones y momentos por canal",
+    "m_channel_c6_p": "Mapeo de demanda por ocasión hacia oportunidades específicas de cada canal.",
+    "m_obppc_eyebrow": "B6, A Fondo",
+    "m_obppc_h2": "OBPPC y Diseño de Portafolio",
+    "m_obppc_lead": "Diseñamos la oferta correcta para cada ocasión, formato, punto de precio y canal, e identificamos dónde la cobertura actual deja demanda sin capturar.",
+    "m_obppc_c1_h5": "Mapeo de ocasiones",
+    "m_obppc_c1_p": "Contextos concretos de consumo y compra que definen los espacios de demanda.",
+    "m_obppc_c2_h5": "Ajuste de marca por ocasión",
+    "m_obppc_c2_p": "Qué marca responde mejor a cada ocasión de demanda.",
+    "m_obppc_c3_h5": "Roles de pack",
+    "m_obppc_c3_p": "Entrada, Frecuencia, Best Buy, Premium: roles estratégicos explícitos para cada formato.",
+    "m_obppc_c4_h5": "Coherencia pack-precio",
+    "m_obppc_c4_p": "Alineación entre formato, arquitectura de precios y requerimientos de la ocasión.",
+    "m_obppc_c5_h5": "Whitespace Compass",
+    "m_obppc_c5_p": "Espacios sin cubrir o mal atendidos en precio, pack, ocasión o canal.",
+    "m_obppc_c6_h5": "Roadmap de portafolio",
+    "m_obppc_c6_p": "Plan de desarrollo secuenciado, alineado a las prioridades de ocasión de demanda.",
+    "m_assort_eyebrow": "B8, A Fondo",
+    "m_assort_h2": "Surtido",
+    "m_assort_lead": "Qué va en el anaquel, en qué tienda y con qué prioridad.",
+    "m_assort_c1_h5": "Portafolio must-have",
+    "m_assort_c1_p": "Conjunto mínimo de productos requerido para competir con eficacia por cluster.",
+    "m_assort_c2_h5": "Batallas que hay que ganar",
+    "m_assort_c2_p": "Áreas críticas de foco donde la empresa debe ganar porque concentran oportunidad o riesgo.",
+    "m_assort_c3_h5": "Surtido por cluster",
+    "m_assort_c3_p": "Reglas de surtido diferenciadas por tipo de tienda, geografía o segmento de cliente.",
+    "m_assort_c4_h5": "Promotores y detractores del mix",
+    "m_assort_c4_p": "Elementos del portafolio que impulsan, o erosionan, el KPI prioritario.",
+    "m_assort_c5_h5": "Guardrails",
+    "m_assort_c5_p": "Reglas que acotan la ejecución sin romper la lógica estratégica.",
+    "m_scenario_eyebrow": "B9, A Fondo",
+    "m_scenario_h2": "Scenario Engine",
+    "m_scenario_lead": "Una capa de simulación transversal a todas las capacidades, para probar decisiones antes de comprometerlas.",
+    "m_scenario_c1_h5": "Escenario base vs. alternativos",
+    "m_scenario_c1_p": "Comparación estructurada del estado actual contra los cambios propuestos.",
+    "m_scenario_c2_h5": "Escenarios de pricing",
+    "m_scenario_c2_p": "Impacto en volumen y margen de movimientos de precio, cambios de arquitectura o cruces de umbral.",
+    "m_scenario_c3_h5": "Escenarios promocionales",
+    "m_scenario_c3_p": "Pre-evaluación de mecánicas, profundidades y timing promocionales.",
+    "m_scenario_c4_h5": "Escenarios de competidores",
+    "m_scenario_c4_p": "Modelado de movimientos de precio o cambios de portafolio de competidores y su probable impacto en el mercado.",
+    "m_scenario_c5_h5": "Análisis what-if",
+    "m_scenario_c5_p": "Pruebas de sensibilidad libres de variables sobre cualquier palanca comercial.",
+    "m_align_eyebrow": "B0, A Fondo",
+    "m_align_h2": "Leadership Alignment Compass",
+    "m_align_lead": "Antes de optimizar cualquier palanca, los objetivos deben estar claros y los trade-offs acordados.",
+    "m_align_c1_h5": "Priorización de KPI",
+    "m_align_c1_p": "Qué métrica importa más, y en qué orden cuando entran en conflicto.",
+    "m_align_c2_h5": "Marco de trade-offs",
+    "m_align_c2_p": "Acuerdos explícitos sobre sacrificios aceptables entre margen, volumen, participación y crecimiento.",
+    "m_align_c3_h5": "Alineación de stakeholders",
+    "m_align_c3_p": "Acuerdo interfuncional sobre la dirección comercial antes de que arranque el trabajo analítico.",
+    "m_align_c4_h5": "Gobernanza de RGM",
+    "m_align_c4_p": "Mecanismos para mantener consistencia, escalamiento y aprendizaje a lo largo de las decisiones comerciales.",
+    "m_infra_eyebrow": "A5, A Fondo",
+    "m_infra_h2": "Infraestructura de Información",
+    "m_infra_lead": "El cimiento que hace posible cada una de las demás capacidades, construido desde cero cuando hace falta.",
+    "m_infra_c1_h5": "Captura de POS (tradicional y moderno)",
+    "m_infra_c1_p": "Data transaccional del canal fragmentado y estructurado.",
+    "m_infra_c2_h5": "Integraciones con distribuidores",
+    "m_infra_c2_p": "Flujos de data estructurada desde los socios de distribución.",
+    "m_infra_c3_h5": "Limpieza y armonización de data",
+    "m_infra_c3_p": "Normalización y estandarización a lo largo de todas las fuentes.",
+    "m_infra_c4_h5": "Inteligencia de campo",
+    "m_infra_c4_p": "Captura de data en campo para precios, disponibilidad e inteligencia competitiva.",
+    "m_infra_c5_h5": "Creación de activos de data",
+    "m_infra_c5_p": "Generación de datasets estructurados para analítica y eventual monetización.",
+    "m_seg_eyebrow": "B1, A Fondo",
+    "m_seg_h2": "Segmentación e ICP",
+    "m_seg_lead": "Segmentamos clientes y mercados por lo que realmente impulsa el valor, y definimos a quién ganar y a quién servir.",
+    "m_seg_c1_h5": "Segmentación por valor",
+    "m_seg_c1_p": "Segmentos construidos sobre la disposición a pagar y los drivers de valor, no solo la demografía.",
+    "m_seg_c2_h5": "Segmentos conductuales y por necesidades",
+    "m_seg_c2_p": "Agrupación por comportamiento, necesidades y ocasiones, no solo por perfil.",
+    "m_seg_c3_h5": "Ideal Customer Profile",
+    "m_seg_c3_p": "El ICP, derivado de tus mejores cohortes o de una tesis prospectiva.",
+    "m_seg_c4_h5": "Estrategia a nivel de segmento",
+    "m_seg_c4_p": "Una propuesta de valor, precio y nivel de servicio distinto por segmento.",
+    "m_seg_c5_h5": "Clustering multimétodo",
+    "m_seg_c5_p": "k-means y métodos mixtos triangulados para mayor robustez.",
+    "m_comp_eyebrow": "B7, A Fondo",
+    "m_comp_h2": "Inteligencia Competitiva",
+    "m_comp_lead": "Leemos el set competitivo de forma continua, en precio, portafolio y posicionamiento.",
+    "m_comp_c1_h5": "Tracking de precios competitivos",
+    "m_comp_c1_p": "Dónde te ubicas frente al corredor de mercado, por zona y canal.",
+    "m_comp_c2_h5": "Mapeo del lineup competitivo",
+    "m_comp_c2_p": "Su portafolio por ocasión y pack, contrastado con el tuyo.",
+    "m_comp_c3_h5": "Posicionamiento marca-precio",
+    "m_comp_c3_p": "Poder de marca frente a precio, y el corredor de consistencia.",
+    "m_comp_c4_h5": "Modelado de respuesta competitiva",
+    "m_comp_c4_p": "Reacciones probables a tus movimientos, antes de que los hagas.",
+    "m_sizing_eyebrow": "B10, A Fondo",
+    "m_sizing_h2": "Dimensionamiento de Mercado y Right-to-Win",
+    "m_sizing_lead": "Dimensionamos la oportunidad y probamos si realmente puedes ganarla, antes de que inviertas.",
+    "m_sizing_c1_h5": "Dimensionamiento de mercado (TAM / SAM / SOM)",
+    "m_sizing_c1_p": "Triangulación top-down y bottom-up de la oportunidad direccionable.",
+    "m_sizing_c2_h5": "Evaluación del right-to-win",
+    "m_sizing_c2_p": "Probabilidad realista de ganar un segmento dadas las capacidades y la posición.",
+    "m_sizing_c3_h5": "Mapa de dónde competir",
+    "m_sizing_c3_p": "Dónde está el premio, y dónde tienes permiso para competir.",
+    "m_sizing_c4_h5": "Priorización de oportunidades",
+    "m_sizing_c4_p": "Apuestas secuenciadas, ordenadas por valor, factibilidad y ajuste.",
+    "m_ret_eyebrow": "B11, A Fondo",
+    "m_ret_h2": "Retención y Calidad de Ingresos",
+    "m_ret_lead": "Medimos no solo cuánto vendes, sino qué tan duradero es ese ingreso.",
+    "m_ret_c1_h5": "Cohortes de retención",
+    "m_ret_c1_p": "Puente de ingresos y lectura de churn por cohorte de cliente.",
+    "m_ret_c2_h5": "Retención neta y bruta de ingresos",
+    "m_ret_c2_p": "NRR y GRR como señal de calidad del crecimiento.",
+    "m_ret_c3_h5": "Drivers de churn y expansión",
+    "m_ret_c3_p": "Qué hace que los clientes se vayan, se queden o crezcan.",
+    "m_ret_c4_h5": "Durabilidad de los ingresos",
+    "m_ret_c4_p": "Ingreso recurrente frente a ingreso en riesgo, hecho explícito.", "nav_marketing": "B12 Marketing & ROMI", "nav_loyalty": "B13 Loyalty Program", "m_mkt_eyebrow": "B12, A Fondo", "m_mkt_h2": "Marketing & ROMI", "m_mkt_lead": "Asignamos el presupuesto de marketing por retorno real, no por engagement: cada peso va a donde rinde al margen.", "m_mkt_c1_h5": "Marketing Mix Modeling (MMM)", "m_mkt_c1_p": "Descompone la venta en sus drivers de marketing y base, por canal y campaña.", "m_mkt_c2_h5": "Optimizador de presupuesto", "m_mkt_c2_p": "Reasigna el gasto entre canales hacia el retorno marginal, no el engagement.", "m_mkt_c3_h5": "ROMI por canal", "m_mkt_c3_p": "Retorno sobre la inversión de marketing, medido por canal y por campaña.", "m_mkt_c4_h5": "Curvas de saturación", "m_mkt_c4_p": "Dónde cada canal deja de rendir y conviene mover el siguiente peso a otro lado.", "m_mkt_c5_h5": "Atribución vs. incrementalidad", "m_mkt_c5_p": "Separa lo que el marketing realmente causó de lo que se habría vendido igual.", "m_mkt_c6_h5": "Efecto corto y largo", "m_mkt_c6_p": "El impacto inmediato en venta y el arrastre de marca que rinde con el tiempo.", "m_loy_eyebrow": "B13, A Fondo", "m_loy_h2": "Loyalty Program", "m_loy_lead": "Diseñamos el programa de lealtad como palanca económica: mecánica, tiers y beneficios calibrados a la economía del programa y al valor de vida del cliente.", "m_loy_c1_h5": "Diseño de mecánica", "m_loy_c1_p": "Reglas de acumulación y redención que cambian comportamiento sin regalar margen.", "m_loy_c2_h5": "Arquitectura de tiers", "m_loy_c2_p": "Niveles que premian a los clientes correctos y crean una escalera de valor.", "m_loy_c3_h5": "Economía del programa", "m_loy_c3_p": "Costo de los beneficios contra el incremental de frecuencia, ticket y retención.", "m_loy_c4_h5": "CLTV y uplift", "m_loy_c4_p": "Valor de vida del cliente y cuánto lo mueve el programa, por segmento.", "m_loy_c5_h5": "El dato como activo", "m_loy_c5_p": "El programa convierte la identidad y la frecuencia del cliente en señal propia para todo el motor.", "m_loy_c6_h5": "Anti-canibalización", "m_loy_c6_p": "Que el beneficio premie comportamiento nuevo, no el que ya iba a ocurrir.",
+    "cta_h2": "¿Listo para empezar a convertir data en decisiones?",
+    "cta_p": "Agenda una llamada de 30 minutos. Te mostramos qué capacidades aplican a tu situación y cómo se ve el output.",
+    "cta_btn": "Agendar llamada",
+    "arm_prev": "← Brazo A: Infraestructura de Información",
+    "arm_next": "Brazo C: Ejecución y Captura de Valor →",
+    "footer_copy": "© 2026 Imberion. Todos los derechos reservados."
+  },
+  "en": {
+    "nav_estrat": "Strategy",
+    "__title": "Imberion — Arm B: Commercial Intelligence Engine",
+    "nav_cta": "Book a Call",
+    "hero_back": "← Back to how it works",
+    "hero_eyebrow": "Arm B",
+    "hero_h1": "Commercial Intelligence Engine",
+    "hero_lead": "A connected set of analytical capabilities that turn commercial data into decisions. Not reports: prioritized actions with the trade-offs made explicit.",
+    "nav_pricing": "B2 Pricing",
+    "nav_promotions": "B3 Promotion Intelligence",
+    "nav_trade": "B4 Commercial Policy",
+    "nav_channel": "B5 Channel & Route-to-Market",
+    "nav_obppc": "B6 OBPPC & Portfolio Design",
+    "nav_assortment": "B8 Assortment",
+    "nav_scenario": "B9 Scenario Engine",
+    "nav_alignment": "B0 Leadership Alignment Compass",
+    "nav_infra": "A5 Information Infrastructure",
+    "nav_segmentation": "B1 Segmentation & ICP",
+    "nav_competitive": "B7 Competitive Intelligence",
+    "nav_sizing": "B10 Market Sizing & Right-to-Win",
+    "nav_retention": "B11 Retention & Revenue Quality",
+    "mockup_eyebrow": "Product view",
+    "mockup_alt": "Price simulator: volume and margin curve, with the optimum marked.",
+    "mockup_caption": "Price simulator: volume and margin curve, with the optimum marked.",
+    "m_pricing_eyebrow": "B2, Deep Dive",
+    "m_pricing_h2": "Pricing",
+    "m_pricing_lead": "We design prices with economic rigor, demand sensitivity, and behavioral validation.",
+    "m_pricing_c1_h5": "Historical and predictive elasticities",
+    "m_pricing_c1_p": "Historical and forward-looking price elasticities, own and cross.",
+    "m_pricing_c2_h5": "Price architecture",
+    "m_pricing_c2_p": "Logical price structure across sizes, formats, brands, and channels.",
+    "m_pricing_c3_h5": "Price corridors and thresholds",
+    "m_pricing_c3_p": "Ranges and inflection points where perception or demand shifts disproportionately.",
+    "m_pricing_c4_h5": "Scenario simulation",
+    "m_pricing_c4_p": "What happens to volume and margin under alternative price configurations.",
+    "m_pricing_c5_h5": "Price Value Compass",
+    "m_pricing_c5_p": "Prices centered on perceived value and willingness to pay (WTP), not cost alone.",
+    "m_pricing_c6_h5": "Value-Attribute Compass (VAC)",
+    "m_pricing_c6_p": "Van Westendorp, Gabor-Granger, conjoint: declared and behavioral methods.",
+    "m_pricing_c7_h5": "Virtual Buyers / synthetic personas",
+    "m_pricing_c7_p": "Synthetic buyer profiles to test price reactions before moving the market.",
+    "m_promo_eyebrow": "B3, Deep Dive",
+    "m_promo_h2": "Promotion Intelligence",
+    "m_promo_lead": "We measure which promotions create value and which only displace volume or destroy margin.",
+    "m_promo_c1_h5": "Baseline and uplift",
+    "m_promo_c1_p": "Expected volume without promotion, and the increment attributable to it.",
+    "m_promo_c2_h5": "Promotional ROI",
+    "m_promo_c2_p": "Economic return after full costs: volume, margin, cannibalization, forward buying.",
+    "m_promo_c3_h5": "TPO — Trade Promotion Optimization",
+    "m_promo_c3_p": "Forward-looking optimization of promotional calendars by retailer, SKU, and mechanic.",
+    "m_promo_c4_h5": "TPA — Trade Promotion Analytics",
+    "m_promo_c4_p": "Retroactive analysis of promotional performance patterns across periods and accounts.",
+    "m_promo_c5_h5": "Ex-ante analysis",
+    "m_promo_c5_p": "Scenario-based projection of promotional impact before commitment.",
+    "m_promo_c6_h5": "Post-mortem analysis",
+    "m_promo_c6_p": "Structured measurement of actual versus expected results after execution.",
+    "m_promo_c7_h5": "Value creators vs. value destroyers",
+    "m_promo_c7_p": "Classification of every promotion by its net economic contribution.",
+    "m_trade_eyebrow": "B4, Deep Dive",
+    "m_trade_h2": "Commercial Policy",
+    "m_trade_lead": "We make visible how net price erodes from list to pocket, and give teams the tools to redirect trade spend with measurable return.",
+    "m_trade_c1_h5": "Price waterfall",
+    "m_trade_c1_p": "Full decomposition from list price to net price after all concessions.",
+    "m_trade_c2_h5": "Pocket price analysis",
+    "m_trade_c2_p": "Effective revenue actually captured after all discounts and rebates.",
+    "m_trade_c3_h5": "Trade spend diagnostics",
+    "m_trade_c3_p": "Total commercial investment by account, structured and unstructured.",
+    "m_trade_c4_h5": "Rebate analysis",
+    "m_trade_c4_p": "Structure, triggers, and ROI of retroactive commercial incentives.",
+    "m_trade_c5_h5": "Pay-for-performance logic",
+    "m_trade_c5_p": "Framework to link commercial investment to observable, measurable outcomes.",
+    "m_trade_c6_h5": "ROI by account",
+    "m_trade_c6_p": "Net return on commercial investment at the individual account level.",
+    "m_trade_c7_h5": "Commercial Policy design",
+    "m_trade_c7_p": "How conditions, rules, and investment criteria are structured and governed across the customer base.",
+    "m_channel_eyebrow": "B5, Deep Dive",
+    "m_channel_h2": "Channel & Route-to-Market",
+    "m_channel_lead": "We prioritize channels by value potential, capacity to win, and commercial coherence.",
+    "m_channel_c1_h5": "Channel attractiveness evaluation",
+    "m_channel_c1_p": "Economic and strategic potential of each commercial route.",
+    "m_channel_c2_h5": "Competitive strength assessment",
+    "m_channel_c2_p": "Realistic probability of winning within each channel given capabilities and positioning.",
+    "m_channel_c3_h5": "Route-to-market design",
+    "m_channel_c3_p": "Coverage and service architecture by channel, customer segment, and resource.",
+    "m_channel_c4_h5": "Channel conflict analysis",
+    "m_channel_c4_p": "Identification and resolution of value leakage from channel misalignment.",
+    "m_channel_c5_h5": "Price-channel coherence",
+    "m_channel_c5_p": "Alignment between pricing architecture and channel roles to prevent arbitrage.",
+    "m_channel_c6_h5": "Missions and moments by channel",
+    "m_channel_c6_p": "Occasion-based demand mapping to channel-specific opportunities.",
+    "m_obppc_eyebrow": "B6, Deep Dive",
+    "m_obppc_h2": "OBPPC & Portfolio Design",
+    "m_obppc_lead": "We design the right offer for each occasion, format, price point, and channel, and identify where current coverage leaves demand uncaptured.",
+    "m_obppc_c1_h5": "Occasion mapping",
+    "m_obppc_c1_p": "Concrete contexts of consumption and purchase that define demand spaces.",
+    "m_obppc_c2_h5": "Brand fit by occasion",
+    "m_obppc_c2_p": "Which brand best responds to each demand occasion.",
+    "m_obppc_c3_h5": "Pack roles",
+    "m_obppc_c3_p": "Entry, Frequency, Best Buy, Premium: explicit strategic roles for each format.",
+    "m_obppc_c4_h5": "Pack-price coherence",
+    "m_obppc_c4_p": "Alignment between format, price architecture, and occasion requirements.",
+    "m_obppc_c5_h5": "Whitespace Compass",
+    "m_obppc_c5_p": "Uncovered or underserved spaces in price, pack, occasion, or channel.",
+    "m_obppc_c6_h5": "Portfolio roadmap",
+    "m_obppc_c6_p": "Sequenced development plan aligned to demand occasion priorities.",
+    "m_assort_eyebrow": "B8, Deep Dive",
+    "m_assort_h2": "Assortment",
+    "m_assort_lead": "What goes on shelf, in which store, and at what priority.",
+    "m_assort_c1_h5": "Must-have portfolio",
+    "m_assort_c1_p": "Minimum set of products required to compete effectively by cluster.",
+    "m_assort_c2_h5": "Must-win battles",
+    "m_assort_c2_p": "Critical focus areas where the company must win because they concentrate opportunity or risk.",
+    "m_assort_c3_h5": "Cluster-based assortment",
+    "m_assort_c3_p": "Assortment rules differentiated by store type, geography, or customer segment.",
+    "m_assort_c4_h5": "Mix promoters and offenders",
+    "m_assort_c4_p": "Portfolio elements that drive, or erode, the priority KPI.",
+    "m_assort_c5_h5": "Guardrails",
+    "m_assort_c5_p": "Rules that bound execution without breaking strategic logic.",
+    "m_scenario_eyebrow": "B9, Deep Dive",
+    "m_scenario_h2": "Scenario Engine",
+    "m_scenario_lead": "A simulation layer across all capabilities, to test decisions before committing them.",
+    "m_scenario_c1_h5": "Base vs. alternative scenarios",
+    "m_scenario_c1_p": "Structured comparison of current state against proposed changes.",
+    "m_scenario_c2_h5": "Pricing scenarios",
+    "m_scenario_c2_p": "Volume and margin impact of price moves, architecture changes, or threshold crossings.",
+    "m_scenario_c3_h5": "Promotional scenarios",
+    "m_scenario_c3_p": "Pre-evaluation of promotional mechanics, depths, and timing.",
+    "m_scenario_c4_h5": "Competitor scenarios",
+    "m_scenario_c4_p": "Modeling of competitor price moves or portfolio changes and their likely market impact.",
+    "m_scenario_c5_h5": "What-if analysis",
+    "m_scenario_c5_p": "Free-form variable sensitivity testing across any commercial lever.",
+    "m_align_eyebrow": "B0, Deep Dive",
+    "m_align_h2": "Leadership Alignment Compass",
+    "m_align_lead": "Before any lever is optimized, objectives must be clear and trade-offs agreed.",
+    "m_align_c1_h5": "KPI prioritization",
+    "m_align_c1_p": "Which metric matters most, and in what order when they conflict.",
+    "m_align_c2_h5": "Trade-off framework",
+    "m_align_c2_p": "Explicit agreements on acceptable sacrifices between margin, volume, share, and growth.",
+    "m_align_c3_h5": "Stakeholder alignment",
+    "m_align_c3_p": "Cross-functional agreement on commercial direction before analytical work begins.",
+    "m_align_c4_h5": "RGM governance",
+    "m_align_c4_p": "Mechanisms to maintain consistency, escalation, and learning across commercial decisions.",
+    "m_infra_eyebrow": "A5, Deep Dive",
+    "m_infra_h2": "Information Infrastructure",
+    "m_infra_lead": "The foundation that makes every other capability possible, built from scratch when needed.",
+    "m_infra_c1_h5": "POS capture (traditional and modern)",
+    "m_infra_c1_p": "Transactional data from fragmented and structured trade.",
+    "m_infra_c2_h5": "Distributor integrations",
+    "m_infra_c2_p": "Structured data feeds from distribution partners.",
+    "m_infra_c3_h5": "Data cleansing and harmonization",
+    "m_infra_c3_p": "Normalization and standardization across all sources.",
+    "m_infra_c4_h5": "Field intelligence",
+    "m_infra_c4_p": "In-field data capture for prices, availability, and competitive intelligence.",
+    "m_infra_c5_h5": "Data asset creation",
+    "m_infra_c5_p": "Generation of structured datasets for analytics and eventual monetization.",
+    "m_seg_eyebrow": "B1, Deep Dive",
+    "m_seg_h2": "Segmentation & ICP",
+    "m_seg_lead": "We segment customers and markets by what actually drives value, and define who to win and who to serve.",
+    "m_seg_c1_h5": "Value-based segmentation",
+    "m_seg_c1_p": "Segments built on willingness to pay and value drivers, not demographics alone.",
+    "m_seg_c2_h5": "Behavioral and needs-based segments",
+    "m_seg_c2_p": "Grouping by behavior, needs, and occasions, not just profile.",
+    "m_seg_c3_h5": "Ideal Customer Profile",
+    "m_seg_c3_p": "The ICP, drawn from your best cohorts or from a forward thesis.",
+    "m_seg_c4_h5": "Segment-level strategy",
+    "m_seg_c4_p": "A distinct value proposition, price, and service level per segment.",
+    "m_seg_c5_h5": "Multi-method clustering",
+    "m_seg_c5_p": "k-means and mixed methods triangulated for robustness.",
+    "m_comp_eyebrow": "B7, Deep Dive",
+    "m_comp_h2": "Competitive Intelligence",
+    "m_comp_lead": "We read the competitive set continuously, in price, portfolio, and positioning.",
+    "m_comp_c1_h5": "Competitive price tracking",
+    "m_comp_c1_p": "Where you sit versus the market corridor, by zone and channel.",
+    "m_comp_c2_h5": "Competitive lineup mapping",
+    "m_comp_c2_p": "Their portfolio by occasion and pack, set against yours.",
+    "m_comp_c3_h5": "Brand-price positioning",
+    "m_comp_c3_p": "Brand power versus price, and the consistency corridor.",
+    "m_comp_c4_h5": "Competitive response modeling",
+    "m_comp_c4_p": "Likely reactions to your moves, before you make them.",
+    "m_sizing_eyebrow": "B10, Deep Dive",
+    "m_sizing_h2": "Market Sizing & Right-to-Win",
+    "m_sizing_lead": "We size the opportunity and test whether you can realistically win it, before you invest.",
+    "m_sizing_c1_h5": "Market sizing (TAM / SAM / SOM)",
+    "m_sizing_c1_p": "Top-down and bottom-up triangulation of the addressable opportunity.",
+    "m_sizing_c2_h5": "Right-to-win assessment",
+    "m_sizing_c2_p": "Realistic probability of winning a segment given capabilities and position.",
+    "m_sizing_c3_h5": "Where-to-play map",
+    "m_sizing_c3_p": "Where the prize is, and where you have permission to compete.",
+    "m_sizing_c4_h5": "Opportunity prioritization",
+    "m_sizing_c4_p": "Sequenced bets ranked by value, feasibility, and fit.",
+    "m_ret_eyebrow": "B11, Deep Dive",
+    "m_ret_h2": "Retention & Revenue Quality",
+    "m_ret_lead": "We measure not just how much you sell, but how durable that revenue is.",
+    "m_ret_c1_h5": "Retention cohorts",
+    "m_ret_c1_p": "Revenue bridge and churn read by customer cohort.",
+    "m_ret_c2_h5": "Net and gross revenue retention",
+    "m_ret_c2_p": "NRR and GRR as the quality signal of growth.",
+    "m_ret_c3_h5": "Churn and expansion drivers",
+    "m_ret_c3_p": "What makes customers leave, stay, or grow.",
+    "m_ret_c4_h5": "Revenue durability",
+    "m_ret_c4_p": "Recurring versus at-risk revenue, made explicit.", "nav_marketing": "B12 Marketing & ROMI", "nav_loyalty": "B13 Loyalty Program", "m_mkt_eyebrow": "B12, Deep Dive", "m_mkt_h2": "Marketing & ROMI", "m_mkt_lead": "We allocate the marketing budget by real return, not by engagement: every dollar goes where it pays off at the margin.", "m_mkt_c1_h5": "Marketing Mix Modeling (MMM)", "m_mkt_c1_p": "Decomposes sales into marketing and base drivers, by channel and campaign.", "m_mkt_c2_h5": "Budget optimizer", "m_mkt_c2_p": "Reallocates spend across channels toward marginal return, not engagement.", "m_mkt_c3_h5": "ROMI by channel", "m_mkt_c3_p": "Return on marketing investment, measured by channel and by campaign.", "m_mkt_c4_h5": "Saturation curves", "m_mkt_c4_p": "Where each channel stops paying off and the next dollar belongs elsewhere.", "m_mkt_c5_h5": "Attribution vs. incrementality", "m_mkt_c5_p": "Separates what marketing actually caused from what would have sold anyway.", "m_mkt_c6_h5": "Short and long effect", "m_mkt_c6_p": "The immediate sales impact and the brand carryover that pays off over time.", "m_loy_eyebrow": "B13, Deep Dive", "m_loy_h2": "Loyalty Program", "m_loy_lead": "We design the loyalty program as an economic lever: mechanics, tiers, and benefits calibrated to program economics and customer lifetime value.", "m_loy_c1_h5": "Mechanics design", "m_loy_c1_p": "Earn-and-burn rules that change behavior without giving away margin.", "m_loy_c2_h5": "Tier architecture", "m_loy_c2_p": "Levels that reward the right customers and build a value ladder.", "m_loy_c3_h5": "Program economics", "m_loy_c3_p": "The cost of benefits against the lift in frequency, ticket, and retention.", "m_loy_c4_h5": "CLTV and uplift", "m_loy_c4_p": "Customer lifetime value and how much the program moves it, by segment.", "m_loy_c5_h5": "Data as an asset", "m_loy_c5_p": "The program turns customer identity and frequency into proprietary signal for the whole engine.", "m_loy_c6_h5": "Anti-cannibalization", "m_loy_c6_p": "Benefits that reward new behavior, not what was going to happen anyway.",
+    "cta_h2": "Ready to start turning data into decisions?",
+    "cta_p": "Book a 30-minute call. We show you which capabilities apply to your situation and what the output looks like.",
+    "cta_btn": "Book a call",
+    "arm_prev": "← Arm A: Information Infrastructure",
+    "arm_next": "Arm C: Execution & Value Capture →",
+    "footer_copy": "© 2026 Imberion. All rights reserved."
+  },
+  "pt": {
+    "nav_estrat": "Estratégia",
+    "__title": "Imberion — Braço B: Motor de Inteligência Comercial",
+    "nav_cta": "Agendar chamada",
+    "hero_back": "← Voltar a como funciona",
+    "hero_eyebrow": "Braço B",
+    "hero_h1": "Motor de Inteligência Comercial",
+    "hero_lead": "Um conjunto conectado de capacidades analíticas que transformam a data comercial em decisões. Não relatórios: ações priorizadas com os trade-offs explícitos.",
+    "nav_pricing": "B2 Pricing",
+    "nav_promotions": "B3 Inteligência de Promoções",
+    "nav_trade": "B4 Política Comercial",
+    "nav_channel": "B5 Canal e Route-to-Market",
+    "nav_obppc": "B6 OBPPC e Design de Portfólio",
+    "nav_assortment": "B8 Sortimento",
+    "nav_scenario": "B9 Scenario Engine",
+    "nav_alignment": "B0 Leadership Alignment Compass",
+    "nav_infra": "A5 Infraestrutura de Informação",
+    "nav_segmentation": "B1 Segmentação e ICP",
+    "nav_competitive": "B7 Inteligência Competitiva",
+    "nav_sizing": "B10 Dimensionamento de Mercado e Right-to-Win",
+    "nav_retention": "B11 Retenção e Qualidade de Receita",
+    "mockup_eyebrow": "Visão de produto",
+    "mockup_alt": "Simulador de preço: curva de volume e margem, com o ótimo marcado.",
+    "mockup_caption": "Simulador de preço: curva de volume e margem, com o ótimo marcado.",
+    "m_pricing_eyebrow": "B2, A Fundo",
+    "m_pricing_h2": "Pricing",
+    "m_pricing_lead": "Desenhamos preços com rigor econômico, sensibilidade de demanda e validação comportamental.",
+    "m_pricing_c1_h5": "Elasticidades históricas e preditivas",
+    "m_pricing_c1_p": "Elasticidades de preço históricas e prospectivas, próprias e cruzadas.",
+    "m_pricing_c2_h5": "Arquitetura de preços",
+    "m_pricing_c2_p": "Estrutura lógica de preços ao longo de tamanhos, formatos, marcas e canais.",
+    "m_pricing_c3_h5": "Corredores e limiares de preço",
+    "m_pricing_c3_p": "Faixas e pontos de inflexão onde a percepção ou a demanda mudam de forma desproporcional.",
+    "m_pricing_c4_h5": "Simulação de cenários",
+    "m_pricing_c4_p": "O que acontece com o volume e a margem sob configurações de preço alternativas.",
+    "m_pricing_c5_h5": "Price Value Compass",
+    "m_pricing_c5_p": "Preços centrados no valor percebido e na disposição a pagar (WTP), não apenas no custo.",
+    "m_pricing_c6_h5": "Value-Attribute Compass (VAC)",
+    "m_pricing_c6_p": "Van Westendorp, Gabor-Granger, conjoint: métodos declarados e comportamentais.",
+    "m_pricing_c7_h5": "Virtual Buyers / personas sintéticas",
+    "m_pricing_c7_p": "Perfis de comprador sintéticos para testar reações de preço antes de mover o mercado.",
+    "m_promo_eyebrow": "B3, A Fundo",
+    "m_promo_h2": "Inteligência de Promoções",
+    "m_promo_lead": "Medimos quais promoções criam valor e quais apenas deslocam volume ou destroem margem.",
+    "m_promo_c1_h5": "Baseline e uplift",
+    "m_promo_c1_p": "Volume esperado sem promoção, e o incremento atribuível a ela.",
+    "m_promo_c2_h5": "ROI promocional",
+    "m_promo_c2_p": "Retorno econômico após custos completos: volume, margem, canibalização, forward buying.",
+    "m_promo_c3_h5": "TPO — Trade Promotion Optimization",
+    "m_promo_c3_p": "Otimização prospectiva de calendários promocionais por retailer, SKU e mecânica.",
+    "m_promo_c4_h5": "TPA — Trade Promotion Analytics",
+    "m_promo_c4_p": "Análise retroativa de padrões de desempenho promocional ao longo de períodos e contas.",
+    "m_promo_c5_h5": "Análise ex-ante",
+    "m_promo_c5_p": "Projeção por cenários do impacto promocional antes de se comprometer.",
+    "m_promo_c6_h5": "Análise post-mortem",
+    "m_promo_c6_p": "Medição estruturada de resultados reais contra esperados após a execução.",
+    "m_promo_c7_h5": "Criadores vs. destruidores de valor",
+    "m_promo_c7_p": "Classificação de cada promoção pela sua contribuição econômica líquida.",
+    "m_trade_eyebrow": "B4, A Fundo",
+    "m_trade_h2": "Política Comercial",
+    "m_trade_lead": "Tornamos visível como o preço líquido se erode da lista ao bolso, e damos às equipes as ferramentas para redirecionar o investimento comercial com retorno mensurável.",
+    "m_trade_c1_h5": "Cascata de preço",
+    "m_trade_c1_p": "Decomposição completa do preço de lista ao preço líquido após todas as concessões.",
+    "m_trade_c2_h5": "Análise de pocket price",
+    "m_trade_c2_p": "Receita efetiva realmente capturada após todos os descontos e rebates.",
+    "m_trade_c3_h5": "Diagnóstico de investimento comercial",
+    "m_trade_c3_p": "Investimento comercial total por conta, estruturado e não estruturado.",
+    "m_trade_c4_h5": "Análise de rebates",
+    "m_trade_c4_p": "Estrutura, gatilhos e ROI dos incentivos comerciais retroativos.",
+    "m_trade_c5_h5": "Lógica de pagamento por desempenho",
+    "m_trade_c5_p": "Marco para vincular o investimento comercial a resultados observáveis e mensuráveis.",
+    "m_trade_c6_h5": "ROI por conta",
+    "m_trade_c6_p": "Retorno líquido sobre o investimento comercial no nível de conta individual.",
+    "m_trade_c7_h5": "Design de Política Comercial",
+    "m_trade_c7_p": "Como as condições, regras e critérios de investimento são estruturados e governados ao longo da base de clientes.",
+    "m_channel_eyebrow": "B5, A Fundo",
+    "m_channel_h2": "Canal e Route-to-Market",
+    "m_channel_lead": "Priorizamos canais por potencial de valor, capacidade de ganhar e coerência comercial.",
+    "m_channel_c1_h5": "Avaliação de atratividade de canal",
+    "m_channel_c1_p": "Potencial econômico e estratégico de cada rota comercial.",
+    "m_channel_c2_h5": "Avaliação de força competitiva",
+    "m_channel_c2_p": "Probabilidade realista de ganhar dentro de cada canal dadas as capacidades e o posicionamento.",
+    "m_channel_c3_h5": "Design de route-to-market",
+    "m_channel_c3_p": "Arquitetura de cobertura e serviço por canal, segmento de cliente e recurso.",
+    "m_channel_c4_h5": "Análise de conflito de canal",
+    "m_channel_c4_p": "Identificação e resolução de fugas de valor por desalinhamento de canal.",
+    "m_channel_c5_h5": "Coerência preço-canal",
+    "m_channel_c5_p": "Alinhamento entre a arquitetura de pricing e os papéis de canal para evitar a arbitragem.",
+    "m_channel_c6_h5": "Missões e momentos por canal",
+    "m_channel_c6_p": "Mapeamento de demanda por ocasião para oportunidades específicas de cada canal.",
+    "m_obppc_eyebrow": "B6, A Fundo",
+    "m_obppc_h2": "OBPPC e Design de Portfólio",
+    "m_obppc_lead": "Desenhamos a oferta certa para cada ocasião, formato, ponto de preço e canal, e identificamos onde a cobertura atual deixa demanda sem capturar.",
+    "m_obppc_c1_h5": "Mapeamento de ocasiões",
+    "m_obppc_c1_p": "Contextos concretos de consumo e compra que definem os espaços de demanda.",
+    "m_obppc_c2_h5": "Ajuste de marca por ocasião",
+    "m_obppc_c2_p": "Qual marca responde melhor a cada ocasião de demanda.",
+    "m_obppc_c3_h5": "Papéis de pack",
+    "m_obppc_c3_p": "Entrada, Frequência, Best Buy, Premium: papéis estratégicos explícitos para cada formato.",
+    "m_obppc_c4_h5": "Coerência pack-preço",
+    "m_obppc_c4_p": "Alinhamento entre formato, arquitetura de preços e requisitos da ocasião.",
+    "m_obppc_c5_h5": "Whitespace Compass",
+    "m_obppc_c5_p": "Espaços sem cobertura ou mal atendidos em preço, pack, ocasião ou canal.",
+    "m_obppc_c6_h5": "Roadmap de portfólio",
+    "m_obppc_c6_p": "Plano de desenvolvimento sequenciado, alinhado às prioridades de ocasião de demanda.",
+    "m_assort_eyebrow": "B8, A Fundo",
+    "m_assort_h2": "Sortimento",
+    "m_assort_lead": "O que vai na gôndola, em qual loja e com qual prioridade.",
+    "m_assort_c1_h5": "Portfólio must-have",
+    "m_assort_c1_p": "Conjunto mínimo de produtos necessário para competir com eficácia por cluster.",
+    "m_assort_c2_h5": "Batalhas que precisam ser ganhas",
+    "m_assort_c2_p": "Áreas críticas de foco onde a empresa precisa ganhar porque concentram oportunidade ou risco.",
+    "m_assort_c3_h5": "Sortimento por cluster",
+    "m_assort_c3_p": "Regras de sortimento diferenciadas por tipo de loja, geografia ou segmento de cliente.",
+    "m_assort_c4_h5": "Promotores e detratores do mix",
+    "m_assort_c4_p": "Elementos do portfólio que impulsionam, ou erodem, o KPI prioritário.",
+    "m_assort_c5_h5": "Guardrails",
+    "m_assort_c5_p": "Regras que delimitam a execução sem quebrar a lógica estratégica.",
+    "m_scenario_eyebrow": "B9, A Fundo",
+    "m_scenario_h2": "Scenario Engine",
+    "m_scenario_lead": "Uma camada de simulação transversal a todas as capacidades, para testar decisões antes de comprometê-las.",
+    "m_scenario_c1_h5": "Cenário base vs. alternativos",
+    "m_scenario_c1_p": "Comparação estruturada do estado atual contra as mudanças propostas.",
+    "m_scenario_c2_h5": "Cenários de pricing",
+    "m_scenario_c2_p": "Impacto em volume e margem de movimentos de preço, mudanças de arquitetura ou cruzamentos de limiar.",
+    "m_scenario_c3_h5": "Cenários promocionais",
+    "m_scenario_c3_p": "Pré-avaliação de mecânicas, profundidades e timing promocionais.",
+    "m_scenario_c4_h5": "Cenários de concorrentes",
+    "m_scenario_c4_p": "Modelagem de movimentos de preço ou mudanças de portfólio de concorrentes e seu provável impacto no mercado.",
+    "m_scenario_c5_h5": "Análise what-if",
+    "m_scenario_c5_p": "Testes de sensibilidade livres de variáveis sobre qualquer alavanca comercial.",
+    "m_align_eyebrow": "B0, A Fundo",
+    "m_align_h2": "Leadership Alignment Compass",
+    "m_align_lead": "Antes de otimizar qualquer alavanca, os objetivos devem estar claros e os trade-offs acordados.",
+    "m_align_c1_h5": "Priorização de KPI",
+    "m_align_c1_p": "Qual métrica importa mais, e em que ordem quando entram em conflito.",
+    "m_align_c2_h5": "Marco de trade-offs",
+    "m_align_c2_p": "Acordos explícitos sobre sacrifícios aceitáveis entre margem, volume, participação e crescimento.",
+    "m_align_c3_h5": "Alinhamento de stakeholders",
+    "m_align_c3_p": "Acordo interfuncional sobre a direção comercial antes de que o trabalho analítico comece.",
+    "m_align_c4_h5": "Governança de RGM",
+    "m_align_c4_p": "Mecanismos para manter consistência, escalonamento e aprendizado ao longo das decisões comerciais.",
+    "m_infra_eyebrow": "A5, A Fundo",
+    "m_infra_h2": "Infraestrutura de Informação",
+    "m_infra_lead": "O alicerce que torna possível cada uma das demais capacidades, construído do zero quando necessário.",
+    "m_infra_c1_h5": "Captura de POS (tradicional e moderno)",
+    "m_infra_c1_p": "Data transacional do canal fragmentado e estruturado.",
+    "m_infra_c2_h5": "Integrações com distribuidores",
+    "m_infra_c2_p": "Fluxos de data estruturada a partir dos parceiros de distribuição.",
+    "m_infra_c3_h5": "Limpeza e harmonização de data",
+    "m_infra_c3_p": "Normalização e padronização ao longo de todas as fontes.",
+    "m_infra_c4_h5": "Inteligência de campo",
+    "m_infra_c4_p": "Captura de data em campo para preços, disponibilidade e inteligência competitiva.",
+    "m_infra_c5_h5": "Criação de ativos de data",
+    "m_infra_c5_p": "Geração de datasets estruturados para analítica e eventual monetização.",
+    "m_seg_eyebrow": "B1, A Fundo",
+    "m_seg_h2": "Segmentação e ICP",
+    "m_seg_lead": "Segmentamos clientes e mercados pelo que realmente impulsiona o valor, e definimos quem ganhar e quem servir.",
+    "m_seg_c1_h5": "Segmentação por valor",
+    "m_seg_c1_p": "Segmentos construídos sobre a disposição a pagar e os drivers de valor, não apenas a demografia.",
+    "m_seg_c2_h5": "Segmentos comportamentais e por necessidades",
+    "m_seg_c2_p": "Agrupamento por comportamento, necessidades e ocasiões, não apenas por perfil.",
+    "m_seg_c3_h5": "Ideal Customer Profile",
+    "m_seg_c3_p": "O ICP, derivado dos seus melhores cohorts ou de uma tese prospectiva.",
+    "m_seg_c4_h5": "Estratégia em nível de segmento",
+    "m_seg_c4_p": "Uma proposta de valor, preço e nível de serviço distinto por segmento.",
+    "m_seg_c5_h5": "Clustering multimétodo",
+    "m_seg_c5_p": "k-means e métodos mistos triangulados para maior robustez.",
+    "m_comp_eyebrow": "B7, A Fundo",
+    "m_comp_h2": "Inteligência Competitiva",
+    "m_comp_lead": "Lemos o set competitivo de forma contínua, em preço, portfólio e posicionamento.",
+    "m_comp_c1_h5": "Tracking de preços competitivos",
+    "m_comp_c1_p": "Onde você se posiciona frente ao corredor de mercado, por zona e canal.",
+    "m_comp_c2_h5": "Mapeamento do lineup competitivo",
+    "m_comp_c2_p": "O portfólio deles por ocasião e pack, contrastado com o seu.",
+    "m_comp_c3_h5": "Posicionamento marca-preço",
+    "m_comp_c3_p": "Poder de marca frente a preço, e o corredor de consistência.",
+    "m_comp_c4_h5": "Modelagem de resposta competitiva",
+    "m_comp_c4_p": "Reações prováveis aos seus movimentos, antes de que você os faça.",
+    "m_sizing_eyebrow": "B10, A Fundo",
+    "m_sizing_h2": "Dimensionamento de Mercado e Right-to-Win",
+    "m_sizing_lead": "Dimensionamos a oportunidade e testamos se você realmente pode ganhá-la, antes de investir.",
+    "m_sizing_c1_h5": "Dimensionamento de mercado (TAM / SAM / SOM)",
+    "m_sizing_c1_p": "Triangulação top-down e bottom-up da oportunidade endereçável.",
+    "m_sizing_c2_h5": "Avaliação do right-to-win",
+    "m_sizing_c2_p": "Probabilidade realista de ganhar um segmento dadas as capacidades e a posição.",
+    "m_sizing_c3_h5": "Mapa de onde competir",
+    "m_sizing_c3_p": "Onde está o prêmio, e onde você tem permissão para competir.",
+    "m_sizing_c4_h5": "Priorização de oportunidades",
+    "m_sizing_c4_p": "Apostas sequenciadas, ordenadas por valor, viabilidade e ajuste.",
+    "m_ret_eyebrow": "B11, A Fundo",
+    "m_ret_h2": "Retenção e Qualidade de Receita",
+    "m_ret_lead": "Medimos não apenas quanto você vende, mas quão durável é essa receita.",
+    "m_ret_c1_h5": "Cohorts de retenção",
+    "m_ret_c1_p": "Ponte de receita e leitura de churn por cohort de cliente.",
+    "m_ret_c2_h5": "Retenção líquida e bruta de receita",
+    "m_ret_c2_p": "NRR e GRR como sinal de qualidade do crescimento.",
+    "m_ret_c3_h5": "Drivers de churn e expansão",
+    "m_ret_c3_p": "O que faz os clientes saírem, ficarem ou crescerem.",
+    "m_ret_c4_h5": "Durabilidade da receita",
+    "m_ret_c4_p": "Receita recorrente frente a receita em risco, tornada explícita.", "nav_marketing": "B12 Marketing & ROMI", "nav_loyalty": "B13 Loyalty Program", "m_mkt_eyebrow": "B12, A Fundo", "m_mkt_h2": "Marketing & ROMI", "m_mkt_lead": "Alocamos o orçamento de marketing por retorno real, não por engagement: cada real vai para onde rende na margem.", "m_mkt_c1_h5": "Marketing Mix Modeling (MMM)", "m_mkt_c1_p": "Decompõe a venda em seus drivers de marketing e base, por canal e campanha.", "m_mkt_c2_h5": "Otimizador de orçamento", "m_mkt_c2_p": "Realoca o gasto entre canais para o retorno marginal, não o engagement.", "m_mkt_c3_h5": "ROMI por canal", "m_mkt_c3_p": "Retorno sobre o investimento de marketing, medido por canal e por campanha.", "m_mkt_c4_h5": "Curvas de saturação", "m_mkt_c4_p": "Onde cada canal deixa de render e convém mover o próximo real para outro lugar.", "m_mkt_c5_h5": "Atribuição vs. incrementalidade", "m_mkt_c5_p": "Separa o que o marketing realmente causou do que teria vendido de qualquer forma.", "m_mkt_c6_h5": "Efeito curto e longo", "m_mkt_c6_p": "O impacto imediato na venda e o arrasto de marca que rende ao longo do tempo.", "m_loy_eyebrow": "B13, A Fundo", "m_loy_h2": "Loyalty Program", "m_loy_lead": "Desenhamos o programa de fidelidade como alavanca econômica: mecânica, tiers e benefícios calibrados à economia do programa e ao valor de vida do cliente.", "m_loy_c1_h5": "Desenho de mecânica", "m_loy_c1_p": "Regras de acúmulo e resgate que mudam comportamento sem dar margem de presente.", "m_loy_c2_h5": "Arquitetura de tiers", "m_loy_c2_p": "Níveis que premiam os clientes certos e criam uma escada de valor.", "m_loy_c3_h5": "Economia do programa", "m_loy_c3_p": "O custo dos benefícios contra o incremento de frequência, ticket e retenção.", "m_loy_c4_h5": "CLTV e uplift", "m_loy_c4_p": "Valor de vida do cliente e quanto o programa o move, por segmento.", "m_loy_c5_h5": "O dado como ativo", "m_loy_c5_p": "O programa transforma a identidade e a frequência do cliente em sinal próprio para todo o motor.", "m_loy_c6_h5": "Anticanibalização", "m_loy_c6_p": "Que o benefício premie comportamento novo, não o que já ia acontecer.",
+    "cta_h2": "Pronto para começar a transformar data em decisões?",
+    "cta_p": "Agende uma chamada de 30 minutos. Mostramos quais capacidades se aplicam à sua situação e como é o output.",
+    "cta_btn": "Agendar chamada",
+    "arm_prev": "← Braço A: Infraestrutura de Informação",
+    "arm_next": "Braço C: Execução e Captura de Valor →",
+    "footer_copy": "© 2026 Imberion. Todos os direitos reservados."
+  }
+};</script>
+<script src="assets/js/imberion-site.js"></script>
 </body>
 </html>

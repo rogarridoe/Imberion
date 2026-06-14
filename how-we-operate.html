@@ -90,6 +90,7 @@
     }
   </style>
   <link rel="stylesheet" href="/assets/css/imberion-textures-v2.css"/>
+  <link rel="stylesheet" href="assets/css/imberion-site.css"/>
 </head>
 <body>
 
@@ -98,6 +99,7 @@
     <a class="nav-logo" href="index.html"><img src="brand_assets/logo-white.png" alt="Imberion"/></a>
     <div class="nav-links" id="nav-links">
       <a href="index.html#how-it-works" id="nav-how">How It Works</a>
+      <a href="estrategia.html" id="nav-estrat">Strategy</a>
       <a href="index.html#who" id="nav-who">Who It's For</a>
       <a href="how-we-operate.html" id="nav-operate" class="active-page">How We Operate</a>
     </div>
@@ -155,6 +157,7 @@ const T = {
     "lang": "en",
     "page_title": "How We Operate — Imberion",
     "nav_how": "How It Works",
+    "nav_estrat": "Strategy",
     "nav_who": "Who It's For",
     "nav_dist": "For Distributors",
     "nav_operate": "How We Operate",
@@ -195,6 +198,7 @@ const T = {
     "lang": "es",
     "page_title": "Cómo Operamos, Imberion",
     "nav_how": "Cómo Funciona",
+    "nav_estrat": "Estrategia",
     "nav_who": "Para Quién",
     "nav_dist": "Para Distribuidores",
     "nav_operate": "Cómo operamos",
@@ -235,6 +239,7 @@ const T = {
     "lang": "pt",
     "page_title": "Como Operamos, Imberion",
     "nav_how": "Como Funciona",
+    "nav_estrat": "Estratégia",
     "nav_who": "Para Quem",
     "nav_dist": "Para Distribuidores",
     "nav_operate": "Como operamos",
@@ -286,6 +291,7 @@ function setLang(lang) {
     'practical-h2': 'practical_h2',
     'footer-copy': 'footer_copy',
     'nav-how': 'nav_how',
+    'nav-estrat': 'nav_estrat',
     'nav-who': 'nav_who',
     'nav-operate': 'nav_operate',
     'nav-cta': 'nav_cta'
@@ -314,15 +320,16 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.classList.toggle('active', b.getAttribute('data-lang') === lang)
   );
+  try{localStorage.setItem('imb_lang',lang);}catch(e){}
 }
 
 function detectLang() {
-  return ['en','es','pt'].includes((navigator.language||'en').slice(0,2))
-    ? (navigator.language||'en').slice(0,2)
-    : 'en';
+  return ['en','es','pt'].includes((navigator.language||'es').slice(0,2))
+    ? (navigator.language||'es').slice(0,2)
+    : 'es';
 }
 
-setLang(detectLang());
+setLang((function(){try{var s=localStorage.getItem('imb_lang');if(['en','es','pt'].indexOf(s)>-1)return s;}catch(e){}return detectLang();})());
 
 document.querySelectorAll('.lang-btn').forEach(b =>
   b.addEventListener('click', () => setLang(b.getAttribute('data-lang')))
@@ -406,5 +413,6 @@ nav.imb-elevated{
   });
 })();
 </script>
+<script src="assets/js/imberion-site.js"></script>
 </body>
 </html>
