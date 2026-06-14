@@ -66,6 +66,7 @@
       ['Market Signal','market-signal.html'],
       ['Floor Signal','floor-signal.html'],
       ['Concierge','concierge.html'],
+      ['Retail','retail.html'],
       ["Who It's For",'index.html#who'],
       ['How we operate','how-we-operate.html'],
       ['Book a Call','https://calendly.com/rodrigo-imberion/30min'],
