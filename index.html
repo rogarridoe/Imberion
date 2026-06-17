@@ -763,8 +763,9 @@ function setLang(lang) {
 
   // Sectors
   const sl = document.getElementById('sectors-list');
-  if(sl&&t.sect_chips) sl.innerHTML=t.sect_chips.map(s=> s==='Retail'
-    ? `<a href="retail.html" class="sector-chip" style="color:var(--gray-blue);border-color:var(--navy-20);">${s} →</a>`
+  const SECT_URL={0:'cpg.html',1:'retail.html',3:'b2b.html',5:'construccion.html',6:'farma.html'};
+  if(sl&&t.sect_chips) sl.innerHTML=t.sect_chips.map((s,i)=> SECT_URL[i]
+    ? `<a href="${SECT_URL[i]}" class="sector-chip" style="color:var(--gray-blue);border-color:var(--navy-20);">${s} →</a>`
     : `<span class="sector-chip">${s}</span>`).join('');
 
   // Growth Strategy upstream cards
