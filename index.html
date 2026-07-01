@@ -31,6 +31,13 @@
       --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
       --ease:cubic-bezier(.19,1,.22,1);
       --ease-io:cubic-bezier(.4,0,.2,1);
+      /* Accents de marca. Fuente de verdad: imberion-brand/imberion-tokens.json.
+         Disponibles, aun no aplicados (cero referencia hoy = cero cambio visual).
+         Activar = apuntar la senal a var(--petrol). */
+      --petrol:#1C5F6B; --petrol-deep:#11454E; --petrol-bright:#52A0AC;
+      --petrol-12:rgba(28,95,107,.12); --petrol-06:rgba(28,95,107,.06);
+      --ochre:#A88A3A; --ochre-deep:#7E641F; --ochre-bright:#C7A85A; --ochre-12:rgba(168,138,58,.14);
+      --accent:var(--petrol); --accent-data:var(--ochre);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
