@@ -1,0 +1,51 @@
+name: Deploy Production
+
+# Deploy del website (sitio estático) a Vercel producción, dueño en el repo.
+# Necesario porque el plan Hobby de Vercel no soporta la integración Git de
+# repos privados que pertenecen a una organización; el deploy por CLI (con token)
+# la esquiva. Mismo patrón que imberion-checkup (ADR-0019 de ese repo).
+#
+# Requisitos:
+#   - Secret VERCEL_TOKEN (a nivel org imberion o de este repo), scope team.
+#   - Auto-deploy de Git de Vercel apagada en este proyecto (evita doble deploy).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+env:
+  VERCEL_ORG_ID: team_UYWR7twVYoZBypU2N07jGOWH
+  VERCEL_PROJECT_ID: prj_YQAmIkivLzGLfgG9HnQzjjeNYSxW
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Instalar Vercel CLI
+        run: npm i -g vercel@latest
+
+      - name: Pull de settings + env de producción
+        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build de producción
+        run: vercel build --prod --token=$VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy del build a producción
+        run: vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
