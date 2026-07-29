@@ -6,7 +6,7 @@
    nav, buttons, footer, dividers and motion.
    ============================================================ */
 :root{
-  --navy:#0A1828; --navy-deep:#06101C; --navy-soft:#13263b;
+  --navy:#0A1828; --navy-deep:#06101C; --navy-soft:#14293F;
   --navy-80:rgba(10,24,40,.8); --navy-60:rgba(10,24,40,.6); --navy-40:rgba(10,24,40,.4);
   --navy-20:rgba(10,24,40,.2); --navy-12:rgba(10,24,40,.12); --navy-08:rgba(10,24,40,.08); --navy-06:rgba(10,24,40,.06);
   --gray-blue:#6F859C; --slate:#6F859C; --slate-soft:#8FA3B8; --slate-mist:#C8D2DC;
@@ -16,8 +16,10 @@
   /* legacy green accent -> navy (backgrounds/borders); accents go slate per element */
   --signal:#0A1828; --signal-lt:#E2DED7;
   /* Accents de marca. Fuente de verdad: imberion-brand/imberion-tokens.json.
-     Disponibles, aun no aplicados (cero referencia hoy = cero cambio visual). Para
-     activar la senal, apunta --signal a var(--petrol). */
+     Contencion deliberada: el petroleo aparece SOLO donde un acento adicional es
+     indispensable, hoy el anillo de foco y la linea del eyebrow del hero (el
+     gesto de marca). El ochre no se usa en el sitio. --signal sigue apuntando a
+     navy: el sitio es monocromo por decision, no por olvido. */
   --petrol:#1C5F6B; --petrol-deep:#11454E; --petrol-bright:#52A0AC;
   --petrol-12:rgba(28,95,107,.12); --petrol-06:rgba(28,95,107,.06);
   --ochre:#A88A3A; --ochre-deep:#7E641F; --ochre-bright:#C7A85A; --ochre-12:rgba(168,138,58,.14);
@@ -25,12 +27,18 @@
   --ease:cubic-bezier(.19,1,.22,1); --ease-io:cubic-bezier(.4,0,.2,1);
   --font-serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
   --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-  --r:3px;
+  --r:4px;
 }
 
 body{background:var(--paper);color:var(--navy);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 ::selection{background:var(--navy);color:var(--paper)}
-:focus-visible{outline:2px solid var(--gray-blue);outline-offset:3px;border-radius:1px}
+:focus-visible{outline:2px solid var(--petrol-deep);outline-offset:3px;border-radius:1px}
+/* El anillo cambia de valor segun la superficie, no de color. petrol-bright
+   sobre papel da 2.4:1, por debajo del minimo de un indicador de foco;
+   petrol-deep sobre navy da 1.9:1. Cada uno en su fondo pasa de sobra. */
+.hero :focus-visible,nav :focus-visible,footer :focus-visible,
+.section--dark :focus-visible,.mat-section :focus-visible,
+.cta-section :focus-visible{outline-color:var(--petrol-bright)}
 h1,h2,h3,h4{letter-spacing:-.012em}
 h2{font-weight:300}
 
@@ -48,8 +56,11 @@ h2{font-weight:300}
 .section--dark .sec-num::after,.section--signal .sec-num::after{background:var(--white-25)}
 
 /* ---------- NAV ---------- */
-nav{background:rgba(8,18,30,.72)!important;-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--white-06)!important;transition:border-color .3s var(--ease-io),box-shadow .3s var(--ease-io)}
-nav.imb-elevated{border-bottom-color:var(--white-12)!important;box-shadow:0 2px 24px rgba(0,0,0,.26)}
+/* :not(.footer-links) porque en index.html el pie usa <nav> para sus enlaces:
+   sin acotar, el nav del pie tambien recibia el fondo blureado y la hairline
+   de la barra superior. */
+nav:not(.footer-links){background:rgba(8,18,30,.72)!important;-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--white-06)!important;transition:border-color .3s var(--ease-io),box-shadow .3s var(--ease-io)}
+nav:not(.footer-links).imb-elevated{border-bottom-color:var(--white-12)!important;box-shadow:0 2px 24px rgba(0,0,0,.26)}
 .nav-inner{height:70px;position:relative}
 .nav-progress{position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:linear-gradient(90deg,transparent,var(--slate-soft) 24%,#fff);box-shadow:0 0 8px rgba(143,163,184,.5);pointer-events:none}
 .nav-links a:not(.btn):not(.lang-btn){color:var(--white-65);font-size:13.5px;font-weight:500}
