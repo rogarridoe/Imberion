@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- impeccable-disable marquee -- dos animaciones en loop, ambas deliberadas y del mundo visual ya comprometido: el barrido de 30px de la linea del eyebrow (el gesto de marca) y el muro de logos de cliente. Ninguna esconde contenido que haya que leer, y las dos se detienen con prefers-reduced-motion. -->
 <html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8"/><link rel="icon" type="image/png" href="brand_assets/favicon.png"/>
@@ -16,7 +17,7 @@
        Anchor: Navy. Light: warm paper. Accent: slate signal.
        ============================================================ */
     :root{
-      --navy:#0A1828; --navy-deep:#06101C; --navy-soft:#13263b;
+      --navy:#0A1828; --navy-deep:#06101C; --navy-soft:#14293F;
       --navy-80:rgba(10,24,40,.8);--navy-60:rgba(10,24,40,.6);
       --navy-40:rgba(10,24,40,.4);--navy-20:rgba(10,24,40,.2);
       --navy-12:rgba(10,24,40,.12);--navy-08:rgba(10,24,40,.08);--navy-06:rgba(10,24,40,.06);
@@ -26,7 +27,7 @@
       --white-85:rgba(255,255,255,.85);--white-65:rgba(255,255,255,.65);
       --white-45:rgba(255,255,255,.45);--white-25:rgba(255,255,255,.25);
       --white-12:rgba(255,255,255,.12);--white-06:rgba(255,255,255,.06);
-      --max:1180px; --r:3px;
+      --max:1180px; --r:4px;
       --font-serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
       --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
       --ease:cubic-bezier(.19,1,.22,1);
@@ -45,7 +46,13 @@
     img{display:block;max-width:100%} a{color:inherit;text-decoration:none} ul{list-style:none}
     ::selection{background:var(--navy);color:var(--beige)}
     .section--dark ::selection{background:var(--beige);color:var(--navy)}
-    :focus-visible{outline:2px solid var(--gray-blue);outline-offset:3px;border-radius:1px}
+    :focus-visible{outline:2px solid var(--petrol-deep);outline-offset:3px;border-radius:1px}
+    /* El anillo cambia de valor segun la superficie, no de color. petrol-bright
+       sobre papel da 2.4:1, por debajo del minimo de un indicador de foco;
+       petrol-deep sobre navy da 1.9:1. Cada uno en su fondo pasa de sobra. */
+    .hero :focus-visible,nav :focus-visible,footer :focus-visible,
+    .section--dark :focus-visible,.mat-section :focus-visible,
+    .cta-section :focus-visible{outline-color:var(--petrol-bright)}
 
     .container{max-width:var(--max);margin:0 auto;padding:0 40px}
     .section{padding:128px 0;position:relative}
@@ -71,7 +78,11 @@
     .section--dark .lead{color:var(--white-65)}
 
     /* ---- NAV ---- */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,18,30,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--white-06);padding:0 40px;transition:background .3s var(--ease-io),border-color .3s var(--ease-io)}
+    /* Acotado a la barra superior por id. Escrito como selector de elemento,
+       este bloque tambien agarraba <nav class="footer-links"> del pie y lo
+       clavaba arriba con fondo blureado, encima del nav real: en la home se
+       veia una franja fantasma con "Agendar llamada / Contacto". */
+    nav#top{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,18,30,.72);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--white-06);padding:0 40px;transition:background .3s var(--ease-io),border-color .3s var(--ease-io)}
     .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;position:relative}
     .nav-logo img{height:34px;width:auto;transition:opacity .25s var(--ease)}
     .nav-logo:hover img{opacity:.78}
@@ -88,7 +99,7 @@
     .lang-btn.active{background:var(--white-12);color:#fff}
     .lang-btn:hover:not(.active){color:var(--white-85)}
     /* scroll progress signal line */
-    .nav-progress{position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:linear-gradient(90deg,transparent,var(--slate-soft) 24%,#fff);box-shadow:0 0 8px rgba(143,163,184,.5)}
+    .nav-progress{position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:linear-gradient(90deg,transparent,var(--slate-soft) 24%,#fff)}
 
     /* ---- BUTTONS ---- */
     .btn{position:relative;display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:var(--r);font-family:var(--font-sans);font-size:13.5px;font-weight:600;letter-spacing:.02em;cursor:pointer;border:1px solid transparent;transition:background .28s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .3s var(--ease);overflow:hidden;will-change:transform}
@@ -122,7 +133,7 @@
     .imb-divider::after{content:"";position:absolute;left:49%;top:-2.5px;width:5px;height:5px;border:1px solid var(--gray-blue);background:var(--beige);transform:rotate(45deg)}
     .imb-divider--flip::after{background:var(--beige)}
 
-    @media(max-width:600px){.container{padding:0 22px} nav{padding:0 22px} .nav-links{display:none}}
+    @media(max-width:600px){.container{padding:0 22px} nav#top{padding:0 22px} .nav-links{display:none}}
 
     /* ============================================================ HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;background-color:var(--navy);padding:120px 40px 72px;position:relative;overflow:hidden}
@@ -134,7 +145,8 @@
     .hero-right{display:flex;flex-direction:column;align-items:flex-start;justify-self:end;max-width:440px}
     .hero-label{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-soft);margin-bottom:38px;max-width:420px;line-height:1.5}
     .hero-label .line{width:30px;height:1px;background:var(--white-25);flex-shrink:0;position:relative;overflow:hidden}
-    .hero-label .line::after{content:"";position:absolute;inset:0;background:var(--slate-soft);animation:hl-sweep 3.4s var(--ease-io) infinite}
+    /* Barrido de la linea del eyebrow: es el gesto de marca, del ruido a la senal. */
+    .hero-label .line::after{content:"";position:absolute;inset:0;background:var(--petrol-bright);animation:hl-sweep 3.4s var(--ease-io) infinite}
     @keyframes hl-sweep{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
     .hero h1{font-family:var(--font-serif);font-size:clamp(3.3rem,8.4vw,7rem);font-weight:300;color:#fff;line-height:1.02;max-width:9ch;letter-spacing:-.02em}
     .hero h1 em{font-style:italic;color:var(--slate-soft);position:relative}
@@ -158,8 +170,8 @@
     /* decision index */
     svg.ic{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;display:block}
     .q-list{display:flex;flex-direction:column;border-top:1px solid var(--navy-12)}
-    .q-row{display:flex;align-items:center;gap:18px;padding:16px 6px 16px 0;border-bottom:1px solid var(--navy-12);transition:padding .3s var(--ease),background .3s var(--ease);cursor:default}
-    .q-row:hover{padding-left:10px;background:linear-gradient(90deg,rgba(10,24,40,.025),transparent)}
+    .q-row{display:flex;align-items:center;gap:18px;padding:16px 6px 16px 0;border-bottom:1px solid var(--navy-12);transition:background .3s var(--ease);cursor:default}
+    .q-row:hover{background:linear-gradient(90deg,rgba(10,24,40,.045),transparent)}
     .q-num{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--gray-blue);font-variant-numeric:tabular-nums;width:18px;flex:none}
     .q-ico{width:38px;height:38px;flex:none;border:1px solid var(--navy-12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
     .q-ico svg{width:21px;height:21px}
@@ -181,8 +193,8 @@
     .arms-section>.container>.lead{margin-top:22px}
     .three-arms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:72px;background:var(--navy-12);border:1px solid var(--navy-12)}
     .arm-card{background:var(--beige);padding:48px 38px;position:relative;display:flex;flex-direction:column;transition:background .35s var(--ease),transform .4s var(--ease);overflow:hidden}
-    .arm-card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--gray-blue);transition:width .5s var(--ease);z-index:2}
-    .arm-card:hover::before{width:100%}
+    .arm-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--gray-blue);transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease);z-index:2}
+    .arm-card:hover::before{transform:scaleX(1)}
     .arm-card:hover{background:var(--white)}
     .arm-letter{font-family:var(--font-serif);font-size:clamp(3rem,4vw,4rem);font-weight:300;line-height:.9;color:var(--navy-12);margin-bottom:18px;letter-spacing:.02em;transition:color .4s var(--ease)}
     .arm-card:hover .arm-letter{color:var(--gray-blue)}
@@ -197,7 +209,7 @@
     .arm-cta-link:hover .btn-arrow{transform:translateX(4px)}
     .arm-loop{margin-top:48px;padding:28px 40px;background-color:var(--navy);color:var(--white-65);font-family:var(--font-serif);font-size:clamp(1.1rem,1.6vw,1.4rem);line-height:1.5;font-style:italic;text-align:center;position:relative;overflow:hidden}
     .arm-loop::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gray-blue)}
-    .arm-bridge{margin-top:1px;padding:28px 40px;background:var(--white);font-size:14.5px;color:var(--navy-60);line-height:1.75;border-left:3px solid var(--slate-soft)}
+    .arm-bridge{margin-top:1px;padding:28px 40px;background:var(--white);font-size:14.5px;color:var(--navy-60);line-height:1.75;border-top:1px solid var(--navy-12)}
     .arm-bridge strong{font-weight:600;color:var(--navy)}
     .arm-system-caption{margin-top:30px;text-align:center;font-family:var(--font-sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-blue)}
 
@@ -235,7 +247,7 @@
     .mat-body{display:flex;flex-direction:column}
     .mat-setup p{font-family:var(--font-sans);font-size:15px;color:var(--white-45);line-height:1.78;margin-bottom:10px}
     .mat-setup p:last-child{color:var(--white-85);font-weight:500;margin-bottom:0}
-    .mat-resolution-block{border-top:1px solid var(--white-12);border-bottom:1px solid var(--white-12);margin:30px 0;padding:30px 0 30px 22px;border-left:3px solid var(--gray-blue)}
+    .mat-resolution-block{border-top:1px solid var(--white-12);border-bottom:1px solid var(--white-12);margin:30px 0;padding:30px 0}
     .mat-resolution{font-family:var(--font-serif);font-size:clamp(1.3rem,2.3vw,1.6rem);color:#fff;font-weight:400;line-height:1.4;letter-spacing:-.01em;margin-bottom:0}
     .mat-evidence p{font-family:var(--font-sans);font-size:15px;color:var(--white-45);line-height:1.78;margin-bottom:10px}
     .mat-evidence p:last-child{margin-bottom:0;color:var(--white-85)}
@@ -257,6 +269,7 @@
     .carousel-outer::before,.carousel-outer::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
     .carousel-outer::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
     .carousel-outer::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+    /* Muro de logos de cliente. Con prefers-reduced-motion se detiene y se apila. */
     .carousel-track{display:flex;gap:48px;align-items:center;animation:scroll 90s linear infinite;width:max-content}
     .carousel-track:hover{animation-play-state:paused}
     .logo-item{width:180px;height:72px;display:flex;align-items:center;justify-content:center}
@@ -266,8 +279,8 @@
     /* ============================================================ GROWTH STRATEGY (upstream band) */
     .estrat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:60px;background:var(--white-12);border:1px solid var(--white-12)}
     .estrat-card{background:var(--navy);padding:34px 26px;position:relative;overflow:hidden;transition:background .35s var(--ease)}
-    .estrat-card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--slate-soft);transition:width .5s var(--ease);z-index:2}
-    .estrat-card:hover::before{width:100%}
+    .estrat-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--slate-soft);transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease);z-index:2}
+    .estrat-card:hover::before{transform:scaleX(1)}
     .estrat-card:hover{background:var(--navy-soft)}
     .estrat-card h4{font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:#fff;line-height:1.18;margin-bottom:12px;letter-spacing:-.01em}
     .estrat-card p{font-family:var(--font-sans);font-size:13.5px;color:var(--white-65);line-height:1.6}
@@ -279,8 +292,8 @@
     .persp-section{padding:128px 0;position:relative}
     .persp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:64px;background:var(--navy-12);border:1px solid var(--navy-12)}
     .persp-card{background:var(--beige);padding:42px 34px;position:relative;display:flex;flex-direction:column;overflow:hidden;transition:background .35s var(--ease)}
-    .persp-card::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--gray-blue);transition:width .5s var(--ease);z-index:2}
-    .persp-card:hover::before{width:100%}
+    .persp-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:var(--gray-blue);transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease);z-index:2}
+    .persp-card:hover::before{transform:scaleX(1)}
     .persp-card:hover{background:var(--white)}
     .persp-pillar{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-blue);margin-bottom:22px;display:flex;align-items:center;gap:10px}
     .persp-pillar::before{content:"";width:14px;height:1px;background:var(--gray-blue);flex-shrink:0}
@@ -312,6 +325,8 @@
     @media(prefers-reduced-motion:reduce){
       .imb-reveal{opacity:1;transform:none;transition:none}
       .hero-label .line::after,.hero-scroll-line::after,.nav-progress{animation:none!important}
+      .carousel-track{animation:none!important;flex-wrap:wrap;width:100%;justify-content:center}
+      .carousel-outer::before,.carousel-outer::after{display:none}
       *{scroll-behavior:auto!important}
     }
 
